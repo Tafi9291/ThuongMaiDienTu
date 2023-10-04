@@ -1,0 +1,262 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kênh người bán</title>
+
+    <link href="~/Content/css-NgBan/base.css" rel="stylesheet" />
+    <link href="~/Content/css-NgBan/cart.css" rel="stylesheet" />
+    <link href="~/Content/css-NgBan/dashboard.css" rel="stylesheet" />
+    <link href="~/Content/css-NgBan/grid.css" rel="stylesheet" />
+    <link href="~/Content/css-NgBan/main.css" rel="stylesheet" />
+    <link href="~/Content/css-NgBan/reset.css" rel="stylesheet" />
+    <link href="~/Content/css-NgBan/menu.css" rel="stylesheet" />
+    <link href="~/Content/css-NgBan/slider.css" rel="stylesheet" />
+    <link href="~/Content/css-NgBan/responsive.css" rel="stylesheet" />
+    <link href="~/Content/css-NgBan/validator.css" rel="stylesheet" />
+    
+    <link href="~/Content/Hinh/logo-favicon.png" rel="icon" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- <link rel="stylesheet" href="./assets/bootstrap-5.1.3-dist/bootstrap-5.1.3-dist/css/bootstrap.css"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+          rel="stylesheet" />
+    <script src="~/Scripts/scripts.js?Version=1"></script>
+    <script src="~/Areas/Admin/Js/upload.js"></script>
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <div class="grid wide">
+                <!--Header with search-->
+                <div class="header-with-search">
+
+                    <label for="mobile-search-checkbox" class="header__mobile-search">
+                        <i class="header__mobile-search-icon fas fa-search"></i>
+                    </label>
+                    <div class="header__logo hide-on-tablet">
+                        <a href="" class="header__logo-link">
+                            <img src="~/Content/Hinh/logo-favicon.png"
+                                 alt="logo"
+                                 class="header__logo-img" />
+                            <p>Kênh Người Bán</p>
+                        </a>
+                    </div>
+
+                    <input type="checkbox" hidden id="mobile-search-checkbox" class="header__search-checkbox">
+
+                    <!--Cart layout-->
+                    <div class="header__cart">
+                        <div class="header__cart-wrap">
+                            <i class="header__cart-icon fas fa-solid fa-bell"></i>
+                            <span class="header__cart-notice">0</span>
+
+                            <!-- No cart: header__cart-list-no-cart -->
+                            <div class="header__cart-list">
+                                <!-- <img src="./assets/img/empty-cart.jpg"alt="" class="header__cart-no-cart-img"/> -->
+                                <!-- <span class="header__cart-list-no-cart-msg">Chưa có sản phẩm</span> -->
+
+                                <h4 class="header__cart-heading">Thông báo</h4>
+                                <ul class="header__cart-list-item">
+                                    <!-- Cart item -->
+                                    <li class="header__cart-item">
+
+                                    </li>
+
+
+                                </ul>
+
+                                <!-- <a href="./cartitems.html" class="header__cart-view-cart btn btn--primary">Xem giỏ hàng</a> -->
+                            </div>
+                        </div>
+                        <div class="header__cart-wrap">
+                            <i class="header__cart-icon useracc fas fa-user" style="cursor:pointer;" onclick="myFunction()"></i>
+                        </div>
+
+                        <div class="dropdown-content" id="myDropdown">
+                            <a href="#"></a>
+                            <a href="">Xem tài khoản</a>
+                            <a href="">Đăng xuất</a>
+                        </div>
+
+
+                    </div>
+
+                    <label for="mobile-list-checkbox" class="header__mobile-list">
+                        <i class="header__mobile-list-icon fas fa-bars"></i>
+                    </label>
+                    <input type="checkbox" id="mobile-list-checkbox" class="header__list-checkbox">
+
+                    <label for="mobile-list-checkbox" class="overlay"></label>
+                    <div class="sidemenu-list">
+                        <label for="mobile-list-checkbox" class="sidemenu-close-2">
+                            <i class="fas fa-times"></i>
+                        </label>
+                        <ul class="nav_mobile-list">
+                            <li>
+                                <a href="" class="nav_mobile-list-link">Đăng ký</a>
+                            </li>
+                            <li>
+                                <a href="" class="nav_mobile-list-link">Đăng nhập</a>
+                            </li>
+                        </ul>
+                        <div class="sidemenu-icon">
+                            <a href="#" class="sidemenu-icon-link">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                            <a href="#" class="sidemenu-icon-link">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="sidemenu-icon-link">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <ul class="header__sort-bar">
+                <li class="header__sort-item">
+                    <a href="" class="header__sort-link">Liên quan</a>
+                </li>
+                <li class="header__sort-item header__sort-item--active">
+                    <a href="" class="header__sort-link">Mới nhất</a>
+                </li>
+                <li class="header__sort-item">
+                    <a href="" class="header__sort-link">Bán chạy</a>
+                </li>
+                <li class="header__sort-item">
+                    <a href="" class="header__sort-link">Giá</a>
+                </li>
+            </ul>
+
+        </header>
+
+
+        <div class="app__container">
+            <div class="sidebar-container">
+                <div class="sidebar">
+                    <ul class="sidebar-menu">
+                        <li class="sidebar-menu-box">
+                            <div class="sidebar-menu-item">
+                                <i class='bx bx-package sidebar-menu-item-icon'></i>
+                                <span>Quản lý đơn hàng</span>
+                                <span class="sidebar-menu-item-space"></span>
+                                <i class='bx bx-chevron-down sidebar-menu-item-collapse m-l-5'></i>
+                            </div>
+                            <ul class="sidebar-submenu">
+                                <li>
+                                    <div class="sidebar-submenu-item">
+                                        <a href="#" class="sidebar-submenu-item-link">Tất cả</a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="sidebar-submenu-item">
+                                        <a href="#" class="sidebar-submenu-item-link">Chờ xác nhận</a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="sidebar-submenu-item">
+                                        <a href="#" class="sidebar-submenu-item-link">Đơn hủy</a>
+                                    </div>
+                                </li>
+                                
+                            </ul>
+                        </li>
+                        <li class="sidebar-menu-box">
+                            <div class="sidebar-menu-item">
+                                <i class='bx bxl-shopify sidebar-menu-item-icon'></i>
+                                <span>Quản lý sản phẩm</span>
+                                <span class="sidebar-menu-item-space"></span>
+                                <i class='bx bx-chevron-down sidebar-menu-item-collapse'></i>
+                            </div>
+                            <ul class="sidebar-submenu">
+                                <li>
+                                    <div class="sidebar-submenu-item">
+                                        <a href="#" class="sidebar-submenu-item-link">Tất cả</a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="sidebar-submenu-item">
+                                        <a href="#" class="sidebar-submenu-item-link">Thêm sản phẩm</a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="sidebar-submenu-item">
+                                        <a href="#" class="sidebar-submenu-item-link">Đang hoạt động</a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="sidebar-submenu-item">
+                                        <a href="#" class="sidebar-submenu-item-link">Chờ duyệt</a>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li class="sidebar-menu-box">
+                            <div class="sidebar-menu-item">
+                                <i class='bx bx-purchase-tag sidebar-menu-item-icon'></i>
+                                <span>Quảng cáo của tôi</span>
+                                <span class="sidebar-menu-item-space"></span>
+                                <i class='bx bx-chevron-down sidebar-menu-item-collapse'></i>
+                            </div>
+                        </li>
+                        <li class="sidebar-menu-box">
+                            <div class="sidebar-menu-item">
+                                <i class='bx bx-wallet sidebar-menu-item-icon'></i>
+                                <span>Doanh thu</span>
+                                <span class="sidebar-menu-item-space"></span>
+                                <i class='bx bx-chevron-down sidebar-menu-item-collapse'></i>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="grid wide">
+
+                <div class="row sm-gutter app__content">
+
+                    <div class="col l-3 m-0 c-0">
+
+                    </div>
+                    @RenderBody()
+                    @*<div class="col l-6 m-12 c-12">
+
+                    </div>*@
+                </div>
+            </div>
+        </div>
+
+
+
+        <footer class="footer2">
+            <div class="footer__bottom2">
+                <div class="grid wide">
+                    <p class="footer__text">© 2023 - Bản quyền thuộc về Công ty TNHH TaFiShop</p>
+                </div>
+            </div>
+
+        </footer>
+    </div>
+
+
+    <script src="~/Scripts/js/menu.js"></script>
+    @*<script src="~/Areas/Admin/Js/menu.js"></script>*@
+    @*<script src="~/Areas/Admin/Js/products.js"></script>*@
+    @*<script src="~/Areas/Admin/Js/slider2.js"></script>*@
+    @*<script src="~/Areas/Admin/Js/slideshow.js"></script>*@
+    <script src="~/Areas/Admin/Js/validator.js"></script>
+    @*<script src="~/Areas/Admin/Js/validator2.js"></script>*@
+    <script src="https://kit.fontawesome.com/2d69c8ebbe.js" crossorigin="anonymous"></script>
+    <script src="./assets/bootstrap-5.1.3-dist/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
