@@ -1,0 +1,119 @@
+﻿
+@{
+    ViewBag.Title = "SanPham";
+    Layout = "~/Views/Shared/Layout-NgBan.cshtml";
+}
+
+<div class="col l-8 m-12 c-12">
+    <div class="home-product">
+        <div class="row sm-gutter" style="padding-right: 16px;">
+            <div class="product-filter-card">
+                <form action="/" method="" class="tafi-form filter-form tafi-form-label-right">
+                    <div class="filter-form-box">
+                        <div class="filter-col-left">
+                            <div class="product tafi-form-item">
+                                <div class="tafi-form-item__control">
+                                    <div class="tafi-form-item__content">
+                                        <div class="tafi-input-group">
+                                            <span class="tafi-input-group__prepend" style="width: 116px;">Tên sản phẩm</span>
+                                            <span class="tafi-input-group__append">
+                                                <div class="hints-input">
+                                                    <div class="input-wrapper">
+                                                        <div class="tafi-input">
+                                                            <div class="tafi-input__inner">
+                                                                <input type="text" placeholder="Hãy nhập vào ít nhất 2 ký tự đầu của từ..."
+                                                                       resize="vertical" rows="2" minrows="2" restrictiontype="input"
+                                                                       max="Infinity" min="-Infinity" class="tafi-input__input">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="filter-col-right">
+                            <div class="product tafi-form-item">
+                                <div class="tafi-form-item__control">
+                                    <div class="tafi-form-item__content">
+                                        <div class="tafi-input-group">
+                                            <span class="tafi-input-group__prepend" style="width: 116px;">Ngành hàng</span>
+                                            <span class="tafi-input-group__append">
+                                                <div class="hints-input">
+                                                    <div class="input-wrapper">
+                                                        <div class="tafi-input">
+                                                            <div class="tafi-input__inner">
+                                                                <input type="text" placeholder="Hãy nhập vào ít nhất 2 ký tự đầu của từ..."
+                                                                       resize="vertical" rows="2" minrows="2" restrictiontype="input"
+                                                                       max="Infinity" min="-Infinity" class="tafi-input__input">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="actions">
+                        <button class="tafi-button tafi-button-primary">
+                            <span>Tìm kiếm</span>
+                        </button>
+                        <button class="tafi-button" style="margin-left: 16px;">
+                            <span>Nhập lại</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="product-list-main">
+                <div class="">
+                    <div class="fixed-container" style="top: 56px; z-index: 1000">
+                        <div class="portal-panel">
+                            <div class="tabs tafi-tabs tafi-tabs-line tafi-tabs-top">
+                                <div class="tafi-tabs__nav">
+                                    <div class="tafi-tabs__nav-warp">
+                                        <div class="tafi-tabs__nav-tabs" style="transform: translateX(0px);">
+                                            <div class="tafi-tabs__nav-tab active" style="white-space: normal;">
+                                                <span class="tabs__tab">Tất cả</span>
+                                            </div>
+                                            <div class="tafi-tabs__nav-tab" style="white-space: normal;">
+                                                <span class="tabs__tab">Đang hoạt động</span>
+                                            </div>
+                                            <div class="tafi-tabs__nav-tab" style="white-space: normal;">
+                                                <span class="tabs__tab">Chờ duyệt</span>
+                                            </div>
+                                        </div>
+                                        <div class="tafi-tabs__ink-bar" style="width: 78.25px; transform: translateX(0px);"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @* List panel *@
+                    <div class="list-panel">
+                        <div class="lsit-all">
+                            <section class="product-list-header product-list-section">
+                                <header class="product-list-header__create" style="align-items: flex-end;">
+                                    <div class="product-list-header__create-right right">
+                                        <button class="tafi-button tafi-button-primary tafi-button--large">
+                                            <i class='bx bx-plus bx-sm'></i>
+                                            <span style="margin-left: 5px;">Thêm mới sản phẩm</span>
+                                        </button>
+                                    </div>
+                                </header>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+

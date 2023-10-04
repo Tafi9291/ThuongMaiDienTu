@@ -124,6 +124,7 @@
     <Compile Include="Areas\Admin\Controllers\DashBoardController.cs" />
     <Compile Include="Controllers\NgBanController.cs" />
     <Compile Include="Controllers\NgMuaController.cs" />
+    <Compile Include="Controllers\SanPhamController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -257,6 +258,7 @@
     <Content Include="Views\NgMua\TrangChu.cshtml" />
     <Content Include="Views\Shared\Layout-NgBan.cshtml" />
     <Content Include="Views\NgBan\KenhNgBan.cshtml" />
+    <Content Include="Views\SanPham\SanPham.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
