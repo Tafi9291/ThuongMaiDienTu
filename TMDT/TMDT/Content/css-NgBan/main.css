@@ -2687,6 +2687,34 @@ i.home-product-item__like-icon-fill {
             margin-right: 10px;
         }
 
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    top: 59px;
+    right: 20px;
+}
+
+    .dropdown-content a {
+        float: none;
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+        font-size: 1.4rem;
+    }
+
+        .dropdown-content a:hover {
+            background-color: #eeeeee;
+        }
+
+.show {
+    display: block;
+}
 
 /*Trang SanPham*/
 .product-filter-card {
@@ -3049,7 +3077,7 @@ i.home-product-item__like-icon-fill {
     margin-right: 24px;
 }
 
-.prodcuct-list-header {
+.product-list-header {
     margin-bottom: 24px;
 }
 
@@ -3088,4 +3116,388 @@ i.home-product-item__like-icon-fill {
     min-width: 80px;
     padding: 0 16px;
     font-size: 14px;
+}
+
+.product-and-pagination-wrap {
+    border-radius: 4px;
+    border: 1px solid #e5e5e5;
+    margin-bottom: 24px;
+}
+
+.product-list-container {
+    width: 100%;
+}
+
+.tafi-table {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+     -webkit-box-orient: vertical; 
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    margin: 1px;
+}
+
+.tafi-table__header-container {
+    line-height: 16px;
+    border: 0;
+    margin: -1px;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    margin-bottom: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    position: relative;
+    z-index: 1;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    background-color: #f6f6f6;
+    border-bottom-color: #eee;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    overflow: hidden;
+}
+
+    .tafi-table__header-container thead th {
+        vertical-align: top;
+    }
+
+    .tafi-table__main-header {
+        overflow: hidden;
+    }
+
+.tafi-table__header {
+    overflow: hidden;
+    border-collapse: separate;
+    table-layout: fixed;
+}
+
+.tafi-table__cell {
+    color: #999;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    line-height: 16px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-right: 8px;
+    padding-left: 8px;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: left;
+    word-wrap: break-word;
+}
+
+.tafi-table__cell-label {
+    font-size: 1.4rem;
+    vertical-align: middle;
+}
+
+.tafi-table__cell-wrap {
+    display: flex;
+    column-gap: 0.5rem;
+}
+
+
+.tafi-table__body-container {
+    border: 0;
+    margin: -1px;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    margin-top: 0;
+    border-top: 0;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    position: relative;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    background-color: #fff;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+
+.tafi-table__main-body {
+    height: 350px;
+    overflow: hidden;
+}
+
+/*.tafi-scrollbar__wrapper table::after {
+    content: "";
+    position: absolute;
+    width: calc(100% - 40px);
+    height: 1px;
+    background-color: #bababa;
+    left: 20px;
+    right: 20px;
+}*/
+
+tafi-table__horizontal {
+
+}
+
+.tafi-scrollbar {
+    position: relative;
+    overflow: hidden;
+}
+
+.tafi-scrollbar,
+.tafi-scrollbar__wrapper {
+    height: 100%;
+    max-width: inherit;
+    max-height: inherit;
+}
+
+.tafi-scrollbar__wrapper {
+    box-sizing: content-box;
+    overflow: auto;
+    line-height: 0;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+.tafi-table__empty {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.tafi-table__horizontal {
+    width: calc(100% - 40px);
+    height: 1px;
+    margin: 0 20px;
+    background-color: #bababa;
+}
+
+.product-no-result {
+    padding: 130px 0;
+    text-align: center;
+}
+
+    .product-no-result .text {
+        width: 100%;
+        font-size: 12px;
+        margin-top: 8px;
+        color: #bababa;
+    }
+
+.sprites-product-list-no-product {
+    background-size: 169px 75px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    background-image: url('/Content/Hinh/sprite-src-pages.png');
+    background-position: 0 0;
+    width: 101px;
+    height: 75px;
+}
+
+
+.product-main {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    cursor: pointer;
+}
+
+.product-image img {
+    width: 56px;
+    min-width: 56px;
+    height: 70px;
+    background-color: rgba(0, 0, 0, .03);
+    object-fit: cover;
+}
+
+.product-name {
+    margin-left: 10px;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-state-tag.online {
+    margin-bottom: 8px;
+    font-size: 1.2rem;
+    color: forestgreen;
+    font-weight: bold;
+    background-color: #dafeda;
+    width: fit-content;
+    padding: 5px;
+}
+
+.product-state-tag.waiting {
+    margin-bottom: 8px;
+    font-size: 1.2rem;
+    color: #333;
+    font-weight: bold;
+    background-color: #dfdfdf;
+    width: fit-content;
+    padding: 5px;
+}
+
+.product-state-tag.error {
+    margin-bottom: 8px;
+    font-size: 1.2rem;
+    color: red;
+    font-weight: bold;
+    background-color: #ffbfbf;
+    width: fit-content;
+    padding: 5px;
+}
+
+    .product-name-text {
+        color: var(--black-color);
+        font-weight: var(--font-weight);
+        max-width: 150px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: 20px;
+        -webkit-line-clamp: 2;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+    }
+
+.product-cate-text {
+    color: var(--text-color);
+    text-align: start;
+    font-weight: 400;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 20px;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
+.product-actions-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.product-actions-text a {
+    color: blue;
+    padding: 10px 0;
+}
+
+    .product-actions-text a:hover {
+        color: #8a8afa;
+    }
+
+/*Pagination*/
+
+.product-list-pagination {
+    padding: 24px 16px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+
+/* Create and Edit Product */
+
+.product-edit {
+    width: 1001.33px;
+    margin: 0px auto;
+}
+
+.product-edit__container {
+    padding-bottom: 40px;
+    min-height: 1200px;
+}
+
+.product-edit__section:first-of-type {
+    margin-top: 0px;
+}
+
+.product-detail-panel {
+    overflow: hidden;
+    padding: 24px 24px 0px;
+    background: rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 4px;
+    border-radius: 2px;
+}
+
+    .product-detail-panel .panel-title {
+        font-size: 20px;
+        line-height: 22px;
+        color: rgb(51, 51, 51);
+        font-weight: var(--font-weight);
+    }
+
+    .product-detail-panel .panel-content-wrapper {
+        margin-bottom: 24px;
+    }
+
+.panel-header {
+    margin-bottom: 24px;
+}
+
+.basic-info-title {
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+}
+
+.product-edit .edit-row {
+    margin-bottom: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-box-align: start;
+    align-items: flex-start;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+}
+
+.product-edit .edit-label {
+    display: flex;
+    -webkit-box-pack: end;
+    justify-content: flex-end;
+    -webkit-box-align: center;
+    align-items: center;
+    position: relative;
+    min-height: 40px;
+    text-align: right;
+    color: rgb(51, 51, 51);
+}
+
+.product-edit .edit-title {
+    flex-basis: 144px;
+    width: 144px;
+    max-width: 144px;
+    margin-right: 16px;
+}
+
+.product-edit .edit-main {
+    flex-basis: 760px;
+    width: 760px;
+    max-width: 760px;
+}
+
+.edit-label span {
+    font-size: 1.4rem;
+}
+
+.image-offset {
+    margin-bottom: -16px;
 }

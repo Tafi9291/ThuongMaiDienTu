@@ -205,6 +205,7 @@
     <Content Include="Content\Hinh\googleplay.png" />
     <Content Include="Content\Hinh\logo-favicon.png" />
     <Content Include="Content\Hinh\QR_shopee.png" />
+    <Content Include="Content\Hinh\sprite-src-pages.png" />
     <Content Include="Content\Hinh\wibu.png" />
     <Content Include="Content\img-slider\background-login.png" />
     <Content Include="Content\img-slider\Galaxy-S23-series-lo-poster-truoc-ngay-ra-mat-6.jpg" />
@@ -259,6 +260,7 @@
     <Content Include="Views\Shared\Layout-NgBan.cshtml" />
     <Content Include="Views\NgBan\KenhNgBan.cshtml" />
     <Content Include="Views\SanPham\SanPham.cshtml" />
+    <Content Include="Views\SanPham\TaoSanPham.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

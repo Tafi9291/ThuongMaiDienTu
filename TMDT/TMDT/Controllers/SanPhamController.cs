@@ -13,5 +13,11 @@ namespace TMDT.Controllers
         {
             return View();
         }
+
+        // GET: SanPham/Create
+        public ActionResult TaoSanPham() 
+        {
+            return View();
+        }
     }
 }
