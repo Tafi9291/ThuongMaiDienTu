@@ -3501,3 +3501,215 @@ tafi-table__horizontal {
 .image-offset {
     margin-bottom: -16px;
 }
+
+.tafi-image-manager .container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+
+.add-image {
+    width: 80px;
+    height: 80px;
+    max-width: 80px;
+    max-height: 80px;
+    background-color: transparent;
+    color: orangered;
+    border: 1px dashed #333;
+    font-size: 1.3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+}
+
+    .add-image p {
+        margin-bottom: 5px;
+    }
+
+    .add-image p i {
+        font-size: 2rem;
+    }
+
+.preview-container img {
+    max-width: 100%;
+}
+
+.preview-image-product {
+    border: 1px solid #d3d3d3;
+    width: 80px;
+    height: 80px;
+    margin: 0 16px 16px 0;
+    object-fit: contain;
+}
+
+.popover-wrap {
+    width: 100%;
+    height: 100%;
+}
+
+.product-edit-form-item-content {
+    position: relative;
+    line-height: 22px;
+}
+
+
+
+.tafi-input__inner {
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    border-collapse: separate;
+    border-radius: 4px;
+    border-spacing: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    display: inline-table;
+    font-size: 14px;
+    height: 32px;
+    outline: none;
+    padding: 0 12px;
+    position: relative;
+    -webkit-transition: border .2s ease-in-out;
+    transition: border .2s ease-in-out;
+    width: 100%;
+}
+
+.tafi-input__inner--large {
+    height: 40px;
+    padding: 0 12px;
+}
+
+.tafi-input__inner--large .tafi-input__input {
+    font-size: 14px;
+    height: 38px;
+}
+
+.tafi-input__suffix {
+    padding-left: 8px;
+}
+
+.tafi-input__suffix {
+    color: #999;
+    display: table-cell;
+    height: 100%;
+    line-height: 0;
+    position: relative;
+    vertical-align: middle;
+    white-space: nowrap;
+    width: 1px;
+}
+
+.tafi-input__suffix-split {
+    background: #eee;
+    display: inline-block;
+    height: calc(100% - 14px);
+    margin-right: 8px;
+    vertical-align: middle;
+    width: 1px;
+}
+
+.tafi-input__char-count.warning {
+    color: red;
+}
+
+.tafi-select {
+    border: 0;
+    width: 100%;
+    height: 100%;
+    outline: none;
+}
+
+    .tafi-select:focus-visible {
+        outline: none;
+    }
+
+.ls-upload-cmpt-container {
+    color: #333;
+    font-size: 14px;
+    position: relative;
+}
+
+.product-edit-form-item-content {
+    line-height: 22px;
+    position: relative;
+}
+
+.tafi-input__area {
+    border: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 14px;
+    outline: none;
+    overflow: auto;
+    vertical-align: top;
+    width: 100%;
+}
+
+.custom-len-calc-input textarea.tafi-input__inner {
+    color: #333;
+    font-family: inherit;
+    line-height: 22px;
+    margin: 0;
+    overflow-y: auto;
+    padding: 5px 8px;
+    resize: none;
+    width: 100%;
+}
+
+.tafi-input__area .tafi-input__inner {
+    display: inline-block;
+    padding: 8px 12px;
+}
+
+.ls-upload-cmpt-container textarea {
+    overflow: auto;
+    resize: vertical;
+    vertical-align: top;
+}
+
+.text-area-label {
+    color: #bababa;
+    float: right;
+}
+
+    .text-area-label .text-area-label-pre {
+        -webkit-transition: color .2s ease;
+        transition: color .2s ease;
+    }
+
+.text-area-label.warning {
+    color: red;
+}
+
+.title-page {
+    margin-bottom: 15px;
+    padding: 5px 0;
+}
+
+.title-page__link {
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.title-page__link a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 2rem;
+}
+
+.title-page__link-label:nth-child(3n-1) {
+    color: black;
+    font-weight: 500;
+}
+
+.title-page__link i {
+    font-size: 2rem;
+    margin: 0 5px;
+}
