@@ -103,6 +103,7 @@ txtAreaInput.addEventListener('input', function () {
 
 
 
+
 //Ngăn chặn việc tải lại trang khi có thay đổi dữ liệu
 window.addEventListener("beforeunload", function (e) {
     // Hiển thị thông báo xác nhận trước khi tải lại trang

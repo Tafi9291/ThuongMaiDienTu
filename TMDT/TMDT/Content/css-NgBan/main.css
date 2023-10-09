@@ -3713,3 +3713,117 @@ tafi-table__horizontal {
     font-size: 2rem;
     margin: 0 5px;
 }
+
+.product-edit__section {
+    margin-top: 16px;
+}
+
+.panel-title.inactive {
+    color: #999;
+}
+
+.panel-inactive-content {
+    font-size: 1.4rem;
+}
+
+.product-detail-panel.inactive .panel-inactive-content {
+    color: #999;
+}
+
+.product-detail-panel {
+    overflow: hidden;
+    padding: 24px 24px 0;
+    background: #fff;
+    -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.12);
+    box-shadow: 0 1px 4px rgba(0,0,0,.12);
+    border-radius: 2px;
+}
+
+    .product-detail-panel .panel-content-wrapper, .product-detail-panel .panel-header {
+        margin-bottom: 24px;
+    }
+
+.edit-row-left, .product-edit .edit-title {
+    -ms-flex-preferred-size: 144px;
+    flex-basis: 144px;
+    width: 144px;
+    max-width: 144px;
+    margin-right: 16px;
+}
+
+.edit-row-right-medium {
+    -ms-flex-preferred-size: 270px;
+    flex-basis: 270px;
+    width: 270px;
+    max-width: 270px;
+}
+
+.degrade-wrap {
+    display: inline-block;
+}
+
+.tafi-input__prefix {
+    padding-right: 8px;
+}
+
+.tafi-input__prefix, .tafi-input__suffix {
+    color: #999;
+    display: table-cell;
+    height: 100%;
+    line-height: 0;
+    position: relative;
+    vertical-align: middle;
+    white-space: nowrap;
+    width: 1px;
+}
+
+.tafi-input__prefix-split, .tafi-input__suffix-split {
+    background: #eee;
+    display: inline-block;
+    height: calc(100% - 14px);
+    margin-left: 8px;
+    vertical-align: middle;
+    width: 1px;
+}
+
+.product-detail-panel .panel-subtitle {
+    margin-top: 8px;
+}
+
+.attribute-select-container-new .attribute-select-list {
+    width: 100%;
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    margin-bottom: -24px;
+}
+
+.attribute-select-container-new .attribute-select-list-column:first-child {
+    width: 50%;
+    margin-left: 0;
+}
+
+.attribute-select-container-new .attribute-select-list-column {
+    position: relative;
+    width: calc(50% - 24px);
+    margin-left: 24px;
+}
+
+.attribute-select-container-new .attribute-select-item {
+    position: relative;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+}
