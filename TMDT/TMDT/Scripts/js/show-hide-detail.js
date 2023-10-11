@@ -1,8 +1,7 @@
 ﻿// Lựa chọn để xuất hiện bảng thông tin chi tiết sản phẩm theo ngành hàng
 
 const dienthoaiDetails = document.getElementById('dienthoai-details');
-const thoitrangDetails = document.getElementById('thoitrang-details');
-const giayDetails = document.getElementById('giay-details');
+const buttonSave = document.getElementById('button-save');
 
 const selectCategories = document.getElementById('tafi-select-categories');
 const panelTitle = document.getElementById('panel-title');
@@ -17,6 +16,22 @@ function removeElements() {
     }
     if (panelTitle.classList.contains('inactive')) {
         panelTitle.classList.remove('inactive');
+    }
+    if (buttonSave.classList.contains('disabled')) {
+        buttonSave.classList.remove('disabled');
+    }
+
+}
+
+function addElements() {
+    if (!panelInactiveContent) {
+        panelInactiveContent.add();
+    }
+    if (!panelTitle.classList.contains('inactive')) {
+        panelTitle.classList.add('inactive');
+    }
+    if (!buttonSave.classList.contains('disabled')) {
+        buttonSave.classList.add('disabled');
     }
 
 }
@@ -672,5 +687,8 @@ selectCategories.addEventListener('change', function () {
         removeDetailDienThoai(); // Xóa bỏ chi tiết Điện thoại
         removeDetailThoiTrang(); // Xóa bỏ chi tiết Thời trang
         removeDetailGiay(); // Xóa bỏ chi tiết Giày
+        addElements();
+        panelContentWrapper.innerHTML = `<div class="panel-inactive-content"> Có thể điều chỉnh sau khi chọn ngành hàng </div>`;
+
     }
 });

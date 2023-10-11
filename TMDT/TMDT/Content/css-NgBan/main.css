@@ -46,6 +46,7 @@
     height: 22px;
     border-radius: 50%;
     border: 1px solid rgba(0, 0, 0, 0.1);
+    object-fit: cover;
 }
 
 .header__navbar-user-name {
@@ -2687,6 +2688,21 @@ i.home-product-item__like-icon-fill {
             margin-right: 10px;
         }
 
+.header__navbar-user:hover .dropdown-content {
+    display: block;
+    font-size: 1.5rem;
+}
+
+.useracc::before {
+    content: "";
+    border-width: 20px 18px;
+    border-style: solid;
+    border-color: transparent transparent #f9f9f9 transparent;
+    position: absolute;
+    right: 10px;
+    top: -38px;
+}
+
 .dropdown-content {
     display: none;
     position: absolute;
@@ -2694,7 +2710,7 @@ i.home-product-item__like-icon-fill {
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-    top: 59px;
+    top: 50px;
     right: 20px;
 }
 
@@ -2711,10 +2727,19 @@ i.home-product-item__like-icon-fill {
         .dropdown-content a:hover {
             background-color: #eeeeee;
         }
-
+/*
 .show {
     display: block;
+}*/
+
+.box-noneshow {
+    width: 160px;
+    height: 30px;
+    background-color: transparent;
+    position: absolute;
+    top: -26px;
 }
+
 
 /*Trang SanPham*/
 .product-filter-card {
@@ -3827,3 +3852,73 @@ tafi-table__horizontal {
     -ms-flex-wrap: nowrap;
     flex-wrap: nowrap;
 }
+
+.product-selected-fix .fix-container:not(.fixed-bottom) .container1 {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    background: none;
+}
+
+.container1 {
+    width: 1001.33px;
+    padding: 16px 40px;
+    background-color: #fff;
+    -webkit-box-shadow: 0 -2px 6px 0 rgba(0,0,0,.12);
+    box-shadow: 0 -2px 6px 0 rgba(0,0,0,.12);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.tafi-button--xl-large {
+    min-width: 140px;
+    font-size: 14px;
+}
+
+.tafi-button.disabled {
+    cursor: not-allowed;
+    opacity: .5;
+}
+
+
+/*CSS DonHang*/
+.order-search-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin: 26px 0px 50px 0px;
+}
+
+    .order-search-container .search-input-group {
+        -webkit-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        margin-right: 16px;
+    }
+
+.tafi-input-group__append {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+}
+
+.order-search-input .search-wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+    .order-search-input .search-wrapper .order-search-btn {
+        width: 100%;
+    }
+
+.tafi-input__inner:hover {
+    border-color: #b7b7b7;
+}
+

@@ -122,6 +122,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\DashBoardController.cs" />
+    <Compile Include="Controllers\DonHangController.cs" />
     <Compile Include="Controllers\NgBanController.cs" />
     <Compile Include="Controllers\NgMuaController.cs" />
     <Compile Include="Controllers\SanPhamController.cs" />
@@ -206,6 +207,7 @@
     <Content Include="Content\Hinh\logo-favicon.png" />
     <Content Include="Content\Hinh\QR_shopee.png" />
     <Content Include="Content\Hinh\sprite-src-pages.png" />
+    <Content Include="Content\Hinh\user-circle-regular-36.png" />
     <Content Include="Content\Hinh\wibu.png" />
     <Content Include="Content\img-slider\background-login.png" />
     <Content Include="Content\img-slider\Galaxy-S23-series-lo-poster-truoc-ngay-ra-mat-6.jpg" />
@@ -239,6 +241,7 @@
     <Content Include="Scripts\js\Giohang.js" />
     <Content Include="Scripts\js\menu.js" />
     <Content Include="Scripts\js\products.js" />
+    <Content Include="Scripts\js\show-hide-detail.js" />
     <Content Include="Scripts\js\slider2.js" />
     <Content Include="Scripts\js\themhang.js" />
     <Content Include="Scripts\js\upload.js" />
@@ -262,6 +265,7 @@
     <Content Include="Views\NgBan\KenhNgBan.cshtml" />
     <Content Include="Views\SanPham\SanPham.cshtml" />
     <Content Include="Views\SanPham\TaoSanPham.cshtml" />
+    <Content Include="Views\DonHang\QLDonHang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
