@@ -2751,6 +2751,7 @@ i.home-product-item__like-icon-fill {
     border-radius: 4px;
     position: relative;
     overflow: hidden;
+    width: 100%;
 }
 
     .product-filter-card .filter-form .filter-form-box {
@@ -3296,9 +3297,9 @@ tafi-table__horizontal {
 }
 
 .tafi-table__horizontal {
-    width: calc(100% - 40px);
+    width: calc(100% - 30px);
     height: 1px;
-    margin: 0 20px;
+    margin: 0 10px;
     background-color: #bababa;
 }
 
@@ -3922,3 +3923,9 @@ tafi-table__horizontal {
     border-color: #b7b7b7;
 }
 
+
+.detail-info-input {
+    display: flex;
+    align-items: center;
+    font-size: 1.7rem;
+}

@@ -13,5 +13,18 @@ namespace TMDT.Controllers
         {
             return View();
         }
+
+
+        // GET: Edit DonHang
+        public ActionResult CapNhat()
+        {
+            return View();
+        }
+
+        // GET: Detail DonHang
+        public ActionResult CTDonHang()
+        {
+            return View();
+        }
     }
 }

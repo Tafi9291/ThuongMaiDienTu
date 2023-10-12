@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/Layout-NgBan.cshtml";
 }
 
-<div class="col l-8 m-12 c-12">
+<div class="col l-9-1 m-12 c-12">
     <div class="home-product">
         <div class="row sm-gutter" style="padding-right: 16px;">
             <div class="title-page">
@@ -95,6 +95,7 @@
                                                         <col width="124">
                                                         <col width="170">
                                                         <col width="150">
+                                                        <col width="140">
                                                         <col width="130">
                                                     </colgroup>
                                                     <thead>
@@ -142,6 +143,15 @@
                                                             </th>
                                                             <th colspan="1" rowspan="1">
                                                                 <div class="tafi-table__cell">
+                                                                    <div class="tafi-table__cell-wrap">
+                                                                        <span class="tafi-table__cell-label">
+                                                                            Phương thức thanh toán
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                            </th>
+                                                            <th colspan="1" rowspan="1">
+                                                                <div class="tafi-table__cell">
                                                                     <span class="tafi-table__cell-label">
                                                                         Thao tác
                                                                     </span>
@@ -174,6 +184,7 @@
                                                                 <col width="124">
                                                                 <col width="170">
                                                                 <col width="150">
+                                                                <col width="140">
                                                                 <col width="130">
                                                             </colgroup>
                                                             <thead>
@@ -226,10 +237,19 @@
                                                                     <td colspan="1" rowspan="1">
                                                                         <div class="tafi-table__cell">
                                                                             <div class="product-list-item__td product-main">
+                                                                                <div class="product-price">
+                                                                                    <span class="product-quantity-text">COD</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td colspan="1" rowspan="1">
+                                                                        <div class="tafi-table__cell">
+                                                                            <div class="product-list-item__td product-main">
                                                                                 <div class="product-actions">
                                                                                     <div class="product-actions-text">
-                                                                                        <a href="#">Cập nhật</a>
-                                                                                        <a href="#">Xem chi tiết</a>
+                                                                                        <a href="@Url.Action("CapNhat", "DonHang")">Cập nhật</a>
+                                                                                        <a href="@Url.Action("CTDonHang","DonHang")">Xem chi tiết</a>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -246,6 +266,7 @@
                                                                 <col width="124">
                                                                 <col width="170">
                                                                 <col width="150">
+                                                                <col width="140">
                                                                 <col width="130">
                                                             </colgroup>
                                                             <thead>
@@ -298,10 +319,19 @@
                                                                     <td colspan="1" rowspan="1">
                                                                         <div class="tafi-table__cell">
                                                                             <div class="product-list-item__td product-main">
+                                                                                <div class="product-price">
+                                                                                    <span class="product-quantity-text">Chuyển khoản</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td colspan="1" rowspan="1">
+                                                                        <div class="tafi-table__cell">
+                                                                            <div class="product-list-item__td product-main">
                                                                                 <div class="product-actions">
                                                                                     <div class="product-actions-text">
-                                                                                        <a href="#">Cập nhật</a>
-                                                                                        <a href="#">Xem chi tiết</a>
+                                                                                        <a href="@Url.Action("CapNhat", "DonHang")">Cập nhật</a>
+                                                                                        <a href="@Url.Action("CTDonHang","DonHang")">Xem chi tiết</a>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>

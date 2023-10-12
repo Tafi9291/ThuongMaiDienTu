@@ -266,6 +266,8 @@
     <Content Include="Views\SanPham\SanPham.cshtml" />
     <Content Include="Views\SanPham\TaoSanPham.cshtml" />
     <Content Include="Views\DonHang\QLDonHang.cshtml" />
+    <Content Include="Views\DonHang\CapNhat.cshtml" />
+    <Content Include="Views\DonHang\CTDonHang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

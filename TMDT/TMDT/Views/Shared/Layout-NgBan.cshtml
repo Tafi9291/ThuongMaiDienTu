@@ -150,7 +150,7 @@
                     <ul class="sidebar-menu">
                         <li class="sidebar-menu-box">
                             <div class="sidebar-menu-item">
-                                <i class='bx bx-package sidebar-menu-item-icon'></i>
+                                <i class='bx bxs-package sidebar-menu-item-icon'></i>
                                 <span>Quản lý đơn hàng</span>
                                 <span class="sidebar-menu-item-space"></span>
                                 <i class='bx bx-chevron-down sidebar-menu-item-collapse m-l-5'></i>
@@ -207,7 +207,7 @@
                         </li>
                         <li class="sidebar-menu-box">
                             <div class="sidebar-menu-item">
-                                <i class='bx bx-purchase-tag sidebar-menu-item-icon'></i>
+                                <i class='bx bxs-purchase-tag sidebar-menu-item-icon'></i>
                                 <span>Quảng cáo của tôi</span>
                                 <span class="sidebar-menu-item-space"></span>
                                 <i class='bx bx-chevron-down sidebar-menu-item-collapse'></i>
@@ -215,7 +215,33 @@
                         </li>
                         <li class="sidebar-menu-box">
                             <div class="sidebar-menu-item">
-                                <i class='bx bx-wallet sidebar-menu-item-icon'></i>
+                                <i class='bx bxs-discount sidebar-menu-item-icon'></i>
+                                <span>Quản lý voucher</span>
+                                <span class="sidebar-menu-item-space"></span>
+                                <i class='bx bx-chevron-down sidebar-menu-item-collapse'></i>
+                            </div>
+                            <ul class="sidebar-submenu">
+                                <li>
+                                    <div class="sidebar-submenu-item">
+                                        <a href="@Url.Action("QLDonHang", "DonHang")" class="sidebar-submenu-item-link">Tất cả</a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="sidebar-submenu-item">
+                                        <a href="#" class="sidebar-submenu-item-link">Tạo voucher</a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="sidebar-submenu-item">
+                                        <a href="#" class="sidebar-submenu-item-link">Đang hoạt động</a>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li class="sidebar-menu-box">
+                            <div class="sidebar-menu-item">
+                                <i class='bx bxs-wallet sidebar-menu-item-icon'></i>
                                 <span>Doanh thu</span>
                                 <span class="sidebar-menu-item-space"></span>
                                 <i class='bx bx-chevron-down sidebar-menu-item-collapse'></i>
@@ -228,7 +254,7 @@
 
                 <div class="row sm-gutter app__content">
 
-                    <div class="col l-3 m-0 c-0">
+                    <div class="col l-2-1 m-0 c-0">
 
                     </div>
                     @RenderBody()
