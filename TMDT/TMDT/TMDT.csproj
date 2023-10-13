@@ -122,6 +122,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\DashBoardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QLSanPhamController.cs" />
     <Compile Include="Controllers\DonHangController.cs" />
     <Compile Include="Controllers\NgBanController.cs" />
     <Compile Include="Controllers\NgMuaController.cs" />
@@ -151,6 +152,7 @@
     <Content Include="Areas\Admin\Content\css\validator.css" />
     <Content Include="Areas\Admin\Js\menu.js" />
     <Content Include="Areas\Admin\Js\products.js" />
+    <Content Include="Areas\Admin\Js\show-hide-detail.js" />
     <Content Include="Areas\Admin\Js\slider2.js" />
     <Content Include="Areas\Admin\Js\slideshow.js" />
     <Content Include="Areas\Admin\Js\upload.js" />
@@ -229,6 +231,7 @@
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\Shared\Layout_Admin.cshtml" />
     <Content Include="Areas\Admin\Views\DashBoard\DashBoard.cshtml" />
+    <Content Include="Areas\Admin\Views\QLSanPham\QLSanPham.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
