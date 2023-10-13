@@ -126,6 +126,7 @@
     <Compile Include="Controllers\NgBanController.cs" />
     <Compile Include="Controllers\NgMuaController.cs" />
     <Compile Include="Controllers\SanPhamController.cs" />
+    <Compile Include="Controllers\VoucherShopController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -268,6 +269,9 @@
     <Content Include="Views\DonHang\QLDonHang.cshtml" />
     <Content Include="Views\DonHang\CapNhat.cshtml" />
     <Content Include="Views\DonHang\CTDonHang.cshtml" />
+    <Content Include="Views\VoucherShop\QLVoucherShop.cshtml" />
+    <Content Include="Views\VoucherShop\TaoVoucher.cshtml" />
+    <Content Include="Views\VoucherShop\CapNhatVoucher.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

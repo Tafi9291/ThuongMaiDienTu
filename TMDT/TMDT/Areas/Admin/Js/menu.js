@@ -1,30 +1,19 @@
-const body = document.querySelector('body'),
-                sidebar = body.querySelector('nav'),
-                toggle = body.querySelector(".toggle"),
-                // searchBtn = body.querySelector(".search-box"),
-                menubar = body.querySelector(".menu-bar")
-                modeSwitch = body.querySelector(".toggle-switch"),
-                modeText = body.querySelector(".mode-text");
+﻿// Lấy tất cả các menu items
+const menuItems = document.querySelectorAll('.sidebar-menu-box');
+
+// Lặp qua từng menu item và thêm sự kiện click
+menuItems.forEach((menuItem) => {
+    const menuHeader = menuItem.querySelector('.sidebar-menu-item');
+    const submenu = menuItem.querySelector('.sidebar-submenu');
+    const menuToggle = menuHeader.querySelector('.sidebar-menu-item-collapse');
+
+    menuHeader.addEventListener('click', () => {
+        submenu.classList.toggle('active');
+        menuToggle.classList.toggle('rotate');
+    });
+});
 
 
-        toggle.addEventListener("click" , () =>{
-            sidebar.classList.toggle("close");
-        })
 
-        // searchBtn.addEventListener("click" , () =>{
-        //     sidebar.classList.remove("close");
-        // })
-        menubar.addEventListener("click" , () =>{
-            sidebar.classList.remove("close");
-        })
 
-        modeSwitch.addEventListener("click" , () =>{
-            body.classList.toggle("dark");
-            
-            if(body.classList.contains("dark")){
-                modeText.innerText = "Light mode";
-            }else{
-                modeText.innerText = "Dark mode";
-                
-            }
-        });
+

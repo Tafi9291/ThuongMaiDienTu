@@ -3282,7 +3282,6 @@ tafi-table__horizontal {
 
 .tafi-scrollbar__wrapper {
     box-sizing: content-box;
-    overflow: auto;
     line-height: 0;
     -webkit-box-sizing: content-box;
     box-sizing: content-box;
@@ -3297,7 +3296,7 @@ tafi-table__horizontal {
 }
 
 .tafi-table__horizontal {
-    width: calc(100% - 30px);
+    width: 1520px;
     height: 1px;
     margin: 0 10px;
     background-color: #bababa;
@@ -3928,4 +3927,24 @@ tafi-table__horizontal {
     display: flex;
     align-items: center;
     font-size: 1.7rem;
+}
+
+
+/*Voucher shop*/
+.product-list-main-header {
+    padding: 24px 24px 0;
+    margin-bottom: 24px;
+}
+
+.product-list-main-title {
+    font-size: 20px;
+    line-height: 22px;
+    color: rgb(51, 51, 51);
+    font-weight: var(--font-weight);
+}
+
+.product-list-main-info-title {
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
 }
