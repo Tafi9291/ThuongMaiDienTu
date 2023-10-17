@@ -121,8 +121,13 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\DangNhapController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashBoardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MauSacController.cs" />
     <Compile Include="Areas\Admin\Controllers\QLSanPhamController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SizeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ThuongHieuController.cs" />
+    <Compile Include="Areas\Admin\Controllers\VoucherController.cs" />
     <Compile Include="Controllers\DonHangController.cs" />
     <Compile Include="Controllers\NgBanController.cs" />
     <Compile Include="Controllers\NgMuaController.cs" />
@@ -155,7 +160,7 @@
     <Content Include="Areas\Admin\Js\show-hide-detail.js" />
     <Content Include="Areas\Admin\Js\slider2.js" />
     <Content Include="Areas\Admin\Js\slideshow.js" />
-    <Content Include="Areas\Admin\Js\upload.js" />
+    <Content Include="Areas\Admin\Js\uploadOneImg.js" />
     <Content Include="Areas\Admin\Js\validator.js" />
     <Content Include="Areas\Admin\Js\validator2.js" />
     <Content Include="Content\bootstrap-grid.css" />
@@ -232,6 +237,18 @@
     <Content Include="Areas\Admin\Views\Shared\Layout_Admin.cshtml" />
     <Content Include="Areas\Admin\Views\DashBoard\DashBoard.cshtml" />
     <Content Include="Areas\Admin\Views\QLSanPham\QLSanPham.cshtml" />
+    <Content Include="Areas\Admin\Views\QLSanPham\PheDuyet.cshtml" />
+    <Content Include="Areas\Admin\Views\ThuongHieu\ThuongHieu.cshtml" />
+    <Content Include="Areas\Admin\Views\ThuongHieu\TaoMoi.cshtml" />
+    <Content Include="Areas\Admin\Views\MauSac\MauSac.cshtml" />
+    <Content Include="Areas\Admin\Views\MauSac\TaoMauSac.cshtml" />
+    <Content Include="Areas\Admin\Views\Size\Size.cshtml" />
+    <Content Include="Areas\Admin\Views\Size\TaoSize.cshtml" />
+    <Content Include="Areas\Admin\Views\Voucher\Voucher.cshtml" />
+    <Content Include="Areas\Admin\Views\Voucher\TaoVoucher.cshtml" />
+    <Content Include="Areas\Admin\Views\Voucher\CapNhatVC.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Layout_DangNhap.cshtml" />
+    <Content Include="Areas\Admin\Views\DangNhap\DangNhap.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -242,6 +259,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\js\acc-show-hide.js" />
     <Content Include="Scripts\js\Giohang.js" />
     <Content Include="Scripts\js\menu.js" />
     <Content Include="Scripts\js\products.js" />
@@ -275,6 +293,7 @@
     <Content Include="Views\VoucherShop\QLVoucherShop.cshtml" />
     <Content Include="Views\VoucherShop\TaoVoucher.cshtml" />
     <Content Include="Views\VoucherShop\CapNhatVoucher.cshtml" />
+    <Content Include="Views\NgBan\TaiKhoan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

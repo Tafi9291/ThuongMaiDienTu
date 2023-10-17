@@ -4,18 +4,18 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace TMDT.Controllers
+namespace TMDT.Areas.Admin.Controllers
 {
-    public class NgBanController : Controller
+    public class SizeController : Controller
     {
-        // GET: NgBan
-        public ActionResult KenhNgBan()
+        // GET: Admin/Size
+        public ActionResult Size()
         {
             return View();
         }
 
-        // GET: TaiKhoan
-        public ActionResult TaiKhoan()
+        // GET: Admin/Size/TaoSize
+        public ActionResult TaoSize()
         {
             return View();
         }

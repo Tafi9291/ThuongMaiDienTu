@@ -6,16 +6,16 @@ using System.Web.Mvc;
 
 namespace TMDT.Areas.Admin.Controllers
 {
-    public class QLSanPhamController : Controller
+    public class MauSacController : Controller
     {
-        // GET: Admin/QLSanPham
-        public ActionResult QLSanPham()
+        // GET: Admin/MauSac
+        public ActionResult MauSac()
         {
             return View();
         }
 
-        // GET: Admin/QLSanPham/PheDuyet
-        public ActionResult PheDuyet()
+        // GET: Admin/MauSac/TaoMauSac
+        public ActionResult TaoMauSac()
         {
             return View();
         }

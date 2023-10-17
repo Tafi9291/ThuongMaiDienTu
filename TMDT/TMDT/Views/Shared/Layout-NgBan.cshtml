@@ -8,15 +8,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kênh người bán</title>
 
-    <link href="~/Areas/Admin/Content/css/base.css" rel="stylesheet" />
+    <link href="~/Content/css-NgBan/base.css" rel="stylesheet" />
     @*<link href="~/Areas/Admin/Content/css/cart.css" rel="stylesheet" />*@
-    <link href="~/Areas/Admin/Content/css/dashboard.css" rel="stylesheet" />
-    <link href="~/Areas/Admin/Content/css/grid.css" rel="stylesheet" />
-    <link href="~/Areas/Admin/Content/css/main.css" rel="stylesheet" />
-    <link href="~/Areas/Admin/Content/css/reset.css" rel="stylesheet" />
-    <link href="~/Areas/Admin/Content/css/menu.css" rel="stylesheet" />
+    <link href="~/Content/css-NgBan/dashboard.css" rel="stylesheet" />
+    <link href="~/Content/css-NgBan/grid.css" rel="stylesheet" />
+    <link href="~/Content/css-NgBan/main.css" rel="stylesheet" />
+    <link href="~/Content/css-NgBan/reset.css" rel="stylesheet" />
+    <link href="~/Content/css-NgBan/menu.css" rel="stylesheet" />
     @*<link href="~/Areas/Admin/Content/css/slider.css" rel="stylesheet" />*@
-    <link href="~/Areas/Admin/Content/css/responsive.css" rel="stylesheet" />
+    <link href="~/Content/css-NgBan/responsive.css" rel="stylesheet" />
     @*<link href="~/Areas/Admin/Content/css/validator.css" rel="stylesheet" />*@
 
     <link href="~/Content/Hinh/logo-favicon.png" rel="icon" />
@@ -26,8 +26,6 @@
     <!-- <link rel="stylesheet" href="./assets/bootstrap-5.1.3-dist/bootstrap-5.1.3-dist/css/bootstrap.css"> -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
           rel="stylesheet" />
-    <script src="~/Scripts/scripts.js?Version=1"></script>
-    <script src="~/Areas/Admin/Js/upload.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 </head>
@@ -80,10 +78,10 @@
                             @*<i class="header__cart-icon useracc fas fa-user" style="cursor:pointer;" onclick="myFunction()"></i>*@
                             <div class="header__navbar-item header__navbar-user">
                                 <img src="https://i.pinimg.com/236x/51/0e/a3/510ea3f0e7bbd47bb7b64d6b27ab1ac5.jpg" alt="" class="header__navbar-user-img" style="width: 30px; height: 30px;">
-                                <span class="header__navbar-user-name" style="color: var(--text-color);">thanhtuantran1006@gmail.com</span>
+                                <span class="header__navbar-user-name" style="color: var(--text-color);">hvtai_1506</span>
                                 <div class="dropdown-content  useracc">
                                     <div class="box-noneshow"></div>
-                                    <a href="">Xem tài khoản</a>
+                                    <a href="@Url.Action("TaiKhoan", "NgBan")">Xem tài khoản</a>
                                     <a href="">Đăng xuất</a>
                                 </div>
                             </div>
@@ -281,14 +279,10 @@
     <script src="~/Scripts/js/menu.js"></script>
     <script src="~/Scripts/js/upload.js"></script>
     <script src="~/Scripts/js/show-hide-detail.js"></script>
-    @*<script src="~/Areas/Admin/Js/menu.js"></script>*@
-    @*<script src="~/Areas/Admin/Js/products.js"></script>*@
-    @*<script src="~/Areas/Admin/Js/slider2.js"></script>*@
-    @*<script src="~/Areas/Admin/Js/slideshow.js"></script>*@
+    <script src="~/Scripts/js/acc-show-hide.js"></script>
     <script src="~/Areas/Admin/Js/validator.js"></script>
     @*<script src="~/Areas/Admin/Js/validator2.js"></script>*@
     <script src="https://kit.fontawesome.com/2d69c8ebbe.js" crossorigin="anonymous"></script>
-    <script src="./assets/bootstrap-5.1.3-dist/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
 

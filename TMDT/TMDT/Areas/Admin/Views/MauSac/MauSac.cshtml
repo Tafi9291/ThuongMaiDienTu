@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "QLSanPham";
+    ViewBag.Title = "MauSac";
     Layout = "~/Areas/Admin/Views/Shared/Layout_Admin.cshtml";
 }
 
@@ -11,7 +11,7 @@
                 <div class="title-page__link">
                     <a href="@Url.Action("DashBoard", "DashBoard")" class="title-page__link-label">Trang chủ</a>
                     <i class='bx bx-chevron-right'></i>
-                    <a href="@Url.Action("QLSanPham", "QLSanPham")" class="title-page__link-label" style="color: black;"> Xử lý sản phẩm</a>
+                    <a href="@Url.Action("MauSac", "MauSac")" class="title-page__link-label" style="color: black;"> Màu sắc</a>
                 </div>
             </div>
             <div class="product-filter-card">
@@ -22,31 +22,7 @@
                                 <div class="tafi-form-item__control">
                                     <div class="tafi-form-item__content">
                                         <div class="tafi-input-group">
-                                            <span class="tafi-input-group__prepend" style="width: 116px;">Tên sản phẩm</span>
-                                            <span class="tafi-input-group__append">
-                                                <div class="hints-input">
-                                                    <div class="input-wrapper">
-                                                        <div class="tafi-input">
-                                                            <div class="tafi-input__inner">
-                                                                <input type="text" placeholder="Hãy nhập vào ít nhất 2 ký tự đầu của từ..."
-                                                                       resize="vertical" rows="2" minrows="2" restrictiontype="input"
-                                                                       max="Infinity" min="-Infinity" class="tafi-input__input">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="filter-col-right">
-                            <div class="product tafi-form-item">
-                                <div class="tafi-form-item__control">
-                                    <div class="tafi-form-item__content">
-                                        <div class="tafi-input-group">
-                                            <span class="tafi-input-group__prepend" style="width: 116px;">Ngành hàng</span>
+                                            <span class="tafi-input-group__prepend" style="width: 140px;">Tên màu sắc</span>
                                             <span class="tafi-input-group__append">
                                                 <div class="hints-input">
                                                     <div class="input-wrapper">
@@ -105,6 +81,16 @@
                     @* List panel *@
                     <div class="list-panel">
                         <div class="list-all">
+                            <section class="product-list-header product-list-section">
+                                <header class="product-list-header__create" style="align-items: flex-end;">
+                                    <div class="product-list-header__create-right right">
+                                        <a href="@Url.Action("TaoMauSac", "MauSac")" class="tafi-button tafi-button-primary tafi-button--large">
+                                            <i class='bx bx-plus bx-sm'></i>
+                                            <span style="margin-left: 5px;">Thêm mới màu sắc</span>
+                                        </a>
+                                    </div>
+                                </header>
+                            </section>
                             <section class="product-list-section product-and-pagination-wrap">
                                 <div class="product-list-container">
                                     <div class="tafi-table product-list-view">
@@ -113,26 +99,25 @@
                                             <div class="tafi-table__main-header">
                                                 <table cellpadding="0" border="0" class="tafi-table__header" @*style="width: 1054px;"*@>
                                                     <colgroup>
-                                                        <col width="232">
-                                                        <col width="232">
+                                                        <col width="162">
+                                                        <col width="362">
+                                                        <col width="200">
                                                         <col width="170">
-                                                        <col width="150">
-                                                        <col width="140">
-                                                        <col width="130">
+                                                        <col width="160">
                                                     </colgroup>
                                                     <thead>
                                                         <tr>
                                                             <th colspan="1" rowspan="1">
                                                                 <div class="tafi-table__cell">
                                                                     <span class="tafi-table__cell-label">
-                                                                        Tên sản phẩm
+                                                                        Mã màu sắc
                                                                     </span>
                                                                 </div>
                                                             </th>
                                                             <th colspan="1" rowspan="1">
                                                                 <div class="tafi-table__cell">
                                                                     <span class="tafi-table__cell-label">
-                                                                        Loại sản phẩm
+                                                                        Tên màu sắc
                                                                     </span>
                                                                 </div>
                                                             </th>
@@ -140,19 +125,8 @@
                                                                 <div class="tafi-table__cell">
                                                                     <div class="tafi-table__cell-wrap">
                                                                         <span class="tafi-table__cell-label">
-                                                                            Giá
+                                                                            Ngành hàng
                                                                         </span>
-                                                                        <i class='bx bx-sort'></i>
-                                                                    </div>
-                                                                </div>
-                                                            </th>
-                                                            <th colspan="1" rowspan="1">
-                                                                <div class="tafi-table__cell">
-                                                                    <div class="tafi-table__cell-wrap">
-                                                                        <span class="tafi-table__cell-label">
-                                                                            Số lượng tồn
-                                                                        </span>
-                                                                        <i class='bx bx-sort'></i>
                                                                     </div>
                                                                 </div>
                                                             </th>
@@ -194,15 +168,23 @@
                                                         @* Have product *@
                                                         <table cellpadding="0" border="0" class="tafi-table__body" @*style="width: 1054px;"*@>
                                                             <colgroup>
-                                                                <col width="232">
-                                                                <col width="232">
+                                                                <col width="162">
+                                                                <col width="362">
+                                                                <col width="200">
                                                                 <col width="170">
-                                                                <col width="150">
-                                                                <col width="140">
-                                                                <col width="130">
+                                                                <col width="160">
                                                             </colgroup>
                                                             <thead>
                                                                 <tr>
+                                                                    <td colspan="1" rowspan="1">
+                                                                        <div class="tafi-table__cell">
+                                                                            <div class="product-list-item__td product-main">
+                                                                                <div class="product-cate">
+                                                                                    <span class="product-cate-text">1</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
                                                                     <td colspan="1" rowspan="1">
                                                                         <div class="tafi-table__cell">
                                                                             <div class="product-list-item__td product-main">
@@ -211,16 +193,7 @@
                                                                                 </div>
                                                                                 <div class="product-name">
                                                                                     <span class="product-state-tag online">Đang hoạt động</span>
-                                                                                    <span class="product-name-text">Áo khoác thời trang mùa đông ấm áp mới nhất 2023</span>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td colspan="1" rowspan="1">
-                                                                        <div class="tafi-table__cell">
-                                                                            <div class="product-list-item__td product-main">
-                                                                                <div class="product-cate">
-                                                                                    <span class="product-cate-text">Thời trang</span>
+                                                                                    <span class="product-name-text">Apple</span>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -229,16 +202,7 @@
                                                                         <div class="tafi-table__cell">
                                                                             <div class="product-list-item__td product-main">
                                                                                 <div class="product-price">
-                                                                                    <span class="product-cate-text">120,000 đ</span>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td colspan="1" rowspan="1">
-                                                                        <div class="tafi-table__cell">
-                                                                            <div class="product-list-item__td product-main">
-                                                                                <div class="product-price">
-                                                                                    <span class="product-quantity-text">20</span>
+                                                                                    <span class="product-cate-text">Điện thoại</span>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -257,8 +221,8 @@
                                                                             <div class="product-list-item__td product-main">
                                                                                 <div class="product-actions">
                                                                                     <div class="product-actions-text">
-                                                                                        <a href="#">Phê duyệt</a>
-                                                                                        <a href="#">Xem thêm</a>
+                                                                                        <a href="#">Chỉnh sửa</a>
+                                                                                        <a href="#">Xóa</a>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -270,15 +234,23 @@
                                                         <div class="tafi-table__horizontal"></div>
                                                         <table cellpadding="0" border="0" class="tafi-table__body" @*style="width: 1054px;"*@>
                                                             <colgroup>
-                                                                <col width="232">
-                                                                <col width="232">
+                                                                <col width="162">
+                                                                <col width="362">
+                                                                <col width="200">
                                                                 <col width="170">
-                                                                <col width="150">
-                                                                <col width="140">
-                                                                <col width="130">
+                                                                <col width="160">
                                                             </colgroup>
                                                             <thead>
                                                                 <tr>
+                                                                    <td colspan="1" rowspan="1">
+                                                                        <div class="tafi-table__cell">
+                                                                            <div class="product-list-item__td product-main">
+                                                                                <div class="product-cate">
+                                                                                    <span class="product-cate-text">2</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
                                                                     <td colspan="1" rowspan="1">
                                                                         <div class="tafi-table__cell">
                                                                             <div class="product-list-item__td product-main">
@@ -287,16 +259,7 @@
                                                                                 </div>
                                                                                 <div class="product-name">
                                                                                     <span class="product-state-tag online">Đang hoạt động</span>
-                                                                                    <span class="product-name-text">Áo khoác thời trang mùa đông ấm áp mới nhất 2023</span>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td colspan="1" rowspan="1">
-                                                                        <div class="tafi-table__cell">
-                                                                            <div class="product-list-item__td product-main">
-                                                                                <div class="product-cate">
-                                                                                    <span class="product-cate-text">Thời trang</span>
+                                                                                    <span class="product-name-text">SAMSUNG</span>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -305,16 +268,7 @@
                                                                         <div class="tafi-table__cell">
                                                                             <div class="product-list-item__td product-main">
                                                                                 <div class="product-price">
-                                                                                    <span class="product-cate-text">120,000 đ</span>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td colspan="1" rowspan="1">
-                                                                        <div class="tafi-table__cell">
-                                                                            <div class="product-list-item__td product-main">
-                                                                                <div class="product-price">
-                                                                                    <span class="product-quantity-text">20</span>
+                                                                                    <span class="product-cate-text">Điện thoại</span>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -333,8 +287,8 @@
                                                                             <div class="product-list-item__td product-main">
                                                                                 <div class="product-actions">
                                                                                     <div class="product-actions-text">
-                                                                                        <a href="#">Phê duyệt</a>
-                                                                                        <a href="#">Xem thêm</a>
+                                                                                        <a href="#">Chỉnh sửa</a>
+                                                                                        <a href="#">Xóa</a>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>

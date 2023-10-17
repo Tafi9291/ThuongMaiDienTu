@@ -27,7 +27,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
           rel="stylesheet" />
     <script src="~/Scripts/scripts.js?Version=1"></script>
-    <script src="~/Areas/Admin/Js/upload.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 </head>
@@ -174,17 +173,17 @@
                                 </li>
                                 <li>
                                     <div class="sidebar-submenu-item">
-                                        <a href="#" class="sidebar-submenu-item-link">Thương hiệu</a>
+                                        <a href="@Url.Action("ThuongHieu", "ThuongHieu")" class="sidebar-submenu-item-link">Thương hiệu</a>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="sidebar-submenu-item">
-                                        <a href="#" class="sidebar-submenu-item-link">Màu sắc</a>
+                                        <a href="@Url.Action("MauSac", "MauSac")" class="sidebar-submenu-item-link">Màu sắc</a>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="sidebar-submenu-item">
-                                        <a href="#" class="sidebar-submenu-item-link">Các loại size</a>
+                                        <a href="@Url.Action("Size", "Size")" class="sidebar-submenu-item-link">Các loại size</a>
                                     </div>
                                 </li>
 
@@ -300,8 +299,7 @@
 
 
     <script src="~/Areas/Admin/Js/menu.js"></script>
-    <script src="~/Areas/Admin/Js/upload.js"></script>
-    <script src="~/Areas/Admin/Js/show-hide-detail.js"></script>
+    <script src="~/Areas/Admin/Js/uploadOneImg.js"></script>
     <script src="~/Areas/Admin/Js/validator.js"></script>
     <script src="https://kit.fontawesome.com/2d69c8ebbe.js" crossorigin="anonymous"></script>
 </body>

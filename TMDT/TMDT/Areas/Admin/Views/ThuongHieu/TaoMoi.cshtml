@@ -1,0 +1,126 @@
+﻿
+@{
+    ViewBag.Title = "TaoMoi";
+    Layout = "~/Areas/Admin/Views/Shared/Layout_Admin.cshtml";
+}
+
+<div class="col l-9-1 m-12 c-12">
+    <div class="home-product">
+        <div class="row sm-gutter" style="padding-right: 16px;">
+            <div class="product-edit">
+                <div class="product-edit__container" style="min-height: 0;">
+                    <div class="title-page">
+                        <div class="title-page__link">
+                            <a href="@Url.Action("DashBoard", "DashBoard")" class="title-page__link-label">Trang chủ</a>
+                            <i class='bx bx-chevron-right'></i>
+                            <a href="@Url.Action("ThuongHieu", "ThuongHieu")" class="title-page__link-label">Thương hiệu</a>
+                            <i class='bx bx-chevron-right'></i>
+                            <a href="@Url.Action("TaoMoi", "ThuongHieu")" class="title-page__link-label">Tạo thương hiệu</a>
+                        </div>
+                    </div>
+                    <div class="product-edit__main">
+                        <section class="product-edit__section" id="section-basic-info">
+                            <div class="product-detail-panel product-basic-info">
+                                <div class="panel-header">
+                                    <div class="panel-title">
+                                        <div class="basic-info-title">Thông tin thương hiệu</div>
+                                    </div>
+                                </div>
+                                <div class="panel-content-wrapper">
+                                    <div class="panel-content">
+                                        @* Tên voucher *@
+                                        <div class="edit-row">
+                                            <div class="edit-label edit-title">
+                                                <span><span style="color: red;">*</span> Tên thương hiệu</span>
+                                            </div>
+                                            <div class="edit-main">
+                                                <div class="popover-wrap">
+                                                    <div class="custom-len-calc-input product-edit-form-item">
+                                                        <div class="product-edit-form-item-content">
+                                                            <div class="tafi-input">
+                                                                <div class="tafi-input__inner tafi-input__inner--large">
+                                                                    <input type="text" placeholder="Nhập vào" size="large"
+                                                                           resize="none" rows="2" minrows="2" maxlength="Infinity"
+                                                                           restrictiontype="input" max="Infinity" min="-Infinity" class="tafi-input__input" id="text-input">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @* Hình ảnh *@
+                                        <div class="edit-row">
+                                            <div class="edit-label edit-title">
+                                                <span><span style="color: red;">*</span> Hình ảnh thương hiệu</span>
+                                            </div>
+                                            <div class="edit-main image-offset" style="height: 135px; max-height: 135px;">
+                                                <div style="line-height: 40px;">
+                                                    <div class="edit-label edit-title">
+                                                        <span><span style="color: red;">*</span> Hình ảnh tỷ lệ 1:1</span>
+                                                    </div>
+                                                </div>
+                                                <div class="edit-main tafi-image-manager" style="padding: 0 25px;">
+                                                    <div class="container">
+                                                        <div class="tafi-image-manager__itembox">
+                                                            <input type="file" id="image-input-brand" multiple accept="image/*" style="display: none;">
+                                                            <label for="image-input-brand" class="add-image">
+                                                                <p><i class='bx bx-image-add'></i></p>
+                                                                <p>Thêm hình ảnh (<span id="image-count-2">0</span>/1)</p>
+                                                            </label>
+                                                        </div>
+                                                        <div class="preview-container" id="preview-container">
+                                                            @* Import Images of Products *@
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @* Giá giảm *@
+                                        <div class="edit-row">
+                                            <div class="edit-label edit-title">
+                                                <span><span style="color: red;">*</span> Chọn ngành hàng</span>
+                                            </div>
+                                            <div class="edit-main">
+                                                <div class="popover-wrap">
+                                                    <div class="custom-len-calc-input product-edit-form-item">
+                                                        <div class="product-edit-form-item-content">
+                                                            <div class="tafi-input">
+                                                                <div class="tafi-input__inner tafi-input__inner--large">
+                                                                    <select class="tafi-select" name="" id="tafi-select-categories">
+                                                                        <option value="" class="tafi-select-categories__option">Chọn ngành hàng</option>
+                                                                        <option value="dienthoai" class="tafi-select-categories__option">Điện thoại</option>
+                                                                        <option value="thoitrang" class="tafi-select-categories__option">Thời trang</option>
+                                                                        <option value="giay" class="tafi-select-categories__option">Giày</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+
+                        <div class="product-selected-fix shopee-fix-bottom-card">
+                            <div class="fix-container">
+                                <div class="container1">
+                                    <div class="container-left"></div>
+                                    <div class="container-right btn-group">
+                                        <a href="@Url.Action("ThuongHieu","ThuongHieu")" class="tafi-button--xl-large tafi-button tafi-button--normal"><span>Hủy</span></a>
+                                        <button class="tafi-button--xl-large tafi-button tafi-button-primary tafi-button--normal" style="margin-left: 13px;" id="button-save"><span>Lưu</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

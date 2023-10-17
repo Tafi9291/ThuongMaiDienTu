@@ -3948,3 +3948,191 @@ tafi-table__horizontal {
     -webkit-box-pack: justify;
     justify-content: space-between;
 }
+
+
+/*Tai khoan*/
+.page-content-wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 1104px;
+    min-height: calc(100vh - 75px - 72px);
+}
+
+.page {
+    background-color: #fff;
+    -webkit-box-shadow: 0 1px 4px 0 rgba(0,0,0,.12);
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,.12);
+    border-radius: 2px;
+}
+    .page .username-subtitle {
+        color: #999;
+        height: 14px;
+        line-height: 14px;
+        font-size: 12px;
+    }
+
+.page-header {
+    padding: 24px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.desc {
+    font-size: 14px;
+    color: #999;
+    line-height: 16px;
+}
+
+.setting-card {
+    background-color: #fff;
+    margin-left: 72px;
+}
+
+.setting-card-inner {
+    margin-left: -72px;
+}
+
+.setting-card-row {
+    padding: 24px 24px 24px 0;
+    margin-left: 72px;
+    -webkit-transition: color .3s ease;
+    transition: color .3s ease;
+}
+    .setting-card-row .main {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        margin-left: -48px;
+    }
+    .setting-card-row .icon {
+        width: 24px;
+        height: 24px;
+        color: #999;
+        margin-right: 24px;
+    }
+/*    .setting-card-row .desc.width-info {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 232px;
+        flex: 0 0 232px;
+        margin-right: 20px;
+    }*/
+    .setting-card-row .title {
+        color: #333;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 20px;
+    }
+    .setting-card-row .info {
+        -webkit-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+    }
+    .setting-card-row .extra {
+        padding: 16px;
+        margin-top: 16px;
+        background-color: #f6f6f6;
+        border-radius: 4px;
+        display: none;
+    }
+    .setting-card-row .desc {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+    }
+
+.desc.width-info {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 232px;
+    flex: 0 0 232px;
+    margin-right: 20px;
+}
+
+.account-profile {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.account-profile-item {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.account-profile-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.account-profile-text {
+    font-weight: 400;
+    color: #333;
+    margin-left: 4px;
+    font-size: 1.4rem;
+}
+
+.tafi-popover, .tafi-popover__ref {
+    display: inline-block;
+}
+
+.tafi-form .tafi-form-item--x-small .tafi-form-item__label {
+    line-height: 16px;
+}
+
+.tafi-form .tafi-form-item__label {
+    width: 112px;
+}
+
+.tafi-form--label-right .tafi-form-item__label {
+    text-align: right;
+}
+
+.tafi-form-item__label {
+    width: 200px;
+}
+
+.tafi-form-item__label {
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    padding: 8px 0;
+    margin-right: 16px;
+    line-height: 16px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.tafi-form .tafi-form-item__label {
+    width: 112px;
+}
+
+.tafi-form--label-right .tafi-form-item__label {
+    text-align: right;
+}
