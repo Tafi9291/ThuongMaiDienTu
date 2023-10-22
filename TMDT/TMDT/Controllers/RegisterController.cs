@@ -6,16 +6,16 @@ using System.Web.Mvc;
 
 namespace TMDT.Controllers
 {
-    public class NgMuaController : Controller
+    public class RegisterController : Controller
     {
-        // GET: NgMua
-        public ActionResult TrangChu()
+        // GET: Register
+        public ActionResult DangKy()
         {
             return View();
         }
 
-        // GET: NgMua/SanPham/Detail
-        public ActionResult Detail()
+        // GET: DangNhap
+        public ActionResult DangNhap()
         {
             return View();
         }

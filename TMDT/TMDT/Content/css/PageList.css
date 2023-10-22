@@ -41,7 +41,7 @@
         .pagination > li > span:hover,
         .pagination > li > a:focus,
         .pagination > li > span:focus {
-            background-color: #ffd800;
+            background-color: #f93b80;
         }
 
     .pagination > .active > a,
@@ -53,8 +53,8 @@
         z-index: 2;
         color: #000000;
         cursor: default;
-        background-color: #ffd800;
-        border-color: #ffd800;
+        background-color: #f93b80;
+        border-color: #f93b80;
     }
 
     .pagination > .disabled > span,

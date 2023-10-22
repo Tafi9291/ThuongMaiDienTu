@@ -1011,9 +1011,9 @@
 
 /* App container */
 .app__container {
-    /* background-color: #F5F5F5; */
+     background-color: #F5F5F5;
     /* background: linear-gradient(to right, rgb(243, 193, 157) 5%, rgb(235, 215, 225) 100%); */
-    background: rgb(216 216 216 / 50%);
+    /*background: rgb(216 216 216 / 50%);*/
 }
 
 .app__content {
@@ -1247,7 +1247,7 @@
 .home-product-item-case {
     display: flex;
     background-color: var(--white-color);
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     margin-right: -16px;
     margin-left: 7px;
     padding: 10px;
@@ -1269,7 +1269,7 @@
 .home-product-item:hover {
     box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.05);
     transform: translateY(-4px);
-    border: 2px solid var(--primary-color);
+    border: 1.5px solid var(--primary-color);
 }
 
 .home-product-item__img {
@@ -1288,11 +1288,13 @@
     border-top-left-radius: 2px;
     border-top-right-radius: 2px;
     overflow: hidden;
-    width: 229px;
-    height: 229px;
+    width: 233px;
+    height: 233px;
     background-position: top center;
     background-size: contain;
     object-fit: contain;
+    padding-left: -0.5px;
+    padding-right: 2px;
 }
 
 #main-img {
@@ -1900,21 +1902,23 @@ i.home-product-item__like-icon-fill {
     display: flex;
     border: 0;
     justify-content: center;
-     background: linear-gradient(90deg, rgb(255, 147, 63) 5%, rgb(249, 55, 130) 100%); 
+    /*background: linear-gradient(90deg, rgb(255, 147, 63) 5%, rgb(249, 55, 130) 100%);*/
     /*background: linear-gradient(90deg, rgb(86, 83, 86) 5%, rgb(13, 11, 14) 100%);*/
     /*height: 40px;*/
     /*padding: 10px 10px;*/
     margin: auto;
     margin-top: 50px;
     border-radius: 2px;
-    box-shadow: 2px 4px 4px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 4px 4px 0 rgba(0, 0, 0, 0.3);
     align-items: center;
     width: 60%;
+    background: rgb(255 112 0);
 }
 
 .home-product-item__detail-cart-button:hover {
-     background: linear-gradient(90deg, rgb(253, 153, 76) 5%, rgb(252, 83, 148) 100%); 
+     /*background: linear-gradient(90deg, rgb(253, 153, 76) 5%, rgb(252, 83, 148) 100%);*/ 
     /*background: linear-gradient(90deg, rgb(106, 104, 106) 5%, rgb(46, 43, 48) 100%);*/
+    background: rgb(255 112 0/ 87%);
 }
 
 .home-product-item__detail-cart-icon {
@@ -2649,3 +2653,389 @@ i.home-product-item__like-icon-fill {
     border-bottom: 2px dashed #e3e3e3;
     padding: 8px 0;
 }
+
+/*Danh muc san pham*/
+.home-category-list {
+    min-height: 18.875rem;
+    margin-top: 1.25rem;
+    /*background-color: #fff;*/
+    width: 100%;
+}
+
+.home-category-list__header.tafi-header-section--simple {
+    padding-top: 0;
+}
+
+.tafi-header-section--simple {
+    padding-top: 1.25rem;
+}
+
+.tafi-header-section--simple {
+    padding-top: 1.25rem;
+}
+
+.tafi-header-section--simple {
+    padding-top: 1.25rem;
+}
+
+
+.tafi-header-section__header {
+    /*background: #fff;*/
+    height: 5.75rem;
+    border-bottom: 1px solid rgba(0,0,0,.5);
+    padding: 0 2.5rem;
+    display: flex;
+    align-items: center;
+    padding-bottom: -0.375rem;
+}
+
+.tafi-header-section--simple .tafi-header-section__header__title {
+    font-size: 1.8rem;
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+.tafi-header-section__content {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.image-carousel {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.image-carousel__item-img img {
+    width: 100px;
+    height: 100px;
+}
+
+.image-carousel__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 350px;
+    background: #fff;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+}
+
+    .image-carousel__item:hover {
+        border-color: rgba(0,0,0,.12);
+        border-width: 1px;
+        box-shadow: 0 0 0.8125rem 0 rgba(0,0,0,.2);
+    }
+
+    .image-carousel__item-title {
+        color: var(--text-color);
+        font-size: 1.7rem;
+        width: 200px;
+    }
+
+/* Trang chi tiet san pham*/
+.page-product__shop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5625rem !important;
+}
+
+.page-product__shop-info {
+    padding-right: 1.5625rem;
+    box-sizing: border-box;
+    border-right: 1px solid rgba(0,0,0,.05);
+    display: flex;
+    max-width: 27.5rem;
+}
+
+.shop-info-image {
+    flex-shrink: 0;
+    margin-right: 1.25rem;
+    position: relative;
+    overflow: visible;
+    outline: 0;
+}
+.shop-info-image__wrapper {
+    display: inline-block;
+    /*    width: 1.875rem;
+    height: 1.875rem;*/
+    position: relative;
+    border-radius: 50%;
+    border: 1px solid rgba(0,0,0,.09);
+    box-sizing: border-box;
+    width: 100px;
+    height: 100px;
+    border: 3px solid #999;
+}
+.shop-info-image__wrapper img {
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.shop-info-main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.shop-info-main__name {
+    font-weight: 400;
+    font-size: 1.8rem;
+    color: rgba(0,0,0,.87);
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.shop-info-main__shop {
+    margin-top: 8px;
+    display: flex;
+}
+
+.shop-info-main__shop-link {
+    flex-direction: row;
+    text-transform: capitalize;
+    color: #555;
+    outline: 0;
+    background-image: linear-gradient(90deg, rgb(255, 147, 63) 5%, rgb(249, 55, 130) 100%);
+    color: white;
+    /*border: 1px solid rgba(0,0,0,.09);*/
+    border-radius: 20px;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.3);
+    position: relative;
+    overflow: visible;
+    height: 40px;
+    padding: 0 15px;
+    min-width: 60px;
+    max-width: 190px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+    .shop-info-main__shop-link:hover {
+        opacity: 0.9;
+    }
+
+    .shop-info-main__shop-link span {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 1.4rem;
+    }
+
+.product__detail {
+    overflow: hidden;
+    background: #fff;
+    padding: 0.625rem;
+}
+
+.product-detail-wrapper h2 {
+    background: rgba(0,0,0,.02);
+    color: rgba(0,0,0,.87);
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin: 0;
+    padding: 0.875rem;
+    text-transform: capitalize;
+}
+
+.product-detail-info {
+    margin: 30px 15px 15px 15px;
+}
+
+.product-detail-info__item {
+    display: flex;
+    margin-bottom: 20px;
+}
+    .product-detail-info__item label {
+        color: rgba(0,0,0,.4);
+        font-size: 1.5rem;
+        box-sizing: border-box;
+        width: 15rem;
+        padding-right: 0.75rem;
+    }
+    .product-detail-info__item div {
+        font-size: 1.5rem;
+    }
+
+    .product-categories {
+        display: flex;
+        white-space: nowrap;
+        height: 1.6rem;
+        align-items: center;
+    }
+    .product-categories a {
+        color: blue;
+        font-size: 1.5rem;
+    }
+
+.product-detail-info__description {
+    white-space: pre-wrap;
+    color: rgba(0,0,0,.8);
+    font-size: 1.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.7;
+}
+    .product-detail-info__description p {
+        margin: 0;
+    }
+
+.vocuher-shop {
+    max-width: 282.5px;
+    min-height: 300px;
+}
+
+.voucher-shop-list {
+    max-height: 372px;
+    overflow-y: auto;
+    padding-left: 4px;
+}
+
+.voucher-shop-card {
+    display: flex;
+    margin: 10px 0;
+    position: relative;
+    margin-right: 10px;
+}
+
+.voucher-shop-card__left {
+    background: #f93a8045;
+    padding: 10px;
+    border-left: 4px dotted #fa3c7f;
+    border-top: 1px solid #fa3c7f;
+    border-bottom: 1px solid #fa3c7f;
+    border-right: 1px dashed #aca8a8;
+}
+
+.voucher-shop-card__left-title {
+    font-size: 1.4rem;
+    margin: 5px 0;
+    color: #cc5900;
+}
+
+.voucher-shop-card__left-condition {
+    font-size: 1.3rem;
+    margin: 5px 0;
+    color: #cc5900;
+}
+
+.voucher-shop-card__left-expiry {
+    font-size: 1.2rem;
+    margin-top: 15px;
+}
+
+.voucher-shop-card__right {
+    background: #f93a8045;
+    padding: 0 10px;
+    border-top: 1px solid #fa3c7f;
+    border-bottom: 1px solid #fa3c7f;
+    border-right: 1px solid #fa3c7f;
+    display: flex;
+    align-items: center;
+}
+
+.voucher-shop-card__right-save {
+    outline: none;
+    border-radius: 4px;
+    border: none;
+    padding: 10px;
+    color: white;
+    background: #fa3c7f;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.voucher-shop-card__right-save:hover {
+    opacity: 0.8;
+}
+
+.voucer-shop-card__quantity {
+    position: absolute;
+    top: 10px;
+    right: 4px;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    font-weight: 500;
+    line-height: 1.6rem;
+    background-color: currentColor;
+    padding-right: 4px;
+    padding-left: 4px;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+    .voucer-shop-card__quantity::after {
+        content: "";
+        position: absolute;
+        left: 22px;
+        bottom: -2px;
+        border-top: 3px solid currentColor;
+        border-right: 3px solid transparent;
+        filter: brightness(60%);
+    }
+    .voucer-shop-card__quantity span {
+        color: var(--white-color); 
+    }
+
+/*Shop page*/
+.page-product__shop-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-position: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* filter: blur(2px); */
+    margin: -4px;
+    width: 1204px;
+    height: 178px;
+}
+
+.page-product__shop-background-break {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: -4px;
+    width: 1204px;
+    height: 178px;
+    background-color: rgba(0,0,0,.6);
+}
+
+.shop-categories {
+    width: 100%;
+    display: flex;
+}
+
+.shop-categories-item {
+    font-size: 1.7rem;
+    padding: 0 30px 20px 30px;
+    cursor: pointer;
+    
+}
+
+    .shop-categories-item:hover {
+        color: rgb(249, 55, 130);
+    }
+    .shop-categories-item.border-b {
+        border-bottom: 2px solid rgb(249, 55, 130);
+        color: rgb(249, 55, 130);
+    }
