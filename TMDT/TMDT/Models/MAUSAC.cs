@@ -21,7 +21,8 @@ namespace TMDT.Models
             this.CTGIAYs = new HashSet<CTGIAY>();
             this.CTTHOITRANGs = new HashSet<CTTHOITRANG>();
         }
-    
+
+        public List<MAUSAC> ListColor { get; set; }
         public int IDMAUSAC { get; set; }
         public string MAUSAC1 { get; set; }
         public Nullable<int> IDLOAISP { get; set; }

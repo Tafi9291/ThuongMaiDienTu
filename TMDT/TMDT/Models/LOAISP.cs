@@ -26,7 +26,8 @@ namespace TMDT.Models
             this.THGIAYs = new HashSet<THGIAY>();
             this.THTHOITRANGs = new HashSet<THTHOITRANG>();
         }
-    
+
+        public List<LOAISP> ListCate { get; set; }
         public int IDLOAISP { get; set; }
         public string TENLOAISP { get; set; }
         public string HINHANH { get; set; }

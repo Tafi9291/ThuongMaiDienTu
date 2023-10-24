@@ -45,47 +45,48 @@ namespace TMDT.Controllers
         // GET: SanPham/Create
         public ActionResult TaoSanPham() 
         {
-            ViewModelSanPham sp = new ViewModelSanPham();
+            SANPHAM sp = new SANPHAM();
             return View(sp);
         }
 
         [HttpPost]
-        public ActionResult TaoSanPham(ViewModelSanPham model)
+        [ValidateAntiForgeryToken]
+        public ActionResult TaoSanPham(SANPHAM model)
         {
 
             //// Lưu ảnh vào thư mục ~/Content/Data/Hinh
-            if (model.SANPHAM.UploadImage1 != null && model.SANPHAM.UploadImage2 != null && model.SANPHAM.UploadImage3 != null)
+            if (model.UploadImage1 != null && model.UploadImage2 != null && model.UploadImage3 != null)
             {
-                string filename1 = Path.GetFileNameWithoutExtension(model.SANPHAM.UploadImage1.FileName);
-                string extension1 = Path.GetExtension(model.SANPHAM.UploadImage1.FileName);
+                string filename1 = Path.GetFileNameWithoutExtension(model.UploadImage1.FileName);
+                string extension1 = Path.GetExtension(model.UploadImage1.FileName);
                 filename1 = filename1 + extension1;
-                string filename2 = Path.GetFileNameWithoutExtension(model.SANPHAM.UploadImage2.FileName);
-                string extension2 = Path.GetExtension(model.SANPHAM.UploadImage2.FileName);
+                string filename2 = Path.GetFileNameWithoutExtension(model.UploadImage2.FileName);
+                string extension2 = Path.GetExtension(model.UploadImage2.FileName);
                 filename2 = filename2 + extension2;
-                string filename3 = Path.GetFileNameWithoutExtension(model.SANPHAM.UploadImage3.FileName);
-                string extension3 = Path.GetExtension(model.SANPHAM.UploadImage3.FileName);
+                string filename3 = Path.GetFileNameWithoutExtension(model.UploadImage3.FileName);
+                string extension3 = Path.GetExtension(model.UploadImage3.FileName);
                 filename3 = filename3 + extension3;
 
-                model.SANPHAM.HINHANH1 = "~/Content/Data/Hinh/" + filename1;
-                model.SANPHAM.HINHANH2 = "~/Content/Data/Hinh/" + filename2;
-                model.SANPHAM.HINHANH3 = "~/Content/Data/Hinh/" + filename3;
+                model.HINHANH1 = "~/Content/Hinh/" + filename1;
+                model.HINHANH2 = "~/Content/Hinh/" + filename2;
+                model.HINHANH3 = "~/Content/Hinh/" + filename3;
 
-                model.SANPHAM.UploadImage1.SaveAs(Path.Combine(Server.MapPath("~/Content/Data/Hinh/"), filename1));
-                model.SANPHAM.UploadImage2.SaveAs(Path.Combine(Server.MapPath("~/Content/Data/Hinh/"), filename2));
-                model.SANPHAM.UploadImage3.SaveAs(Path.Combine(Server.MapPath("~/Content/Data/Hinh/"), filename3));
+                model.UploadImage1.SaveAs(Path.Combine(Server.MapPath("~/Content/Hinh/"), filename1));
+                model.UploadImage2.SaveAs(Path.Combine(Server.MapPath("~/Content/Hinh/"), filename2));
+                model.UploadImage3.SaveAs(Path.Combine(Server.MapPath("~/Content/Hinh/"), filename3));
             }
                 // Kiểm tra giá bán, số lượng tồn và phần trăm giảm
-                if (model.SANPHAM.GIABAN >= 0 && model.SANPHAM.SOLUONGTON >= 0 && model.SANPHAM.PHANTRAMGIAM >= 0 && model.SANPHAM.PHANTRAMGIAM <= 100)
+                if (model.GIABAN >= 0 && model.SOLUONGTON >= 0 && model.PHANTRAMGIAM >= 0 && model.PHANTRAMGIAM <= 100)
                 {
 
-                    model.SANPHAM.GIAGIAM = model.SANPHAM.GIABAN - (model.SANPHAM.GIABAN * model.SANPHAM.PHANTRAMGIAM / 100);
+                    model.GIAGIAM = model.GIABAN - (model.GIABAN * model.PHANTRAMGIAM / 100);
 
                     // Đặt ngày tạo hiện tại
-                    model.SANPHAM.NGAYTAO = DateTime.Now;
-                    model.SANPHAM.IDPHEDUYET = 1;
+                    model.NGAYTAO = DateTime.Now;
+                    model.IDPHEDUYET = 1;
 
                     string selectedCategoryId = Request.Form["IDLOAISP"];
-                    model.SANPHAM.IDLOAISP = Convert.ToInt32(selectedCategoryId);
+                    model.IDLOAISP = Convert.ToInt32(selectedCategoryId);
                 
 
                     string selectedColor = Request.Form["IDMAUSAC"];
@@ -99,6 +100,7 @@ namespace TMDT.Controllers
                             model.CTDIENTHOAI.IDMAUSAC = Convert.ToInt32(selectedColor); // Gán giá trị màu sắc
                             model.CTDIENTHOAI.IDLOAISP = Convert.ToInt32(selectedCategoryId);
                             model.CTDIENTHOAI.IDTHDIENTHOAI = Convert.ToInt32(selecteDBrand);
+                            model.IDCTDIENTHOAI = 1;
                             db.CTDIENTHOAIs.Add(model.CTDIENTHOAI);
                             break;
                         case "2":
@@ -111,21 +113,21 @@ namespace TMDT.Controllers
                             // Xử lý mặc định hoặc lỗi nếu có
                             break;
                     }
-                    db.SANPHAMs.Add(model.SANPHAM);
+                    db.SANPHAMs.Add(model);
                     db.SaveChanges();
                     return RedirectToAction("SanPham");
                 }
                 else
                 {
-                    if (model.SANPHAM.GIABAN < 0)
+                    if (model.GIABAN < 0)
                     {
                         ModelState.AddModelError("GIABAN", "Giá bán phải lớn hơn hoặc bằng 0.");
                     }
-                    if (model.SANPHAM.SOLUONGTON < 0)
+                    if (model.SOLUONGTON < 0)
                     {
                         ModelState.AddModelError("SOLUONGTON", "Số lượng tồn phải lớn hơn hoặc bằng 0.");
                     }
-                    if (model.SANPHAM.PHANTRAMGIAM < 0 || model.SANPHAM.PHANTRAMGIAM > 100)
+                    if (model.PHANTRAMGIAM < 0 || model.PHANTRAMGIAM > 100)
                     {
                         ModelState.AddModelError("PHANTRAMGIAM", "Phần trăm giảm phải trong khoảng từ 0 đến 100.");
                     }

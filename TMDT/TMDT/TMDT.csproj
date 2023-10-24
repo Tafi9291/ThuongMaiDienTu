@@ -424,7 +424,6 @@
     <Content Include="Views\Shared\Layout-NgBan.cshtml" />
     <Content Include="Views\NgBan\KenhNgBan.cshtml" />
     <Content Include="Views\SanPham\SanPham.cshtml" />
-    <Content Include="Views\SanPham\TaoSanPham.cshtml" />
     <Content Include="Views\DonHang\QLDonHang.cshtml" />
     <Content Include="Views\DonHang\CapNhat.cshtml" />
     <Content Include="Views\DonHang\CTDonHang.cshtml" />
@@ -441,11 +440,11 @@
     <Content Include="Views\SanPham\ChonNganhHang.cshtml" />
     <Content Include="Views\SanPham\MauSac.cshtml" />
     <Content Include="Views\SanPham\THDienThoai.cshtml" />
+    <Content Include="Views\SanPham\TaoSanPham.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Content\Data\Hinh\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

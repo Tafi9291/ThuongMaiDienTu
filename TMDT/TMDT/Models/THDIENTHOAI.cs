@@ -19,7 +19,8 @@ namespace TMDT.Models
         {
             this.CTDIENTHOAIs = new HashSet<CTDIENTHOAI>();
         }
-    
+        public List<THDIENTHOAI> ListBrand { get; set; }
+
         public int IDTHDIENTHOAI { get; set; }
         public string THUONGHIEUDT { get; set; }
         public Nullable<int> IDLOAISP { get; set; }

@@ -19,6 +19,9 @@ namespace TMDT.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SANPHAM()
         {
+            HINHANH1 = "~/Areas/Admin/Content/img/iconanh.png";
+            HINHANH2 = "~/Areas/Admin/Content/img/iconanh.png";
+            HINHANH3 = "~/Areas/Admin/Content/img/iconanh.png";
             this.CTDONHANGs = new HashSet<CTDONHANG>();
             this.DANHGIASPs = new HashSet<DANHGIASP>();
         }
