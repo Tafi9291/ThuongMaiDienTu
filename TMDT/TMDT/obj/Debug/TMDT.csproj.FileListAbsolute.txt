@@ -156,3 +156,11 @@ D:\học tập\thương mại điện tử\ThuongMaiDienTu\TMDT\TMDT\obj\Debug\T
 D:\học tập\thương mại điện tử\ThuongMaiDienTu\TMDT\TMDT\obj\Debug\TMDT.csproj.CopyComplete
 D:\học tập\thương mại điện tử\ThuongMaiDienTu\TMDT\TMDT\obj\Debug\TMDT.dll
 D:\học tập\thương mại điện tử\ThuongMaiDienTu\TMDT\TMDT\obj\Debug\TMDT.pdb
+D:\học tập\thương mại điện tử\ThuongMaiDienTu\TMDT\TMDT\bin\EntityFramework.dll
+D:\học tập\thương mại điện tử\ThuongMaiDienTu\TMDT\TMDT\bin\EntityFramework.SqlServer.dll
+D:\học tập\thương mại điện tử\ThuongMaiDienTu\TMDT\TMDT\bin\EntityFramework.xml
+D:\học tập\thương mại điện tử\ThuongMaiDienTu\TMDT\TMDT\bin\EntityFramework.SqlServer.xml
+D:\học tập\thương mại điện tử\ThuongMaiDienTu\TMDT\TMDT\bin\PagedList.dll
+D:\học tập\thương mại điện tử\ThuongMaiDienTu\TMDT\TMDT\bin\PagedList.Mvc.dll
+D:\học tập\thương mại điện tử\ThuongMaiDienTu\TMDT\TMDT\bin\PagedList.xml
+D:\học tập\thương mại điện tử\ThuongMaiDienTu\TMDT\TMDT\bin\PagedList.Mvc.xml

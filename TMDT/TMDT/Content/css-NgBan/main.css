@@ -3270,7 +3270,7 @@ tafi-table__horizontal {
 
 .tafi-scrollbar {
     position: relative;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 .tafi-scrollbar,

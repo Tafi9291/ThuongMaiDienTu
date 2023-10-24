@@ -19,5 +19,11 @@ namespace TMDT.Controllers
         {
             return View();
         }
+
+        // GET: DangKyNgBan
+        public ActionResult DangKyNgBan()
+        {
+            return View();
+        }
     }
 }

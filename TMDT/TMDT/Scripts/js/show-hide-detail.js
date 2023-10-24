@@ -565,6 +565,10 @@ function detailGiay() {
                                                     <div class="popover-wrap">
                                                         <div class="tafi-input price-input product-edit-input">
                                                             <div class="tafi-input__inner tafi-input__inner--large">
+                                                                @Html.EditorFor(model => model.SANPHAM.TENSP, new { htmlAttributes = new { @class = "tafi-input__input", @type = "text", @placeholder = "Nhập vào", @tabindex = "0", @resize = "none", @size = "large",
+                                                                       @rows = "2", @minrows = "2", @maxlength = "Infinity",
+                                                                       @restrictiontype = "input", @max = "Infinity", @min = "-Infinity",
+                                                                       @id = "text-input", @required = true } })
                                                                 <input type="text" placeholder="Nhập vào" size="large"
                                                                        resize="none" rows="2" minrows="2" maxlength="Infinity"
                                                                        restrictiontype="input" max="Infinity" min="-Infinity" class="tafi-input__input" id="text-input">
@@ -664,21 +668,21 @@ selectCategories.addEventListener('change', function () {
     const selectedValue = selectCategories.value;
 
     // Hiển thị bảng chi tiết tương ứng nếu có giá trị được chọn
-    if (selectedValue === 'dienthoai' || selectedValue === 'thoitrang' || selectedValue === 'giay') {
+    if (selectedValue === '1' || selectedValue === '2' || selectedValue === '3') {
         removeElements();
         panelContentWrapper.innerHTML = htmlToAdd;
     }
-    if (selectedValue === 'dienthoai') {
+    if (selectedValue === '1') {
         removeDetailThoiTrang(); // Xóa bỏ chi tiết Thời trang
         removeDetailGiay(); // Xóa bỏ chi tiết Giày
         detailDienThoai();
     }
-    if (selectedValue === 'thoitrang') {
+    if (selectedValue === '2') {
         removeDetailDienThoai(); // Xóa bỏ chi tiết Điện thoại
         removeDetailGiay(); // Xóa bỏ chi tiết Giày
         detailThoiTrang();
     }
-    if (selectedValue === 'giay') {
+    if (selectedValue === '3') {
         removeDetailThoiTrang(); // Xóa bỏ chi tiết Thời trang
         removeDetailDienThoai(); // Xóa bỏ chi tiết Điện thoại
         detailGiay();

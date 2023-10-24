@@ -1,0 +1,334 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TMDTModelStoreContainer" CdmEntityContainer="TMDTEntities">
+    <EntitySetMapping Name="ADMINs">
+      <EntityTypeMapping TypeName="TMDTModel.ADMIN">
+        <MappingFragment StoreEntitySet="ADMIN">
+          <ScalarProperty Name="IDADMIN" ColumnName="IDADMIN" />
+          <ScalarProperty Name="TENAD" ColumnName="TENAD" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="MATKHAU" ColumnName="MATKHAU" />
+          <ScalarProperty Name="IDCHUCVU" ColumnName="IDCHUCVU" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CHUCVUs">
+      <EntityTypeMapping TypeName="TMDTModel.CHUCVU">
+        <MappingFragment StoreEntitySet="CHUCVU">
+          <ScalarProperty Name="IDCHUCVU" ColumnName="IDCHUCVU" />
+          <ScalarProperty Name="TENCV" ColumnName="TENCV" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CTDIENTHOAIs">
+      <EntityTypeMapping TypeName="TMDTModel.CTDIENTHOAI">
+        <MappingFragment StoreEntitySet="CTDIENTHOAI">
+          <ScalarProperty Name="IDCTDIENTHOAI" ColumnName="IDCTDIENTHOAI" />
+          <ScalarProperty Name="MANHINH" ColumnName="MANHINH" />
+          <ScalarProperty Name="DOPHANGIAI" ColumnName="DOPHANGIAI" />
+          <ScalarProperty Name="CAMERA" ColumnName="CAMERA" />
+          <ScalarProperty Name="HEDH" ColumnName="HEDH" />
+          <ScalarProperty Name="CHIPXULY" ColumnName="CHIPXULY" />
+          <ScalarProperty Name="ROM" ColumnName="ROM" />
+          <ScalarProperty Name="RAM" ColumnName="RAM" />
+          <ScalarProperty Name="MANGDIDONG" ColumnName="MANGDIDONG" />
+          <ScalarProperty Name="SOKHESIM" ColumnName="SOKHESIM" />
+          <ScalarProperty Name="PIN" ColumnName="PIN" />
+          <ScalarProperty Name="IDLOAISP" ColumnName="IDLOAISP" />
+          <ScalarProperty Name="IDTHDIENTHOAI" ColumnName="IDTHDIENTHOAI" />
+          <ScalarProperty Name="IDMAUSAC" ColumnName="IDMAUSAC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CTDONHANGs">
+      <EntityTypeMapping TypeName="TMDTModel.CTDONHANG">
+        <MappingFragment StoreEntitySet="CTDONHANG">
+          <ScalarProperty Name="IDCTDONHANG" ColumnName="IDCTDONHANG" />
+          <ScalarProperty Name="DONGIA" ColumnName="DONGIA" />
+          <ScalarProperty Name="SOLUONGMUA" ColumnName="SOLUONGMUA" />
+          <ScalarProperty Name="TONGTIEN" ColumnName="TONGTIEN" />
+          <ScalarProperty Name="IDSANPHAM" ColumnName="IDSANPHAM" />
+          <ScalarProperty Name="IDDONHANG" ColumnName="IDDONHANG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CTGIAYs">
+      <EntityTypeMapping TypeName="TMDTModel.CTGIAY">
+        <MappingFragment StoreEntitySet="CTGIAY">
+          <ScalarProperty Name="IDCTGIAY" ColumnName="IDCTGIAY" />
+          <ScalarProperty Name="IDLOAISP" ColumnName="IDLOAISP" />
+          <ScalarProperty Name="IDSIZEGIAY" ColumnName="IDSIZEGIAY" />
+          <ScalarProperty Name="IDTHGIAY" ColumnName="IDTHGIAY" />
+          <ScalarProperty Name="IDMAUSAC" ColumnName="IDMAUSAC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CTTHOITRANGs">
+      <EntityTypeMapping TypeName="TMDTModel.CTTHOITRANG">
+        <MappingFragment StoreEntitySet="CTTHOITRANG">
+          <ScalarProperty Name="IDCTTHOITRANG" ColumnName="IDCTTHOITRANG" />
+          <ScalarProperty Name="CHATLIEU" ColumnName="CHATLIEU" />
+          <ScalarProperty Name="IDLOAISP" ColumnName="IDLOAISP" />
+          <ScalarProperty Name="IDTHTHOITRANG" ColumnName="IDTHTHOITRANG" />
+          <ScalarProperty Name="IDSIZETT" ColumnName="IDSIZETT" />
+          <ScalarProperty Name="IDMAUSAC" ColumnName="IDMAUSAC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CUAHANGs">
+      <EntityTypeMapping TypeName="TMDTModel.CUAHANG">
+        <MappingFragment StoreEntitySet="CUAHANG">
+          <ScalarProperty Name="IDCUAHANG" ColumnName="IDCUAHANG" />
+          <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+          <ScalarProperty Name="HINHANH" ColumnName="HINHANH" />
+          <ScalarProperty Name="ANHDAIDIEN" ColumnName="ANHDAIDIEN" />
+          <ScalarProperty Name="IDND" ColumnName="IDND" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DANHGIASPs">
+      <EntityTypeMapping TypeName="TMDTModel.DANHGIASP">
+        <MappingFragment StoreEntitySet="DANHGIASP">
+          <ScalarProperty Name="IDDANHGIA" ColumnName="IDDANHGIA" />
+          <ScalarProperty Name="DANHGIA" ColumnName="DANHGIA" />
+          <ScalarProperty Name="NGAYTAO" ColumnName="NGAYTAO" />
+          <ScalarProperty Name="IDSANPHAM" ColumnName="IDSANPHAM" />
+          <ScalarProperty Name="IDND" ColumnName="IDND" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DONHANGs">
+      <EntityTypeMapping TypeName="TMDTModel.DONHANG">
+        <MappingFragment StoreEntitySet="DONHANG">
+          <ScalarProperty Name="IDDONHANG" ColumnName="IDDONHANG" />
+          <ScalarProperty Name="NGAYTAO" ColumnName="NGAYTAO" />
+          <ScalarProperty Name="NGUOINHAN" ColumnName="NGUOINHAN" />
+          <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+          <ScalarProperty Name="IDND" ColumnName="IDND" />
+          <ScalarProperty Name="IDSHIPPER" ColumnName="IDSHIPPER" />
+          <ScalarProperty Name="IDPTTHANHTOAN" ColumnName="IDPTTHANHTOAN" />
+          <ScalarProperty Name="IDVOUCHERSHOP" ColumnName="IDVOUCHERSHOP" />
+          <ScalarProperty Name="IDVOUCHER" ColumnName="IDVOUCHER" />
+          <ScalarProperty Name="IDTRANGTHAIDH" ColumnName="IDTRANGTHAIDH" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOAISPs">
+      <EntityTypeMapping TypeName="TMDTModel.LOAISP">
+        <MappingFragment StoreEntitySet="LOAISP">
+          <ScalarProperty Name="IDLOAISP" ColumnName="IDLOAISP" />
+          <ScalarProperty Name="TENLOAISP" ColumnName="TENLOAISP" />
+          <ScalarProperty Name="HINHANH" ColumnName="HINHANH" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MAUSACs">
+      <EntityTypeMapping TypeName="TMDTModel.MAUSAC">
+        <MappingFragment StoreEntitySet="MAUSAC">
+          <ScalarProperty Name="IDMAUSAC" ColumnName="IDMAUSAC" />
+          <ScalarProperty Name="MAUSAC1" ColumnName="MAUSAC" />
+          <ScalarProperty Name="IDLOAISP" ColumnName="IDLOAISP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NGUOIDUNGs">
+      <EntityTypeMapping TypeName="TMDTModel.NGUOIDUNG">
+        <MappingFragment StoreEntitySet="NGUOIDUNG">
+          <ScalarProperty Name="IDND" ColumnName="IDND" />
+          <ScalarProperty Name="TENND" ColumnName="TENND" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="MATKHAU" ColumnName="MATKHAU" />
+          <ScalarProperty Name="NHAPLAIMK" ColumnName="NHAPLAIMK" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+          <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+          <ScalarProperty Name="IDPQND" ColumnName="IDPQND" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PHEDUYETs">
+      <EntityTypeMapping TypeName="TMDTModel.PHEDUYET">
+        <MappingFragment StoreEntitySet="PHEDUYET">
+          <ScalarProperty Name="IDPHEDUYET" ColumnName="IDPHEDUYET" />
+          <ScalarProperty Name="TENPHEDUYET" ColumnName="TENPHEDUYET" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PQNGUOIDUNGs">
+      <EntityTypeMapping TypeName="TMDTModel.PQNGUOIDUNG">
+        <MappingFragment StoreEntitySet="PQNGUOIDUNG">
+          <ScalarProperty Name="IDPQND" ColumnName="IDPQND" />
+          <ScalarProperty Name="QUYENND" ColumnName="QUYENND" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PTTHANHTOANs">
+      <EntityTypeMapping TypeName="TMDTModel.PTTHANHTOAN">
+        <MappingFragment StoreEntitySet="PTTHANHTOAN">
+          <ScalarProperty Name="IDPTTHANHTOAN" ColumnName="IDPTTHANHTOAN" />
+          <ScalarProperty Name="TENPT" ColumnName="TENPT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QUANGCAOs">
+      <EntityTypeMapping TypeName="TMDTModel.QUANGCAO">
+        <MappingFragment StoreEntitySet="QUANGCAO">
+          <ScalarProperty Name="IDQUANGCAO" ColumnName="IDQUANGCAO" />
+          <ScalarProperty Name="TIEUDE" ColumnName="TIEUDE" />
+          <ScalarProperty Name="HINHANH1" ColumnName="HINHANH1" />
+          <ScalarProperty Name="HINHANH2" ColumnName="HINHANH2" />
+          <ScalarProperty Name="HINHANH3" ColumnName="HINHANH3" />
+          <ScalarProperty Name="NGAYBD" ColumnName="NGAYBD" />
+          <ScalarProperty Name="NGAYKT" ColumnName="NGAYKT" />
+          <ScalarProperty Name="IDCUAHANG" ColumnName="IDCUAHANG" />
+          <ScalarProperty Name="IDPHEDUYET" ColumnName="IDPHEDUYET" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SANPHAMs">
+      <EntityTypeMapping TypeName="TMDTModel.SANPHAM">
+        <MappingFragment StoreEntitySet="SANPHAM">
+          <ScalarProperty Name="SOLUONGTON" ColumnName="SOLUONGTON" />
+          <ScalarProperty Name="IDSANPHAM" ColumnName="IDSANPHAM" />
+          <ScalarProperty Name="TENSP" ColumnName="TENSP" />
+          <ScalarProperty Name="HINHANH1" ColumnName="HINHANH1" />
+          <ScalarProperty Name="HINHANH2" ColumnName="HINHANH2" />
+          <ScalarProperty Name="HINHANH3" ColumnName="HINHANH3" />
+          <ScalarProperty Name="MOTASANPHAM" ColumnName="MOTASANPHAM" />
+          <ScalarProperty Name="GIABAN" ColumnName="GIABAN" />
+          <ScalarProperty Name="PHANTRAMGIAM" ColumnName="PHANTRAMGIAM" />
+          <ScalarProperty Name="GIAGIAM" ColumnName="GIAGIAM" />
+          <ScalarProperty Name="NGAYTAO" ColumnName="NGAYTAO" />
+          <ScalarProperty Name="IDPHEDUYET" ColumnName="IDPHEDUYET" />
+          <ScalarProperty Name="IDCUAHANG" ColumnName="IDCUAHANG" />
+          <ScalarProperty Name="IDLOAISP" ColumnName="IDLOAISP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SHIPPERs">
+      <EntityTypeMapping TypeName="TMDTModel.SHIPPER">
+        <MappingFragment StoreEntitySet="SHIPPER">
+          <ScalarProperty Name="IDSHIPPER" ColumnName="IDSHIPPER" />
+          <ScalarProperty Name="TEN" ColumnName="TEN" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+          <ScalarProperty Name="MATKHAU" ColumnName="MATKHAU" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SIZEGIAYs">
+      <EntityTypeMapping TypeName="TMDTModel.SIZEGIAY">
+        <MappingFragment StoreEntitySet="SIZEGIAY">
+          <ScalarProperty Name="IDSIZEGIAY" ColumnName="IDSIZEGIAY" />
+          <ScalarProperty Name="SIZEG" ColumnName="SIZEG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SIZETHOITRANGs">
+      <EntityTypeMapping TypeName="TMDTModel.SIZETHOITRANG">
+        <MappingFragment StoreEntitySet="SIZETHOITRANG">
+          <ScalarProperty Name="IDSIZETT" ColumnName="IDSIZETT" />
+          <ScalarProperty Name="SIZETT" ColumnName="SIZETT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="THDIENTHOAIs">
+      <EntityTypeMapping TypeName="TMDTModel.THDIENTHOAI">
+        <MappingFragment StoreEntitySet="THDIENTHOAI">
+          <ScalarProperty Name="IDTHDIENTHOAI" ColumnName="IDTHDIENTHOAI" />
+          <ScalarProperty Name="THUONGHIEUDT" ColumnName="THUONGHIEUDT" />
+          <ScalarProperty Name="IDLOAISP" ColumnName="IDLOAISP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="THGIAYs">
+      <EntityTypeMapping TypeName="TMDTModel.THGIAY">
+        <MappingFragment StoreEntitySet="THGIAY">
+          <ScalarProperty Name="IDTHGIAY" ColumnName="IDTHGIAY" />
+          <ScalarProperty Name="THUONGHIEUG" ColumnName="THUONGHIEUG" />
+          <ScalarProperty Name="IDLOAISP" ColumnName="IDLOAISP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="THTHOITRANGs">
+      <EntityTypeMapping TypeName="TMDTModel.THTHOITRANG">
+        <MappingFragment StoreEntitySet="THTHOITRANG">
+          <ScalarProperty Name="IDTHTHOITRANG" ColumnName="IDTHTHOITRANG" />
+          <ScalarProperty Name="THUONGHIEUTT" ColumnName="THUONGHIEUTT" />
+          <ScalarProperty Name="IDLOAISP" ColumnName="IDLOAISP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TINTUCs">
+      <EntityTypeMapping TypeName="TMDTModel.TINTUC">
+        <MappingFragment StoreEntitySet="TINTUC">
+          <ScalarProperty Name="IDTINTUC" ColumnName="IDTINTUC" />
+          <ScalarProperty Name="TIEUDE" ColumnName="TIEUDE" />
+          <ScalarProperty Name="MOTA" ColumnName="MOTA" />
+          <ScalarProperty Name="HINHANH" ColumnName="HINHANH" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TRANGTHAIDHs">
+      <EntityTypeMapping TypeName="TMDTModel.TRANGTHAIDH">
+        <MappingFragment StoreEntitySet="TRANGTHAIDH">
+          <ScalarProperty Name="IDTRANGTHAIDH" ColumnName="IDTRANGTHAIDH" />
+          <ScalarProperty Name="TENTT" ColumnName="TENTT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TRANGTHAIVCs">
+      <EntityTypeMapping TypeName="TMDTModel.TRANGTHAIVC">
+        <MappingFragment StoreEntitySet="TRANGTHAIVC">
+          <ScalarProperty Name="IDTRANGTHAIVC" ColumnName="IDTRANGTHAIVC" />
+          <ScalarProperty Name="TENTRANGTHAI" ColumnName="TENTRANGTHAI" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TRANGTHAIXEMDONHANGs">
+      <EntityTypeMapping TypeName="TMDTModel.TRANGTHAIXEMDONHANG">
+        <MappingFragment StoreEntitySet="TRANGTHAIXEMDONHANG">
+          <ScalarProperty Name="IDTRANGTHAIXDH" ColumnName="IDTRANGTHAIXDH" />
+          <ScalarProperty Name="TENTRANGTHAI" ColumnName="TENTRANGTHAI" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VOUCHERs">
+      <EntityTypeMapping TypeName="TMDTModel.VOUCHER">
+        <MappingFragment StoreEntitySet="VOUCHER">
+          <ScalarProperty Name="IDVOUCHER" ColumnName="IDVOUCHER" />
+          <ScalarProperty Name="TENVC" ColumnName="TENVC" />
+          <ScalarProperty Name="NGAYBD" ColumnName="NGAYBD" />
+          <ScalarProperty Name="NGAYKT" ColumnName="NGAYKT" />
+          <ScalarProperty Name="GIATRIVC" ColumnName="GIATRIVC" />
+          <ScalarProperty Name="DIEUKIEN" ColumnName="DIEUKIEN" />
+          <ScalarProperty Name="SOLUONGSD" ColumnName="SOLUONGSD" />
+          <ScalarProperty Name="DADUNG" ColumnName="DADUNG" />
+          <ScalarProperty Name="GIATRITOITHIEU" ColumnName="GIATRITOITHIEU" />
+          <ScalarProperty Name="IDND" ColumnName="IDND" />
+          <ScalarProperty Name="IDTRANGTHAIVC" ColumnName="IDTRANGTHAIVC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VOUCHERSHOPs">
+      <EntityTypeMapping TypeName="TMDTModel.VOUCHERSHOP">
+        <MappingFragment StoreEntitySet="VOUCHERSHOP">
+          <ScalarProperty Name="IDVOUCHERSHOP" ColumnName="IDVOUCHERSHOP" />
+          <ScalarProperty Name="TENVC" ColumnName="TENVC" />
+          <ScalarProperty Name="GIAMGIA" ColumnName="GIAMGIA" />
+          <ScalarProperty Name="NGAYBD" ColumnName="NGAYBD" />
+          <ScalarProperty Name="NGAYKT" ColumnName="NGAYKT" />
+          <ScalarProperty Name="DIEUKIEN" ColumnName="DIEUKIEN" />
+          <ScalarProperty Name="SOLUONGSD" ColumnName="SOLUONGSD" />
+          <ScalarProperty Name="DADUNG" ColumnName="DADUNG" />
+          <ScalarProperty Name="GIATRITOITHIEU" ColumnName="GIATRITOITHIEU" />
+          <ScalarProperty Name="IDND" ColumnName="IDND" />
+          <ScalarProperty Name="IDCUAHANG" ColumnName="IDCUAHANG" />
+          <ScalarProperty Name="IDTRANGTHAIVC" ColumnName="IDTRANGTHAIVC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

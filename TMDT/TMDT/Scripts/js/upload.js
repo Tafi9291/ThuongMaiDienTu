@@ -1,49 +1,106 @@
-﻿const imageInput = document.getElementById('image-input');
-const previewContainer = document.querySelector('.preview-container');
-const imageCountText = document.getElementById('image-count'); // Lấy thẻ p hiển thị số đếm
+﻿//const imageInput = document.getElementById('image-input');
+//const previewContainer = document.querySelector('.preview-container');
+//const imageCountText = document.getElementById('image-count'); // Lấy thẻ p hiển thị số đếm
 
-let imageCount = 0; // Biến đếm số lượng hình ảnh đã hiển thị
+//let imageCount = 0; // Biến đếm số lượng hình ảnh đã hiển thị
 
-imageInput.addEventListener('change', () => {
-    const files = imageInput.files;
+//imageInput.addEventListener('change', () => {
+//    const files = imageInput.files;
 
-    for (let i = 0; i < files.length; i++) {
-        if (imageCount >= 3) {
-            break; // Đã hiển thị 3 hình ảnh, thoát khỏi vòng lặp
+//    for (let i = 0; i < files.length; i++) {
+//        if (imageCount >= 3) {
+//            break; // Đã hiển thị 3 hình ảnh, thoát khỏi vòng lặp
+//        }
+//        const file = files[i];
+//        if (file.type.startsWith('image/')) {
+//            const reader = new FileReader();
+//            reader.readAsDataURL(file);
+
+//            reader.onload = () => {
+//                const img = document.createElement('img');
+//                img.src = reader.result;
+//                img.className = 'preview-image-product';
+
+//                // Thêm thuộc tính 'name' vào thẻ img
+
+//                previewContainer.appendChild(img);
+
+//                imageCount++; // Tăng biến đếm sau khi thêm hình ảnh
+
+//                updateImageCountText(); // Cập nhật số đếm
+//            };
+//            //const reader = new FileReader();
+//            //reader.readAsDataURL(file);
+
+//            //reader.onload = () => {
+//            //    const img = document.createElement('img');
+//            //    img.src = reader.result;
+//            //    img.className = 'preview-image-product';
+
+//            //    // Thêm thuộc tính 'name' vào thẻ img
+//            //    if (imageCount === 0) {
+//            //        img.setAttribute('name', 'UploadImage1');
+//            //    } else if (imageCount === 1) {
+//            //        img.setAttribute('name', 'UploadImage2');
+//            //    } else if (imageCount === 2) {
+//            //        img.setAttribute('name', 'UploadImage3');
+//            //    }
+
+//            //    previewContainer.appendChild(img);
+
+//            //    imageCount++; // Tăng biến đếm sau khi thêm hình ảnh
+
+//            //    updateImageCountText(); // Cập nhật số đếm
+//            //};
+//        }
+//    }
+//});
+
+//// Hàm cập nhật số đếm trong thẻ p
+//function updateImageCountText() {
+//    imageCountText.textContent = imageCount;
+//}
+
+function ChangeImage(UploadImage, previewImg1) {
+    if (UploadImage.files && UploadImage.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $(previewImg1).attr('src', e.target.result);
         }
-        const file = files[i];
-        if (file.type.startsWith('image/')) {
-            const reader = new FileReader();
-            reader.readAsDataURL(file);
-
-            reader.onload = () => {
-                const img = document.createElement('img');
-                img.src = reader.result;
-                img.className = 'preview-image-product';
-
-                // Thêm thuộc tính 'name' vào thẻ img
-                if (imageCount === 0) {
-                    img.setAttribute('name', 'image1');
-                } else if (imageCount === 1) {
-                    img.setAttribute('name', 'image2');
-                } else if (imageCount === 2) {
-                    img.setAttribute('name', 'image3');
-                }
-
-                previewContainer.appendChild(img);
-
-                imageCount++; // Tăng biến đếm sau khi thêm hình ảnh
-
-                updateImageCountText(); // Cập nhật số đếm
-            };
-        }
+        reader.readAsDataURL(UploadImage.files[0]);
     }
-});
-
-// Hàm cập nhật số đếm trong thẻ p
-function updateImageCountText() {
-    imageCountText.textContent = imageCount;
 }
+
+function ChangeImage2(UploadImage2, previewImg2) {
+    if (UploadImage2.files && UploadImage2.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $(previewImg2).attr('src', e.target.result);
+        }
+        reader.readAsDataURL(UploadImage2.files[0]);
+    }
+}
+function ChangeImage3(UploadImage3, previewImg3) {
+    if (UploadImage3.files && UploadImage3.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $(previewImg3).attr('src', e.target.result);
+        }
+        reader.readAsDataURL(UploadImage3.files[0]);
+    }
+}
+
+//function ChangeImages(inputImages, previewImages) {
+//    for (let i = 0; i < inputImages.length; i++) {
+//        if (inputImages[i].files && inputImages[i].files[0]) {
+//            var reader = new FileReader();
+//            reader.onload = function (e) {
+//                $(previewImages[i]).attr('src', e.target.result);
+//            }
+//            reader.readAsDataURL(inputImages[i].files[0]);
+//        }
+//    }
+//}
 
 // đếm ký tự nhập vào ô input có giới hạn là 120
 const textInput = document.getElementById('text-input');
@@ -105,9 +162,9 @@ txtAreaInput.addEventListener('input', function () {
 
 
 //Ngăn chặn việc tải lại trang khi có thay đổi dữ liệu
-window.addEventListener("beforeunload", function (e) {
-    // Hiển thị thông báo xác nhận trước khi tải lại trang
-    const confirmationMessage = "Bạn có muốn tải lại trang không?";
-    e.returnValue = confirmationMessage; // Thông báo sẽ được hiển thị trong hộp thoại xác nhận trình duyệt
-    return confirmationMessage; // Thông báo sẽ được hiển thị trong một số trình duyệt cũ
-});
+//window.addEventListener("beforeunload", function (e) {
+//    // Hiển thị thông báo xác nhận trước khi tải lại trang
+//    const confirmationMessage = "Bạn có muốn tải lại trang không?";
+//    e.returnValue = confirmationMessage; // Thông báo sẽ được hiển thị trong hộp thoại xác nhận trình duyệt
+//    return confirmationMessage; // Thông báo sẽ được hiển thị trong một số trình duyệt cũ
+//});
