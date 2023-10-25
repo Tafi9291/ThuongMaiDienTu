@@ -433,7 +433,6 @@
     <Content Include="Views\NgBan\TaiKhoan.cshtml" />
     <Content Include="Views\NgMua\Detail.cshtml" />
     <Content Include="Views\Register\DangKy.cshtml" />
-    <Content Include="Views\Register\DangNhap.cshtml" />
     <Content Include="Views\Shop\Shop.cshtml" />
     <Content Include="Views\Shared\Layout-DKBan.cshtml" />
     <Content Include="Views\NgBan\DangKyNgBan.cshtml" />
@@ -441,6 +440,7 @@
     <Content Include="Views\SanPham\MauSac.cshtml" />
     <Content Include="Views\SanPham\THDienThoai.cshtml" />
     <Content Include="Views\SanPham\TaoSanPham.cshtml" />
+    <Content Include="Views\Register\DangNhap.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

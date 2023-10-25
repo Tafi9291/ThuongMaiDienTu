@@ -84,42 +84,36 @@
                             </a>
                         </li>
 
-                         @*@if (Session["Email"] == null)
+                        @if (Session["Email"] == null)
                         {
                             <li class="header__navbar-item header__navbar-item--strong">
-                                <a class="header__navbar-item-auth-link header__navbar-item-link" href="@Url.Action("Dangnhap", "DNhap")" class="nav_mobile-list-link">Đăng nhập</a>
+                                <a class="header__navbar-item-auth-link header__navbar-item-link" href="@Url.Action("DangNhap", "Register")" class="nav_mobile-list-link">Đăng nhập</a>
                                 <p style="margin: 0 5px;">|</p>
-                                <a class="header__navbar-item-auth-link header__navbar-item-link" href="@Url.Action("Dangky", "DNhap")">Đăng ký</a>
+                                <a class="header__navbar-item-auth-link header__navbar-item-link" href="@Url.Action("DangKy", "Register")">Đăng ký</a>
                             </li>
                         }
                         else
                         {
                             <li class="header__navbar-item header__navbar-user">
 
-                                <img src="@Url.Content(Session["Hinh"].ToString())" alt="" class="header__navbar-user-img" />
+                                <img src="@*@Url.Content(Session["Hinh"].ToString())*@" alt="" class="header__navbar-user-img" />
                                 <span class="header__navbar-user-name">@Session["Email"]</span>
 
                                 <ul class="header__navbar-user-menu">
                                     <div class="box-noneshow"></div>
                                     <li class="header__navbar-user-item">
-                                        <a href="@Url.Action("DetailUser","DNhap")">Tài khoản của tôi</a>
+                                        <a href="@Url.Action("DetailUser","Register")">Tài khoản của tôi</a>
                                     </li>
                                     <li class="header__navbar-user-item">
-                                        <a href="@Url.Action("LichSuDonHang","DNhap")">Đơn mua</a>
+                                        <a href="@Url.Action("LichSuDonHang","Register")">Đơn mua</a>
                                     </li>
                                     <li class="header__navbar-user-item header__navbar-user-item--separate">
-                                        <a href="@Url.Action("DangXuat", "DNhap")">Đăng xuất</a>
+                                        <a href="@Url.Action("DangXuat", "Register")">Đăng xuất</a>
                                     </li>
                                 </ul>
                             </li>
 
-                        }*@ 
-
-                        <li class="header__navbar-item header__navbar-item--strong">
-                            <a class="header__navbar-item-auth-link header__navbar-item-link" href="@Url.Action("DangNhap", "Register")" class="nav_mobile-list-link">Đăng nhập</a>
-                            <p style="margin: 0 5px;">|</p>
-                            <a class="header__navbar-item-auth-link header__navbar-item-link" href="@Url.Action("DangKy", "Register")">Đăng ký</a>
-                        </li>
+                        }
 
 
 
@@ -145,19 +139,19 @@
                     </div>
 
                     <input type="checkbox" hidden id="mobile-search-checkbox" class="header__search-checkbox">
-                     @*@using (Html.BeginForm("Search", "TrangChu", FormMethod.Get, new {@class= "header__search" }))
-                    {
-                        <div class="header__search-input-wrap">
-                            <input type="text"
-                                   class="header__search-input"
-                                   placeholder="Nhập để tìm kiếm..."
-                                   name="searching" />
-                        </div>
+                    @*@using (Html.BeginForm("Search", "TrangChu", FormMethod.Get, new {@class= "header__search" }))
+                        {
+                            <div class="header__search-input-wrap">
+                                <input type="text"
+                                       class="header__search-input"
+                                       placeholder="Nhập để tìm kiếm..."
+                                       name="searching" />
+                            </div>
 
-                        <button class="header__search-btn" type="submit">
-                            <i class="header__search-btn-icon fas fa-search"></i>
-                        </button>
-                    }*@ 
+                            <button class="header__search-btn" type="submit">
+                                <i class="header__search-btn-icon fas fa-search"></i>
+                            </button>
+                        }*@
                     <div class="header__search">
                         <div class="header__search-input-wrap">
                             <input type="text"
@@ -174,28 +168,28 @@
                     <!--Cart layout-->
                     <div class="header__cart">
                         <div class="header__cart-wrap">
-                             @*@if (Session["Cart"] != null && ((CNPMNC.Models.Cart)Session["Cart"]).Items.Count() > 0)
-                            {
-                                <a href="@Url.Action("ShowToCart", "ShoppingCart")">
+                            @*@if (Session["Cart"] != null && ((CNPMNC.Models.Cart)Session["Cart"]).Items.Count() > 0)
+                                {
+                                    <a href="@Url.Action("ShowToCart", "ShoppingCart")">
+                                        <i class="header__cart-icon fas fa-shopping-cart"></i>
+                                        @Html.Action("Giohang", "ShoppingCart")
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a href="@Url.Action("Chucohang", "ShoppingCart")">
+                                        <i class="header__cart-icon fas fa-shopping-cart"></i>
+                                        @Html.Action("Giohang", "ShoppingCart")
+                                    </a>
+                                }
+                                <a href="">
                                     <i class="header__cart-icon fas fa-shopping-cart"></i>
-                                    @Html.Action("Giohang", "ShoppingCart")
-                                </a>
-                            }
-                            else
-                            {
-                                <a href="@Url.Action("Chucohang", "ShoppingCart")">
-                                    <i class="header__cart-icon fas fa-shopping-cart"></i>
-                                    @Html.Action("Giohang", "ShoppingCart")
-                                </a>
-                            } 
-                            <a href="">
-                                <i class="header__cart-icon fas fa-shopping-cart"></i>
-                                 @Html.Action("Giohang", "ShoppingCart") 
-                            </a>*@
+                                     @Html.Action("Giohang", "ShoppingCart")
+                                </a>*@
 
                             <a href="">
-                                    <i class="header__cart-icon fas fa-shopping-cart"></i>
-                                    @*@Html.Action("Giohang", "ShoppingCart")*@
+                                <i class="header__cart-icon fas fa-shopping-cart"></i>
+                                @*@Html.Action("Giohang", "ShoppingCart")*@
                             </a>
 
                         </div>
@@ -217,8 +211,8 @@
                                                 Trang chủ
                                             </a>
                                         </li>-->
-                                         @*@Html.Action("Hang", "Trangchu")*@ 
-                                    <!--</ul>
+                @*@Html.Action("Hang", "Trangchu")*@
+                <!--</ul>
                                 </div>
 
                             </div>
