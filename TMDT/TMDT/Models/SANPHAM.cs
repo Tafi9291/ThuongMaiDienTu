@@ -19,19 +19,15 @@ namespace TMDT.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SANPHAM()
         {
-            HINHANH1 = "~/Areas/Admin/Content/img/iconanh.png";
-            HINHANH2 = "~/Areas/Admin/Content/img/iconanh.png";
-            HINHANH3 = "~/Areas/Admin/Content/img/iconanh.png";
+            //HINHANH1 = "~/Areas/Admin/Content/img/iconanh.png";
+            //HINHANH2 = "~/Areas/Admin/Content/img/iconanh.png";
+            //HINHANH3 = "~/Areas/Admin/Content/img/iconanh.png";
+            this.CTDIENTHOAIs = new HashSet<CTDIENTHOAI>();
             this.CTDONHANGs = new HashSet<CTDONHANG>();
+            this.CTGIAYs = new HashSet<CTGIAY>();
+            this.CTTHOITRANGs = new HashSet<CTTHOITRANG>();
             this.DANHGIASPs = new HashSet<DANHGIASP>();
         }
-
-        [NotMapped]
-        public HttpPostedFileBase UploadImage1 { get; set; }
-        [NotMapped]
-        public HttpPostedFileBase UploadImage2 { get; set; }
-        [NotMapped]
-        public HttpPostedFileBase UploadImage3 { get; set; }
 
         public int IDSANPHAM { get; set; }
         public string TENSP { get; set; }
@@ -47,19 +43,19 @@ namespace TMDT.Models
         public Nullable<int> IDCUAHANG { get; set; }
         public Nullable<int> IDLOAISP { get; set; }
         public Nullable<int> SOLUONGTON { get; set; }
-        public Nullable<int> IDCTDIENTHOAI { get; set; }
-        public Nullable<int> IDCTTHOITRANG { get; set; }
-        public Nullable<int> IDCTGIAY { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CTDIENTHOAI> CTDIENTHOAIs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CTDONHANG> CTDONHANGs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CTGIAY> CTGIAYs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CTTHOITRANG> CTTHOITRANGs { get; set; }
         public virtual CUAHANG CUAHANG { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DANHGIASP> DANHGIASPs { get; set; }
         public virtual LOAISP LOAISP { get; set; }
         public virtual PHEDUYET PHEDUYET { get; set; }
-        public virtual CTDIENTHOAI CTDIENTHOAI { get; set; }
-        public virtual CTGIAY CTGIAY { get; set; }
-        public virtual CTTHOITRANG CTTHOITRANG { get; set; }
     }
 }

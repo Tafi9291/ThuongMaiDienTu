@@ -32,6 +32,7 @@ namespace TMDT.Models
         public string SDT { get; set; }
         public string DIACHI { get; set; }
         public Nullable<int> IDPQND { get; set; }
+        public string HINH { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CUAHANG> CUAHANGs { get; set; }

@@ -87,16 +87,8 @@
                                                 <div class="popover-wrap">
                                                     <div class="custom-len-calc-input product-edit-form-item">
                                                         <div class="product-edit-form-item-content">
-                                                            <div class="tafi-input">
-                                                                <div class="tafi-input__inner tafi-input__inner--large">
-                                                                    <input type="text" placeholder="Nhập vào" size="large"
-                                                                           resize="none" rows="2" minrows="2" maxlength="Infinity"
-                                                                           restrictiontype="input" max="Infinity" min="-Infinity" class="tafi-input__input" id="text-input">
-                                                                    <div class="tafi-input__suffix">
-                                                                        <span class="tafi-input__suffix-split"></span>
-                                                                        <span class="tafi-input__char-count"><span id="char-count">0</span>/120</span>
-                                                                    </div>
-                                                                </div>
+                                                            <div class="tafi-input detail-info-input" style="height: 40px;">
+                                                                <span class="detail-info__name">Áo khoác mùa đông</span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -112,15 +104,8 @@
                                                 <div class="popover-wrap">
                                                     <div class="custom-len-calc-input product-edit-form-item">
                                                         <div class="product-edit-form-item-content">
-                                                            <div class="tafi-input">
-                                                                <div class="tafi-input__inner tafi-input__inner--large">
-                                                                    <select class="tafi-select" name="" id="tafi-select-categories">
-                                                                        <option value="" class="tafi-select-categories__option">Chọn ngành hàng</option>
-                                                                        <option value="dienthoai" class="tafi-select-categories__option">Điện thoại</option>
-                                                                        <option value="thoitrang" class="tafi-select-categories__option">Thời trang</option>
-                                                                        <option value="giay" class="tafi-select-categories__option">Giày</option>
-                                                                    </select>
-                                                                </div>
+                                                            <div class="tafi-input detail-info-input" style="height: 40px;">
+                                                                <span class="detail-info__name">Thời trang</span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -140,19 +125,9 @@
                                                                 <div class="custom-len-calc-input product-edit-form-item">
                                                                     <div class="product-edit-form-item-content">
                                                                         <div class="tafi-input tafi-input__area">
-                                                                            <textarea type="textarea" resize="none" rows="2"
-                                                                                      minrows="9" maxrows="26" autosize="true"
-                                                                                      maxlength="Infinity" restrictiontype="input"
-                                                                                      max="Infinity" min="-Infinity"
-                                                                                      class="tafi-input__inner tafi-input__inner--normal"
-                                                                                      id="tafi-input-area"
-                                                                                      style="resize: none; min-height: 209.6px; height: 209.6px;"
-                                                                                      spellcheck="false"></textarea>
-
-                                                                        </div>
-                                                                        <div class="text-area-label">
-                                                                            <span class="text-area-label-pre" id="text-area-pre">0</span>
-                                                                            <span>/1000</span>
+                                                                            <div class="tafi-input detail-info-input" style="height: 40px;">
+                                                                                <span class="detail-info__name">Áo khoác mùa đông</span>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -167,144 +142,28 @@
                             </div>
                         </section>
                         @* Chi tiết điện thoại *@
-                        @*<section class="product-edit__section">
-                                <div class="product-detail-panel product-specification-new">
-                                    <div class="panel-header">
-                                        <div class="panel-title"> Thông tin chi tiết </div>
-                                    </div>
-                                    <div class="panel-content-wrapper">
-                                        <div class="panel-content">
-                                            <div class="attribute-select-container-new">
-                                                <div class="attribute-select-list">
-                                                    <div class="attribute-select-list-column">
-                                                        <div class="attribute-select-item">
-                                                            <div class="edit-row">
-                                                                <div class="edit-label edit-title">
-                                                                    <span><span style="color: red;">*</span> Thương hiệu</span>
-                                                                </div>
-                                                                <div class="degrade-wrap edit-row-right-medium">
-                                                                    <div class="custom-len-calc-input product-edit-form-item">
-                                                                        <div class="product-edit-form-item-content">
-                                                                            <div class="popover-wrap">
-                                                                                <div class="tafi-input price-input product-edit-input">
-                                                                                    <div class="tafi-input__inner tafi-input__inner--large">
-                                                                                        <select class="tafi-select" name="">
-                                                                                            <option value="" class="tafi-select-categories__option">Chọn thương hiệu</option>
-                                                                                            <option value="" class="tafi-select-categories__option">Apple</option>
-                                                                                            <option value="" class="tafi-select-categories__option">SAMSUNG</option>
-                                                                                            <option value="" class="tafi-select-categories__option">OPPO</option>
-                                                                                        </select>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
+                        <section class="product-edit__section">
+                            <div class="product-detail-panel product-specification-new">
+                                <div class="panel-header">
+                                    <div class="panel-title"> Thông tin chi tiết </div>
+                                </div>
+                                <div class="panel-content-wrapper">
+                                    <div class="panel-content">
+                                        <div class="attribute-select-container-new">
+                                            <div class="attribute-select-list">
+                                                <div class="attribute-select-list-column">
+                                                    <div class="attribute-select-item">
+                                                        <div class="edit-row">
+                                                            <div class="edit-label edit-title">
+                                                                <span><span style="color: red;">*</span> Thương hiệu</span>
                                                             </div>
-                                                        </div>
-                                                        <div class="attribute-select-item">
-                                                            <div class="edit-row">
-                                                                <div class="edit-label edit-title">
-                                                                    <span><span style="color: red;">*</span> Màn hình </span>
-                                                                </div>
-                                                                <div class="degrade-wrap edit-row-right-medium">
-                                                                    <div class="custom-len-calc-input product-edit-form-item">
-                                                                        <div class="product-edit-form-item-content">
-                                                                            <div class="popover-wrap">
-                                                                                <div class="tafi-input price-input product-edit-input">
-                                                                                    <div class="tafi-input__inner tafi-input__inner--large">
-                                                                                        <input type="text" placeholder="Nhập vào" size="large"
-                                                                                               resize="none" rows="2" minrows="2" maxlength="Infinity"
-                                                                                               restrictiontype="input" max="Infinity" min="-Infinity" class="tafi-input__input" id="text-input">
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="attribute-select-item">
-                                                            <div class="edit-row">
-                                                                <div class="edit-label edit-title">
-                                                                    <span><span style="color: red;">*</span> Độ phân giải </span>
-                                                                </div>
-                                                                <div class="degrade-wrap edit-row-right-medium">
-                                                                    <div class="custom-len-calc-input product-edit-form-item">
-                                                                        <div class="product-edit-form-item-content">
-                                                                            <div class="popover-wrap">
-                                                                                <div class="tafi-input price-input product-edit-input">
-                                                                                    <div class="tafi-input__inner tafi-input__inner--large">
-                                                                                        <input type="text" placeholder="Nhập vào" size="large"
-                                                                                               resize="none" rows="2" minrows="2" maxlength="Infinity"
-                                                                                               restrictiontype="input" max="Infinity" min="-Infinity" class="tafi-input__input" id="text-input">
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="attribute-select-item">
-                                                            <div class="edit-row">
-                                                                <div class="edit-label edit-title">
-                                                                    <span><span style="color: red;">*</span> Camera </span>
-                                                                </div>
-                                                                <div class="degrade-wrap edit-row-right-medium">
-                                                                    <div class="custom-len-calc-input product-edit-form-item">
-                                                                        <div class="product-edit-form-item-content">
-                                                                            <div class="popover-wrap">
-                                                                                <div class="tafi-input price-input product-edit-input">
-                                                                                    <div class="tafi-input__inner tafi-input__inner--large">
-                                                                                        <input type="text" placeholder="Nhập vào" size="large"
-                                                                                               resize="none" rows="2" minrows="2" maxlength="Infinity"
-                                                                                               restrictiontype="input" max="Infinity" min="-Infinity" class="tafi-input__input" id="text-input">
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="attribute-select-item">
-                                                            <div class="edit-row">
-                                                                <div class="edit-label edit-title">
-                                                                    <span><span style="color: red;">*</span> Hệ điều hành </span>
-                                                                </div>
-                                                                <div class="degrade-wrap edit-row-right-medium">
-                                                                    <div class="custom-len-calc-input product-edit-form-item">
-                                                                        <div class="product-edit-form-item-content">
-                                                                            <div class="popover-wrap">
-                                                                                <div class="tafi-input price-input product-edit-input">
-                                                                                    <div class="tafi-input__inner tafi-input__inner--large">
-                                                                                        <input type="text" placeholder="Nhập vào" size="large"
-                                                                                               resize="none" rows="2" minrows="2" maxlength="Infinity"
-                                                                                               restrictiontype="input" max="Infinity" min="-Infinity" class="tafi-input__input" id="text-input">
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="attribute-select-item">
-                                                            <div class="edit-row">
-                                                                <div class="edit-label edit-title">
-                                                                    <span><span style="color: red;">*</span> Chip xử lý </span>
-                                                                </div>
-                                                                <div class="degrade-wrap edit-row-right-medium">
-                                                                    <div class="custom-len-calc-input product-edit-form-item">
-                                                                        <div class="product-edit-form-item-content">
-                                                                            <div class="popover-wrap">
-                                                                                <div class="tafi-input price-input product-edit-input">
-                                                                                    <div class="tafi-input__inner tafi-input__inner--large">
-                                                                                        <input type="text" placeholder="Nhập vào" size="large"
-                                                                                               resize="none" rows="2" minrows="2" maxlength="Infinity"
-                                                                                               restrictiontype="input" max="Infinity" min="-Infinity" class="tafi-input__input" id="text-input">
-                                                                                    </div>
+                                                            <div class="degrade-wrap edit-row-right-medium">
+                                                                <div class="custom-len-calc-input product-edit-form-item">
+                                                                    <div class="product-edit-form-item-content">
+                                                                        <div class="popover-wrap">
+                                                                            <div class="tafi-input price-input product-edit-input">
+                                                                                <div class="tafi-input detail-info-input" style="height: 40px;">
+                                                                                    <span class="detail-info__name">No Brand</span>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -313,22 +172,18 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="attribute-select-list-column">
-                                                        <div class="attribute-select-item">
-                                                            <div class="edit-row">
-                                                                <div class="edit-label edit-title">
-                                                                    <span><span style="color: red;">*</span> ROM </span>
-                                                                </div>
-                                                                <div class="degrade-wrap edit-row-right-medium">
-                                                                    <div class="custom-len-calc-input product-edit-form-item">
-                                                                        <div class="product-edit-form-item-content">
-                                                                            <div class="popover-wrap">
-                                                                                <div class="tafi-input price-input product-edit-input">
-                                                                                    <div class="tafi-input__inner tafi-input__inner--large">
-                                                                                        <input type="text" placeholder="Nhập vào" size="large"
-                                                                                               resize="none" rows="2" minrows="2" maxlength="Infinity"
-                                                                                               restrictiontype="input" max="Infinity" min="-Infinity" class="tafi-input__input" id="text-input">
-                                                                                    </div>
+                                                    <div class="attribute-select-item">
+                                                        <div class="edit-row">
+                                                            <div class="edit-label edit-title">
+                                                                <span><span style="color: red;">*</span> Màn hình </span>
+                                                            </div>
+                                                            <div class="degrade-wrap edit-row-right-medium">
+                                                                <div class="custom-len-calc-input product-edit-form-item">
+                                                                    <div class="product-edit-form-item-content">
+                                                                        <div class="popover-wrap">
+                                                                            <div class="tafi-input price-input product-edit-input">
+                                                                                <div class="tafi-input detail-info-input" style="height: 40px;">
+                                                                                    <span class="detail-info__name">Áo khoác mùa đông</span>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -336,21 +191,19 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="attribute-select-item">
-                                                            <div class="edit-row">
-                                                                <div class="edit-label edit-title">
-                                                                    <span><span style="color: red;">*</span> RAM </span>
-                                                                </div>
-                                                                <div class="degrade-wrap edit-row-right-medium">
-                                                                    <div class="custom-len-calc-input product-edit-form-item">
-                                                                        <div class="product-edit-form-item-content">
-                                                                            <div class="popover-wrap">
-                                                                                <div class="tafi-input price-input product-edit-input">
-                                                                                    <div class="tafi-input__inner tafi-input__inner--large">
-                                                                                        <input type="text" placeholder="Nhập vào" size="large"
-                                                                                               resize="none" rows="2" minrows="2" maxlength="Infinity"
-                                                                                               restrictiontype="input" max="Infinity" min="-Infinity" class="tafi-input__input" id="text-input">
-                                                                                    </div>
+                                                    </div>
+                                                    <div class="attribute-select-item">
+                                                        <div class="edit-row">
+                                                            <div class="edit-label edit-title">
+                                                                <span><span style="color: red;">*</span> Độ phân giải </span>
+                                                            </div>
+                                                            <div class="degrade-wrap edit-row-right-medium">
+                                                                <div class="custom-len-calc-input product-edit-form-item">
+                                                                    <div class="product-edit-form-item-content">
+                                                                        <div class="popover-wrap">
+                                                                            <div class="tafi-input price-input product-edit-input">
+                                                                                <div class="tafi-input detail-info-input" style="height: 40px;">
+                                                                                    <span class="detail-info__name">Áo khoác mùa đông</span>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -358,21 +211,19 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="attribute-select-item">
-                                                            <div class="edit-row">
-                                                                <div class="edit-label edit-title">
-                                                                    <span><span style="color: red;">*</span> Mạng di động </span>
-                                                                </div>
-                                                                <div class="degrade-wrap edit-row-right-medium">
-                                                                    <div class="custom-len-calc-input product-edit-form-item">
-                                                                        <div class="product-edit-form-item-content">
-                                                                            <div class="popover-wrap">
-                                                                                <div class="tafi-input price-input product-edit-input">
-                                                                                    <div class="tafi-input__inner tafi-input__inner--large">
-                                                                                        <input type="text" placeholder="Nhập vào" size="large"
-                                                                                               resize="none" rows="2" minrows="2" maxlength="Infinity"
-                                                                                               restrictiontype="input" max="Infinity" min="-Infinity" class="tafi-input__input" id="text-input">
-                                                                                    </div>
+                                                    </div>
+                                                    <div class="attribute-select-item">
+                                                        <div class="edit-row">
+                                                            <div class="edit-label edit-title">
+                                                                <span><span style="color: red;">*</span> Camera </span>
+                                                            </div>
+                                                            <div class="degrade-wrap edit-row-right-medium">
+                                                                <div class="custom-len-calc-input product-edit-form-item">
+                                                                    <div class="product-edit-form-item-content">
+                                                                        <div class="popover-wrap">
+                                                                            <div class="tafi-input price-input product-edit-input">
+                                                                                <div class="tafi-input detail-info-input" style="height: 40px;">
+                                                                                    <span class="detail-info__name">Áo khoác mùa đông</span>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -380,21 +231,19 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="attribute-select-item">
-                                                            <div class="edit-row">
-                                                                <div class="edit-label edit-title">
-                                                                    <span><span style="color: red;">*</span> Số khe sim </span>
-                                                                </div>
-                                                                <div class="degrade-wrap edit-row-right-medium">
-                                                                    <div class="custom-len-calc-input product-edit-form-item">
-                                                                        <div class="product-edit-form-item-content">
-                                                                            <div class="popover-wrap">
-                                                                                <div class="tafi-input price-input product-edit-input">
-                                                                                    <div class="tafi-input__inner tafi-input__inner--large">
-                                                                                        <input type="text" placeholder="Nhập vào" size="large"
-                                                                                               resize="none" rows="2" minrows="2" maxlength="Infinity"
-                                                                                               restrictiontype="input" max="Infinity" min="-Infinity" class="tafi-input__input" id="text-input">
-                                                                                    </div>
+                                                    </div>
+                                                    <div class="attribute-select-item">
+                                                        <div class="edit-row">
+                                                            <div class="edit-label edit-title">
+                                                                <span><span style="color: red;">*</span> Hệ điều hành </span>
+                                                            </div>
+                                                            <div class="degrade-wrap edit-row-right-medium">
+                                                                <div class="custom-len-calc-input product-edit-form-item">
+                                                                    <div class="product-edit-form-item-content">
+                                                                        <div class="popover-wrap">
+                                                                            <div class="tafi-input price-input product-edit-input">
+                                                                                <div class="tafi-input detail-info-input" style="height: 40px;">
+                                                                                    <span class="detail-info__name">Áo khoác mùa đông</span>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -402,21 +251,19 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="attribute-select-item">
-                                                            <div class="edit-row">
-                                                                <div class="edit-label edit-title">
-                                                                    <span><span style="color: red;">*</span> Dung lượng pin </span>
-                                                                </div>
-                                                                <div class="degrade-wrap edit-row-right-medium">
-                                                                    <div class="custom-len-calc-input product-edit-form-item">
-                                                                        <div class="product-edit-form-item-content">
-                                                                            <div class="popover-wrap">
-                                                                                <div class="tafi-input price-input product-edit-input">
-                                                                                    <div class="tafi-input__inner tafi-input__inner--large">
-                                                                                        <input type="text" placeholder="Nhập vào" size="large"
-                                                                                               resize="none" rows="2" minrows="2" maxlength="Infinity"
-                                                                                               restrictiontype="input" max="Infinity" min="-Infinity" class="tafi-input__input" id="text-input">
-                                                                                    </div>
+                                                    </div>
+                                                    <div class="attribute-select-item">
+                                                        <div class="edit-row">
+                                                            <div class="edit-label edit-title">
+                                                                <span><span style="color: red;">*</span> Chip xử lý </span>
+                                                            </div>
+                                                            <div class="degrade-wrap edit-row-right-medium">
+                                                                <div class="custom-len-calc-input product-edit-form-item">
+                                                                    <div class="product-edit-form-item-content">
+                                                                        <div class="popover-wrap">
+                                                                            <div class="tafi-input price-input product-edit-input">
+                                                                                <div class="tafi-input detail-info-input" style="height: 40px;">
+                                                                                    <span class="detail-info__name">Áo khoác mùa đông</span>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -424,24 +271,121 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="attribute-select-item">
-                                                            <div class="edit-row">
-                                                                <div class="edit-label edit-title">
-                                                                    <span><span style="color: red;">*</span> Màu sắc </span>
+                                                    </div>
+                                                </div>
+                                                <div class="attribute-select-list-column">
+                                                    <div class="attribute-select-item">
+                                                        <div class="edit-row">
+                                                            <div class="edit-label edit-title">
+                                                                <span><span style="color: red;">*</span> ROM </span>
+                                                            </div>
+                                                            <div class="degrade-wrap edit-row-right-medium">
+                                                                <div class="custom-len-calc-input product-edit-form-item">
+                                                                    <div class="product-edit-form-item-content">
+                                                                        <div class="popover-wrap">
+                                                                            <div class="tafi-input price-input product-edit-input">
+                                                                                <div class="tafi-input detail-info-input" style="height: 40px;">
+                                                                                    <span class="detail-info__name">Áo khoác mùa đông</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="degrade-wrap edit-row-right-medium">
-                                                                    <div class="custom-len-calc-input product-edit-form-item">
-                                                                        <div class="product-edit-form-item-content">
-                                                                            <div class="popover-wrap">
-                                                                                <div class="tafi-input price-input product-edit-input">
-                                                                                    <div class="tafi-input__inner tafi-input__inner--large">
-                                                                                        <select class="tafi-select" name="">
-                                                                                            <option value="" class="tafi-select-categories__option">Chọn màu</option>
-                                                                                            <option value="" class="tafi-select-categories__option">Màu đỏ</option>
-                                                                                            <option value="" class="tafi-select-categories__option">Màu vàng</option>
-                                                                                            <option value="" class="tafi-select-categories__option">Màu đen</option>
-                                                                                        </select>
-                                                                                    </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="attribute-select-item">
+                                                        <div class="edit-row">
+                                                            <div class="edit-label edit-title">
+                                                                <span><span style="color: red;">*</span> RAM </span>
+                                                            </div>
+                                                            <div class="degrade-wrap edit-row-right-medium">
+                                                                <div class="custom-len-calc-input product-edit-form-item">
+                                                                    <div class="product-edit-form-item-content">
+                                                                        <div class="popover-wrap">
+                                                                            <div class="tafi-input price-input product-edit-input">
+                                                                                <div class="tafi-input detail-info-input" style="height: 40px;">
+                                                                                    <span class="detail-info__name">Áo khoác mùa đông</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="attribute-select-item">
+                                                        <div class="edit-row">
+                                                            <div class="edit-label edit-title">
+                                                                <span><span style="color: red;">*</span> Mạng di động </span>
+                                                            </div>
+                                                            <div class="degrade-wrap edit-row-right-medium">
+                                                                <div class="custom-len-calc-input product-edit-form-item">
+                                                                    <div class="product-edit-form-item-content">
+                                                                        <div class="popover-wrap">
+                                                                            <div class="tafi-input price-input product-edit-input">
+                                                                                <div class="tafi-input detail-info-input" style="height: 40px;">
+                                                                                    <span class="detail-info__name">Áo khoác mùa đông</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="attribute-select-item">
+                                                        <div class="edit-row">
+                                                            <div class="edit-label edit-title">
+                                                                <span><span style="color: red;">*</span> Số khe sim </span>
+                                                            </div>
+                                                            <div class="degrade-wrap edit-row-right-medium">
+                                                                <div class="custom-len-calc-input product-edit-form-item">
+                                                                    <div class="product-edit-form-item-content">
+                                                                        <div class="popover-wrap">
+                                                                            <div class="tafi-input price-input product-edit-input">
+                                                                                <div class="tafi-input detail-info-input" style="height: 40px;">
+                                                                                    <span class="detail-info__name">Áo khoác mùa đông</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="attribute-select-item">
+                                                        <div class="edit-row">
+                                                            <div class="edit-label edit-title">
+                                                                <span><span style="color: red;">*</span> Dung lượng pin </span>
+                                                            </div>
+                                                            <div class="degrade-wrap edit-row-right-medium">
+                                                                <div class="custom-len-calc-input product-edit-form-item">
+                                                                    <div class="product-edit-form-item-content">
+                                                                        <div class="popover-wrap">
+                                                                            <div class="tafi-input price-input product-edit-input">
+                                                                                <div class="tafi-input detail-info-input" style="height: 40px;">
+                                                                                    <span class="detail-info__name">Áo khoác mùa đông</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="attribute-select-item">
+                                                        <div class="edit-row">
+                                                            <div class="edit-label edit-title">
+                                                                <span><span style="color: red;">*</span> Màu sắc </span>
+                                                            </div>
+                                                            <div class="degrade-wrap edit-row-right-medium">
+                                                                <div class="custom-len-calc-input product-edit-form-item">
+                                                                    <div class="product-edit-form-item-content">
+                                                                        <div class="popover-wrap">
+                                                                            <div class="tafi-input price-input product-edit-input">
+                                                                                <div class="tafi-input detail-info-input" style="height: 40px;">
+                                                                                    <span class="detail-info__name">Áo khoác mùa đông</span>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -455,36 +399,31 @@
                                         </div>
                                     </div>
                                 </div>
-                            </section>*@
+                            </div>
+                        </section>
                         @* Chi tiết thời trang *@
-                        @*<section class="product-edit__section">
-                                <div class="product-detail-panel product-specification-new">
-                                    <div class="panel-header">
-                                        <div class="panel-title"> Thông tin chi tiết </div>
-                                    </div>
-                                    <div class="panel-content-wrapper">
-                                        <div class="panel-content">
-                                            <div class="attribute-select-container-new">
-                                                <div class="attribute-select-list">
-                                                    <div class="attribute-select-list-column">
-                                                        <div class="attribute-select-item">
-                                                            <div class="edit-row">
-                                                                <div class="edit-label edit-title">
-                                                                    <span><span style="color: red;">*</span> Thương hiệu</span>
-                                                                </div>
-                                                                <div class="degrade-wrap edit-row-right-medium">
-                                                                    <div class="custom-len-calc-input product-edit-form-item">
-                                                                        <div class="product-edit-form-item-content">
-                                                                            <div class="popover-wrap">
-                                                                                <div class="tafi-input price-input product-edit-input">
-                                                                                    <div class="tafi-input__inner tafi-input__inner--large">
-                                                                                        <select class="tafi-select" name="">
-                                                                                            <option value="" class="tafi-select-categories__option">Chọn thương hiệu</option>
-                                                                                            <option value="" class="tafi-select-categories__option">Apple</option>
-                                                                                            <option value="" class="tafi-select-categories__option">SAMSUNG</option>
-                                                                                            <option value="" class="tafi-select-categories__option">OPPO</option>
-                                                                                        </select>
-                                                                                    </div>
+                        <section class="product-edit__section">
+                            <div class="product-detail-panel product-specification-new">
+                                <div class="panel-header">
+                                    <div class="panel-title"> Thông tin chi tiết </div>
+                                </div>
+                                <div class="panel-content-wrapper">
+                                    <div class="panel-content">
+                                        <div class="attribute-select-container-new">
+                                            <div class="attribute-select-list">
+                                                <div class="attribute-select-list-column">
+                                                    <div class="attribute-select-item">
+                                                        <div class="edit-row">
+                                                            <div class="edit-label edit-title">
+                                                                <span><span style="color: red;">*</span> Thương hiệu</span>
+                                                            </div>
+                                                            <div class="degrade-wrap edit-row-right-medium">
+                                                                <div class="custom-len-calc-input product-edit-form-item">
+                                                                    <div class="product-edit-form-item-content">
+                                                                        <div class="popover-wrap">
+                                                                            <div class="tafi-input price-input product-edit-input">
+                                                                                <div class="tafi-input detail-info-input" style="height: 40px;">
+                                                                                    <span class="detail-info__name">Áo khoác mùa đông</span>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -492,21 +431,19 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="attribute-select-item">
-                                                            <div class="edit-row">
-                                                                <div class="edit-label edit-title">
-                                                                    <span><span style="color: red;">*</span> Chất liệu </span>
-                                                                </div>
-                                                                <div class="degrade-wrap edit-row-right-medium">
-                                                                    <div class="custom-len-calc-input product-edit-form-item">
-                                                                        <div class="product-edit-form-item-content">
-                                                                            <div class="popover-wrap">
-                                                                                <div class="tafi-input price-input product-edit-input">
-                                                                                    <div class="tafi-input__inner tafi-input__inner--large">
-                                                                                        <input type="text" placeholder="Nhập vào" size="large"
-                                                                                               resize="none" rows="2" minrows="2" maxlength="Infinity"
-                                                                                               restrictiontype="input" max="Infinity" min="-Infinity" class="tafi-input__input" id="text-input">
-                                                                                    </div>
+                                                    </div>
+                                                    <div class="attribute-select-item">
+                                                        <div class="edit-row">
+                                                            <div class="edit-label edit-title">
+                                                                <span><span style="color: red;">*</span> Chất liệu </span>
+                                                            </div>
+                                                            <div class="degrade-wrap edit-row-right-medium">
+                                                                <div class="custom-len-calc-input product-edit-form-item">
+                                                                    <div class="product-edit-form-item-content">
+                                                                        <div class="popover-wrap">
+                                                                            <div class="tafi-input price-input product-edit-input">
+                                                                                <div class="tafi-input detail-info-input" style="height: 40px;">
+                                                                                    <span class="detail-info__name">Áo khoác mùa đông</span>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -514,21 +451,19 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="attribute-select-item">
-                                                            <div class="edit-row">
-                                                                <div class="edit-label edit-title">
-                                                                    <span><span style="color: red;">*</span> Size </span>
-                                                                </div>
-                                                                <div class="degrade-wrap edit-row-right-medium">
-                                                                    <div class="custom-len-calc-input product-edit-form-item">
-                                                                        <div class="product-edit-form-item-content">
-                                                                            <div class="popover-wrap">
-                                                                                <div class="tafi-input price-input product-edit-input">
-                                                                                    <div class="tafi-input__inner tafi-input__inner--large">
-                                                                                        <input type="text" placeholder="Nhập vào" size="large"
-                                                                                               resize="none" rows="2" minrows="2" maxlength="Infinity"
-                                                                                               restrictiontype="input" max="Infinity" min="-Infinity" class="tafi-input__input" id="text-input">
-                                                                                    </div>
+                                                    </div>
+                                                    <div class="attribute-select-item">
+                                                        <div class="edit-row">
+                                                            <div class="edit-label edit-title">
+                                                                <span><span style="color: red;">*</span> Size </span>
+                                                            </div>
+                                                            <div class="degrade-wrap edit-row-right-medium">
+                                                                <div class="custom-len-calc-input product-edit-form-item">
+                                                                    <div class="product-edit-form-item-content">
+                                                                        <div class="popover-wrap">
+                                                                            <div class="tafi-input price-input product-edit-input">
+                                                                                <div class="tafi-input detail-info-input" style="height: 40px;">
+                                                                                    <span class="detail-info__name">Áo khoác mùa đông</span>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -536,24 +471,19 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="attribute-select-item">
-                                                            <div class="edit-row">
-                                                                <div class="edit-label edit-title">
-                                                                    <span><span style="color: red;">*</span> Màu sắc </span>
-                                                                </div>
-                                                                <div class="degrade-wrap edit-row-right-medium">
-                                                                    <div class="custom-len-calc-input product-edit-form-item">
-                                                                        <div class="product-edit-form-item-content">
-                                                                            <div class="popover-wrap">
-                                                                                <div class="tafi-input price-input product-edit-input">
-                                                                                    <div class="tafi-input__inner tafi-input__inner--large">
-                                                                                        <select class="tafi-select" name="">
-                                                                                            <option value="" class="tafi-select-categories__option">Chọn màu</option>
-                                                                                            <option value="" class="tafi-select-categories__option">Màu đỏ</option>
-                                                                                            <option value="" class="tafi-select-categories__option">Màu vàng</option>
-                                                                                            <option value="" class="tafi-select-categories__option">Màu đen</option>
-                                                                                        </select>
-                                                                                    </div>
+                                                    </div>
+                                                    <div class="attribute-select-item">
+                                                        <div class="edit-row">
+                                                            <div class="edit-label edit-title">
+                                                                <span><span style="color: red;">*</span> Màu sắc </span>
+                                                            </div>
+                                                            <div class="degrade-wrap edit-row-right-medium">
+                                                                <div class="custom-len-calc-input product-edit-form-item">
+                                                                    <div class="product-edit-form-item-content">
+                                                                        <div class="popover-wrap">
+                                                                            <div class="tafi-input price-input product-edit-input">
+                                                                                <div class="tafi-input detail-info-input" style="height: 40px;">
+                                                                                    <span class="detail-info__name">Áo khoác mùa đông</span>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -567,36 +497,31 @@
                                         </div>
                                     </div>
                                 </div>
-                            </section>*@
+                            </div>
+                        </section>
                         @* Chi tiết giày *@
-                        @*<section class="product-edit__section">
-                                <div class="product-detail-panel product-specification-new">
-                                    <div class="panel-header">
-                                        <div class="panel-title"> Thông tin chi tiết </div>
-                                    </div>
-                                    <div class="panel-content-wrapper">
-                                        <div class="panel-content">
-                                            <div class="attribute-select-container-new">
-                                                <div class="attribute-select-list">
-                                                    <div class="attribute-select-list-column">
-                                                        <div class="attribute-select-item">
-                                                            <div class="edit-row">
-                                                                <div class="edit-label edit-title">
-                                                                    <span><span style="color: red;">*</span> Thương hiệu</span>
-                                                                </div>
-                                                                <div class="degrade-wrap edit-row-right-medium">
-                                                                    <div class="custom-len-calc-input product-edit-form-item">
-                                                                        <div class="product-edit-form-item-content">
-                                                                            <div class="popover-wrap">
-                                                                                <div class="tafi-input price-input product-edit-input">
-                                                                                    <div class="tafi-input__inner tafi-input__inner--large">
-                                                                                        <select class="tafi-select" name="">
-                                                                                            <option value="" class="tafi-select-categories__option">Chọn thương hiệu</option>
-                                                                                            <option value="" class="tafi-select-categories__option">Apple</option>
-                                                                                            <option value="" class="tafi-select-categories__option">SAMSUNG</option>
-                                                                                            <option value="" class="tafi-select-categories__option">OPPO</option>
-                                                                                        </select>
-                                                                                    </div>
+                        <section class="product-edit__section">
+                            <div class="product-detail-panel product-specification-new">
+                                <div class="panel-header">
+                                    <div class="panel-title"> Thông tin chi tiết </div>
+                                </div>
+                                <div class="panel-content-wrapper">
+                                    <div class="panel-content">
+                                        <div class="attribute-select-container-new">
+                                            <div class="attribute-select-list">
+                                                <div class="attribute-select-list-column">
+                                                    <div class="attribute-select-item">
+                                                        <div class="edit-row">
+                                                            <div class="edit-label edit-title">
+                                                                <span><span style="color: red;">*</span> Thương hiệu</span>
+                                                            </div>
+                                                            <div class="degrade-wrap edit-row-right-medium">
+                                                                <div class="custom-len-calc-input product-edit-form-item">
+                                                                    <div class="product-edit-form-item-content">
+                                                                        <div class="popover-wrap">
+                                                                            <div class="tafi-input price-input product-edit-input">
+                                                                                <div class="tafi-input detail-info-input" style="height: 40px;">
+                                                                                    <span class="detail-info__name">Áo khoác mùa đông</span>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -604,21 +529,19 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="attribute-select-item">
-                                                            <div class="edit-row">
-                                                                <div class="edit-label edit-title">
-                                                                    <span><span style="color: red;">*</span> Size giày </span>
-                                                                </div>
-                                                                <div class="degrade-wrap edit-row-right-medium">
-                                                                    <div class="custom-len-calc-input product-edit-form-item">
-                                                                        <div class="product-edit-form-item-content">
-                                                                            <div class="popover-wrap">
-                                                                                <div class="tafi-input price-input product-edit-input">
-                                                                                    <div class="tafi-input__inner tafi-input__inner--large">
-                                                                                        <input type="text" placeholder="Nhập vào" size="large"
-                                                                                               resize="none" rows="2" minrows="2" maxlength="Infinity"
-                                                                                               restrictiontype="input" max="Infinity" min="-Infinity" class="tafi-input__input" id="text-input">
-                                                                                    </div>
+                                                    </div>
+                                                    <div class="attribute-select-item">
+                                                        <div class="edit-row">
+                                                            <div class="edit-label edit-title">
+                                                                <span><span style="color: red;">*</span> Size giày </span>
+                                                            </div>
+                                                            <div class="degrade-wrap edit-row-right-medium">
+                                                                <div class="custom-len-calc-input product-edit-form-item">
+                                                                    <div class="product-edit-form-item-content">
+                                                                        <div class="popover-wrap">
+                                                                            <div class="tafi-input price-input product-edit-input">
+                                                                                <div class="tafi-input detail-info-input" style="height: 40px;">
+                                                                                    <span class="detail-info__name">Áo khoác mùa đông</span>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -632,61 +555,72 @@
                                         </div>
                                     </div>
                                 </div>
-                            </section>*@
+                            </div>
+                        </section>
                         <section class="product-edit__section">
                             <div class="product-detail-panel product-sales-info inactive">
                                 <div class="panel-header">
                                     <div class="panel-title inactive" id="panel-title"> Thông tin bán hàng </div>
                                 </div>
                                 <div class="panel-content-wrapper" id="panel-content-price">
-                                    <div class="panel-inactive-content"> Có thể điều chỉnh sau khi chọn ngành hàng </div>
+                                    @*<div class="panel-inactive-content"> Có thể điều chỉnh sau khi chọn ngành hàng </div>*@
                                     @* Thêm thông tin bán hàng bằng js *@
-                                    @*<div class="panel-content">
-                                            <div class="edit-row">
-                                                <div class="edit-row-left edit-label">
-                                                    <span><span style="color: red;">*</span> Giá</span>
-                                                </div>
-                                                <div class="degrade-wrap edit-row-right-medium">
-                                                    <div class="custom-len-calc-input product-edit-form-item">
-                                                        <div class="product-edit-form-item-content">
-                                                            <div class="popover-wrap">
-                                                                <div class="tafi-input price-input product-edit-input">
-                                                                    <div class="tafi-input__inner tafi-input__inner--large">
-                                                                        <div class="tafi-input__prefix">
-                                                                            đ
-                                                                            <span class="tafi-input__prefix-split"></span>
-                                                                        </div>
-                                                                        <input type="text" placeholder="Nhập vào" size="large"
-                                                                               resize="none" rows="2" minrows="2" maxlength="Infinity"
-                                                                               restrictiontype="input" max="Infinity" min="-Infinity" class="tafi-input__input" id="text-input">
-                                                                    </div>
+                                    <div class="panel-content">
+                                        <div class="edit-row">
+                                            <div class="edit-row-left edit-label">
+                                                <span><span style="color: red;">*</span> Giá</span>
+                                            </div>
+                                            <div class="degrade-wrap edit-row-right-medium">
+                                                <div class="custom-len-calc-input product-edit-form-item">
+                                                    <div class="product-edit-form-item-content">
+                                                        <div class="popover-wrap">
+                                                            <div class="tafi-input price-input product-edit-input">
+                                                                <div class="tafi-input detail-info-input" style="height: 40px;">
+                                                                    <span class="detail-info__name">22,000,000đ</span>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="edit-row">
-                                                <div class="edit-row-left edit-label">
-                                                    <span><span style="color: red;">*</span> Số lượng tồn</span>
-                                                </div>
-                                                <div class="degrade-wrap edit-row-right-medium">
-                                                    <div class="custom-len-calc-input product-edit-form-item">
-                                                        <div class="product-edit-form-item-content">
-                                                            <div class="popover-wrap">
-                                                                <div class="tafi-input price-input product-edit-input">
-                                                                    <div class="tafi-input__inner tafi-input__inner--large">
-                                                                        <input type="text" placeholder="Nhập vào" size="large"
-                                                                               resize="none" rows="2" minrows="2" maxlength="Infinity"
-                                                                               restrictiontype="input" max="Infinity" min="-Infinity" class="tafi-input__input" id="text-input">
-                                                                    </div>
+                                        </div>
+                                        <div class="edit-row">
+                                            <div class="edit-row-left edit-label">
+                                                <span><span style="color: red;">*</span> Phần trăm giảm</span>
+                                            </div>
+                                            <div class="degrade-wrap edit-row-right-medium">
+                                                <div class="custom-len-calc-input product-edit-form-item">
+                                                    <div class="product-edit-form-item-content">
+                                                        <div class="popover-wrap">
+                                                            <div class="tafi-input price-input product-edit-input">
+                                                                <div class="tafi-input detail-info-input" style="height: 40px;">
+                                                                    <span class="detail-info__name">22%</span>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>*@
+                                        </div>
+                                        <div class="edit-row">
+                                            <div class="edit-row-left edit-label">
+                                                <span><span style="color: red;">*</span> Số lượng tồn</span>
+                                            </div>
+                                            <div class="degrade-wrap edit-row-right-medium">
+                                                <div class="custom-len-calc-input product-edit-form-item">
+                                                    <div class="product-edit-form-item-content">
+                                                        <div class="popover-wrap">
+                                                            <div class="tafi-input price-input product-edit-input">
+                                                                <div class="tafi-input detail-info-input" style="height: 40px;">
+                                                                    <span class="detail-info__name">20</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </section>

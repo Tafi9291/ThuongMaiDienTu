@@ -1,0 +1,75 @@
+﻿@model TMDT.Models.NGUOIDUNG
+
+@{
+    ViewBag.Title = "DangNhapNgBan";
+    Layout = "~/Views/Shared/Layout-DNKenhNgBan.cshtml";
+}
+
+<div class="app-login" style=" background-image: linear-gradient(90deg, #565356 5%, #0d0b0e 100%);">
+
+    <div class="background-left col l-6" style="position: relative;">
+        <div class="background-title-content">Bán hàng chuyên nghiệp</div>
+        <img src="~/Content/img-slider/background-login.png" alt="" />
+    </div>
+
+    <div class="main col l-6">
+        @*@using (Html.BeginForm("Dangnhap", "Dangnhap", FormMethod.Post, new { @action = "", @method = "POST", @class = "form", @id = "form-2", role = "form" }))
+            {
+                <h3 class="heading">Đăng nhập</h3>
+                <p class="desc"></p>
+
+                <div class="spacer"></div>
+
+                <div class="form-group">
+                    <label for="email" class="form-label">Tên đăng nhập</label>
+                    <input type="text" name="email" id="email" class="form-control" placeholder="VD: email@domain.com" />
+
+                    <span class="form-message"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="form-label">Mật khẩu</label>
+                    <input type="password" name="password" id="password" class="form-control" placeholder="Nhập mật khẩu" />
+                    <span class="form-message"></span>
+                </div>
+                <p style="color:red;text-align:center">
+                    @if (ViewBag.error != null)
+                    {@ViewBag.error}
+                </p>
+
+                <button type="submit" class="form-submit">Đăng nhập</button>
+                <div class="form-group">
+                    <a href="#" class="form-register">Quên mật khẩu?</a>
+                </div>
+            }*@
+        <from class="form" id="form-2" style="margin-top: 0;">
+            <h3 class="heading">Đăng nhập</h3>
+            <p class="desc"></p>
+
+            <div class="spacer"></div>
+
+            <div class="form-group">
+                <label for="email" class="form-label">Email của bạn</label>
+                <input type="text" name="email" id="email" class="form-control" placeholder="VD: email@domain.com" />
+
+                <span class="form-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="password" class="form-label">Mật khẩu</label>
+                <input type="password" name="password" id="password" class="form-control" placeholder="Nhập mật khẩu" />
+                <span class="form-message"></span>
+            </div>
+            <p style="color:red;text-align:center">
+                @if (ViewBag.error != null)
+                {@ViewBag.error}
+            </p>
+
+            <button type="submit" class="form-submit" style="background-image: linear-gradient(90deg, #ffce3e91 5%, #ffce3e 100%); color: black; font-weight: 600;">Đăng nhập</button>
+            <div class="form-group">
+                <a href="#" class="form-register">Quên mật khẩu?</a>
+            </div>
+        </from>
+    </div>
+</div>
+

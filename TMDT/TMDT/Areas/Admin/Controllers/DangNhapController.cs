@@ -13,5 +13,11 @@ namespace TMDT.Areas.Admin.Controllers
         {
             return View();
         }
+
+        // GET: Admin/TaiKhoan
+        public ActionResult TaiKhoan()
+        {
+            return View();
+        }
     }
 }

@@ -1,4 +1,4 @@
-﻿@model TMDT.Models.SANPHAM
+﻿@model TMDT.Models.ViewModelSanPham
 
 @{
     ViewBag.Title = "TaoSanPham";
@@ -56,7 +56,7 @@
                                                                 </div>
                                                                 <div class="preview-container">
                                                                     @* Import Images of Products *@
-                                                                    <img src="@Url.Content(Model.HINHANH1)" alt="Alternate Text" id="previewImg1" class="preview-image-product" />
+                                                                    <img src="@Url.Content(Model.SANPHAM.HINHANH1)" alt="Alternate Text" id="previewImg1" class="preview-image-product" />
                                                                     @*@Html.ValidationMessageFor(model => model.HINHANH1, "", new { @class = "text-danger" })*@
                                                                 </div>
 
@@ -71,7 +71,7 @@
                                                                 </div>
                                                                 <div class="preview-container">
                                                                     @* Import Images of Products *@
-                                                                    <img src="@Url.Content(Model.HINHANH2)" alt="Alternate Text" id="previewImg2" class="preview-image-product" />
+                                                                    <img src="@Url.Content(Model.SANPHAM.HINHANH2)" alt="Alternate Text" id="previewImg2" class="preview-image-product" />
                                                                     @*@Html.ValidationMessageFor(model => model.HINHANH2, "", new { @class = "text-danger" })*@
                                                                 </div>
 
@@ -86,7 +86,7 @@
                                                                 </div>
                                                                 <div class="preview-container">
                                                                     @* Import Images of Products *@
-                                                                    <img src="@Url.Content(Model.HINHANH3)" alt="Alternate Text" id="previewImg3" class="preview-image-product" />
+                                                                    <img src="@Url.Content(Model.SANPHAM.HINHANH3)" alt="Alternate Text" id="previewImg3" class="preview-image-product" />
 
                                                                     @*@Html.ValidationMessageFor(model => model.HINHANH3, "", new { @class = "text-danger" })*@
                                                                 </div>
@@ -106,7 +106,7 @@
                                                             <div class="product-edit-form-item-content">
                                                                 <div class="tafi-input">
                                                                     <div class="tafi-input__inner tafi-input__inner--large">
-                                                                        @Html.EditorFor(model => model.TENSP, new
+                                                                        @Html.EditorFor(model => model.SANPHAM.TENSP, new
                                                                         {
                                                                             htmlAttributes = new
                                                                             {
@@ -178,7 +178,7 @@
                                                                     <div class="custom-len-calc-input product-edit-form-item">
                                                                         <div class="product-edit-form-item-content">
                                                                             <div class="tafi-input tafi-input__area">
-                                                                                @Html.TextAreaFor(model => model.MOTASANPHAM, new
+                                                                                @Html.TextAreaFor(model => model.SANPHAM.MOTASANPHAM, new
                                                                                 {
                                                                                     @class = "tafi-input__inner tafi-input__inner--normal",
                                                                                     @type = "textarea",
@@ -917,7 +917,7 @@
                                                                             đ
                                                                             <span class="tafi-input__prefix-split"></span>
                                                                         </div>
-                                                                        @Html.EditorFor(model => model.GIABAN, new
+                                                                        @Html.EditorFor(model => model.SANPHAM.GIABAN, new
                                                                         {
                                                                             htmlAttributes = new
                                                                             {
@@ -965,7 +965,7 @@
                                                                             đ
                                                                             <span class="tafi-input__prefix-split"></span>
                                                                         </div>
-                                                                        @Html.EditorFor(model => model.PHANTRAMGIAM, new
+                                                                        @Html.EditorFor(model => model.SANPHAM.PHANTRAMGIAM, new
                                                                         {
                                                                             htmlAttributes = new
                                                                             {
@@ -1009,7 +1009,7 @@
                                                             <div class="popover-wrap">
                                                                 <div class="tafi-input price-input product-edit-input">
                                                                     <div class="tafi-input__inner tafi-input__inner--large">
-                                                                        @Html.EditorFor(model => model.SOLUONGTON, new
+                                                                        @Html.EditorFor(model => model.SANPHAM.SOLUONGTON, new
                                                                         {
                                                                             htmlAttributes = new
                                                                             {
@@ -1068,7 +1068,8 @@
     </div>
 </div>
 
-<script>$(document).ready(function () {
+<script>
+$(document).ready(function () {
 
         const panelTitle = $('#panel-title');
         const panelInactiveContent = $('.panel-inactive-content');
@@ -1135,5 +1136,4 @@
             }
         });
     });</script>
-
 

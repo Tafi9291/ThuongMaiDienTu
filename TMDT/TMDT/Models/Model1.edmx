@@ -15,6 +15,7 @@
           <Property Name="EMAIL" Type="char" MaxLength="100" />
           <Property Name="MATKHAU" Type="char" MaxLength="20" />
           <Property Name="IDCHUCVU" Type="int" />
+          <Property Name="HINHANH" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="CHUCVU">
           <Key>
@@ -41,6 +42,7 @@
           <Property Name="IDLOAISP" Type="int" />
           <Property Name="IDTHDIENTHOAI" Type="int" />
           <Property Name="IDMAUSAC" Type="int" />
+          <Property Name="IDSANPHAM" Type="int" />
         </EntityType>
         <EntityType Name="CTDONHANG">
           <Key>
@@ -62,6 +64,7 @@
           <Property Name="IDSIZEGIAY" Type="int" />
           <Property Name="IDTHGIAY" Type="int" />
           <Property Name="IDMAUSAC" Type="int" />
+          <Property Name="IDSANPHAM" Type="int" />
         </EntityType>
         <EntityType Name="CTTHOITRANG">
           <Key>
@@ -73,6 +76,7 @@
           <Property Name="IDTHTHOITRANG" Type="int" />
           <Property Name="IDSIZETT" Type="int" />
           <Property Name="IDMAUSAC" Type="int" />
+          <Property Name="IDSANPHAM" Type="int" />
         </EntityType>
         <EntityType Name="CUAHANG">
           <Key>
@@ -138,6 +142,7 @@
           <Property Name="SDT" Type="char" MaxLength="11" />
           <Property Name="DIACHI" Type="nvarchar" MaxLength="100" />
           <Property Name="IDPQND" Type="int" />
+          <Property Name="HINH" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="PHEDUYET">
           <Key>
@@ -192,9 +197,6 @@
           <Property Name="IDCUAHANG" Type="int" />
           <Property Name="IDLOAISP" Type="int" />
           <Property Name="SOLUONGTON" Type="int" />
-          <Property Name="IDCTDIENTHOAI" Type="int" />
-          <Property Name="IDCTTHOITRANG" Type="int" />
-          <Property Name="IDCTGIAY" Type="int" />
         </EntityType>
         <EntityType Name="SHIPPER">
           <Key>
@@ -344,6 +346,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__CTDIENTHO__IDSAN__17036CC0">
+          <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="0..1" />
+          <End Role="CTDIENTHOAI" Type="Self.CTDIENTHOAI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SANPHAM">
+              <PropertyRef Name="IDSANPHAM" />
+            </Principal>
+            <Dependent Role="CTDIENTHOAI">
+              <PropertyRef Name="IDSANPHAM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__CTDIENTHO__IDTHD__571DF1D5">
           <End Role="THDIENTHOAI" Type="Self.THDIENTHOAI" Multiplicity="0..1" />
           <End Role="CTDIENTHOAI" Type="Self.CTDIENTHOAI" Multiplicity="*" />
@@ -404,6 +418,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__CTGIAY__IDSANPHA__160F4887">
+          <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="0..1" />
+          <End Role="CTGIAY" Type="Self.CTGIAY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SANPHAM">
+              <PropertyRef Name="IDSANPHAM" />
+            </Principal>
+            <Dependent Role="CTGIAY">
+              <PropertyRef Name="IDSANPHAM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__CTGIAY__IDSIZEGI__619B8048">
           <End Role="SIZEGIAY" Type="Self.SIZEGIAY" Multiplicity="0..1" />
           <End Role="CTGIAY" Type="Self.CTGIAY" Multiplicity="*" />
@@ -449,6 +475,18 @@
             </Principal>
             <Dependent Role="CTTHOITRANG">
               <PropertyRef Name="IDMAUSAC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CTTHOITRA__IDSAN__151B244E">
+          <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="0..1" />
+          <End Role="CTTHOITRANG" Type="Self.CTTHOITRANG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SANPHAM">
+              <PropertyRef Name="IDSANPHAM" />
+            </Principal>
+            <Dependent Role="CTTHOITRANG">
+              <PropertyRef Name="IDSANPHAM" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -632,42 +670,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SANPHAM__IDCTDIE__114A936A">
-          <End Role="CTDIENTHOAI" Type="Self.CTDIENTHOAI" Multiplicity="0..1" />
-          <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CTDIENTHOAI">
-              <PropertyRef Name="IDCTDIENTHOAI" />
-            </Principal>
-            <Dependent Role="SANPHAM">
-              <PropertyRef Name="IDCTDIENTHOAI" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__SANPHAM__IDCTGIA__1332DBDC">
-          <End Role="CTGIAY" Type="Self.CTGIAY" Multiplicity="0..1" />
-          <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CTGIAY">
-              <PropertyRef Name="IDCTGIAY" />
-            </Principal>
-            <Dependent Role="SANPHAM">
-              <PropertyRef Name="IDCTGIAY" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__SANPHAM__IDCTTHO__123EB7A3">
-          <End Role="CTTHOITRANG" Type="Self.CTTHOITRANG" Multiplicity="0..1" />
-          <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CTTHOITRANG">
-              <PropertyRef Name="IDCTTHOITRANG" />
-            </Principal>
-            <Dependent Role="SANPHAM">
-              <PropertyRef Name="IDCTTHOITRANG" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__SANPHAM__IDCUAHA__6754599E">
           <End Role="CUAHANG" Type="Self.CUAHANG" Multiplicity="0..1" />
           <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="*" />
@@ -842,6 +844,10 @@
             <End Role="MAUSAC" EntitySet="MAUSAC" />
             <End Role="CTDIENTHOAI" EntitySet="CTDIENTHOAI" />
           </AssociationSet>
+          <AssociationSet Name="FK__CTDIENTHO__IDSAN__17036CC0" Association="Self.FK__CTDIENTHO__IDSAN__17036CC0">
+            <End Role="SANPHAM" EntitySet="SANPHAM" />
+            <End Role="CTDIENTHOAI" EntitySet="CTDIENTHOAI" />
+          </AssociationSet>
           <AssociationSet Name="FK__CTDIENTHO__IDTHD__571DF1D5" Association="Self.FK__CTDIENTHO__IDTHD__571DF1D5">
             <End Role="THDIENTHOAI" EntitySet="THDIENTHOAI" />
             <End Role="CTDIENTHOAI" EntitySet="CTDIENTHOAI" />
@@ -862,6 +868,10 @@
             <End Role="MAUSAC" EntitySet="MAUSAC" />
             <End Role="CTGIAY" EntitySet="CTGIAY" />
           </AssociationSet>
+          <AssociationSet Name="FK__CTGIAY__IDSANPHA__160F4887" Association="Self.FK__CTGIAY__IDSANPHA__160F4887">
+            <End Role="SANPHAM" EntitySet="SANPHAM" />
+            <End Role="CTGIAY" EntitySet="CTGIAY" />
+          </AssociationSet>
           <AssociationSet Name="FK__CTGIAY__IDSIZEGI__619B8048" Association="Self.FK__CTGIAY__IDSIZEGI__619B8048">
             <End Role="SIZEGIAY" EntitySet="SIZEGIAY" />
             <End Role="CTGIAY" EntitySet="CTGIAY" />
@@ -876,6 +886,10 @@
           </AssociationSet>
           <AssociationSet Name="FK__CTTHOITRA__IDMAU__5DCAEF64" Association="Self.FK__CTTHOITRA__IDMAU__5DCAEF64">
             <End Role="MAUSAC" EntitySet="MAUSAC" />
+            <End Role="CTTHOITRANG" EntitySet="CTTHOITRANG" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CTTHOITRA__IDSAN__151B244E" Association="Self.FK__CTTHOITRA__IDSAN__151B244E">
+            <End Role="SANPHAM" EntitySet="SANPHAM" />
             <End Role="CTTHOITRANG" EntitySet="CTTHOITRANG" />
           </AssociationSet>
           <AssociationSet Name="FK__CTTHOITRA__IDSIZ__5CD6CB2B" Association="Self.FK__CTTHOITRA__IDSIZ__5CD6CB2B">
@@ -938,18 +952,6 @@
             <End Role="PHEDUYET" EntitySet="PHEDUYET" />
             <End Role="QUANGCAO" EntitySet="QUANGCAO" />
           </AssociationSet>
-          <AssociationSet Name="FK__SANPHAM__IDCTDIE__114A936A" Association="Self.FK__SANPHAM__IDCTDIE__114A936A">
-            <End Role="CTDIENTHOAI" EntitySet="CTDIENTHOAI" />
-            <End Role="SANPHAM" EntitySet="SANPHAM" />
-          </AssociationSet>
-          <AssociationSet Name="FK__SANPHAM__IDCTGIA__1332DBDC" Association="Self.FK__SANPHAM__IDCTGIA__1332DBDC">
-            <End Role="CTGIAY" EntitySet="CTGIAY" />
-            <End Role="SANPHAM" EntitySet="SANPHAM" />
-          </AssociationSet>
-          <AssociationSet Name="FK__SANPHAM__IDCTTHO__123EB7A3" Association="Self.FK__SANPHAM__IDCTTHO__123EB7A3">
-            <End Role="CTTHOITRANG" EntitySet="CTTHOITRANG" />
-            <End Role="SANPHAM" EntitySet="SANPHAM" />
-          </AssociationSet>
           <AssociationSet Name="FK__SANPHAM__IDCUAHA__6754599E" Association="Self.FK__SANPHAM__IDCUAHA__6754599E">
             <End Role="CUAHANG" EntitySet="CUAHANG" />
             <End Role="SANPHAM" EntitySet="SANPHAM" />
@@ -1010,6 +1012,7 @@
           <Property Name="MATKHAU" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
           <Property Name="IDCHUCVU" Type="Int32" />
           <NavigationProperty Name="CHUCVU" Relationship="Self.FK__ADMIN__IDCHUCVU__10566F31" FromRole="ADMIN" ToRole="CHUCVU" />
+          <Property Name="HINHANH" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="CHUCVU">
           <Key>
@@ -1037,10 +1040,11 @@
           <Property Name="IDLOAISP" Type="Int32" />
           <Property Name="IDTHDIENTHOAI" Type="Int32" />
           <Property Name="IDMAUSAC" Type="Int32" />
+          <Property Name="IDSANPHAM" Type="Int32" />
           <NavigationProperty Name="LOAISP" Relationship="Self.FK__CTDIENTHO__IDLOA__5629CD9C" FromRole="CTDIENTHOAI" ToRole="LOAISP" />
           <NavigationProperty Name="MAUSAC" Relationship="Self.FK__CTDIENTHO__IDMAU__5812160E" FromRole="CTDIENTHOAI" ToRole="MAUSAC" />
+          <NavigationProperty Name="SANPHAM" Relationship="Self.FK__CTDIENTHO__IDSAN__17036CC0" FromRole="CTDIENTHOAI" ToRole="SANPHAM" />
           <NavigationProperty Name="THDIENTHOAI" Relationship="Self.FK__CTDIENTHO__IDTHD__571DF1D5" FromRole="CTDIENTHOAI" ToRole="THDIENTHOAI" />
-          <NavigationProperty Name="SANPHAMs" Relationship="TMDTModel.FK__SANPHAM__IDCTDIE__114A936A" FromRole="CTDIENTHOAI" ToRole="SANPHAM" />
         </EntityType>
         <EntityType Name="CTDONHANG">
           <Key>
@@ -1064,11 +1068,12 @@
           <Property Name="IDSIZEGIAY" Type="Int32" />
           <Property Name="IDTHGIAY" Type="Int32" />
           <Property Name="IDMAUSAC" Type="Int32" />
+          <Property Name="IDSANPHAM" Type="Int32" />
           <NavigationProperty Name="LOAISP" Relationship="Self.FK__CTGIAY__IDLOAISP__60A75C0F" FromRole="CTGIAY" ToRole="LOAISP" />
           <NavigationProperty Name="MAUSAC" Relationship="Self.FK__CTGIAY__IDMAUSAC__6383C8BA" FromRole="CTGIAY" ToRole="MAUSAC" />
+          <NavigationProperty Name="SANPHAM" Relationship="Self.FK__CTGIAY__IDSANPHA__160F4887" FromRole="CTGIAY" ToRole="SANPHAM" />
           <NavigationProperty Name="SIZEGIAY" Relationship="Self.FK__CTGIAY__IDSIZEGI__619B8048" FromRole="CTGIAY" ToRole="SIZEGIAY" />
           <NavigationProperty Name="THGIAY" Relationship="Self.FK__CTGIAY__IDTHGIAY__628FA481" FromRole="CTGIAY" ToRole="THGIAY" />
-          <NavigationProperty Name="SANPHAMs" Relationship="TMDTModel.FK__SANPHAM__IDCTGIA__1332DBDC" FromRole="CTGIAY" ToRole="SANPHAM" />
         </EntityType>
         <EntityType Name="CTTHOITRANG">
           <Key>
@@ -1080,11 +1085,12 @@
           <Property Name="IDTHTHOITRANG" Type="Int32" />
           <Property Name="IDSIZETT" Type="Int32" />
           <Property Name="IDMAUSAC" Type="Int32" />
+          <Property Name="IDSANPHAM" Type="Int32" />
           <NavigationProperty Name="LOAISP" Relationship="Self.FK__CTTHOITRA__IDLOA__5AEE82B9" FromRole="CTTHOITRANG" ToRole="LOAISP" />
           <NavigationProperty Name="MAUSAC" Relationship="Self.FK__CTTHOITRA__IDMAU__5DCAEF64" FromRole="CTTHOITRANG" ToRole="MAUSAC" />
+          <NavigationProperty Name="SANPHAM" Relationship="Self.FK__CTTHOITRA__IDSAN__151B244E" FromRole="CTTHOITRANG" ToRole="SANPHAM" />
           <NavigationProperty Name="SIZETHOITRANG" Relationship="Self.FK__CTTHOITRA__IDSIZ__5CD6CB2B" FromRole="CTTHOITRANG" ToRole="SIZETHOITRANG" />
           <NavigationProperty Name="THTHOITRANG" Relationship="Self.FK__CTTHOITRA__IDTHT__5BE2A6F2" FromRole="CTTHOITRANG" ToRole="THTHOITRANG" />
-          <NavigationProperty Name="SANPHAMs" Relationship="TMDTModel.FK__SANPHAM__IDCTTHO__123EB7A3" FromRole="CTTHOITRANG" ToRole="SANPHAM" />
         </EntityType>
         <EntityType Name="CUAHANG">
           <Key>
@@ -1175,6 +1181,7 @@
           <Property Name="SDT" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
           <Property Name="DIACHI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="IDPQND" Type="Int32" />
+          <Property Name="HINH" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="CUAHANGs" Relationship="Self.FK__CUAHANG__IDND__3C69FB99" FromRole="NGUOIDUNG" ToRole="CUAHANG" />
           <NavigationProperty Name="DANHGIASPs" Relationship="Self.FK__DANHGIASP__IDND__6C190EBB" FromRole="NGUOIDUNG" ToRole="DANHGIASP" />
           <NavigationProperty Name="DONHANGs" Relationship="Self.FK__DONHANG__IDND__01142BA1" FromRole="NGUOIDUNG" ToRole="DONHANG" />
@@ -1240,18 +1247,15 @@
           <Property Name="IDPHEDUYET" Type="Int32" />
           <Property Name="IDCUAHANG" Type="Int32" />
           <Property Name="IDLOAISP" Type="Int32" />
+          <Property Name="SOLUONGTON" Type="Int32" />
+          <NavigationProperty Name="CTDIENTHOAIs" Relationship="Self.FK__CTDIENTHO__IDSAN__17036CC0" FromRole="SANPHAM" ToRole="CTDIENTHOAI" />
           <NavigationProperty Name="CTDONHANGs" Relationship="Self.FK__CTDONHANG__IDSAN__08B54D69" FromRole="SANPHAM" ToRole="CTDONHANG" />
+          <NavigationProperty Name="CTGIAYs" Relationship="Self.FK__CTGIAY__IDSANPHA__160F4887" FromRole="SANPHAM" ToRole="CTGIAY" />
+          <NavigationProperty Name="CTTHOITRANGs" Relationship="Self.FK__CTTHOITRA__IDSAN__151B244E" FromRole="SANPHAM" ToRole="CTTHOITRANG" />
           <NavigationProperty Name="CUAHANG" Relationship="Self.FK__SANPHAM__IDCUAHA__6754599E" FromRole="SANPHAM" ToRole="CUAHANG" />
           <NavigationProperty Name="DANHGIASPs" Relationship="Self.FK__DANHGIASP__IDSAN__6B24EA82" FromRole="SANPHAM" ToRole="DANHGIASP" />
           <NavigationProperty Name="LOAISP" Relationship="Self.FK__SANPHAM__IDLOAIS__68487DD7" FromRole="SANPHAM" ToRole="LOAISP" />
           <NavigationProperty Name="PHEDUYET" Relationship="Self.FK__SANPHAM__IDPHEDU__66603565" FromRole="SANPHAM" ToRole="PHEDUYET" />
-          <Property Name="SOLUONGTON" Type="Int32" />
-          <Property Name="IDCTDIENTHOAI" Type="Int32" />
-          <Property Name="IDCTTHOITRANG" Type="Int32" />
-          <Property Name="IDCTGIAY" Type="Int32" />
-          <NavigationProperty Name="CTDIENTHOAI" Relationship="TMDTModel.FK__SANPHAM__IDCTDIE__114A936A" FromRole="SANPHAM" ToRole="CTDIENTHOAI" />
-          <NavigationProperty Name="CTGIAY" Relationship="TMDTModel.FK__SANPHAM__IDCTGIA__1332DBDC" FromRole="SANPHAM" ToRole="CTGIAY" />
-          <NavigationProperty Name="CTTHOITRANG" Relationship="TMDTModel.FK__SANPHAM__IDCTTHO__123EB7A3" FromRole="SANPHAM" ToRole="CTTHOITRANG" />
         </EntityType>
         <EntityType Name="SHIPPER">
           <Key>
@@ -1420,6 +1424,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__CTDIENTHO__IDSAN__17036CC0">
+          <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="0..1" />
+          <End Role="CTDIENTHOAI" Type="Self.CTDIENTHOAI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SANPHAM">
+              <PropertyRef Name="IDSANPHAM" />
+            </Principal>
+            <Dependent Role="CTDIENTHOAI">
+              <PropertyRef Name="IDSANPHAM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__CTDIENTHO__IDTHD__571DF1D5">
           <End Role="THDIENTHOAI" Type="Self.THDIENTHOAI" Multiplicity="0..1" />
           <End Role="CTDIENTHOAI" Type="Self.CTDIENTHOAI" Multiplicity="*" />
@@ -1480,6 +1496,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__CTGIAY__IDSANPHA__160F4887">
+          <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="0..1" />
+          <End Role="CTGIAY" Type="Self.CTGIAY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SANPHAM">
+              <PropertyRef Name="IDSANPHAM" />
+            </Principal>
+            <Dependent Role="CTGIAY">
+              <PropertyRef Name="IDSANPHAM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__CTGIAY__IDSIZEGI__619B8048">
           <End Role="SIZEGIAY" Type="Self.SIZEGIAY" Multiplicity="0..1" />
           <End Role="CTGIAY" Type="Self.CTGIAY" Multiplicity="*" />
@@ -1525,6 +1553,18 @@
             </Principal>
             <Dependent Role="CTTHOITRANG">
               <PropertyRef Name="IDMAUSAC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CTTHOITRA__IDSAN__151B244E">
+          <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="0..1" />
+          <End Role="CTTHOITRANG" Type="Self.CTTHOITRANG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SANPHAM">
+              <PropertyRef Name="IDSANPHAM" />
+            </Principal>
+            <Dependent Role="CTTHOITRANG">
+              <PropertyRef Name="IDSANPHAM" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1882,6 +1922,10 @@
             <End Role="MAUSAC" EntitySet="MAUSACs" />
             <End Role="CTDIENTHOAI" EntitySet="CTDIENTHOAIs" />
           </AssociationSet>
+          <AssociationSet Name="FK__CTDIENTHO__IDSAN__17036CC0" Association="Self.FK__CTDIENTHO__IDSAN__17036CC0">
+            <End Role="SANPHAM" EntitySet="SANPHAMs" />
+            <End Role="CTDIENTHOAI" EntitySet="CTDIENTHOAIs" />
+          </AssociationSet>
           <AssociationSet Name="FK__CTDIENTHO__IDTHD__571DF1D5" Association="Self.FK__CTDIENTHO__IDTHD__571DF1D5">
             <End Role="THDIENTHOAI" EntitySet="THDIENTHOAIs" />
             <End Role="CTDIENTHOAI" EntitySet="CTDIENTHOAIs" />
@@ -1902,6 +1946,10 @@
             <End Role="MAUSAC" EntitySet="MAUSACs" />
             <End Role="CTGIAY" EntitySet="CTGIAYs" />
           </AssociationSet>
+          <AssociationSet Name="FK__CTGIAY__IDSANPHA__160F4887" Association="Self.FK__CTGIAY__IDSANPHA__160F4887">
+            <End Role="SANPHAM" EntitySet="SANPHAMs" />
+            <End Role="CTGIAY" EntitySet="CTGIAYs" />
+          </AssociationSet>
           <AssociationSet Name="FK__CTGIAY__IDSIZEGI__619B8048" Association="Self.FK__CTGIAY__IDSIZEGI__619B8048">
             <End Role="SIZEGIAY" EntitySet="SIZEGIAYs" />
             <End Role="CTGIAY" EntitySet="CTGIAYs" />
@@ -1916,6 +1964,10 @@
           </AssociationSet>
           <AssociationSet Name="FK__CTTHOITRA__IDMAU__5DCAEF64" Association="Self.FK__CTTHOITRA__IDMAU__5DCAEF64">
             <End Role="MAUSAC" EntitySet="MAUSACs" />
+            <End Role="CTTHOITRANG" EntitySet="CTTHOITRANGs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CTTHOITRA__IDSAN__151B244E" Association="Self.FK__CTTHOITRA__IDSAN__151B244E">
+            <End Role="SANPHAM" EntitySet="SANPHAMs" />
             <End Role="CTTHOITRANG" EntitySet="CTTHOITRANGs" />
           </AssociationSet>
           <AssociationSet Name="FK__CTTHOITRA__IDSIZ__5CD6CB2B" Association="Self.FK__CTTHOITRA__IDSIZ__5CD6CB2B">
@@ -2022,55 +2074,7 @@
             <End Role="TRANGTHAIVC" EntitySet="TRANGTHAIVCs" />
             <End Role="VOUCHERSHOP" EntitySet="VOUCHERSHOPs" />
           </AssociationSet>
-          <AssociationSet Name="FK__SANPHAM__IDCTDIE__114A936A" Association="TMDTModel.FK__SANPHAM__IDCTDIE__114A936A">
-            <End Role="CTDIENTHOAI" EntitySet="CTDIENTHOAIs" />
-            <End Role="SANPHAM" EntitySet="SANPHAMs" />
-          </AssociationSet>
-          <AssociationSet Name="FK__SANPHAM__IDCTGIA__1332DBDC" Association="TMDTModel.FK__SANPHAM__IDCTGIA__1332DBDC">
-            <End Role="CTGIAY" EntitySet="CTGIAYs" />
-            <End Role="SANPHAM" EntitySet="SANPHAMs" />
-          </AssociationSet>
-          <AssociationSet Name="FK__SANPHAM__IDCTTHO__123EB7A3" Association="TMDTModel.FK__SANPHAM__IDCTTHO__123EB7A3">
-            <End Role="CTTHOITRANG" EntitySet="CTTHOITRANGs" />
-            <End Role="SANPHAM" EntitySet="SANPHAMs" />
-          </AssociationSet>
         </EntityContainer>
-        <Association Name="FK__SANPHAM__IDCTDIE__114A936A">
-          <End Type="TMDTModel.CTDIENTHOAI" Role="CTDIENTHOAI" Multiplicity="0..1" />
-          <End Type="TMDTModel.SANPHAM" Role="SANPHAM" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CTDIENTHOAI">
-              <PropertyRef Name="IDCTDIENTHOAI" />
-            </Principal>
-            <Dependent Role="SANPHAM">
-              <PropertyRef Name="IDCTDIENTHOAI" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__SANPHAM__IDCTGIA__1332DBDC">
-          <End Type="TMDTModel.CTGIAY" Role="CTGIAY" Multiplicity="0..1" />
-          <End Type="TMDTModel.SANPHAM" Role="SANPHAM" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CTGIAY">
-              <PropertyRef Name="IDCTGIAY" />
-            </Principal>
-            <Dependent Role="SANPHAM">
-              <PropertyRef Name="IDCTGIAY" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__SANPHAM__IDCTTHO__123EB7A3">
-          <End Type="TMDTModel.CTTHOITRANG" Role="CTTHOITRANG" Multiplicity="0..1" />
-          <End Type="TMDTModel.SANPHAM" Role="SANPHAM" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CTTHOITRANG">
-              <PropertyRef Name="IDCTTHOITRANG" />
-            </Principal>
-            <Dependent Role="SANPHAM">
-              <PropertyRef Name="IDCTTHOITRANG" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2080,6 +2084,7 @@
           <EntitySetMapping Name="ADMINs">
             <EntityTypeMapping TypeName="TMDTModel.ADMIN">
               <MappingFragment StoreEntitySet="ADMIN">
+                <ScalarProperty Name="HINHANH" ColumnName="HINHANH" />
                 <ScalarProperty Name="IDADMIN" ColumnName="IDADMIN" />
                 <ScalarProperty Name="TENAD" ColumnName="TENAD" />
                 <ScalarProperty Name="SDT" ColumnName="SDT" />
@@ -2114,6 +2119,7 @@
                 <ScalarProperty Name="IDLOAISP" ColumnName="IDLOAISP" />
                 <ScalarProperty Name="IDTHDIENTHOAI" ColumnName="IDTHDIENTHOAI" />
                 <ScalarProperty Name="IDMAUSAC" ColumnName="IDMAUSAC" />
+                <ScalarProperty Name="IDSANPHAM" ColumnName="IDSANPHAM" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2137,6 +2143,7 @@
                 <ScalarProperty Name="IDSIZEGIAY" ColumnName="IDSIZEGIAY" />
                 <ScalarProperty Name="IDTHGIAY" ColumnName="IDTHGIAY" />
                 <ScalarProperty Name="IDMAUSAC" ColumnName="IDMAUSAC" />
+                <ScalarProperty Name="IDSANPHAM" ColumnName="IDSANPHAM" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2149,6 +2156,7 @@
                 <ScalarProperty Name="IDTHTHOITRANG" ColumnName="IDTHTHOITRANG" />
                 <ScalarProperty Name="IDSIZETT" ColumnName="IDSIZETT" />
                 <ScalarProperty Name="IDMAUSAC" ColumnName="IDMAUSAC" />
+                <ScalarProperty Name="IDSANPHAM" ColumnName="IDSANPHAM" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2220,6 +2228,7 @@
                 <ScalarProperty Name="SDT" ColumnName="SDT" />
                 <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
                 <ScalarProperty Name="IDPQND" ColumnName="IDPQND" />
+                <ScalarProperty Name="HINH" ColumnName="HINH" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2265,10 +2274,6 @@
           <EntitySetMapping Name="SANPHAMs">
             <EntityTypeMapping TypeName="TMDTModel.SANPHAM">
               <MappingFragment StoreEntitySet="SANPHAM">
-                <ScalarProperty Name="IDCTGIAY" ColumnName="IDCTGIAY" />
-                <ScalarProperty Name="IDCTTHOITRANG" ColumnName="IDCTTHOITRANG" />
-                <ScalarProperty Name="IDCTDIENTHOAI" ColumnName="IDCTDIENTHOAI" />
-                <ScalarProperty Name="SOLUONGTON" ColumnName="SOLUONGTON" />
                 <ScalarProperty Name="IDSANPHAM" ColumnName="IDSANPHAM" />
                 <ScalarProperty Name="TENSP" ColumnName="TENSP" />
                 <ScalarProperty Name="HINHANH1" ColumnName="HINHANH1" />
@@ -2282,6 +2287,7 @@
                 <ScalarProperty Name="IDPHEDUYET" ColumnName="IDPHEDUYET" />
                 <ScalarProperty Name="IDCUAHANG" ColumnName="IDCUAHANG" />
                 <ScalarProperty Name="IDLOAISP" ColumnName="IDLOAISP" />
+                <ScalarProperty Name="SOLUONGTON" ColumnName="SOLUONGTON" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -11,6 +11,7 @@
     <Property Name="MATKHAU" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
     <Property Name="IDCHUCVU" Type="Int32" />
     <NavigationProperty Name="CHUCVU" Relationship="Self.FK__ADMIN__IDCHUCVU__10566F31" FromRole="ADMIN" ToRole="CHUCVU" />
+    <Property Name="HINHANH" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="CHUCVU">
     <Key>
@@ -38,8 +39,10 @@
     <Property Name="IDLOAISP" Type="Int32" />
     <Property Name="IDTHDIENTHOAI" Type="Int32" />
     <Property Name="IDMAUSAC" Type="Int32" />
+    <Property Name="IDSANPHAM" Type="Int32" />
     <NavigationProperty Name="LOAISP" Relationship="Self.FK__CTDIENTHO__IDLOA__5629CD9C" FromRole="CTDIENTHOAI" ToRole="LOAISP" />
     <NavigationProperty Name="MAUSAC" Relationship="Self.FK__CTDIENTHO__IDMAU__5812160E" FromRole="CTDIENTHOAI" ToRole="MAUSAC" />
+    <NavigationProperty Name="SANPHAM" Relationship="Self.FK__CTDIENTHO__IDSAN__17036CC0" FromRole="CTDIENTHOAI" ToRole="SANPHAM" />
     <NavigationProperty Name="THDIENTHOAI" Relationship="Self.FK__CTDIENTHO__IDTHD__571DF1D5" FromRole="CTDIENTHOAI" ToRole="THDIENTHOAI" />
   </EntityType>
   <EntityType Name="CTDONHANG">
@@ -64,8 +67,10 @@
     <Property Name="IDSIZEGIAY" Type="Int32" />
     <Property Name="IDTHGIAY" Type="Int32" />
     <Property Name="IDMAUSAC" Type="Int32" />
+    <Property Name="IDSANPHAM" Type="Int32" />
     <NavigationProperty Name="LOAISP" Relationship="Self.FK__CTGIAY__IDLOAISP__60A75C0F" FromRole="CTGIAY" ToRole="LOAISP" />
     <NavigationProperty Name="MAUSAC" Relationship="Self.FK__CTGIAY__IDMAUSAC__6383C8BA" FromRole="CTGIAY" ToRole="MAUSAC" />
+    <NavigationProperty Name="SANPHAM" Relationship="Self.FK__CTGIAY__IDSANPHA__160F4887" FromRole="CTGIAY" ToRole="SANPHAM" />
     <NavigationProperty Name="SIZEGIAY" Relationship="Self.FK__CTGIAY__IDSIZEGI__619B8048" FromRole="CTGIAY" ToRole="SIZEGIAY" />
     <NavigationProperty Name="THGIAY" Relationship="Self.FK__CTGIAY__IDTHGIAY__628FA481" FromRole="CTGIAY" ToRole="THGIAY" />
   </EntityType>
@@ -79,8 +84,10 @@
     <Property Name="IDTHTHOITRANG" Type="Int32" />
     <Property Name="IDSIZETT" Type="Int32" />
     <Property Name="IDMAUSAC" Type="Int32" />
+    <Property Name="IDSANPHAM" Type="Int32" />
     <NavigationProperty Name="LOAISP" Relationship="Self.FK__CTTHOITRA__IDLOA__5AEE82B9" FromRole="CTTHOITRANG" ToRole="LOAISP" />
     <NavigationProperty Name="MAUSAC" Relationship="Self.FK__CTTHOITRA__IDMAU__5DCAEF64" FromRole="CTTHOITRANG" ToRole="MAUSAC" />
+    <NavigationProperty Name="SANPHAM" Relationship="Self.FK__CTTHOITRA__IDSAN__151B244E" FromRole="CTTHOITRANG" ToRole="SANPHAM" />
     <NavigationProperty Name="SIZETHOITRANG" Relationship="Self.FK__CTTHOITRA__IDSIZ__5CD6CB2B" FromRole="CTTHOITRANG" ToRole="SIZETHOITRANG" />
     <NavigationProperty Name="THTHOITRANG" Relationship="Self.FK__CTTHOITRA__IDTHT__5BE2A6F2" FromRole="CTTHOITRANG" ToRole="THTHOITRANG" />
   </EntityType>
@@ -173,6 +180,7 @@
     <Property Name="SDT" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
     <Property Name="DIACHI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="IDPQND" Type="Int32" />
+    <Property Name="HINH" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="CUAHANGs" Relationship="Self.FK__CUAHANG__IDND__3C69FB99" FromRole="NGUOIDUNG" ToRole="CUAHANG" />
     <NavigationProperty Name="DANHGIASPs" Relationship="Self.FK__DANHGIASP__IDND__6C190EBB" FromRole="NGUOIDUNG" ToRole="DANHGIASP" />
     <NavigationProperty Name="DONHANGs" Relationship="Self.FK__DONHANG__IDND__01142BA1" FromRole="NGUOIDUNG" ToRole="DONHANG" />
@@ -238,12 +246,15 @@
     <Property Name="IDPHEDUYET" Type="Int32" />
     <Property Name="IDCUAHANG" Type="Int32" />
     <Property Name="IDLOAISP" Type="Int32" />
+    <Property Name="SOLUONGTON" Type="Int32" />
+    <NavigationProperty Name="CTDIENTHOAIs" Relationship="Self.FK__CTDIENTHO__IDSAN__17036CC0" FromRole="SANPHAM" ToRole="CTDIENTHOAI" />
     <NavigationProperty Name="CTDONHANGs" Relationship="Self.FK__CTDONHANG__IDSAN__08B54D69" FromRole="SANPHAM" ToRole="CTDONHANG" />
+    <NavigationProperty Name="CTGIAYs" Relationship="Self.FK__CTGIAY__IDSANPHA__160F4887" FromRole="SANPHAM" ToRole="CTGIAY" />
+    <NavigationProperty Name="CTTHOITRANGs" Relationship="Self.FK__CTTHOITRA__IDSAN__151B244E" FromRole="SANPHAM" ToRole="CTTHOITRANG" />
     <NavigationProperty Name="CUAHANG" Relationship="Self.FK__SANPHAM__IDCUAHA__6754599E" FromRole="SANPHAM" ToRole="CUAHANG" />
     <NavigationProperty Name="DANHGIASPs" Relationship="Self.FK__DANHGIASP__IDSAN__6B24EA82" FromRole="SANPHAM" ToRole="DANHGIASP" />
     <NavigationProperty Name="LOAISP" Relationship="Self.FK__SANPHAM__IDLOAIS__68487DD7" FromRole="SANPHAM" ToRole="LOAISP" />
     <NavigationProperty Name="PHEDUYET" Relationship="Self.FK__SANPHAM__IDPHEDU__66603565" FromRole="SANPHAM" ToRole="PHEDUYET" />
-    <Property Name="SOLUONGTON" Type="Int32" />
   </EntityType>
   <EntityType Name="SHIPPER">
     <Key>
@@ -412,6 +423,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__CTDIENTHO__IDSAN__17036CC0">
+    <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="0..1" />
+    <End Role="CTDIENTHOAI" Type="Self.CTDIENTHOAI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SANPHAM">
+        <PropertyRef Name="IDSANPHAM" />
+      </Principal>
+      <Dependent Role="CTDIENTHOAI">
+        <PropertyRef Name="IDSANPHAM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__CTDIENTHO__IDTHD__571DF1D5">
     <End Role="THDIENTHOAI" Type="Self.THDIENTHOAI" Multiplicity="0..1" />
     <End Role="CTDIENTHOAI" Type="Self.CTDIENTHOAI" Multiplicity="*" />
@@ -472,6 +495,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__CTGIAY__IDSANPHA__160F4887">
+    <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="0..1" />
+    <End Role="CTGIAY" Type="Self.CTGIAY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SANPHAM">
+        <PropertyRef Name="IDSANPHAM" />
+      </Principal>
+      <Dependent Role="CTGIAY">
+        <PropertyRef Name="IDSANPHAM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__CTGIAY__IDSIZEGI__619B8048">
     <End Role="SIZEGIAY" Type="Self.SIZEGIAY" Multiplicity="0..1" />
     <End Role="CTGIAY" Type="Self.CTGIAY" Multiplicity="*" />
@@ -517,6 +552,18 @@
       </Principal>
       <Dependent Role="CTTHOITRANG">
         <PropertyRef Name="IDMAUSAC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CTTHOITRA__IDSAN__151B244E">
+    <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="0..1" />
+    <End Role="CTTHOITRANG" Type="Self.CTTHOITRANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SANPHAM">
+        <PropertyRef Name="IDSANPHAM" />
+      </Principal>
+      <Dependent Role="CTTHOITRANG">
+        <PropertyRef Name="IDSANPHAM" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -874,6 +921,10 @@
       <End Role="MAUSAC" EntitySet="MAUSACs" />
       <End Role="CTDIENTHOAI" EntitySet="CTDIENTHOAIs" />
     </AssociationSet>
+    <AssociationSet Name="FK__CTDIENTHO__IDSAN__17036CC0" Association="Self.FK__CTDIENTHO__IDSAN__17036CC0">
+      <End Role="SANPHAM" EntitySet="SANPHAMs" />
+      <End Role="CTDIENTHOAI" EntitySet="CTDIENTHOAIs" />
+    </AssociationSet>
     <AssociationSet Name="FK__CTDIENTHO__IDTHD__571DF1D5" Association="Self.FK__CTDIENTHO__IDTHD__571DF1D5">
       <End Role="THDIENTHOAI" EntitySet="THDIENTHOAIs" />
       <End Role="CTDIENTHOAI" EntitySet="CTDIENTHOAIs" />
@@ -894,6 +945,10 @@
       <End Role="MAUSAC" EntitySet="MAUSACs" />
       <End Role="CTGIAY" EntitySet="CTGIAYs" />
     </AssociationSet>
+    <AssociationSet Name="FK__CTGIAY__IDSANPHA__160F4887" Association="Self.FK__CTGIAY__IDSANPHA__160F4887">
+      <End Role="SANPHAM" EntitySet="SANPHAMs" />
+      <End Role="CTGIAY" EntitySet="CTGIAYs" />
+    </AssociationSet>
     <AssociationSet Name="FK__CTGIAY__IDSIZEGI__619B8048" Association="Self.FK__CTGIAY__IDSIZEGI__619B8048">
       <End Role="SIZEGIAY" EntitySet="SIZEGIAYs" />
       <End Role="CTGIAY" EntitySet="CTGIAYs" />
@@ -908,6 +963,10 @@
     </AssociationSet>
     <AssociationSet Name="FK__CTTHOITRA__IDMAU__5DCAEF64" Association="Self.FK__CTTHOITRA__IDMAU__5DCAEF64">
       <End Role="MAUSAC" EntitySet="MAUSACs" />
+      <End Role="CTTHOITRANG" EntitySet="CTTHOITRANGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CTTHOITRA__IDSAN__151B244E" Association="Self.FK__CTTHOITRA__IDSAN__151B244E">
+      <End Role="SANPHAM" EntitySet="SANPHAMs" />
       <End Role="CTTHOITRANG" EntitySet="CTTHOITRANGs" />
     </AssociationSet>
     <AssociationSet Name="FK__CTTHOITRA__IDSIZ__5CD6CB2B" Association="Self.FK__CTTHOITRA__IDSIZ__5CD6CB2B">

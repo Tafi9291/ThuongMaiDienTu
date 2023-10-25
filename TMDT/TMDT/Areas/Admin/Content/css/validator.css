@@ -344,3 +344,10 @@
       background-repeat: no-repeat;
       object-fit: contain;
   }
+
+.background-title-content {
+    position: absolute;
+    top: 20%;
+    left: 29%;
+    font-size: 3rem;
+}

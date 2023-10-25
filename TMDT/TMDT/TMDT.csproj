@@ -138,8 +138,10 @@
     <Compile Include="Areas\Admin\Controllers\DangNhapController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashBoardController.cs" />
     <Compile Include="Areas\Admin\Controllers\MauSacController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QLNDController.cs" />
     <Compile Include="Areas\Admin\Controllers\QLSanPhamController.cs" />
     <Compile Include="Areas\Admin\Controllers\SizeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TaiKhoanController.cs" />
     <Compile Include="Areas\Admin\Controllers\ThuongHieuController.cs" />
     <Compile Include="Areas\Admin\Controllers\VoucherController.cs" />
     <Compile Include="Controllers\DonHangController.cs" />
@@ -315,6 +317,7 @@
     <Content Include="Content\css-NgBan\slider.css" />
     <Content Include="Content\css-NgBan\style-starter.css" />
     <Content Include="Content\css-NgBan\validator.css" />
+    <Content Include="Content\css-NgBan\welcome-banhang.css" />
     <Content Include="Content\css\base.css" />
     <Content Include="Content\css\cancel-order.css" />
     <Content Include="Content\css\cart.css" />
@@ -330,6 +333,7 @@
     <Content Include="Content\css\validator.css" />
     <Content Include="Content\Hinh\appstore.png" />
     <Content Include="Content\Hinh\complete-checkout.png" />
+    <Content Include="Content\Hinh\dashboard.png" />
     <Content Include="Content\Hinh\empty-cart.jpg" />
     <Content Include="Content\Hinh\googleplay.png" />
     <Content Include="Content\Hinh\logo-favicon.png" />
@@ -350,8 +354,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
       <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -387,6 +391,9 @@
     <Content Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
+    <Content Include="Areas\Admin\Views\QLND\QLNgMua.cshtml" />
+    <Content Include="Areas\Admin\Views\QLND\QLNgBan.cshtml" />
+    <Content Include="Areas\Admin\Views\TaiKhoan\TaiKhoan.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -435,12 +442,15 @@
     <Content Include="Views\Register\DangKy.cshtml" />
     <Content Include="Views\Shop\Shop.cshtml" />
     <Content Include="Views\Shared\Layout-DKBan.cshtml" />
-    <Content Include="Views\NgBan\DangKyNgBan.cshtml" />
     <Content Include="Views\SanPham\ChonNganhHang.cshtml" />
     <Content Include="Views\SanPham\MauSac.cshtml" />
     <Content Include="Views\SanPham\THDienThoai.cshtml" />
-    <Content Include="Views\SanPham\TaoSanPham.cshtml" />
     <Content Include="Views\Register\DangNhap.cshtml" />
+    <Content Include="Views\NgBan\WelComeBanHang.cshtml" />
+    <Content Include="Views\NgBan\DangKyBanHang.cshtml" />
+    <Content Include="Views\Shared\Layout-DNKenhNgBan.cshtml" />
+    <Content Include="Views\NgBan\DangNhapNgBan.cshtml" />
+    <Content Include="Views\SanPham\TaoSanPham.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

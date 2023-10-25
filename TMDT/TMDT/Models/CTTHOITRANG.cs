@@ -14,24 +14,18 @@ namespace TMDT.Models
     
     public partial class CTTHOITRANG
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public CTTHOITRANG()
-        {
-            this.SANPHAMs = new HashSet<SANPHAM>();
-        }
-    
         public int IDCTTHOITRANG { get; set; }
         public string CHATLIEU { get; set; }
         public Nullable<int> IDLOAISP { get; set; }
         public Nullable<int> IDTHTHOITRANG { get; set; }
         public Nullable<int> IDSIZETT { get; set; }
         public Nullable<int> IDMAUSAC { get; set; }
+        public Nullable<int> IDSANPHAM { get; set; }
     
         public virtual LOAISP LOAISP { get; set; }
         public virtual MAUSAC MAUSAC { get; set; }
+        public virtual SANPHAM SANPHAM { get; set; }
         public virtual SIZETHOITRANG SIZETHOITRANG { get; set; }
         public virtual THTHOITRANG THTHOITRANG { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SANPHAM> SANPHAMs { get; set; }
     }
 }

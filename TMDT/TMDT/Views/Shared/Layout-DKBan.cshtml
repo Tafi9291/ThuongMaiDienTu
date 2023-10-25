@@ -18,6 +18,7 @@
     @*<link href="~/Areas/Admin/Content/css/slider.css" rel="stylesheet" />*@
     <link href="~/Content/css-NgBan/responsive.css" rel="stylesheet" />
     @*<link href="~/Areas/Admin/Content/css/validator.css" rel="stylesheet" />*@
+    <link href="~/Content/css-NgBan/welcome-banhang.css" rel="stylesheet" />
 
     <link href="~/Content/Hinh/logo-favicon.png" rel="icon" />
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -39,12 +40,12 @@
                     <label for="mobile-search-checkbox" class="header__mobile-search">
                         <i class="header__mobile-search-icon fas fa-search"></i>
                     </label>
-                    <div class="header__logo hide-on-tablet">
+                    <div class="header__logo hide-on-tablet" style="width: 400px;">
                         <a href="@Url.Action("KenhNgBan","NgBan")" class="header__logo-link">
                             <img src="~/Content/Hinh/logo-favicon.png"
                                  alt="logo"
                                  class="header__logo-img" />
-                            <p>Kênh Người Bán</p>
+                            <p>Đăng Ký Trở Thành Người Bán TFT-Market</p>
                         </a>
                     </div>
 
@@ -52,28 +53,28 @@
 
                     <!--Cart layout-->
                     <div class="header__cart">
-                        <div class="header__cart-wrap">
+                        <!--<div class="header__cart-wrap">
                             <i class="header__cart-icon fas fa-solid fa-bell"></i>
-                            <span class="header__cart-notice">0</span>
+                            <span class="header__cart-notice">0</span>-->
 
                             <!-- No cart: header__cart-list-no-cart -->
-                            <div class="header__cart-list">
+                            <!--<div class="header__cart-list">-->
                                 <!-- <img src="./assets/img/empty-cart.jpg"alt="" class="header__cart-no-cart-img"/> -->
                                 <!-- <span class="header__cart-list-no-cart-msg">Chưa có sản phẩm</span> -->
 
-                                <h4 class="header__cart-heading">Thông báo</h4>
-                                <ul class="header__cart-list-item">
+                                <!--<h4 class="header__cart-heading">Thông báo</h4>
+                                <ul class="header__cart-list-item">-->
                                     <!-- Cart item -->
-                                    <li class="header__cart-item">
+                                    <!--<li class="header__cart-item">
 
                                     </li>
 
 
-                                </ul>
+                                </ul>-->
 
                                 <!-- <a href="./cartitems.html" class="header__cart-view-cart btn btn--primary">Xem giỏ hàng</a> -->
-                            </div>
-                        </div>
+                            <!--</div>
+                        </div>-->
                         <div class="header__cart-wrap">
                             @*<i class="header__cart-icon useracc fas fa-user" style="cursor:pointer;" onclick="myFunction()"></i>*@
                             <div class="header__navbar-item header__navbar-user">
@@ -145,11 +146,10 @@
         <div class="app__container">
             <div class="grid wide">
 
-                <div class="row sm-gutter app__content">
+                <div class="row sm-gutter app__content" style="display: flex; justify-content: center; padding-bottom: 80px;">
 
-                    <div class="col l-2-1 m-0 c-0">
-
-                    </div>
+                    @*<div class="col l-2-1 m-0 c-0">
+                    </div>*@
                     @RenderBody()
                     @*<div class="col l-6 m-12 c-12">
 
@@ -160,14 +160,14 @@
 
 
 
-        <footer class="footer2">
+        @*<footer class="footer2">
             <div class="footer__bottom2">
                 <div class="grid wide">
                     <p class="footer__text">© @DateTime.Now.Year - Bản quyền thuộc về Công ty TNHH TaFiShop</p>
                 </div>
             </div>
 
-        </footer>
+        </footer>*@
     </div>
 
 

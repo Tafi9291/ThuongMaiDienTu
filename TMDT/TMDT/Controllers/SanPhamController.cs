@@ -45,13 +45,13 @@ namespace TMDT.Controllers
         // GET: SanPham/Create
         public ActionResult TaoSanPham() 
         {
-            SANPHAM sp = new SANPHAM();
+            ViewModelSanPham sp = new ViewModelSanPham();
             return View(sp);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult TaoSanPham(SANPHAM model)
+        public ActionResult TaoSanPham(ViewModelSanPham model)
         {
 
             //// Lưu ảnh vào thư mục ~/Content/Data/Hinh
@@ -67,41 +67,43 @@ namespace TMDT.Controllers
                 string extension3 = Path.GetExtension(model.UploadImage3.FileName);
                 filename3 = filename3 + extension3;
 
-                model.HINHANH1 = "~/Content/Hinh/" + filename1;
-                model.HINHANH2 = "~/Content/Hinh/" + filename2;
-                model.HINHANH3 = "~/Content/Hinh/" + filename3;
+                model.SANPHAM.HINHANH1 = "~/Content/Hinh/" + filename1;
+                model.SANPHAM.HINHANH2 = "~/Content/Hinh/" + filename2;
+                model.SANPHAM.HINHANH3 = "~/Content/Hinh/" + filename3;
 
                 model.UploadImage1.SaveAs(Path.Combine(Server.MapPath("~/Content/Hinh/"), filename1));
                 model.UploadImage2.SaveAs(Path.Combine(Server.MapPath("~/Content/Hinh/"), filename2));
                 model.UploadImage3.SaveAs(Path.Combine(Server.MapPath("~/Content/Hinh/"), filename3));
             }
                 // Kiểm tra giá bán, số lượng tồn và phần trăm giảm
-                if (model.GIABAN >= 0 && model.SOLUONGTON >= 0 && model.PHANTRAMGIAM >= 0 && model.PHANTRAMGIAM <= 100)
+                if (model.SANPHAM.GIABAN >= 0 && model.SANPHAM.SOLUONGTON >= 0 && model.SANPHAM.PHANTRAMGIAM >= 0 && model.SANPHAM.PHANTRAMGIAM <= 100)
                 {
 
-                    model.GIAGIAM = model.GIABAN - (model.GIABAN * model.PHANTRAMGIAM / 100);
+                    model.SANPHAM.GIAGIAM = model.SANPHAM.GIABAN - (model.SANPHAM.GIABAN * model.SANPHAM.PHANTRAMGIAM / 100);
 
                     // Đặt ngày tạo hiện tại
-                    model.NGAYTAO = DateTime.Now;
-                    model.IDPHEDUYET = 1;
+                    model.SANPHAM.NGAYTAO = DateTime.Now;
+                    model.SANPHAM.IDPHEDUYET = 1;
 
                     string selectedCategoryId = Request.Form["IDLOAISP"];
-                    model.IDLOAISP = Convert.ToInt32(selectedCategoryId);
+                    model.SANPHAM.IDLOAISP = Convert.ToInt32(selectedCategoryId);
                 
 
                     string selectedColor = Request.Form["IDMAUSAC"];
 
                     string selecteDBrand = Request.Form["IDTHDIENTHOAI"];
-                
-                    // Thêm vào cơ sở dữ liệu dựa trên LoaiSP
-                    switch (selectedCategoryId)
+
+
+                // Thêm vào cơ sở dữ liệu dựa trên LoaiSP
+                switch (selectedCategoryId)
                     {
                         case "1":
                             model.CTDIENTHOAI.IDMAUSAC = Convert.ToInt32(selectedColor); // Gán giá trị màu sắc
                             model.CTDIENTHOAI.IDLOAISP = Convert.ToInt32(selectedCategoryId);
                             model.CTDIENTHOAI.IDTHDIENTHOAI = Convert.ToInt32(selecteDBrand);
-                            model.IDCTDIENTHOAI = 1;
                             db.CTDIENTHOAIs.Add(model.CTDIENTHOAI);
+                            int idSANPHAM = model.SANPHAM.IDSANPHAM;
+                            model.CTDIENTHOAI.IDSANPHAM = idSANPHAM;
                             break;
                         case "2":
                             db.CTTHOITRANGs.Add(model.CTTHOITRANG);
@@ -113,21 +115,21 @@ namespace TMDT.Controllers
                             // Xử lý mặc định hoặc lỗi nếu có
                             break;
                     }
-                    db.SANPHAMs.Add(model);
+                    db.SANPHAMs.Add(model.SANPHAM);
                     db.SaveChanges();
                     return RedirectToAction("SanPham");
                 }
                 else
                 {
-                    if (model.GIABAN < 0)
+                    if (model.SANPHAM.GIABAN < 0)
                     {
                         ModelState.AddModelError("GIABAN", "Giá bán phải lớn hơn hoặc bằng 0.");
                     }
-                    if (model.SOLUONGTON < 0)
+                    if (model.SANPHAM.SOLUONGTON < 0)
                     {
                         ModelState.AddModelError("SOLUONGTON", "Số lượng tồn phải lớn hơn hoặc bằng 0.");
                     }
-                    if (model.PHANTRAMGIAM < 0 || model.PHANTRAMGIAM > 100)
+                    if (model.SANPHAM.PHANTRAMGIAM < 0 || model.SANPHAM.PHANTRAMGIAM > 100)
                     {
                         ModelState.AddModelError("PHANTRAMGIAM", "Phần trăm giảm phải trong khoảng từ 0 đến 100.");
                     }

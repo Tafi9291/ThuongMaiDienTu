@@ -14,14 +14,26 @@ namespace TMDT.Controllers
             return View();
         }
 
+        // GET: NgBan
+        public ActionResult DangNhapNgBan()
+        {
+            return View();
+        }
+
         // GET: TaiKhoan
         public ActionResult TaiKhoan()
         {
             return View();
         }
 
+        // GET: Welcome
+        public ActionResult WelComeBanHang()
+        {
+            return View();
+        }
+
         // GET: DangKyNgBan
-        public ActionResult DangKyNgBan()
+        public ActionResult DangKyBanHang()
         {
             return View();
         }

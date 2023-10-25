@@ -14,12 +14,6 @@ namespace TMDT.Models
     
     public partial class CTDIENTHOAI
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public CTDIENTHOAI()
-        {
-            this.SANPHAMs = new HashSet<SANPHAM>();
-        }
-    
         public int IDCTDIENTHOAI { get; set; }
         public string MANHINH { get; set; }
         public string DOPHANGIAI { get; set; }
@@ -34,11 +28,11 @@ namespace TMDT.Models
         public Nullable<int> IDLOAISP { get; set; }
         public Nullable<int> IDTHDIENTHOAI { get; set; }
         public Nullable<int> IDMAUSAC { get; set; }
+        public Nullable<int> IDSANPHAM { get; set; }
     
         public virtual LOAISP LOAISP { get; set; }
         public virtual MAUSAC MAUSAC { get; set; }
+        public virtual SANPHAM SANPHAM { get; set; }
         public virtual THDIENTHOAI THDIENTHOAI { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SANPHAM> SANPHAMs { get; set; }
     }
 }

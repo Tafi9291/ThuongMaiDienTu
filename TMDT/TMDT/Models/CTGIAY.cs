@@ -14,23 +14,17 @@ namespace TMDT.Models
     
     public partial class CTGIAY
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public CTGIAY()
-        {
-            this.SANPHAMs = new HashSet<SANPHAM>();
-        }
-    
         public int IDCTGIAY { get; set; }
         public Nullable<int> IDLOAISP { get; set; }
         public Nullable<int> IDSIZEGIAY { get; set; }
         public Nullable<int> IDTHGIAY { get; set; }
         public Nullable<int> IDMAUSAC { get; set; }
+        public Nullable<int> IDSANPHAM { get; set; }
     
         public virtual LOAISP LOAISP { get; set; }
         public virtual MAUSAC MAUSAC { get; set; }
+        public virtual SANPHAM SANPHAM { get; set; }
         public virtual SIZEGIAY SIZEGIAY { get; set; }
         public virtual THGIAY THGIAY { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SANPHAM> SANPHAMs { get; set; }
     }
 }

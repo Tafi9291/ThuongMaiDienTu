@@ -4,6 +4,7 @@
     <EntitySetMapping Name="ADMINs">
       <EntityTypeMapping TypeName="TMDTModel.ADMIN">
         <MappingFragment StoreEntitySet="ADMIN">
+          <ScalarProperty Name="HINHANH" ColumnName="HINHANH" />
           <ScalarProperty Name="IDADMIN" ColumnName="IDADMIN" />
           <ScalarProperty Name="TENAD" ColumnName="TENAD" />
           <ScalarProperty Name="SDT" ColumnName="SDT" />
@@ -38,6 +39,7 @@
           <ScalarProperty Name="IDLOAISP" ColumnName="IDLOAISP" />
           <ScalarProperty Name="IDTHDIENTHOAI" ColumnName="IDTHDIENTHOAI" />
           <ScalarProperty Name="IDMAUSAC" ColumnName="IDMAUSAC" />
+          <ScalarProperty Name="IDSANPHAM" ColumnName="IDSANPHAM" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -61,6 +63,7 @@
           <ScalarProperty Name="IDSIZEGIAY" ColumnName="IDSIZEGIAY" />
           <ScalarProperty Name="IDTHGIAY" ColumnName="IDTHGIAY" />
           <ScalarProperty Name="IDMAUSAC" ColumnName="IDMAUSAC" />
+          <ScalarProperty Name="IDSANPHAM" ColumnName="IDSANPHAM" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -73,6 +76,7 @@
           <ScalarProperty Name="IDTHTHOITRANG" ColumnName="IDTHTHOITRANG" />
           <ScalarProperty Name="IDSIZETT" ColumnName="IDSIZETT" />
           <ScalarProperty Name="IDMAUSAC" ColumnName="IDMAUSAC" />
+          <ScalarProperty Name="IDSANPHAM" ColumnName="IDSANPHAM" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -144,6 +148,7 @@
           <ScalarProperty Name="SDT" ColumnName="SDT" />
           <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
           <ScalarProperty Name="IDPQND" ColumnName="IDPQND" />
+          <ScalarProperty Name="HINH" ColumnName="HINH" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -189,7 +194,6 @@
     <EntitySetMapping Name="SANPHAMs">
       <EntityTypeMapping TypeName="TMDTModel.SANPHAM">
         <MappingFragment StoreEntitySet="SANPHAM">
-          <ScalarProperty Name="SOLUONGTON" ColumnName="SOLUONGTON" />
           <ScalarProperty Name="IDSANPHAM" ColumnName="IDSANPHAM" />
           <ScalarProperty Name="TENSP" ColumnName="TENSP" />
           <ScalarProperty Name="HINHANH1" ColumnName="HINHANH1" />
@@ -203,6 +207,7 @@
           <ScalarProperty Name="IDPHEDUYET" ColumnName="IDPHEDUYET" />
           <ScalarProperty Name="IDCUAHANG" ColumnName="IDCUAHANG" />
           <ScalarProperty Name="IDLOAISP" ColumnName="IDLOAISP" />
+          <ScalarProperty Name="SOLUONGTON" ColumnName="SOLUONGTON" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "WelComeBanHang";
+    Layout = "~/Views/Shared/Layout-DKBan.cshtml";
+}
+
+<div class="class=" col l-12 m-12 c-12">
+    <div class="home-product">
+        <div class="wrapper-box">
+            <div class="wrapper-box-inner">
+                <div class="wrapper-box-inner__content">
+                    <div class="image-welcome">
+                        <img src="~/Content/Hinh/dashboard.png" alt="Alternate Text" />
+                    </div>
+                    <div class="title-welcome">
+                        <h2>Chào mừng đến với TFT-Market</h2>
+                    </div>
+                    <div class="desc-welcome">
+                        <p>Để đăng ký bán hàng, bạn cần cung cấp một số thông tin cơ bản</p>
+                    </div>
+                    <div class="button-welcome-register">
+                        <a href="@Url.Action("DangKyBanHang", "NgBan")" class="tafi-button tafi-button-primary">Đăng ký</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

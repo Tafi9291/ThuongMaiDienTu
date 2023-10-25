@@ -4,48 +4,51 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="629d6a1fa82c4a769fb63cc061b86b7e" Name="Diagram1">
+      <Diagram DiagramId="3441878dcb1c4febbb13154d40bc1c8a" Name="Diagram1">
         <EntityTypeShape EntityType="TMDTModel.ADMIN" Width="1.5" PointX="6" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="TMDTModel.CHUCVU" Width="1.5" PointX="3.75" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="TMDTModel.CTDIENTHOAI" Width="1.5" PointX="5.25" PointY="22.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="TMDTModel.CTDONHANG" Width="1.5" PointX="5.25" PointY="15.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="TMDTModel.CTGIAY" Width="1.5" PointX="5.25" PointY="27.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TMDTModel.CTTHOITRANG" Width="1.5" PointX="8.25" PointY="26" IsExpanded="true" />
-        <EntityTypeShape EntityType="TMDTModel.CUAHANG" Width="1.5" PointX="0.75" PointY="11.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="TMDTModel.DANHGIASP" Width="1.5" PointX="8.25" PointY="15.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TMDTModel.DONHANG" Width="1.5" PointX="3" PointY="46.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="TMDTModel.LOAISP" Width="1.5" PointX="0.75" PointY="15.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="TMDTModel.MAUSAC" Width="1.5" PointX="3" PointY="23.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="TMDTModel.NGUOIDUNG" Width="1.5" PointX="1.5" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TMDTModel.PHEDUYET" Width="1.5" PointX="0.75" PointY="19.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="TMDTModel.PQNGUOIDUNG" Width="1.5" PointX="1.5" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="TMDTModel.PTTHANHTOAN" Width="1.5" PointX="0.75" PointY="40.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TMDTModel.QUANGCAO" Width="1.5" PointX="6" PointY="11.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="TMDTModel.SANPHAM" Width="1.5" PointX="3" PointY="14.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="TMDTModel.SHIPPER" Width="1.5" PointX="0.75" PointY="43" IsExpanded="true" />
-        <EntityTypeShape EntityType="TMDTModel.SIZEGIAY" Width="1.5" PointX="3" PointY="28.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="TMDTModel.SIZETHOITRANG" Width="1.5" PointX="6" PointY="31.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="TMDTModel.THDIENTHOAI" Width="1.5" PointX="3" PointY="32.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="TMDTModel.THGIAY" Width="1.5" PointX="3" PointY="34.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="TMDTModel.THTHOITRANG" Width="1.5" PointX="3" PointY="37.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TMDTModel.CTDIENTHOAI" Width="1.5" PointX="5.25" PointY="24" IsExpanded="true" />
+        <EntityTypeShape EntityType="TMDTModel.CTDONHANG" Width="1.5" PointX="5.25" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TMDTModel.CTGIAY" Width="1.5" PointX="8.25" PointY="26.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TMDTModel.CTTHOITRANG" Width="1.5" PointX="5.25" PointY="29.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TMDTModel.CUAHANG" Width="1.5" PointX="0.75" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TMDTModel.DANHGIASP" Width="1.5" PointX="8.25" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TMDTModel.DONHANG" Width="1.5" PointX="3" PointY="49.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TMDTModel.LOAISP" Width="1.5" PointX="0.75" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="TMDTModel.MAUSAC" Width="1.5" PointX="3" PointY="25.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TMDTModel.NGUOIDUNG" Width="1.5" PointX="1.5" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TMDTModel.PHEDUYET" Width="1.5" PointX="0.75" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="TMDTModel.PQNGUOIDUNG" Width="1.5" PointX="1.5" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TMDTModel.PTTHANHTOAN" Width="1.5" PointX="0.75" PointY="43.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TMDTModel.QUANGCAO" Width="1.5" PointX="6" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TMDTModel.SANPHAM" Width="1.5" PointX="3" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TMDTModel.SHIPPER" Width="1.5" PointX="0.75" PointY="45.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TMDTModel.SIZEGIAY" Width="1.5" PointX="6" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TMDTModel.SIZETHOITRANG" Width="1.5" PointX="3" PointY="30.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TMDTModel.THDIENTHOAI" Width="1.5" PointX="3" PointY="34.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TMDTModel.THGIAY" Width="1.5" PointX="3" PointY="37.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TMDTModel.THTHOITRANG" Width="1.5" PointX="3" PointY="40.25" IsExpanded="true" />
         <EntityTypeShape EntityType="TMDTModel.TINTUC" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TMDTModel.TRANGTHAIDH" Width="1.5" PointX="0.75" PointY="46.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="TMDTModel.TRANGTHAIVC" Width="1.5" PointX="1.5" PointY="58.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TMDTModel.TRANGTHAIDH" Width="1.5" PointX="0.75" PointY="48.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TMDTModel.TRANGTHAIVC" Width="1.5" PointX="1.5" PointY="60.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TMDTModel.TRANGTHAIXEMDONHANG" Width="1.5" PointX="3.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TMDTModel.VOUCHER" Width="1.5" PointX="0.75" PointY="48.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="TMDTModel.VOUCHERSHOP" Width="1.5" PointX="0.75" PointY="53" IsExpanded="true" />
+        <EntityTypeShape EntityType="TMDTModel.VOUCHER" Width="1.5" PointX="0.75" PointY="51.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TMDTModel.VOUCHERSHOP" Width="1.5" PointX="0.75" PointY="55.625" IsExpanded="true" />
         <AssociationConnector Association="TMDTModel.FK__ADMIN__IDCHUCVU__10566F31" ManuallyRouted="false" />
         <AssociationConnector Association="TMDTModel.FK__CTDIENTHO__IDLOA__5629CD9C" ManuallyRouted="false" />
         <AssociationConnector Association="TMDTModel.FK__CTDIENTHO__IDMAU__5812160E" ManuallyRouted="false" />
+        <AssociationConnector Association="TMDTModel.FK__CTDIENTHO__IDSAN__17036CC0" ManuallyRouted="false" />
         <AssociationConnector Association="TMDTModel.FK__CTDIENTHO__IDTHD__571DF1D5" ManuallyRouted="false" />
         <AssociationConnector Association="TMDTModel.FK__CTDONHANG__IDDON__09A971A2" ManuallyRouted="false" />
         <AssociationConnector Association="TMDTModel.FK__CTDONHANG__IDSAN__08B54D69" ManuallyRouted="false" />
         <AssociationConnector Association="TMDTModel.FK__CTGIAY__IDLOAISP__60A75C0F" ManuallyRouted="false" />
         <AssociationConnector Association="TMDTModel.FK__CTGIAY__IDMAUSAC__6383C8BA" ManuallyRouted="false" />
+        <AssociationConnector Association="TMDTModel.FK__CTGIAY__IDSANPHA__160F4887" ManuallyRouted="false" />
         <AssociationConnector Association="TMDTModel.FK__CTGIAY__IDSIZEGI__619B8048" ManuallyRouted="false" />
         <AssociationConnector Association="TMDTModel.FK__CTGIAY__IDTHGIAY__628FA481" ManuallyRouted="false" />
         <AssociationConnector Association="TMDTModel.FK__CTTHOITRA__IDLOA__5AEE82B9" ManuallyRouted="false" />
         <AssociationConnector Association="TMDTModel.FK__CTTHOITRA__IDMAU__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="TMDTModel.FK__CTTHOITRA__IDSAN__151B244E" ManuallyRouted="false" />
         <AssociationConnector Association="TMDTModel.FK__CTTHOITRA__IDSIZ__5CD6CB2B" ManuallyRouted="false" />
         <AssociationConnector Association="TMDTModel.FK__CTTHOITRA__IDTHT__5BE2A6F2" ManuallyRouted="false" />
         <AssociationConnector Association="TMDTModel.FK__CUAHANG__IDND__3C69FB99" ManuallyRouted="false" />
@@ -72,9 +75,6 @@
         <AssociationConnector Association="TMDTModel.FK__SANPHAM__IDPHEDU__66603565" ManuallyRouted="false" />
         <AssociationConnector Association="TMDTModel.FK__VOUCHER__IDTRANG__797309D9" ManuallyRouted="false" />
         <AssociationConnector Association="TMDTModel.FK__VOUCHERSH__IDTRA__7E37BEF6" ManuallyRouted="false" />
-        <AssociationConnector Association="TMDTModel.FK__SANPHAM__IDCTDIE__114A936A" />
-        <AssociationConnector Association="TMDTModel.FK__SANPHAM__IDCTGIA__1332DBDC" />
-        <AssociationConnector Association="TMDTModel.FK__SANPHAM__IDCTTHO__123EB7A3" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

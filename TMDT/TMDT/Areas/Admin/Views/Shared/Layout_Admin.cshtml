@@ -82,7 +82,7 @@
                                 <span class="header__navbar-user-name" style="color: var(--text-color);">thanhtuantran1006@gmail.com</span>
                                 <div class="dropdown-content  useracc">
                                     <div class="box-noneshow"></div>
-                                    <a href="">Xem tài khoản</a>
+                                    <a href="@Url.Action("TaiKhoan", "TaiKhoan")">Xem tài khoản</a>
                                     <a href="">Đăng xuất</a>
                                 </div>
                             </div>
@@ -233,12 +233,12 @@
                             <ul class="sidebar-submenu">
                                 <li>
                                     <div class="sidebar-submenu-item">
-                                        <a href="@Url.Action("QLVoucherShop", "VoucherShop")" class="sidebar-submenu-item-link">Người mua</a>
+                                        <a href="@Url.Action("QLNgMua", "QLND")" class="sidebar-submenu-item-link">Người mua</a>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="sidebar-submenu-item">
-                                        <a href="@Url.Action("TaoVoucher", "VoucherShop")" class="sidebar-submenu-item-link">Kênh người bán</a>
+                                        <a href="@Url.Action("QLNgBan", "QLND")" class="sidebar-submenu-item-link">Kênh người bán</a>
                                     </div>
                                 </li>
                             </ul>
@@ -309,6 +309,7 @@
     <script src="~/Areas/Admin/Js/menu.js"></script>
     <script src="~/Areas/Admin/Js/uploadOneImg.js"></script>
     <script src="~/Areas/Admin/Js/validator.js"></script>
+    <script src="~/Scripts/js/acc-show-hide.js"></script>
     <script src="https://kit.fontawesome.com/2d69c8ebbe.js" crossorigin="anonymous"></script>
 </body>
 </html>
