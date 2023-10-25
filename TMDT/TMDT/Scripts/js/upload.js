@@ -60,15 +60,45 @@
 //function updateImageCountText() {
 //    imageCountText.textContent = imageCount;
 //}
-function ChangeImage(UploadImage, previewImg1, previewImg2, previewImg3) {
+//function ChangeImage(UploadImage, previewImg1, previewImg2, previewImg3) {
+//    if (UploadImage.files && UploadImage.files[0]) {
+//        var reader = new FileReader();
+//        reader.onload = function (e) {
+//            $(previewImg1).attr('src', e.target.result);
+//            $(previewImg2).attr('src', e.target.result);
+//            $(previewImg3).attr('src', e.target.result);
+//        }
+//        reader.readAsDataURL(UploadImage.files[0]);
+//    }
+//}
+
+
+function ChangeImage(UploadImage, previewImg1) {
     if (UploadImage.files && UploadImage.files[0]) {
         var reader = new FileReader();
         reader.onload = function (e) {
             $(previewImg1).attr('src', e.target.result);
-            $(previewImg2).attr('src', e.target.result);
-            $(previewImg3).attr('src', e.target.result);
         }
         reader.readAsDataURL(UploadImage.files[0]);
+    }
+}
+
+function ChangeImage2(UploadImage2, previewImg2) {
+    if (UploadImage2.files && UploadImage2.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $(previewImg2).attr('src', e.target.result);
+        }
+        reader.readAsDataURL(UploadImage2.files[0]);
+    }
+}
+function ChangeImage3(UploadImage3, previewImg3) {
+    if (UploadImage3.files && UploadImage3.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $(previewImg3).attr('src', e.target.result);
+        }
+        reader.readAsDataURL(UploadImage3.files[0]);
     }
 }
 
