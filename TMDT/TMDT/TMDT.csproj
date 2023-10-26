@@ -451,6 +451,9 @@
     <Content Include="Views\Shared\Layout-DNKenhNgBan.cshtml" />
     <Content Include="Views\NgBan\DangNhapNgBan.cshtml" />
     <Content Include="Views\SanPham\TaoSanPham.cshtml" />
+    <Content Include="Views\Register\DetailUser.cshtml" />
+    <Content Include="Views\Register\EditUser.cshtml" />
+    <Content Include="Views\NgBan\DangKy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

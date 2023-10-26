@@ -1,4 +1,4 @@
-﻿
+﻿@model TMDT.Models.NGUOIDUNG
 @{
     ViewBag.Title = "TaiKhoan";
     Layout = "~/Views/Shared/Layout-NgBan.cshtml";
@@ -32,8 +32,8 @@
                                         <div class="info">
                                             <div class="account-profile">
                                                 <a href="#" class="account-profile-item">
-                                                    <img src="https://i.pinimg.com/236x/51/0e/a3/510ea3f0e7bbd47bb7b64d6b27ab1ac5.jpg" class="account-profile-avatar" />
-                                                    <span class="account-profile-text" style="margin-left: 8px;">hvtai_1506</span>
+                                                    <img src="@Url.Content(Model.HINH.ToString())" class="account-profile-avatar" />
+                                                    <span class="account-profile-text" style="margin-left: 8px;">@Model.TENND</span>
                                                 </a>
                                             </div>
                                         </div>
@@ -44,37 +44,73 @@
                                         </div>
                                     </div>
                                     <div class="extra">
-                                        <form class="tafi-form tafi-form--label-right">
-                                            <div class="tafi-form-item--x-small tafi-form-item">
-                                                <label class="tafi-form-item__label">Tên đăng nhập</label>
-                                                <div class="tafi-form-item__control">
-                                                    <div class="tafi-form-item__content">
-                                                        <div>
-                                                            <div class="tafi-input" style="width: 240px; margin-bottom: 4px;">
-                                                                <div class="tafi-input__inner tafi-input__inner--normal">
-                                                                    <input type="text" placeholder="Nhập vào" resize="vertical"
-                                                                           rows="2" minrows="2" autofocus="autofocus" maxlength="30"
-                                                                           restrictiontype="input" max="Infinity" min="-Infinity" class="tafi-input__input" value="hvtai_1506">
-                                                                </div>
+                                        @using (Html.BeginForm("CapNhatThongTin", "NgBan", FormMethod.Post, new { enctype = "multipart/form-data",@class="tafi-form tafi-form--label-right" }))
+                                        {
+                                            @Html.Hidden("IDND", Model.IDND)
+                                            @Html.Hidden("HINH", Model.HINH)
+                                            
+                                        <div class="tafi-form-item--x-small tafi-form-item">
+                                            <label class="tafi-form-item__label">Tên đăng nhập</label>
+                                            <div class="tafi-form-item__control">
+                                                <div class="tafi-form-item__content">
+                                                    <div>
+                                                        <div class="tafi-input" style="width: 240px; margin-bottom: 4px;">
+                                                            <div class="tafi-input__inner tafi-input__inner--normal">
+
+                                                                @Html.EditorFor(model => model.TENND, new
+                                                                {
+                                                                    htmlAttributes = new
+                                                                    {
+                                                                        @type = "text",
+                                                                        @placeholder = "Nhập vào",
+                                                                        @resize = "vertical",
+                                                                        @rows = "2",
+                                                                        @minrows = "2",
+                                                                        @autofocus = "autofocus",
+                                                                        @maxlength = "30"
+                                                                            ,
+                                                                        @restrictiontype = "input",
+                                                                        @max = "Infinity",
+                                                                        @min = "-Infinity",
+                                                                        @class = "tafi-input__input",
+                                                                        @value = "hvtai_1506"
+                                                                    }
+                                                                })
                                                             </div>
-                                                            <span class="username-subtitle">
-                                                                Tên đăng nhập phải có độ dài từ 5-30 ký tự. Ký tự hợp lệ bao gồm Tiếng Việt không dấu,
-                                                                chữ số, dấu gạch dưới, dấu chấm. Không sử dụng tên đăng nhập chứa dấu cách hoặc chỉ bao gồm chữ số.
-                                                            </span>
+                                                        </div>
+                                                        <span class="username-subtitle">
+                                                            Tên đăng nhập phải có độ dài từ 5-30 ký tự. Ký tự hợp lệ bao gồm Tiếng Việt không dấu,
+                                                            chữ số, dấu gạch dưới, dấu chấm. Không sử dụng tên đăng nhập chứa dấu cách hoặc chỉ bao gồm chữ số.
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tafi-form-item__control">
+                                                <div class="tafi-form-item__content">
+                                                    <div>
+                                                        <div class="tafi-input" style="width: 240px; margin-bottom: 4px;">
+                                                            <div class="tafi-input__inner tafi-input__inner--normal">
+
+                                                                <img src="@Url.Content(Model.HINH)" style="width: 82px; height: 82px; border-radius: 50%; border: 1px solid rgba(0, 0, 0, 0.1); object-fit: cover;" id="previewImg1" />
+                                                                <input type="file" style="font-size: 1.4rem; margin-top: 20px;" name="UploadImage1" onchange="ChangeImage(UploadImage1, document.getElementById('previewImg1'))" />
+                                                            </div>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                                <div class="tafi-form-item">
+                                                    <label class="tafi-form-item__label empty"></label>
+                                                    <div class="tafi-form-item__control">
+                                                        <div class="tafi-form-item__content">
+                                                            <button class="tafi-button tafi-button-primary tafi-button--normal"><span>Lưu</span></button>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="tafi-form-item">
-                                                <label class="tafi-form-item__label empty"></label>
-                                                <div class="tafi-form-item__control">
-                                                    <div class="tafi-form-item__content">
-                                                        <button class="tafi-button tafi-button-primary tafi-button--normal"><span>Lưu</span></button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
+                                            
+                                        }
+                                        </div>
                                 </div>
                                 <div class="setting-card-row">
                                     <div class="main">
@@ -84,7 +120,7 @@
                                         </div>
                                         <div class="info">
                                             <div class="account-profile">
-                                                <span class="account-profile-text" style="margin-left: 8px;">0915663264</span>
+                                                <span class="account-profile-text" style="margin-left: 8px;">@Model.SDT</span>
                                             </div>
                                         </div>
                                         <div class="tafi-popover tafi-popover--light">
@@ -94,7 +130,11 @@
                                         </div>
                                     </div>
                                     <div class="extra">
-                                        <form class="tafi-form tafi-form--label-right">
+                                        @using (Html.BeginForm("SDT", "NgBan", FormMethod.Post, new { enctype = "multipart/form-data", @class = "tafi-form tafi-form--label-right" }))
+                                        {
+                                            @Html.Hidden("IDND", Model.IDND)
+                                            @Html.Hidden("HINH", Model.HINH)
+
                                             <div class="tafi-form-item--x-small tafi-form-item">
                                                 <label class="tafi-form-item__label">Số điện thoại</label>
                                                 <div class="tafi-form-item__control">
@@ -102,9 +142,26 @@
                                                         <div>
                                                             <div class="tafi-input" style="width: 240px; margin-bottom: 4px;">
                                                                 <div class="tafi-input__inner tafi-input__inner--normal">
-                                                                    <input type="text" placeholder="Nhập vào" resize="vertical"
-                                                                           rows="2" minrows="2" autofocus="autofocus" maxlength="30"
-                                                                           restrictiontype="input" max="Infinity" min="-Infinity" class="tafi-input__input" value="0915663264">
+
+                                                                    @Html.EditorFor(model => model.SDT, new
+                                                                    {
+                                                                        htmlAttributes = new
+                                                                        {
+                                                                            @type = "text",
+                                                                            @placeholder = "Nhập vào",
+                                                                            @resize = "vertical",
+                                                                            @rows = "2",
+                                                                            @minrows = "2",
+                                                                            @autofocus = "autofocus",
+                                                                            @maxlength = "30"
+                                                                                     ,
+                                                                            @restrictiontype = "input",
+                                                                            @max = "Infinity",
+                                                                            @min = "-Infinity",
+                                                                            @class = "tafi-input__input",
+                                                                            @value = "hvtai_1506"
+                                                                        }
+                                                                    })
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -119,8 +176,8 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </form>
-                                    </div>
+                                        }
+                                        </div>
                                 </div>
                                 <div class="setting-card-row">
                                     <div class="main">
@@ -130,7 +187,7 @@
                                         </div>
                                         <div class="info">
                                             <div class="account-profile">
-                                                <span class="account-profile-text" style="margin-left: 8px;">abc@gmail.com</span>
+                                                <span class="account-profile-text" style="margin-left: 8px;">@Model.EMAIL</span>
                                             </div>
                                         </div>
                                         <div class="tafi-popover tafi-popover--light">
@@ -148,9 +205,27 @@
                                                         <div>
                                                             <div class="tafi-input" style="width: 240px; margin-bottom: 4px;">
                                                                 <div class="tafi-input__inner tafi-input__inner--normal">
-                                                                    <input type="text" placeholder="Nhập vào" resize="vertical"
-                                                                           rows="2" minrows="2" autofocus="autofocus" maxlength="30"
-                                                                           restrictiontype="input" max="Infinity" min="-Infinity" class="tafi-input__input" value="abc@gmail.com">
+
+                                                                    @Html.EditorFor(model => model.EMAIL, new
+                                                                    {
+                                                                        htmlAttributes = new
+                                                                        {
+                                                                            @type = "text",
+                                                                            @placeholder = "Nhập vào",
+                                                                            @resize = "vertical",
+                                                                            @rows = "2",
+                                                                            @minrows = "2",
+                                                                            @autofocus = "autofocus",
+                                                                            @maxlength = "30"
+                                                                            ,
+                                                                            @restrictiontype = "input",
+                                                                            @max = "Infinity",
+                                                                            @min = "-Infinity",
+                                                                            @class = "tafi-input__input",
+                                                                            @readonly = "readonly"
+
+                                                                        }
+                                                                    })
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -165,8 +240,8 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </form>
-                                    </div>
+                                           </form>
+</div>
                                 </div>
                                 <div class="setting-card-row">
                                     <div class="main">
@@ -176,7 +251,7 @@
                                         </div>
                                         <div class="info">
                                             <div class="account-profile">
-                                                <span class="account-profile-text" style="margin-left: 8px;">123 Nguyễn Trãi, Phường 11, Quận 5</span>
+                                                <span class="account-profile-text" style="margin-left: 8px;">@Model.DIACHI</span>
                                             </div>
                                         </div>
                                         <div class="tafi-popover tafi-popover--light">
@@ -186,7 +261,11 @@
                                         </div>
                                     </div>
                                     <div class="extra">
-                                        <form class="tafi-form tafi-form--label-right">
+                                        @using (Html.BeginForm("DiaChi", "NgBan", FormMethod.Post, new { enctype = "multipart/form-data", @class = "tafi-form tafi-form--label-right" }))
+                                        {
+                                            @Html.Hidden("IDND", Model.IDND)
+                                            @Html.Hidden("HINH", Model.HINH)
+
                                             <div class="tafi-form-item--x-small tafi-form-item">
                                                 <label class="tafi-form-item__label">Địa chỉ</label>
                                                 <div class="tafi-form-item__control">
@@ -194,9 +273,27 @@
                                                         <div>
                                                             <div class="tafi-input" style="width: 240px; margin-bottom: 4px;">
                                                                 <div class="tafi-input__inner tafi-input__inner--normal">
-                                                                    <input type="text" placeholder="Nhập vào" resize="vertical"
-                                                                           rows="2" minrows="2" autofocus="autofocus" maxlength="30"
-                                                                           restrictiontype="input" max="Infinity" min="-Infinity" class="tafi-input__input" value="123 Nguyễn Trãi, Phường 11, Quận 5">
+
+                                                                    @Html.EditorFor(model => model.DIACHI, new
+                                                               {
+                                                                   htmlAttributes = new
+                                                                   {
+                                                                       @type = "text",
+                                                                       @placeholder = "Nhập vào",
+                                                                       @resize = "vertical",
+                                                                       @rows = "2",
+                                                                       @minrows = "2",
+                                                                       @autofocus = "autofocus",
+                                                                       @maxlength = "30"
+                                                              ,
+                                                                       @restrictiontype = "input",
+                                                                       @max = "Infinity",
+                                                                       @min = "-Infinity",
+                                                                       @class = "tafi-input__input",
+                                                                       
+
+                                                                   }
+                                                               })
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -211,8 +308,8 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </form>
-                                    </div>
+                                        }
+                                        </div>
                                 </div>
                             </div>
                         </div>

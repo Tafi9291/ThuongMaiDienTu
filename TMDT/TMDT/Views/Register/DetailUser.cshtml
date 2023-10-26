@@ -1,0 +1,72 @@
+﻿@model TMDT.Models.NGUOIDUNG
+
+@{
+    ViewBag.Title = "DetailUser";
+    Layout = "~/Views/Shared/Layout-NgMua.cshtml";
+}
+<div class="app__container">
+    <div class="grid wide">
+
+
+        <div class="row sm-gutter app__content">
+
+            <div class="col l-12 m-12 c-12">
+
+                <div class="home-product">
+                    <div class="row sm-gutter">
+                        <div class="col l-2">
+                            <div class="user-img">
+                                <img src="@Url.Content(Model.HINH)" style="width: 82px; height: 82px; border-radius: 50%; border: 1px solid rgba(0, 0, 0, 0.1); object-fit: cover;" />
+                                <p class="user-img_name">@Model.TENND</p>
+                                <div style=" border-bottom: 1px solid var(--primary-color); width: 100%;"></div>
+                                <div style="display: flex; flex-direction:column; align-items: flex-start;">
+                                    <a href="@Url.Action("DetailUser","Register")" class="user-img_link">
+                                        Tài khoản của bạn
+                                    </a>
+                                    <a href="@Url.Action("LichSuDonHang","Register")" class="user-img_link">
+                                        Đơn mua
+                                    </a>
+                                    <a href="@Url.Action("DangXuat", "Register")" class="user-img_link">
+                                        Đăng xuất
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col l-10">
+                            <div class="home-product-title">
+                                <table>
+                                    <tr>
+                                        <td>Họ và tên:</td>
+                                        <td>@Model.TENND</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Email:</td>
+                                        <td>@Model.EMAIL</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Địa chỉ:</td>
+                                        <td>@Model.DIACHI</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Số điện thoại:</td>
+                                        <td>@Model.SDT</td>
+                                    </tr>
+                                </table>
+                                <a href="@Url.Action("EditUser","Register", new {id = @Model.IDND})" class="edit-profile_user" style="margin-top:10px">Cập nhật</a>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

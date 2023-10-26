@@ -1,0 +1,95 @@
+﻿@model TMDT.Models.NGUOIDUNG
+
+@{
+    ViewBag.Title = "EditUser";
+    Layout = "~/Views/Shared/Layout-NgMua.cshtml";
+}
+
+<div class="app__container">
+    <div class="grid wide">
+
+
+        <div class="row sm-gutter app__content">
+
+            <div class="col l-12 m-12 c-12">
+
+                <div class="home-product">
+                    <div class="row sm-gutter">
+                        <div class="col l-2">
+                            <div class="user-img">
+                                <img src="@Url.Content(Model.HINH)" style="width: 82px; height: 82px; border-radius: 50%; border: 1px solid rgba(0, 0, 0, 0.1); object-fit: cover;" />
+                                <p class="user-img_name">@Model.TENND</p>
+                                <div style=" border-bottom: 1px solid var(--primary-color); width: 100%;"></div>
+                                <div style="display: flex; flex-direction:column; align-items: flex-start;">
+                                    <a href="@Url.Action("DetailUser","Register")" class="user-img_link">
+                                        Tài khoản của bạn
+                                    </a>
+                                    <a href="@Url.Action("LichSuDonHang","Register")" class="user-img_link">
+                                        Đơn mua
+                                    </a>
+                                    <a href="@Url.Action("DangXuat", "Register")" class="user-img_link">
+                                        Đăng xuất
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col l-10">
+                            <div class="home-product-title">
+                                <h1>Thông tin của bạn</h1>
+                                @using (Html.BeginForm("EditUser", "Register", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                {
+                                    @Html.Hidden("IDND", Model.IDND)
+                                    @Html.Hidden("HINH", Model.HINH)
+                                    <div class="row sm-gutter">
+                                        <div class="col l-6">
+                                            <div class="user-edit">
+                                                <p class="user-edit_label">Tên của bạn:</p>
+                                                @Html.EditorFor(model => model.TENND, new { htmlAttributes = new { @class = "form-control" } })
+                                            </div>
+                                            <div class="user-edit">
+                                                <p class="user-edit_label">Số điện thoại của bạn:</p>
+                                                @Html.EditorFor(model => model.SDT, new { htmlAttributes = new { @class = "form-control" } })
+                                            </div>
+                                            <div class="user-edit">
+                                                <p class="user-edit_label">Địa chỉ của bạn:</p>
+                                                @Html.EditorFor(model => model.DIACHI, new { htmlAttributes = new { @class = "form-control" } })
+                                            </div>
+                                            <div class="user-edit">
+                                                <p class="user-edit_label">Email của bạn:</p>
+                                                @Html.EditorFor(model => model.EMAIL, new { htmlAttributes = new { @class = "form-control", @style = "width: 250px;", @readonly = "readonly" } })
+                                            </div>
+
+                                        </div>
+                                        <div class="col l-6">
+                                            <div class="user-edit_change-img">
+
+                                                <img src="@Url.Content(Model.HINH)" style="width: 82px; height: 82px; border-radius: 50%; border: 1px solid rgba(0, 0, 0, 0.1); object-fit: cover;" id="previewImg1" />
+                                                <input type="file" style="font-size: 1.4rem; margin-top: 20px;" name="UploadImage1" onchange="ChangeImage(UploadImage1, document.getElementById('previewImg1'))" />
+
+                                                @*<input type="file" id="image-input" accept="image/*" style="display: none;" name="UploadImage1" required onchange="ChangeImage(UploadImage1, document.getElementById('previewImg1'))">
+                                                <img src="@Url.Content(Model.HINH)" alt="Alternate Text" id="previewImg1" class="preview-image-product" />*@
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <button type="submit" class="user-edit_button-save">Cập nhật</button>
+                                    <a href="@Url.Action("DetailUser", "Register")" class="edit-profile_user" style="margin-top:10px; margin-left: 5px;">Quay về</a>
+
+
+                                }
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -41,7 +41,7 @@
                         <i class="header__mobile-search-icon fas fa-search"></i>
                     </label>
                     <div class="header__logo hide-on-tablet" style="width: 400px;">
-                        <a href="@Url.Action("KenhNgBan","NgBan")" class="header__logo-link">
+                        <a href="" class="header__logo-link">
                             <img src="~/Content/Hinh/logo-favicon.png"
                                  alt="logo"
                                  class="header__logo-img" />
@@ -78,12 +78,12 @@
                         <div class="header__cart-wrap">
                             @*<i class="header__cart-icon useracc fas fa-user" style="cursor:pointer;" onclick="myFunction()"></i>*@
                             <div class="header__navbar-item header__navbar-user">
-                                <img src="https://i.pinimg.com/236x/51/0e/a3/510ea3f0e7bbd47bb7b64d6b27ab1ac5.jpg" alt="" class="header__navbar-user-img" style="width: 30px; height: 30px;">
-                                <span class="header__navbar-user-name" style="color: var(--text-color);">hvtai_1506</span>
+                                <img src="@Url.Content(Session["Hinh"].ToString())" alt="" class="header__navbar-user-img" style="width: 30px; height: 30px;">
+                                <span class="header__navbar-user-name" style="color: var(--text-color);">@Session["Email"]</span>
                                 <div class="dropdown-content  useracc">
                                     <div class="box-noneshow"></div>
-                                    <a href="@Url.Action("TaiKhoan", "NgBan")">Xem tài khoản</a>
-                                    <a href="">Đăng xuất</a>
+                                    <a href="@Url.Action("DetailUser", "Register")">Xem tài khoản</a>
+                                    <a href="@Url.Action("DangXuat", "NgBan")">Đăng xuất</a>
                                 </div>
                             </div>
                         </div>

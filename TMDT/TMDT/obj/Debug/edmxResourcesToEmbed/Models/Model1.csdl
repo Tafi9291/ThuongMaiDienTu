@@ -104,6 +104,7 @@
     <NavigationProperty Name="QUANGCAOs" Relationship="Self.FK__QUANGCAO__IDCUAH__412EB0B6" FromRole="CUAHANG" ToRole="QUANGCAO" />
     <NavigationProperty Name="SANPHAMs" Relationship="Self.FK__SANPHAM__IDCUAHA__6754599E" FromRole="CUAHANG" ToRole="SANPHAM" />
     <NavigationProperty Name="VOUCHERSHOPs" Relationship="Self.FK__VOUCHERSH__IDCUA__7D439ABD" FromRole="CUAHANG" ToRole="VOUCHERSHOP" />
+    <Property Name="TENCH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="DANHGIASP">
     <Key>

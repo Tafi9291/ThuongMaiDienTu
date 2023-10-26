@@ -1,8 +1,9 @@
-﻿@model TMDT.Models.CUAHANG
+﻿@model TMDT.Models.CUAHANG 
 
 @{
     ViewBag.Title = "DangKyBanHang";
     Layout = "~/Views/Shared/Layout-DKBan.cshtml";
+    
 }
 
 <div class="class=" col l-12 m-12 c-12">
@@ -12,84 +13,112 @@
                 <div class="header-form">
                     <p>Cài đặt thông tin cửa hàng</p>
                 </div>
-                <div class="wrapper-box-inner__content" style="padding-top: 40px; padding-bottom: 28px;">
-                    <div class="product-edit" style="width: 720px;">
-                        <div class="edit-row">
-                            <div class="edit-label edit-title">
-                                <span><span style="color: red;">*</span> Tên shop</span>
-                            </div>
-                            <div class="edit-main" style="max-width: 320px; width: 320px; flex-basis: 320px;">
-                                <div class="popover-wrap">
-                                    <div class="custom-len-calc-input product-edit-form-item">
-                                        <div class="product-edit-form-item-content">
-                                            <div class="tafi-input">
-                                                <div class="tafi-input__inner tafi-input__inner--large">
-                                                    <input type="text" placeholder="Nhập vào" size="large"
-                                                           resize="none" rows="2" minrows="2" maxlength="Infinity"
-                                                           restrictiontype="input" max="Infinity" min="-Infinity" class="tafi-input__input" id="text-input">
+                @using (Html.BeginForm("DangKyBanHang", "NgBan", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <div class="wrapper-box-inner__content" style="padding-top: 40px; padding-bottom: 28px;">
+                        <div class="product-edit" style="width: 720px;">
+                            <div class="edit-row">
+                                <div class="edit-label edit-title">
+                                    <span><span style="color: red;">*</span> Tên shop</span>
+                                </div>
+                                <div class="edit-main" style="max-width: 320px; width: 320px; flex-basis: 320px;">
+                                    <div class="popover-wrap">
+                                        <div class="custom-len-calc-input product-edit-form-item">
+                                            <div class="product-edit-form-item-content">
+                                                <div class="tafi-input">
+                                                    <div class="tafi-input__inner tafi-input__inner--large">
+                                                        @*<input type="text" placeholder="Nhập vào" size="large"
+        resize="none" rows="2" minrows="2" maxlength="Infinity"
+        restrictiontype="input" max="Infinity" min="-Infinity" class="tafi-input__input" id="text-input">*@
+                                                        @Html.TextBoxFor(m => m.TENCH, new
+                                                        {
+                                                            @type = "text",
+                                                            @placeholder = "Nhập vào",
+                                                            @size = "large",
+                                                            @resize = "none",
+                                                            @rows = "2",
+                                                            @minrows = "2",
+                                                            @maxlength = "Infinity",
+                                                            @restrictiontype = "input",
+                                                            @max = "Infinity",
+                                                            @min = "-Infinity",
+                                                            @class = "tafi-input__input",
+                                                            @id = "text-input",
+                                                            
+                                                        })
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="edit-row">
-                            <div class="edit-label edit-title">
-                                <span><span style="color: red;">*</span> Địa chỉ lấy hàng</span>
-                            </div>
-                            <div class="edit-main" style="max-width: 320px; width: 320px; flex-basis: 320px;">
-                                <div class="popover-wrap">
-                                    <div class="custom-len-calc-input product-edit-form-item">
-                                        <div class="product-edit-form-item-content">
-                                            <div class="tafi-input">
-                                                <div class="tafi-input__inner tafi-input__inner--large">
-                                                    <input type="text" placeholder="Nhập vào" size="large"
-                                                           resize="none" rows="2" minrows="2" maxlength="Infinity"
-                                                           restrictiontype="input" max="Infinity" min="-Infinity" class="tafi-input__input" id="text-input">
+                            <div class="edit-row">
+                                <div class="edit-label edit-title">
+                                    <span><span style="color: red;">*</span> Địa chỉ lấy hàng</span>
+                                </div>
+                                <div class="edit-main" style="max-width: 320px; width: 320px; flex-basis: 320px;">
+                                    <div class="popover-wrap">
+                                        <div class="custom-len-calc-input product-edit-form-item">
+                                            <div class="product-edit-form-item-content">
+                                                <div class="tafi-input">
+                                                    <div class="tafi-input__inner tafi-input__inner--large">
+                                                        @Html.TextBoxFor(m => m.DIACHI, new
+                                                        {
+                                                            @type = "text",
+                                                            @placeholder = "Nhập vào",
+                                                            @size = "large",
+                                                            @resize = "none",
+                                                            @rows = "2",
+                                                            @minrows = "2",
+                                                            @maxlength = "Infinity",
+                                                            @restrictiontype = "input",
+                                                            @max = "Infinity",
+                                                            @min = "-Infinity",
+                                                            @class = "tafi-input__input",
+                                                            @id = "text-input",
+
+                                                        })
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="edit-row">
-                            <div class="edit-label edit-title">
-                                <span><span style="color: red;">*</span> Email</span>
-                            </div>
-                            <div class="edit-main" style="max-width: 320px; width: 320px; flex-basis: 320px;">
-                                <div class="popover-wrap">
-                                    <div class="custom-len-calc-input product-edit-form-item">
-                                        <div class="product-edit-form-item-content">
-                                            <div class="tafi-input">
-                                                <div class="tafi-input__inner tafi-input__inner--large">
-                                                    <input type="text" placeholder="Nhập vào" size="large"
-                                                           resize="none" rows="2" minrows="2" maxlength="Infinity"
-                                                           restrictiontype="input" max="Infinity" min="-Infinity" class="tafi-input__input" id="text-input">
+                            <div class="edit-row">
+                                <div class="edit-label edit-title">
+                                    <span><span style="color: red;">*</span> Email</span>
+                                </div>
+                                <div class="edit-main" style="max-width: 320px; width: 320px; flex-basis: 320px;">
+                                    <div class="popover-wrap">
+                                        <div class="custom-len-calc-input product-edit-form-item">
+                                            <div class="product-edit-form-item-content">
+                                                <div class="tafi-input">
+                                                    <div class="tafi-input__inner tafi-input__inner--large">
+                                                        <p style="line-height: 38px;">@Session["Email"]</p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="edit-row" style="margin-bottom: 0;">
-                            <div class="edit-label edit-title">
-                                <span><span style="color: red;">*</span> Số điện thoại</span>
-                            </div>
-                            <div class="edit-main" style="max-width: 320px; width: 320px; flex-basis: 320px;">
-                                <div class="popover-wrap">
-                                    <div class="custom-len-calc-input product-edit-form-item">
-                                        <div class="product-edit-form-item-content">
-                                            <div class="tafi-input">
-                                                <div class="tafi-input__inner tafi-input__inner--large">
-                                                    <input type="text" placeholder="Nhập vào" size="large"
-                                                           resize="none" rows="2" minrows="2" maxlength="Infinity"
-                                                           restrictiontype="input" max="Infinity" min="-Infinity" class="tafi-input__input" id="text-input">
-                                                </div>
-                                                <div class="desc-welcome" style="width: 690px;">
-                                                    <p style="font-size: 1.2rem;">Nếu bạn muốn đổi số điện thoại, vui lòng chỉnh sửa tại "<a href="#">Hồ sơ của tôi</a>" ở trang chủ TFT-Market sau khi hoàn tất quá trình đăng ký.</p>
+                            <div class="edit-row" style="margin-bottom: 0;">
+                                <div class="edit-label edit-title">
+                                    <span><span style="color: red;">*</span> Số điện thoại</span>
+                                </div>
+                                <div class="edit-main" style="max-width: 320px; width: 320px; flex-basis: 320px;">
+                                    <div class="popover-wrap">
+                                        <div class="custom-len-calc-input product-edit-form-item">
+                                            <div class="product-edit-form-item-content">
+                                                <div class="tafi-input">
+                                                    <div class="tafi-input__inner tafi-input__inner--large">
+                                                        <p style="line-height: 38px;">@Session["SDT"]</p>
+                                                    </div>
+                                                    <div class="desc-welcome" style="width: 690px;">
+                                                        <p style="font-size: 1.2rem;">Nếu bạn muốn đổi số điện thoại, vui lòng chỉnh sửa tại "<a href="#">Hồ sơ của tôi</a>" ở trang chủ TFT-Market sau khi hoàn tất quá trình đăng ký.</p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -98,12 +127,13 @@
                             </div>
                         </div>
                     </div>
+                    <div class="footer-form">
+                        <a href="@Url.Action("WelComeBanHang", "NgBan")" class="tafi-button" style="margin-right: 10px;">Trở về</a>
+                        <button href="#" class="tafi-button tafi-button-primary">Hoàn tất</button>
+                    </div>
+                }
                 </div>
-                <div class="footer-form">
-                    <a href="@Url.Action("WelComeBanHang", "NgBan")" class="tafi-button" style="margin-right: 10px;">Trở về</a>
-                    <button href="#" class="tafi-button tafi-button-primary">Hoàn tất</button>
-                </div>
-            </div>
+
         </div>
     </div>
 </div>

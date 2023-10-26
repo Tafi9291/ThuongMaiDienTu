@@ -82,6 +82,7 @@
     <Property Name="HINHANH" Type="nvarchar(max)" />
     <Property Name="ANHDAIDIEN" Type="nvarchar(max)" />
     <Property Name="IDND" Type="int" />
+    <Property Name="TENCH" Type="nvarchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="DANHGIASP">
     <Key>

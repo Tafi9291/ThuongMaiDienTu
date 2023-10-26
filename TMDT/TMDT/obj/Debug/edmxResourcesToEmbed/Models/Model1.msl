@@ -83,6 +83,7 @@
     <EntitySetMapping Name="CUAHANGs">
       <EntityTypeMapping TypeName="TMDTModel.CUAHANG">
         <MappingFragment StoreEntitySet="CUAHANG">
+          <ScalarProperty Name="TENCH" ColumnName="TENCH" />
           <ScalarProperty Name="IDCUAHANG" ColumnName="IDCUAHANG" />
           <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
           <ScalarProperty Name="HINHANH" ColumnName="HINHANH" />

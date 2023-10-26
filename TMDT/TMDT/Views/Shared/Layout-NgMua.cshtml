@@ -18,7 +18,7 @@
     <link href="~/Content/css/cancel-order.css" rel="stylesheet" />
     <link href="~/Content/css/checkout.css" rel="stylesheet" />
     <link href="~/Content/css/responsive.css" rel="stylesheet" />
-
+   
 
     <link href="~/Content/Hinh/logo-favicon.png" rel="icon" />
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -40,7 +40,7 @@
                               header__navbar-item--has-qr
                               header__navbar-item--separate
                             ">
-                            <a href="#">Kênh người bán</a>
+                            <a href="@Url.Action("DangNhapNgBan", "NgBan")">Kênh người bán</a>
                         </li>
                         <li class="
                               header__navbar-item
@@ -96,7 +96,7 @@
                         {
                             <li class="header__navbar-item header__navbar-user">
 
-                                <img src="@*@Url.Content(Session["Hinh"].ToString())*@" alt="" class="header__navbar-user-img" />
+                                <img src="@Url.Content(Session["Hinh"].ToString())" alt="" class="header__navbar-user-img" />
                                 <span class="header__navbar-user-name">@Session["Email"]</span>
 
                                 <ul class="header__navbar-user-menu">
@@ -424,5 +424,6 @@
             $('#thongbao').fadeOut('slow');
         }, 2000); // disappear after 3 seconds
     </script>
+    <script src="~/Scripts/js/upload.js"></script>
 </body>
 </html>
