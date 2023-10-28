@@ -41,7 +41,7 @@ namespace TMDT.Controllers
                 db.NGUOIDUNGs.Add(shop);
                 db.SaveChanges();
 
-                return RedirectToAction("DangNhapNgBan", "NgBan");
+                return RedirectToAction("DangNhapNgBan  ", "NgBan");
             }
 
             return View(shop);

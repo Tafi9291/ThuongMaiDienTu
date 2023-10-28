@@ -11,9 +11,17 @@ namespace TMDT.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Web;
+
     public partial class ADMIN
     {
+        public ADMIN() 
+        {
+            HINHANH = "~/Areas/Admin/Content/img/iconanh.png";
+        }
+        [NotMapped]
+        public HttpPostedFileBase UploadImage1 { get; set; }
         public int IDADMIN { get; set; }
         public string TENAD { get; set; }
         public string SDT { get; set; }

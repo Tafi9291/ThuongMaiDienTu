@@ -135,7 +135,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Controllers\DangNhapController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DangNhapAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashBoardController.cs" />
     <Compile Include="Areas\Admin\Controllers\MauSacController.cs" />
     <Compile Include="Areas\Admin\Controllers\QLNDController.cs" />
@@ -383,7 +383,7 @@
     <Content Include="Areas\Admin\Views\Voucher\TaoVoucher.cshtml" />
     <Content Include="Areas\Admin\Views\Voucher\CapNhatVC.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\Layout_DangNhap.cshtml" />
-    <Content Include="Areas\Admin\Views\DangNhap\DangNhap.cshtml" />
+    <Content Include="Areas\Admin\Views\DangNhapAdmin\DangNhapAdmin.cshtml" />
     <Content Include="Areas\Admin\Views\QLND\QLNgMua.cshtml" />
     <Content Include="Areas\Admin\Views\QLND\QLNgBan.cshtml" />
     <Content Include="Areas\Admin\Views\TaiKhoan\TaiKhoan.cshtml" />
