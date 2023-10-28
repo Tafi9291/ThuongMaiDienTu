@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using TMDT.Models;
 
@@ -13,12 +14,53 @@ namespace TMDT.Controllers
     {
         TMDTEntities db = new TMDTEntities();
         // GET: SanPham
-        public ActionResult SanPham(int? page)
+        public ActionResult SanPham(int? size, int? page, string currentFilter, string searchString)
         {
-            const int pageSize = 10;
-            var pageNumber = (page ?? 1);
-            var products = db.SANPHAMs.OrderBy(p => p.TENSP).ToList().ToPagedList(pageNumber, pageSize);
-            return View(products);
+            SANPHAM sp = new SANPHAM();
+            var email = Session["Email"] as string;
+            if (email == null)
+            {
+                // Nếu chưa đăng nhập, chuyển hướng đến trang đăng nhập
+                return RedirectToAction("DangNhap", "Register");
+            }
+            // Lấy thông tin của người dùng trong cơ sở dữ liệu
+            var nguoidung = db.NGUOIDUNGs.SingleOrDefault(kh => kh.EMAIL == email);
+            if (nguoidung != null) // Kiểm tra xem người dùng có tồn tại hay không
+            {
+                // Lấy thông tin của cửa hàng nếu tồn tại, sau đó lưu ID của cửa hàng vào sản phẩm
+                var cuahang = db.CUAHANGs.SingleOrDefault(ch => ch.IDND == nguoidung.IDND);
+
+                if (cuahang != null) // Kiểm tra xem cửa hàng có tồn tại hay không
+                {
+                    sp.IDCUAHANG = cuahang.IDCUAHANG;
+                    // Lấy danh sách sản phẩm theo IDCUAHANG
+                    var products = db.SANPHAMs
+                        .Where(p => p.IDCUAHANG == sp.IDCUAHANG)
+                        .OrderByDescending(p => p.TENSP);
+
+                    // Thực hiện tìm kiếm nếu có chuỗi tìm kiếm
+                    if (!string.IsNullOrEmpty(searchString))
+                    {
+                        products = (IOrderedQueryable<SANPHAM>)products.Where(p => p.TENSP.Contains(searchString));
+                    }
+
+                    // Lưu trạng thái tìm kiếm hiện tại
+                    currentFilter = searchString;
+
+                    var pageNumber = page ?? 1;
+                    int pageSize = size ?? 10;
+                    var pagedVouchers = products
+                        .ToPagedList(pageNumber, pageSize);
+
+                    return View(pagedVouchers);
+
+                }
+            }
+            ////const int pageSize = 10;
+            ////var pageNumber = (page ?? 1);
+            ////var products = db.SANPHAMs.OrderBy(p => p.TENSP).ToList().ToPagedList(pageNumber, pageSize);
+            //return RedirectToAction("");
+            return RedirectToAction("ErrorPage"); // Xử lý khi không tìm thấy cửa hàng hoặc người dùng
         }
 
         public ActionResult ChonNganhHang()
@@ -42,6 +84,34 @@ namespace TMDT.Controllers
             return PartialView(mausac);
         }
 
+        public ActionResult THThoiTrang()
+        {
+            THTHOITRANG tHTHOITRANG = new THTHOITRANG();
+            tHTHOITRANG.ListBrands = db.THTHOITRANGs.ToList<THTHOITRANG>();
+            return PartialView(tHTHOITRANG);
+        }
+
+        public ActionResult SizeThoiTrang()
+        {
+            SIZETHOITRANG sIZETHOITRANG = new SIZETHOITRANG();
+            sIZETHOITRANG.ListSize = db.SIZETHOITRANGs.ToList<SIZETHOITRANG>();
+            return PartialView(sIZETHOITRANG);
+        }
+
+        public ActionResult THGiay()
+        {
+            THGIAY tHGIAY = new THGIAY();
+            tHGIAY.ListBrands = db.THGIAYs.ToList<THGIAY>();
+            return PartialView(tHGIAY);
+        }
+
+        public ActionResult SizeGiay()
+        {
+            SIZEGIAY sIZEGIAY = new SIZEGIAY();
+            sIZEGIAY.ListSize = db.SIZEGIAYs.ToList<SIZEGIAY>();
+            return PartialView(sIZEGIAY);
+        }
+
         // GET: SanPham/Create
         public ActionResult TaoSanPham() 
         {
@@ -53,7 +123,27 @@ namespace TMDT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult TaoSanPham(ViewModelSanPham model)
         {
+            var email = Session["Email"] as string;
+            if (email == null)
+            {
+                // Nếu chưa đăng nhập, chuyển hướng đến trang đăng nhập
+                return RedirectToAction("Dangnhap", "DNhap");
+            }
 
+            // Lấy thông tin của người dùng trong cơ sở dữ liệu
+            var nguoidung = db.NGUOIDUNGs.SingleOrDefault(kh => kh.EMAIL == email);
+
+            if (nguoidung != null) // Kiểm tra xem người dùng có tồn tại hay không
+            {
+                // Lấy thông tin của cửa hàng nếu tồn tại, sau đó lưu ID của cửa hàng vào sản phẩm
+                var cuahang = db.CUAHANGs.SingleOrDefault(ch => ch.IDND == nguoidung.IDND);
+
+                if (cuahang != null) // Kiểm tra xem cửa hàng có tồn tại hay không
+                {
+                    model.SANPHAM.IDCUAHANG = cuahang.IDCUAHANG;
+
+                }
+            }
             //// Lưu ảnh vào thư mục ~/Content/Data/Hinh
             if (model.UploadImage1 != null && model.UploadImage2 != null && model.UploadImage3 != null)
             {
@@ -84,21 +174,31 @@ namespace TMDT.Controllers
                     // Đặt ngày tạo hiện tại
                     model.SANPHAM.NGAYTAO = DateTime.Now;
                     model.SANPHAM.IDPHEDUYET = 1;
+                    CTGIAY ct = new CTGIAY();
+                    model.CTGIAY = ct;
 
                     string selectedCategoryId = Request.Form["IDLOAISP"];
                     model.SANPHAM.IDLOAISP = Convert.ToInt32(selectedCategoryId);
                 
 
                     string selectedColor = Request.Form["IDMAUSAC"];
+                    model.SANPHAM.IDMAUSAC = Convert.ToInt32(selectedColor);
 
                     string selecteDBrand = Request.Form["IDTHDIENTHOAI"];
+
+                    string selectTTBrand = Request.Form["IDTHTHOITRANG"];
+
+                    string selectGBrand = Request.Form["IDTHGIAY"];
+
+                    string selectSizeTT = Request.Form["IDSIZETT"];
+                
+                    string selectSizeG = Request.Form["IDSIZEGIAY"];
 
 
                 // Thêm vào cơ sở dữ liệu dựa trên LoaiSP
                 switch (selectedCategoryId)
                     {
                         case "1":
-                            model.CTDIENTHOAI.IDMAUSAC = Convert.ToInt32(selectedColor); // Gán giá trị màu sắc
                             model.CTDIENTHOAI.IDLOAISP = Convert.ToInt32(selectedCategoryId);
                             model.CTDIENTHOAI.IDTHDIENTHOAI = Convert.ToInt32(selecteDBrand);
                             db.CTDIENTHOAIs.Add(model.CTDIENTHOAI);
@@ -106,10 +206,20 @@ namespace TMDT.Controllers
                             model.CTDIENTHOAI.IDSANPHAM = idSANPHAM;
                             break;
                         case "2":
+                            model.CTTHOITRANG.IDLOAISP = Convert.ToInt32(selectedCategoryId);
+                            model.CTTHOITRANG.IDTHTHOITRANG = Convert.ToInt32(selectTTBrand);
+                            model.CTTHOITRANG.IDSIZETT = Convert.ToInt32(selectSizeTT);
                             db.CTTHOITRANGs.Add(model.CTTHOITRANG);
+                            int idSANPHAM2 = model.SANPHAM.IDSANPHAM;
+                            model.CTTHOITRANG.IDSANPHAM = idSANPHAM2;
                             break;
                         case "3":
+                            ct.IDLOAISP = Convert.ToInt32(selectedCategoryId);
+                            ct.IDTHGIAY = Convert.ToInt32(selectGBrand);
+                            ct.IDSIZEGIAY = Convert.ToInt32(selectSizeG);
                             db.CTGIAYs.Add(model.CTGIAY);
+                            int idSANPHAM3 = model.SANPHAM.IDSANPHAM;
+                            model.CTGIAY.IDSANPHAM = idSANPHAM3;
                             break;
                         default:
                             // Xử lý mặc định hoặc lỗi nếu có

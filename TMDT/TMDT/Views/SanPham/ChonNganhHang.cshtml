@@ -3,7 +3,7 @@
 @*@Html.DropDownListFor(model => model.IDLOAISP, new SelectList(Model.ListCate.OrderBy(model => model.TENLOAISP), "IDLOAISP", "TENLOAISP"),
     "--Chọn ngành hàng--", new { @class = "tafi-select", @id = "tafi-select-categories", @type = "text", @tabindex = "0", @required = true })*@
 
-<select name="IDLOAISP" class="tafi-select" id="tafi-select-categories" tabindex="0" required="true">
+<select name="IDLOAISP" class="tafi-select" id="tafi-select-categories" tabindex="0" required>
     <option value="">--Chọn ngành hàng--</option>
     @foreach (var category in Model.ListCate.OrderBy(model => model.TENLOAISP))
     {

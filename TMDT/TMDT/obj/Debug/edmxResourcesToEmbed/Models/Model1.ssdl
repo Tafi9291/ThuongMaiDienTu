@@ -36,7 +36,6 @@
     <Property Name="PIN" Type="nvarchar" MaxLength="50" />
     <Property Name="IDLOAISP" Type="int" />
     <Property Name="IDTHDIENTHOAI" Type="int" />
-    <Property Name="IDMAUSAC" Type="int" />
     <Property Name="IDSANPHAM" Type="int" />
   </EntityType>
   <EntityType Name="CTDONHANG">
@@ -58,7 +57,6 @@
     <Property Name="IDLOAISP" Type="int" />
     <Property Name="IDSIZEGIAY" Type="int" />
     <Property Name="IDTHGIAY" Type="int" />
-    <Property Name="IDMAUSAC" Type="int" />
     <Property Name="IDSANPHAM" Type="int" />
   </EntityType>
   <EntityType Name="CTTHOITRANG">
@@ -70,7 +68,6 @@
     <Property Name="IDLOAISP" Type="int" />
     <Property Name="IDTHTHOITRANG" Type="int" />
     <Property Name="IDSIZETT" Type="int" />
-    <Property Name="IDMAUSAC" Type="int" />
     <Property Name="IDSANPHAM" Type="int" />
   </EntityType>
   <EntityType Name="CUAHANG">
@@ -109,6 +106,7 @@
     <Property Name="IDVOUCHERSHOP" Type="int" />
     <Property Name="IDVOUCHER" Type="int" />
     <Property Name="IDTRANGTHAIDH" Type="int" />
+    <Property Name="IDTRANGTHAIXDH" Type="int" />
   </EntityType>
   <EntityType Name="LOAISP">
     <Key>
@@ -124,7 +122,6 @@
     </Key>
     <Property Name="IDMAUSAC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="MAUSAC" Type="nvarchar" MaxLength="20" />
-    <Property Name="IDLOAISP" Type="int" />
   </EntityType>
   <EntityType Name="NGUOIDUNG">
     <Key>
@@ -139,6 +136,8 @@
     <Property Name="DIACHI" Type="nvarchar" MaxLength="100" />
     <Property Name="IDPQND" Type="int" />
     <Property Name="HINH" Type="nvarchar(max)" />
+    <Property Name="IDVOUCHERSHOP" Type="int" />
+    <Property Name="IDVOUCHER" Type="int" />
   </EntityType>
   <EntityType Name="PHEDUYET">
     <Key>
@@ -193,6 +192,7 @@
     <Property Name="IDCUAHANG" Type="int" />
     <Property Name="IDLOAISP" Type="int" />
     <Property Name="SOLUONGTON" Type="int" />
+    <Property Name="IDMAUSAC" Type="int" />
   </EntityType>
   <EntityType Name="SHIPPER">
     <Key>
@@ -286,7 +286,6 @@
     <Property Name="SOLUONGSD" Type="int" />
     <Property Name="DADUNG" Type="int" />
     <Property Name="GIATRITOITHIEU" Type="int" />
-    <Property Name="IDND" Type="int" />
     <Property Name="IDTRANGTHAIVC" Type="int" />
   </EntityType>
   <EntityType Name="VOUCHERSHOP">
@@ -302,7 +301,6 @@
     <Property Name="SOLUONGSD" Type="int" />
     <Property Name="DADUNG" Type="int" />
     <Property Name="GIATRITOITHIEU" Type="int" />
-    <Property Name="IDND" Type="int" />
     <Property Name="IDCUAHANG" Type="int" />
     <Property Name="IDTRANGTHAIVC" Type="int" />
   </EntityType>
@@ -327,18 +325,6 @@
       </Principal>
       <Dependent Role="CTDIENTHOAI">
         <PropertyRef Name="IDLOAISP" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__CTDIENTHO__IDMAU__5812160E">
-    <End Role="MAUSAC" Type="Self.MAUSAC" Multiplicity="0..1" />
-    <End Role="CTDIENTHOAI" Type="Self.CTDIENTHOAI" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="MAUSAC">
-        <PropertyRef Name="IDMAUSAC" />
-      </Principal>
-      <Dependent Role="CTDIENTHOAI">
-        <PropertyRef Name="IDMAUSAC" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -402,18 +388,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__CTGIAY__IDMAUSAC__6383C8BA">
-    <End Role="MAUSAC" Type="Self.MAUSAC" Multiplicity="0..1" />
-    <End Role="CTGIAY" Type="Self.CTGIAY" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="MAUSAC">
-        <PropertyRef Name="IDMAUSAC" />
-      </Principal>
-      <Dependent Role="CTGIAY">
-        <PropertyRef Name="IDMAUSAC" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK__CTGIAY__IDSANPHA__160F4887">
     <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="0..1" />
     <End Role="CTGIAY" Type="Self.CTGIAY" Multiplicity="*" />
@@ -459,18 +433,6 @@
       </Principal>
       <Dependent Role="CTTHOITRANG">
         <PropertyRef Name="IDLOAISP" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__CTTHOITRA__IDMAU__5DCAEF64">
-    <End Role="MAUSAC" Type="Self.MAUSAC" Multiplicity="0..1" />
-    <End Role="CTTHOITRANG" Type="Self.CTTHOITRANG" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="MAUSAC">
-        <PropertyRef Name="IDMAUSAC" />
-      </Principal>
-      <Dependent Role="CTTHOITRANG">
-        <PropertyRef Name="IDMAUSAC" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -594,6 +556,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__DONHANG__IDTRANG__282DF8C2">
+    <End Role="TRANGTHAIXEMDONHANG" Type="Self.TRANGTHAIXEMDONHANG" Multiplicity="0..1" />
+    <End Role="DONHANG" Type="Self.DONHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TRANGTHAIXEMDONHANG">
+        <PropertyRef Name="IDTRANGTHAIXDH" />
+      </Principal>
+      <Dependent Role="DONHANG">
+        <PropertyRef Name="IDTRANGTHAIXDH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__DONHANG__IDVOUCH__03F0984C">
     <End Role="VOUCHERSHOP" Type="Self.VOUCHERSHOP" Multiplicity="0..1" />
     <End Role="DONHANG" Type="Self.DONHANG" Multiplicity="*" />
@@ -618,18 +592,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__MAUSAC__IDLOAISP__46E78A0C">
-    <End Role="LOAISP" Type="Self.LOAISP" Multiplicity="0..1" />
-    <End Role="MAUSAC" Type="Self.MAUSAC" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="LOAISP">
-        <PropertyRef Name="IDLOAISP" />
-      </Principal>
-      <Dependent Role="MAUSAC">
-        <PropertyRef Name="IDLOAISP" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK__NGUOIDUNG__IDPQN__398D8EEE">
     <End Role="PQNGUOIDUNG" Type="Self.PQNGUOIDUNG" Multiplicity="0..1" />
     <End Role="NGUOIDUNG" Type="Self.NGUOIDUNG" Multiplicity="*" />
@@ -639,6 +601,30 @@
       </Principal>
       <Dependent Role="NGUOIDUNG">
         <PropertyRef Name="IDPQND" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__NGUOIDUNG__IDVOU__29221CFB">
+    <End Role="VOUCHERSHOP" Type="Self.VOUCHERSHOP" Multiplicity="0..1" />
+    <End Role="NGUOIDUNG" Type="Self.NGUOIDUNG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VOUCHERSHOP">
+        <PropertyRef Name="IDVOUCHERSHOP" />
+      </Principal>
+      <Dependent Role="NGUOIDUNG">
+        <PropertyRef Name="IDVOUCHERSHOP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__NGUOIDUNG__IDVOU__2A164134">
+    <End Role="VOUCHER" Type="Self.VOUCHER" Multiplicity="0..1" />
+    <End Role="NGUOIDUNG" Type="Self.NGUOIDUNG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VOUCHER">
+        <PropertyRef Name="IDVOUCHER" />
+      </Principal>
+      <Dependent Role="NGUOIDUNG">
+        <PropertyRef Name="IDVOUCHER" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -690,6 +676,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__SANPHAM__IDMAUSA__2739D489">
+    <End Role="MAUSAC" Type="Self.MAUSAC" Multiplicity="0..1" />
+    <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MAUSAC">
+        <PropertyRef Name="IDMAUSAC" />
+      </Principal>
+      <Dependent Role="SANPHAM">
+        <PropertyRef Name="IDMAUSAC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__SANPHAM__IDPHEDU__66603565">
     <End Role="PHEDUYET" Type="Self.PHEDUYET" Multiplicity="0..1" />
     <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="*" />
@@ -738,18 +736,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__VOUCHER__IDND__787EE5A0">
-    <End Role="NGUOIDUNG" Type="Self.NGUOIDUNG" Multiplicity="0..1" />
-    <End Role="VOUCHER" Type="Self.VOUCHER" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="NGUOIDUNG">
-        <PropertyRef Name="IDND" />
-      </Principal>
-      <Dependent Role="VOUCHER">
-        <PropertyRef Name="IDND" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK__VOUCHER__IDTRANG__797309D9">
     <End Role="TRANGTHAIVC" Type="Self.TRANGTHAIVC" Multiplicity="0..1" />
     <End Role="VOUCHER" Type="Self.VOUCHER" Multiplicity="*" />
@@ -783,18 +769,6 @@
       </Principal>
       <Dependent Role="VOUCHERSHOP">
         <PropertyRef Name="IDTRANGTHAIVC" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__VOUCHERSHO__IDND__7C4F7684">
-    <End Role="NGUOIDUNG" Type="Self.NGUOIDUNG" Multiplicity="0..1" />
-    <End Role="VOUCHERSHOP" Type="Self.VOUCHERSHOP" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="NGUOIDUNG">
-        <PropertyRef Name="IDND" />
-      </Principal>
-      <Dependent Role="VOUCHERSHOP">
-        <PropertyRef Name="IDND" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -836,10 +810,6 @@
       <End Role="LOAISP" EntitySet="LOAISP" />
       <End Role="CTDIENTHOAI" EntitySet="CTDIENTHOAI" />
     </AssociationSet>
-    <AssociationSet Name="FK__CTDIENTHO__IDMAU__5812160E" Association="Self.FK__CTDIENTHO__IDMAU__5812160E">
-      <End Role="MAUSAC" EntitySet="MAUSAC" />
-      <End Role="CTDIENTHOAI" EntitySet="CTDIENTHOAI" />
-    </AssociationSet>
     <AssociationSet Name="FK__CTDIENTHO__IDSAN__17036CC0" Association="Self.FK__CTDIENTHO__IDSAN__17036CC0">
       <End Role="SANPHAM" EntitySet="SANPHAM" />
       <End Role="CTDIENTHOAI" EntitySet="CTDIENTHOAI" />
@@ -860,10 +830,6 @@
       <End Role="LOAISP" EntitySet="LOAISP" />
       <End Role="CTGIAY" EntitySet="CTGIAY" />
     </AssociationSet>
-    <AssociationSet Name="FK__CTGIAY__IDMAUSAC__6383C8BA" Association="Self.FK__CTGIAY__IDMAUSAC__6383C8BA">
-      <End Role="MAUSAC" EntitySet="MAUSAC" />
-      <End Role="CTGIAY" EntitySet="CTGIAY" />
-    </AssociationSet>
     <AssociationSet Name="FK__CTGIAY__IDSANPHA__160F4887" Association="Self.FK__CTGIAY__IDSANPHA__160F4887">
       <End Role="SANPHAM" EntitySet="SANPHAM" />
       <End Role="CTGIAY" EntitySet="CTGIAY" />
@@ -878,10 +844,6 @@
     </AssociationSet>
     <AssociationSet Name="FK__CTTHOITRA__IDLOA__5AEE82B9" Association="Self.FK__CTTHOITRA__IDLOA__5AEE82B9">
       <End Role="LOAISP" EntitySet="LOAISP" />
-      <End Role="CTTHOITRANG" EntitySet="CTTHOITRANG" />
-    </AssociationSet>
-    <AssociationSet Name="FK__CTTHOITRA__IDMAU__5DCAEF64" Association="Self.FK__CTTHOITRA__IDMAU__5DCAEF64">
-      <End Role="MAUSAC" EntitySet="MAUSAC" />
       <End Role="CTTHOITRANG" EntitySet="CTTHOITRANG" />
     </AssociationSet>
     <AssociationSet Name="FK__CTTHOITRA__IDSAN__151B244E" Association="Self.FK__CTTHOITRA__IDSAN__151B244E">
@@ -924,6 +886,10 @@
       <End Role="TRANGTHAIDH" EntitySet="TRANGTHAIDH" />
       <End Role="DONHANG" EntitySet="DONHANG" />
     </AssociationSet>
+    <AssociationSet Name="FK__DONHANG__IDTRANG__282DF8C2" Association="Self.FK__DONHANG__IDTRANG__282DF8C2">
+      <End Role="TRANGTHAIXEMDONHANG" EntitySet="TRANGTHAIXEMDONHANG" />
+      <End Role="DONHANG" EntitySet="DONHANG" />
+    </AssociationSet>
     <AssociationSet Name="FK__DONHANG__IDVOUCH__03F0984C" Association="Self.FK__DONHANG__IDVOUCH__03F0984C">
       <End Role="VOUCHERSHOP" EntitySet="VOUCHERSHOP" />
       <End Role="DONHANG" EntitySet="DONHANG" />
@@ -932,12 +898,16 @@
       <End Role="VOUCHER" EntitySet="VOUCHER" />
       <End Role="DONHANG" EntitySet="DONHANG" />
     </AssociationSet>
-    <AssociationSet Name="FK__MAUSAC__IDLOAISP__46E78A0C" Association="Self.FK__MAUSAC__IDLOAISP__46E78A0C">
-      <End Role="LOAISP" EntitySet="LOAISP" />
-      <End Role="MAUSAC" EntitySet="MAUSAC" />
-    </AssociationSet>
     <AssociationSet Name="FK__NGUOIDUNG__IDPQN__398D8EEE" Association="Self.FK__NGUOIDUNG__IDPQN__398D8EEE">
       <End Role="PQNGUOIDUNG" EntitySet="PQNGUOIDUNG" />
+      <End Role="NGUOIDUNG" EntitySet="NGUOIDUNG" />
+    </AssociationSet>
+    <AssociationSet Name="FK__NGUOIDUNG__IDVOU__29221CFB" Association="Self.FK__NGUOIDUNG__IDVOU__29221CFB">
+      <End Role="VOUCHERSHOP" EntitySet="VOUCHERSHOP" />
+      <End Role="NGUOIDUNG" EntitySet="NGUOIDUNG" />
+    </AssociationSet>
+    <AssociationSet Name="FK__NGUOIDUNG__IDVOU__2A164134" Association="Self.FK__NGUOIDUNG__IDVOU__2A164134">
+      <End Role="VOUCHER" EntitySet="VOUCHER" />
       <End Role="NGUOIDUNG" EntitySet="NGUOIDUNG" />
     </AssociationSet>
     <AssociationSet Name="FK__QUANGCAO__IDCUAH__412EB0B6" Association="Self.FK__QUANGCAO__IDCUAH__412EB0B6">
@@ -956,6 +926,10 @@
       <End Role="LOAISP" EntitySet="LOAISP" />
       <End Role="SANPHAM" EntitySet="SANPHAM" />
     </AssociationSet>
+    <AssociationSet Name="FK__SANPHAM__IDMAUSA__2739D489" Association="Self.FK__SANPHAM__IDMAUSA__2739D489">
+      <End Role="MAUSAC" EntitySet="MAUSAC" />
+      <End Role="SANPHAM" EntitySet="SANPHAM" />
+    </AssociationSet>
     <AssociationSet Name="FK__SANPHAM__IDPHEDU__66603565" Association="Self.FK__SANPHAM__IDPHEDU__66603565">
       <End Role="PHEDUYET" EntitySet="PHEDUYET" />
       <End Role="SANPHAM" EntitySet="SANPHAM" />
@@ -972,10 +946,6 @@
       <End Role="LOAISP" EntitySet="LOAISP" />
       <End Role="THTHOITRANG" EntitySet="THTHOITRANG" />
     </AssociationSet>
-    <AssociationSet Name="FK__VOUCHER__IDND__787EE5A0" Association="Self.FK__VOUCHER__IDND__787EE5A0">
-      <End Role="NGUOIDUNG" EntitySet="NGUOIDUNG" />
-      <End Role="VOUCHER" EntitySet="VOUCHER" />
-    </AssociationSet>
     <AssociationSet Name="FK__VOUCHER__IDTRANG__797309D9" Association="Self.FK__VOUCHER__IDTRANG__797309D9">
       <End Role="TRANGTHAIVC" EntitySet="TRANGTHAIVC" />
       <End Role="VOUCHER" EntitySet="VOUCHER" />
@@ -986,10 +956,6 @@
     </AssociationSet>
     <AssociationSet Name="FK__VOUCHERSH__IDTRA__7E37BEF6" Association="Self.FK__VOUCHERSH__IDTRA__7E37BEF6">
       <End Role="TRANGTHAIVC" EntitySet="TRANGTHAIVC" />
-      <End Role="VOUCHERSHOP" EntitySet="VOUCHERSHOP" />
-    </AssociationSet>
-    <AssociationSet Name="FK__VOUCHERSHO__IDND__7C4F7684" Association="Self.FK__VOUCHERSHO__IDND__7C4F7684">
-      <End Role="NGUOIDUNG" EntitySet="NGUOIDUNG" />
       <End Role="VOUCHERSHOP" EntitySet="VOUCHERSHOP" />
     </AssociationSet>
   </EntityContainer>

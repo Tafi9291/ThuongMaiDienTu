@@ -4,13 +4,13 @@
     <EntitySetMapping Name="ADMINs">
       <EntityTypeMapping TypeName="TMDTModel.ADMIN">
         <MappingFragment StoreEntitySet="ADMIN">
-          <ScalarProperty Name="HINHANH" ColumnName="HINHANH" />
           <ScalarProperty Name="IDADMIN" ColumnName="IDADMIN" />
           <ScalarProperty Name="TENAD" ColumnName="TENAD" />
           <ScalarProperty Name="SDT" ColumnName="SDT" />
           <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
           <ScalarProperty Name="MATKHAU" ColumnName="MATKHAU" />
           <ScalarProperty Name="IDCHUCVU" ColumnName="IDCHUCVU" />
+          <ScalarProperty Name="HINHANH" ColumnName="HINHANH" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -38,7 +38,6 @@
           <ScalarProperty Name="PIN" ColumnName="PIN" />
           <ScalarProperty Name="IDLOAISP" ColumnName="IDLOAISP" />
           <ScalarProperty Name="IDTHDIENTHOAI" ColumnName="IDTHDIENTHOAI" />
-          <ScalarProperty Name="IDMAUSAC" ColumnName="IDMAUSAC" />
           <ScalarProperty Name="IDSANPHAM" ColumnName="IDSANPHAM" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -62,7 +61,6 @@
           <ScalarProperty Name="IDLOAISP" ColumnName="IDLOAISP" />
           <ScalarProperty Name="IDSIZEGIAY" ColumnName="IDSIZEGIAY" />
           <ScalarProperty Name="IDTHGIAY" ColumnName="IDTHGIAY" />
-          <ScalarProperty Name="IDMAUSAC" ColumnName="IDMAUSAC" />
           <ScalarProperty Name="IDSANPHAM" ColumnName="IDSANPHAM" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -75,7 +73,6 @@
           <ScalarProperty Name="IDLOAISP" ColumnName="IDLOAISP" />
           <ScalarProperty Name="IDTHTHOITRANG" ColumnName="IDTHTHOITRANG" />
           <ScalarProperty Name="IDSIZETT" ColumnName="IDSIZETT" />
-          <ScalarProperty Name="IDMAUSAC" ColumnName="IDMAUSAC" />
           <ScalarProperty Name="IDSANPHAM" ColumnName="IDSANPHAM" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -83,12 +80,12 @@
     <EntitySetMapping Name="CUAHANGs">
       <EntityTypeMapping TypeName="TMDTModel.CUAHANG">
         <MappingFragment StoreEntitySet="CUAHANG">
-          <ScalarProperty Name="TENCH" ColumnName="TENCH" />
           <ScalarProperty Name="IDCUAHANG" ColumnName="IDCUAHANG" />
           <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
           <ScalarProperty Name="HINHANH" ColumnName="HINHANH" />
           <ScalarProperty Name="ANHDAIDIEN" ColumnName="ANHDAIDIEN" />
           <ScalarProperty Name="IDND" ColumnName="IDND" />
+          <ScalarProperty Name="TENCH" ColumnName="TENCH" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -117,6 +114,7 @@
           <ScalarProperty Name="IDVOUCHERSHOP" ColumnName="IDVOUCHERSHOP" />
           <ScalarProperty Name="IDVOUCHER" ColumnName="IDVOUCHER" />
           <ScalarProperty Name="IDTRANGTHAIDH" ColumnName="IDTRANGTHAIDH" />
+          <ScalarProperty Name="IDTRANGTHAIXDH" ColumnName="IDTRANGTHAIXDH" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -134,7 +132,6 @@
         <MappingFragment StoreEntitySet="MAUSAC">
           <ScalarProperty Name="IDMAUSAC" ColumnName="IDMAUSAC" />
           <ScalarProperty Name="MAUSAC1" ColumnName="MAUSAC" />
-          <ScalarProperty Name="IDLOAISP" ColumnName="IDLOAISP" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -150,6 +147,8 @@
           <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
           <ScalarProperty Name="IDPQND" ColumnName="IDPQND" />
           <ScalarProperty Name="HINH" ColumnName="HINH" />
+          <ScalarProperty Name="IDVOUCHERSHOP" ColumnName="IDVOUCHERSHOP" />
+          <ScalarProperty Name="IDVOUCHER" ColumnName="IDVOUCHER" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -209,6 +208,7 @@
           <ScalarProperty Name="IDCUAHANG" ColumnName="IDCUAHANG" />
           <ScalarProperty Name="IDLOAISP" ColumnName="IDLOAISP" />
           <ScalarProperty Name="SOLUONGTON" ColumnName="SOLUONGTON" />
+          <ScalarProperty Name="IDMAUSAC" ColumnName="IDMAUSAC" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -313,7 +313,6 @@
           <ScalarProperty Name="SOLUONGSD" ColumnName="SOLUONGSD" />
           <ScalarProperty Name="DADUNG" ColumnName="DADUNG" />
           <ScalarProperty Name="GIATRITOITHIEU" ColumnName="GIATRITOITHIEU" />
-          <ScalarProperty Name="IDND" ColumnName="IDND" />
           <ScalarProperty Name="IDTRANGTHAIVC" ColumnName="IDTRANGTHAIVC" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -330,7 +329,6 @@
           <ScalarProperty Name="SOLUONGSD" ColumnName="SOLUONGSD" />
           <ScalarProperty Name="DADUNG" ColumnName="DADUNG" />
           <ScalarProperty Name="GIATRITOITHIEU" ColumnName="GIATRITOITHIEU" />
-          <ScalarProperty Name="IDND" ColumnName="IDND" />
           <ScalarProperty Name="IDCUAHANG" ColumnName="IDCUAHANG" />
           <ScalarProperty Name="IDTRANGTHAIVC" ColumnName="IDTRANGTHAIVC" />
         </MappingFragment>

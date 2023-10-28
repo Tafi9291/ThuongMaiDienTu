@@ -17,67 +17,61 @@
                 </div>
             </div>
             <div class="product-filter-card">
-                <form action="/" method="" class="tafi-form filter-form tafi-form-label-right">
-                    <div class="filter-form-box">
-                        <div class="filter-col-left">
-                            <div class="product tafi-form-item">
-                                <div class="tafi-form-item__control">
-                                    <div class="tafi-form-item__content">
-                                        <div class="tafi-input-group">
-                                            <span class="tafi-input-group__prepend" style="width: 116px;">Tên sản phẩm</span>
-                                            <span class="tafi-input-group__append">
-                                                <div class="hints-input">
-                                                    <div class="input-wrapper">
-                                                        <div class="tafi-input">
-                                                            <div class="tafi-input__inner">
-                                                                <input type="text" placeholder="Hãy nhập vào ít nhất 2 ký tự đầu của từ..."
-                                                                       resize="vertical" rows="2" minrows="2" restrictiontype="input"
-                                                                       max="Infinity" min="-Infinity" class="tafi-input__input">
+                    @using (Html.BeginForm("SanPham", "SanPham", FormMethod.Get, new { @class = "tafi-form filter-form tafi-form-label-right" }))
+                    {
+                        <div class="filter-form-box">
+                            <div class="filter-col-left">
+                                <div class="product tafi-form-item">
+                                    <div class="tafi-form-item__control">
+                                        <div class="tafi-form-item__content">
+                                            <div class="tafi-input-group">
+                                                <span class="tafi-input-group__prepend" style="width: 116px;">Tên sản phẩm</span>
+                                                <span class="tafi-input-group__append">
+                                                    <div class="hints-input">
+                                                        <div class="input-wrapper">
+                                                            <div class="tafi-input">
+                                                                <div class="tafi-input__inner">
+                                                                    @*<input type="text" placeholder="Hãy nhập vào ít nhất 2 ký tự đầu của từ..."
+                                                                           resize="vertical" rows="2" minrows="2" restrictiontype="input"
+                                                                           max="Infinity" min="-Infinity" class="tafi-input__input">*@
+                                                                    @Html.TextBox("SearchString", ViewBag.CrurentFilter as string, new
+                                                                    {
+                                                                            @class = "tafi-input__input",
+                                                                            @type = "text",
+                                                                            @placeholder = "Hãy nhập vào ít nhất 2 ký tự đầu của từ...",
+                                                                            @tabindex = "0",
+                                                                            @resize = "none",
+                                                                            @size = "large",
+                                                                            @rows = "2",
+                                                                            @minrows = "2",
+                                                                            @clearable = "true",
+                                                                            @maxlength = "Infinity",
+                                                                            @restrictiontype = "input",
+                                                                            @max = "Infinity",
+                                                                            @min = "-Infinity",
+                                                                    })
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </span>
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="filter-col-right"></div>
                         </div>
-                        <div class="filter-col-right">
-                            <div class="product tafi-form-item">
-                                <div class="tafi-form-item__control">
-                                    <div class="tafi-form-item__content">
-                                        <div class="tafi-input-group">
-                                            <span class="tafi-input-group__prepend" style="width: 116px;">Ngành hàng</span>
-                                            <span class="tafi-input-group__append">
-                                                <div class="hints-input">
-                                                    <div class="input-wrapper">
-                                                        <div class="tafi-input">
-                                                            <div class="tafi-input__inner">
-                                                                <input type="text" placeholder="Hãy nhập vào ít nhất 2 ký tự đầu của từ..."
-                                                                       resize="vertical" rows="2" minrows="2" restrictiontype="input"
-                                                                       max="Infinity" min="-Infinity" class="tafi-input__input">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="actions">
-                        <button class="tafi-button tafi-button-primary">
-                            <span>Tìm kiếm</span>
-                        </button>
-                        <button class="tafi-button" style="margin-left: 16px;">
-                            <span>Nhập lại</span>
-                        </button>
-                    </div>
-                </form>
+                        <div class="actions">
+                            <button class="tafi-button tafi-button-primary">
+                                <span>Tìm kiếm</span>
+                            </button>
+                            <button class="tafi-button" style="margin-left: 16px;">
+                                <span>Nhập lại</span>
+                            </button>
+                        </div>
+                    }
             </div>
 
             <div class="product-list-main">
@@ -301,7 +295,7 @@
                                             </div>
                                             @* Product list pagination *@
                                             <div class="product-list-pagination tafi-pagination">
-                                                <div class="">
+                                                <div class="" style="width: 200px; display: flex; justify-content: center;">
                                                     @Html.PagedListPager(Model, page => Url.Action("SanPham", new { page, size = ViewBag.currentSize }))
                                                 </div>
                                             </div>

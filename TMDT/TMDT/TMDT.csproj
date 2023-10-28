@@ -384,6 +384,9 @@
     <Content Include="Areas\Admin\Views\Voucher\CapNhatVC.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\Layout_DangNhap.cshtml" />
     <Content Include="Areas\Admin\Views\DangNhap\DangNhap.cshtml" />
+    <Content Include="Areas\Admin\Views\QLND\QLNgMua.cshtml" />
+    <Content Include="Areas\Admin\Views\QLND\QLNgBan.cshtml" />
+    <Content Include="Areas\Admin\Views\TaiKhoan\TaiKhoan.cshtml" />
     <EntityDeploy Include="Models\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
@@ -391,9 +394,6 @@
     <Content Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
-    <Content Include="Areas\Admin\Views\QLND\QLNgMua.cshtml" />
-    <Content Include="Areas\Admin\Views\QLND\QLNgBan.cshtml" />
-    <Content Include="Areas\Admin\Views\TaiKhoan\TaiKhoan.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -454,6 +454,12 @@
     <Content Include="Views\Register\DetailUser.cshtml" />
     <Content Include="Views\Register\EditUser.cshtml" />
     <Content Include="Views\NgBan\DangKy.cshtml" />
+    <Content Include="Views\SanPham\THThoiTrang.cshtml" />
+    <Content Include="Views\SanPham\SizeThoiTrang.cshtml" />
+    <Content Include="Views\SanPham\THGiay.cshtml" />
+    <Content Include="Views\SanPham\SizeGiay.cshtml" />
+    <Content Include="Views\NgBan\CuaHang.cshtml" />
+    <Content Include="Views\VoucherShop\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

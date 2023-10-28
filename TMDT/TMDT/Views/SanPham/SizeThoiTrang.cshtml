@@ -1,0 +1,4 @@
+﻿@model TMDT.Models.SIZETHOITRANG
+
+@Html.DropDownListFor(model => model.IDSIZETT, new SelectList(Model.ListSize.OrderBy(model => model.SIZETT), "IDSIZETT", "SIZETT"),
+    "--Chọn ngành hàng--", new { @class = "tafi-select", @id = "tafi-select-categories", @type = "text", @tabindex = "0"})

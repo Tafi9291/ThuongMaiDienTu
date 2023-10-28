@@ -127,8 +127,8 @@
                                                                             }
                                                                         })
                                                                         @*<input type="text" placeholder="Nhập vào" size="large"
-                                                                            resize="none" rows="2" minrows="2" maxlength="Infinity"
-                                                                            restrictiontype="input" max="Infinity" min="-Infinity" class="tafi-input__input" id="text-input">*@
+                                                                        resize="none" rows="2" minrows="2" maxlength="Infinity"
+                                                                        restrictiontype="input" max="Infinity" min="-Infinity" class="tafi-input__input" id="text-input">*@
                                                                         <div class="tafi-input__suffix">
                                                                             <span class="tafi-input__suffix-split"></span>
                                                                             <span class="tafi-input__char-count"><span id="char-count">0</span>/120</span>
@@ -153,11 +153,31 @@
                                                                     <div class="tafi-input__inner tafi-input__inner--large">
                                                                         @{Html.RenderAction("ChonNganhHang", "SanPham");}
                                                                         @*<select class="tafi-select" name="" id="tafi-select-categories">
-                                                                                <option value="" class="tafi-select-categories__option">Chọn ngành hàng</option>
-                                                                                <option value="dienthoai" class="tafi-select-categories__option">Điện thoại</option>
-                                                                                <option value="thoitrang" class="tafi-select-categories__option">Thời trang</option>
-                                                                                <option value="giay" class="tafi-select-categories__option">Giày</option>
-                                                                            </select>*@
+                                                                            <option value="" class="tafi-select-categories__option">Chọn ngành hàng</option>
+                                                                            <option value="dienthoai" class="tafi-select-categories__option">Điện thoại</option>
+                                                                            <option value="thoitrang" class="tafi-select-categories__option">Thời trang</option>
+                                                                            <option value="giay" class="tafi-select-categories__option">Giày</option>
+                                                                        </select>*@
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="attribute-select-item">
+                                                <div class="edit-row">
+                                                    <div class="edit-label edit-title">
+                                                        <span><span style="color: red;">*</span> Màu sắc </span>
+                                                    </div>
+                                                    <div class="degrade-wrap edit-row-right-medium">
+                                                        <div class="custom-len-calc-input product-edit-form-item">
+                                                            <div class="product-edit-form-item-content">
+                                                                <div class="popover-wrap">
+                                                                    <div class="tafi-input price-input product-edit-input">
+                                                                        <div class="tafi-input__inner tafi-input__inner--large">
+                                                                            @{ Html.RenderAction("MauSac", "SanPham");}
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -200,13 +220,13 @@
                                                                                     @required = true
                                                                                 })
                                                                                 @*<textarea type="textarea" resize="none" rows="2"
-                                                                                    minrows="9" maxrows="26" autosize="true"
-                                                                                    maxlength="Infinity" restrictiontype="input"
-                                                                                    max="Infinity" min="-Infinity"
-                                                                                    class="tafi-input__inner tafi-input__inner--normal"
-                                                                                    id="tafi-input-area"
-                                                                                    style="resize: none; min-height: 209.6px; height: 209.6px;"
-                                                                                    spellcheck="false"></textarea>*@
+                                                                                minrows="9" maxrows="26" autosize="true"
+                                                                                maxlength="Infinity" restrictiontype="input"
+                                                                                max="Infinity" min="-Infinity"
+                                                                                class="tafi-input__inner tafi-input__inner--normal"
+                                                                                id="tafi-input-area"
+                                                                                style="resize: none; min-height: 209.6px; height: 209.6px;"
+                                                                                spellcheck="false"></textarea>*@
 
                                                                             </div>
                                                                             <div class="text-area-label">
@@ -290,7 +310,6 @@
                                                                                                 @max = "Infinity",
                                                                                                 @min = "-Infinity",
                                                                                            @id = "text-input",
-                                                                                                @required = true
                                                                                             }
                                                                                         })
                                                                                         @*<input type="text" placeholder="Nhập vào" size="large"
@@ -332,7 +351,6 @@
                                                                                                 @max = "Infinity",
                                                                                                 @min = "-Infinity",
                                                                                            @id = "text-input",
-                                                                                                @required = true
                                                                                             }
                                                                                         })
                                                                                         @*<input type="text" placeholder="Nhập vào" size="large"
@@ -374,7 +392,6 @@
                                                                                                 @max = "Infinity",
                                                                                                 @min = "-Infinity",
                                                                                            @id = "text-input",
-                                                                                                @required = true
                                                                                             }
                                                                                         })
                                                                                         @*<input type="text" placeholder="Nhập vào" size="large"
@@ -416,7 +433,6 @@
                                                                                                 @max = "Infinity",
                                                                                                 @min = "-Infinity",
                                                                                            @id = "text-input",
-                                                                                                @required = true
                                                                                             }
                                                                                         })
                                                                                         @*<input type="text" placeholder="Nhập vào" size="large"
@@ -458,7 +474,6 @@
                                                                                                 @max = "Infinity",
                                                                                                 @min = "-Infinity",
                                                                                            @id = "text-input",
-                                                                                                @required = true
                                                                                             }
                                                                                         })
                                                                                         @*<input type="text" placeholder="Nhập vào" size="large"
@@ -502,7 +517,6 @@
                                                                                                 @max = "Infinity",
                                                                                                 @min = "-Infinity",
                                                                                            @id = "text-input",
-                                                                                                @required = true
                                                                                             }
                                                                                         })
                                                                                         @*<input type="text" placeholder="Nhập vào" size="large"
@@ -544,7 +558,6 @@
                                                                                                 @max = "Infinity",
                                                                                                 @min = "-Infinity",
                                                                                            @id = "text-input",
-                                                                                                @required = true
                                                                                             }
                                                                                         })
                                                                                         @*<input type="text" placeholder="Nhập vào" size="large"
@@ -586,7 +599,6 @@
                                                                                                 @max = "Infinity",
                                                                                                 @min = "-Infinity",
                                                                                            @id = "text-input",
-                                                                                                @required = true
                                                                                             }
                                                                                         })
                                                                                         @*<input type="text" placeholder="Nhập vào" size="large"
@@ -628,7 +640,6 @@
                                                                                                 @max = "Infinity",
                                                                                                 @min = "-Infinity",
                                                                                            @id = "text-input",
-                                                                                                @required = true
                                                                                             }
                                                                                         })
                                                                                         @*<input type="text" placeholder="Nhập vào" size="large"
@@ -670,38 +681,11 @@
                                                                                                 @max = "Infinity",
                                                                                                 @min = "-Infinity",
                                                                                            @id = "text-input",
-                                                                                                @required = true
                                                                                             }
                                                                                         })
                                                                                         @*<input type="text" placeholder="Nhập vào" size="large"
                                                                                             resize="none" rows="2" minrows="2" maxlength="Infinity"
                                                                                             restrictiontype="input" max="Infinity" min="-Infinity" class="tafi-input__input" id="text-input">*@
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="attribute-select-item">
-                                                            <div class="edit-row">
-                                                                <div class="edit-label edit-title">
-                                                                    <span><span style="color: red;">*</span> Màu sắc </span>
-                                                                </div>
-                                                                <div class="degrade-wrap edit-row-right-medium">
-                                                                    <div class="custom-len-calc-input product-edit-form-item">
-                                                                        <div class="product-edit-form-item-content">
-                                                                            <div class="popover-wrap">
-                                                                                <div class="tafi-input price-input product-edit-input">
-                                                                                    <div class="tafi-input__inner tafi-input__inner--large">
-                                                                                        @{ Html.RenderAction("MauSac", "SanPham");}
-                                                                                        @*<select class="tafi-select" name="">
-                                                                                                <option value="" class="tafi-select-categories__option">Chọn màu</option>
-                                                                                                <option value="" class="tafi-select-categories__option">Màu đỏ</option>
-                                                                                                <option value="" class="tafi-select-categories__option">Màu vàng</option>
-                                                                                                <option value="" class="tafi-select-categories__option">Màu đen</option>
-                                                                                            </select>*@
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -739,12 +723,7 @@
                                                                             <div class="popover-wrap">
                                                                                 <div class="tafi-input price-input product-edit-input">
                                                                                     <div class="tafi-input__inner tafi-input__inner--large">
-                                                                                        <select class="tafi-select" name="">
-                                                                                            <option value="" class="tafi-select-categories__option">Chọn thương hiệu</option>
-                                                                                            <option value="" class="tafi-select-categories__option">Apple</option>
-                                                                                            <option value="" class="tafi-select-categories__option">SAMSUNG</option>
-                                                                                            <option value="" class="tafi-select-categories__option">OPPO</option>
-                                                                                        </select>
+                                                                                        @{ Html.RenderAction("THThoiTrang", "SanPham");}
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -764,9 +743,25 @@
                                                                             <div class="popover-wrap">
                                                                                 <div class="tafi-input price-input product-edit-input">
                                                                                     <div class="tafi-input__inner tafi-input__inner--large">
-                                                                                        <input type="text" placeholder="Nhập vào" size="large"
-                                                                                               resize="none" rows="2" minrows="2" maxlength="Infinity"
-                                                                                               restrictiontype="input" max="Infinity" min="-Infinity" class="tafi-input__input" id="text-input">
+                                                                                        @Html.EditorFor(model => model.CTTHOITRANG.CHATLIEU, new
+                                                                                        {
+                                                                                            htmlAttributes = new
+                                                                                            {
+                                                                                                @class = "tafi-input__input",
+                                                                                                @type = "text",
+                                                                                                @placeholder = "Nhập vào",
+                                                                                                @tabindex = "0",
+                                                                                                @resize = "none",
+                                                                                                @size = "large",
+                                                                                           @rows = "2",
+                                                                                                @minrows = "2",
+                                                                                                @maxlength = "Infinity",
+                                                                                           @restrictiontype = "input",
+                                                                                                @max = "Infinity",
+                                                                                                @min = "-Infinity",
+                                                                                           @id = "text-input",
+                                                                                            }
+                                                                                        })
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -786,34 +781,7 @@
                                                                             <div class="popover-wrap">
                                                                                 <div class="tafi-input price-input product-edit-input">
                                                                                     <div class="tafi-input__inner tafi-input__inner--large">
-                                                                                        <input type="text" placeholder="Nhập vào" size="large"
-                                                                                               resize="none" rows="2" minrows="2" maxlength="Infinity"
-                                                                                               restrictiontype="input" max="Infinity" min="-Infinity" class="tafi-input__input" id="text-input">
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="attribute-select-item">
-                                                            <div class="edit-row">
-                                                                <div class="edit-label edit-title">
-                                                                    <span><span style="color: red;">*</span> Màu sắc </span>
-                                                                </div>
-                                                                <div class="degrade-wrap edit-row-right-medium">
-                                                                    <div class="custom-len-calc-input product-edit-form-item">
-                                                                        <div class="product-edit-form-item-content">
-                                                                            <div class="popover-wrap">
-                                                                                <div class="tafi-input price-input product-edit-input">
-                                                                                    <div class="tafi-input__inner tafi-input__inner--large">
-                                                                                        <select class="tafi-select" name="">
-                                                                                            <option value="" class="tafi-select-categories__option">Chọn màu</option>
-                                                                                            <option value="" class="tafi-select-categories__option">Màu đỏ</option>
-                                                                                            <option value="" class="tafi-select-categories__option">Màu vàng</option>
-                                                                                            <option value="" class="tafi-select-categories__option">Màu đen</option>
-                                                                                        </select>
+                                                                                        @{ Html.RenderAction("SizeThoiTrang", "SanPham");}
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -851,12 +819,7 @@
                                                                             <div class="popover-wrap">
                                                                                 <div class="tafi-input price-input product-edit-input">
                                                                                     <div class="tafi-input__inner tafi-input__inner--large">
-                                                                                        <select class="tafi-select" name="">
-                                                                                            <option value="" class="tafi-select-categories__option">Chọn thương hiệu</option>
-                                                                                            <option value="" class="tafi-select-categories__option">Apple</option>
-                                                                                            <option value="" class="tafi-select-categories__option">SAMSUNG</option>
-                                                                                            <option value="" class="tafi-select-categories__option">OPPO</option>
-                                                                                        </select>
+                                                                                        @{ Html.RenderAction("THGiay", "SanPham");}
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -876,9 +839,7 @@
                                                                             <div class="popover-wrap">
                                                                                 <div class="tafi-input price-input product-edit-input">
                                                                                     <div class="tafi-input__inner tafi-input__inner--large">
-                                                                                        <input type="text" placeholder="Nhập vào" size="large"
-                                                                                               resize="none" rows="2" minrows="2" maxlength="Infinity"
-                                                                                               restrictiontype="input" max="Infinity" min="-Infinity" class="tafi-input__input" id="text-input">
+                                                                                        @{ Html.RenderAction("SizeGiay", "SanPham");}
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -1127,9 +1088,9 @@ $(document).ready(function () {
             if (selectedValue == 1) {
                 $(".form-dienthoai").show();
             } else if (selectedValue == 2) {
-                $(".form-giay").show();
-            } else if (selectedValue == 3) {
                 $(".form-thoitrang").show();
+            } else if (selectedValue == 3) {
+                $(".form-giay").show();
             } else if (selectedValue == '') {
                 addElements();
                 panelContentWrapper.html(htmlContent);

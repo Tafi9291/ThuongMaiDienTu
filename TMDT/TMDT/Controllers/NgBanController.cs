@@ -54,10 +54,7 @@ namespace TMDT.Controllers
         [HttpPost]
         public ActionResult DangNhapNgBan(NGUOIDUNG shop)
         {
-
             var objUserGet = db.NGUOIDUNGs.Where(n => n.EMAIL.Equals(shop.EMAIL) && n.MATKHAU.Equals(shop.MATKHAU)).FirstOrDefault();
-
-
             if (objUserGet == null)
             {
                 ViewBag.error = "Email hay Mật khẩu không đúng vui lòng nhập lại!";
@@ -78,6 +75,7 @@ namespace TMDT.Controllers
                 Session["Email"] = objUserGet.EMAIL;
                 Session["Ten"] = objUserGet.TENND;
                 Session["Hinh"] = objUserGet.HINH;
+                Session["ID"] = objUserGet.IDND;
                 return RedirectToAction("KenhNgBan", "NgBan");
             }
           
@@ -231,6 +229,12 @@ namespace TMDT.Controllers
             }
 
             return View(shop);
+        }
+
+        // GET: CuaHang
+        public ActionResult CuaHang()
+        {
+            return View();
         }
 
     }

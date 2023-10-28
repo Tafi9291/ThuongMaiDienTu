@@ -1,4 +1,4 @@
 ﻿@model TMDT.Models.MAUSAC
 
 @Html.DropDownListFor(model => model.IDMAUSAC, new SelectList(Model.ListColor.OrderBy(model => model.MAUSAC1), "IDMAUSAC", "MAUSAC1"),
-    "--Chọn màu--", new { @class = "tafi-select", @id = "tafi-select-categories", @type = "text", @tabindex = "0", @required = true })
+    "--Chọn màu--", new { @class = "tafi-select", @id = "tafi-select-categories", @type = "text", @tabindex = "0"})

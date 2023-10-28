@@ -18,7 +18,7 @@
     @*<link href="~/Areas/Admin/Content/css/slider.css" rel="stylesheet" />*@
     <link href="~/Content/css-NgBan/responsive.css" rel="stylesheet" />
     @*<link href="~/Areas/Admin/Content/css/validator.css" rel="stylesheet" />*@
-
+    <link href="~/Content/css-NgBan/PageList.css" rel="stylesheet" />
     <link href="~/Content/Hinh/logo-favicon.png" rel="icon" />
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -174,7 +174,7 @@
                                 </li>
                                 <li>
                                     <div class="sidebar-submenu-item">
-                                        <a href="#" class="sidebar-submenu-item-link">Thêm sản phẩm</a>
+                                        <a href="@Url.Action("TaoSanPham", "SanPham")" class="sidebar-submenu-item-link">Thêm sản phẩm</a>
                                     </div>
                                 </li>
                                 <li>
@@ -223,6 +223,13 @@
                                 </li>
 
                             </ul>
+                        </li>
+                        <li class="sidebar-menu-box">
+                            <a href="#" class="sidebar-menu-item">
+                                <i class='bx bxs-store sidebar-menu-item-icon'></i>
+                                <span>Cửa hàng của tôi</span>
+                                <span class="sidebar-menu-item-space"></span>
+                            </a>
                         </li>
                         <li class="sidebar-menu-box">
                             <div class="sidebar-menu-item">
