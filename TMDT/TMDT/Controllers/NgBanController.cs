@@ -41,7 +41,7 @@ namespace TMDT.Controllers
                 db.NGUOIDUNGs.Add(shop);
                 db.SaveChanges();
 
-                return RedirectToAction("DangNhap", "NgBan");
+                return RedirectToAction("DangNhapNgBan", "NgBan");
             }
 
             return View(shop);
@@ -234,8 +234,101 @@ namespace TMDT.Controllers
         // GET: CuaHang
         public ActionResult CuaHang()
         {
+            var email = Session["Email"] as string;
+            if (email == null)
+            {
+                // Nếu chưa đăng nhập, chuyển hướng đến trang đăng nhập
+                return RedirectToAction("DangNhapNgBan", "NgBan");
+            }
+
+            // Lấy thông tin của người dùng trong cơ sở dữ liệu
+            var nguoidung = db.NGUOIDUNGs.SingleOrDefault(kh => kh.EMAIL == email);
+
+            if (nguoidung != null) // Kiểm tra xem người dùng có tồn tại hay không
+            {
+                // Lấy thông tin của cửa hàng nếu tồn tại, sau đó lưu ID của cửa hàng vào sản phẩm
+                var cuahang = db.CUAHANGs.SingleOrDefault(ch => ch.IDND == nguoidung.IDND);
+
+                if (cuahang != null) // Kiểm tra xem cửa hàng có tồn tại hay không
+                {
+                    // Lấy thông tin chi tiết của cửa hàng
+                    var cuahangChiTiet = db.CUAHANGs.SingleOrDefault(ch => ch.IDCUAHANG == cuahang.IDCUAHANG);
+
+                    if (cuahangChiTiet != null)
+                    {
+                        return View(cuahangChiTiet);
+                    }
+                }
+            }
             return View();
         }
+        [HttpPost]
+        [ActionName("CapNhatCuaHang")]
+        public ActionResult CapNhatCuaHang(CUAHANG model)
+        {
+            if (ModelState.IsValid)
+            {
+                var objUser = db.CUAHANGs.Find(model.IDCUAHANG);
+               
+                if (model.UploadImage1 != null)
+                {
+                    string filename1 = Path.GetFileNameWithoutExtension(model.UploadImage1.FileName);
+                    string extension1 = Path.GetExtension(model.UploadImage1.FileName);
+                    filename1 = filename1 + extension1;
+                    model.ANHDAIDIEN = "~/Content/Hinh/" + filename1;
+                    model.UploadImage1.SaveAs(Path.Combine(Server.MapPath("~/Content/Hinh/"), filename1));
+                    // gan cac du lieu vao cai lay len
+
+                }
+                objUser.TENCH = model.TENCH;
+                objUser.ANHDAIDIEN = model.ANHDAIDIEN;
+                db.SaveChanges();
+                return RedirectToAction("CuaHang", "NgBan");
+            }
+
+            return View(model);
+        }
+        [HttpPost]
+        [ActionName("CapNhatAnhNen")]
+        public ActionResult CapNhatAnhNen(CUAHANG model)
+        {
+            if (ModelState.IsValid)
+            {
+                var objUser = db.CUAHANGs.Find(model.IDCUAHANG);
+
+                if (model.UploadImage2 != null)
+                {
+                    string filename2 = Path.GetFileNameWithoutExtension(model.UploadImage2.FileName);
+                    string extension2 = Path.GetExtension(model.UploadImage2.FileName);
+                    filename2 = filename2 + extension2;
+                    model.HINHANH = "~/Content/Hinh/" + filename2;
+                    model.UploadImage2.SaveAs(Path.Combine(Server.MapPath("~/Content/Hinh/"), filename2));
+                    // gan cac du lieu vao cai lay len
+
+                }
+                
+                objUser.HINHANH = model.HINHANH;
+                db.SaveChanges();
+                return RedirectToAction("CuaHang", "NgBan");
+            }
+
+            return View(model);
+        }
+        [HttpPost]
+        [ActionName("CapNhatDiaChi")]
+        public ActionResult CapNhatDiaChi(CUAHANG model)
+        {
+            if (ModelState.IsValid)
+            {
+                var objUser = db.CUAHANGs.Find(model.IDCUAHANG);
+                objUser.DIACHI = model.DIACHI;
+                db.SaveChanges();
+                return RedirectToAction("CuaHang", "NgBan");
+            }
+
+            return View(model);
+        }
+
 
     }
 }

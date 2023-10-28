@@ -11,17 +11,25 @@ namespace TMDT.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Web;
+
     public partial class CUAHANG
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CUAHANG()
         {
+            HINHANH = "~/Areas/Admin/Content/img/iconanh.png";
+            ANHDAIDIEN = "~/Areas/Admin/Content/img/iconanh.png";
             this.QUANGCAOs = new HashSet<QUANGCAO>();
             this.SANPHAMs = new HashSet<SANPHAM>();
             this.VOUCHERSHOPs = new HashSet<VOUCHERSHOP>();
         }
-    
+        [NotMapped]
+        public HttpPostedFileBase UploadImage1 { get; set; }
+        [NotMapped]
+        public HttpPostedFileBase UploadImage2 { get; set; }
+       
         public int IDCUAHANG { get; set; }
         public string DIACHI { get; set; }
         public string HINHANH { get; set; }
