@@ -140,6 +140,7 @@
     <Compile Include="Areas\Admin\Controllers\MauSacController.cs" />
     <Compile Include="Areas\Admin\Controllers\QLNDController.cs" />
     <Compile Include="Areas\Admin\Controllers\QLSanPhamController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ShipperController.cs" />
     <Compile Include="Areas\Admin\Controllers\SizeController.cs" />
     <Compile Include="Areas\Admin\Controllers\TaiKhoanController.cs" />
     <Compile Include="Areas\Admin\Controllers\ThuongHieuController.cs" />
@@ -277,6 +278,7 @@
     <Content Include="Areas\Admin\Content\css\style-starter.css" />
     <Content Include="Areas\Admin\Content\css\validator.css" />
     <Content Include="Areas\Admin\Content\img\iconanh.png" />
+    <Content Include="Areas\Admin\Content\img\User_icon.png" />
     <Content Include="Areas\Admin\Js\menu.js" />
     <Content Include="Areas\Admin\Js\products.js" />
     <Content Include="Areas\Admin\Js\show-hide-detail.js" />
@@ -394,6 +396,10 @@
     <Content Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
+    <Content Include="Areas\Admin\Views\Shared\Layout_Shipper.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Layout_DangNhapShipper.cshtml" />
+    <Content Include="Areas\Admin\Views\Shipper\DangNhap.cshtml" />
+    <Content Include="Areas\Admin\Views\Shipper\TaiKhoan.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

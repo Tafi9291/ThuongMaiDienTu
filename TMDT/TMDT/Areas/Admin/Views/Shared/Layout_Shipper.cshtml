@@ -76,14 +76,15 @@
                             </div>
                         </div>
                         <div class="header__cart-wrap">
+                          
                             @*<i class="header__cart-icon useracc fas fa-user" style="cursor:pointer;" onclick="myFunction()"></i>*@
                             <div class="header__navbar-item header__navbar-user">
-                                <img src="@Url.Content(Session["Hinh"].ToString())" alt="" class="header__navbar-user-img" style="width: 30px; height: 30px;">
+                                <img src="~/Areas/Admin/Content/img/User_icon.png"  alt="" class="header__navbar-user-img" style="width: 30px; height: 30px;">
                                 <span class="header__navbar-user-name" style="color: var(--text-color);">@Session["Ten"]</span>
                                 <div class="dropdown-content  useracc">
                                     <div class="box-noneshow"></div>
-                                    <a href="@Url.Action("TaiKhoan", "TaiKhoan")">Xem tài khoản</a>
-                                    <a href="@Url.Action("DangXuat", "DangNhapAdmin")">Đăng xuất</a>
+                                    <a href="@Url.Action("TaiKhoan", "Shipper")">Xem tài khoản</a>
+                                    <a href="@Url.Action("DangXuat", "Shipper")">Đăng xuất</a>
                                 </div>
                             </div>
                         </div>
@@ -158,124 +159,7 @@
 
                             </ul>
                         </li>
-                        <li class="sidebar-menu-box">
-                            <div class="sidebar-menu-item">
-                                <i class='bx bxl-shopify sidebar-menu-item-icon'></i>
-                                <span>Quản lý sản phẩm</span>
-                                <span class="sidebar-menu-item-space"></span>
-                                <i class='bx bx-chevron-down sidebar-menu-item-collapse'></i>
-                            </div>
-                            <ul class="sidebar-submenu">
-                                <li>
-                                    <div class="sidebar-submenu-item">
-                                        <a href="@Url.Action("QLSanPham", "QLSanPham")" class="sidebar-submenu-item-link">Xử lý sản phẩm</a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="sidebar-submenu-item">
-                                        <a href="@Url.Action("ThuongHieu", "ThuongHieu")" class="sidebar-submenu-item-link">Thương hiệu</a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="sidebar-submenu-item">
-                                        <a href="@Url.Action("MauSac", "MauSac")" class="sidebar-submenu-item-link">Màu sắc</a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="sidebar-submenu-item">
-                                        <a href="@Url.Action("Size", "Size")" class="sidebar-submenu-item-link">Các loại size</a>
-                                    </div>
-                                </li>
-
-                            </ul>
-                        </li>
-                        <li class="sidebar-menu-box">
-                            <div class="sidebar-menu-item">
-                                <i class='bx bxs-purchase-tag sidebar-menu-item-icon'></i>
-                                <span>Quảng cáo của tôi</span>
-                                <span class="sidebar-menu-item-space"></span>
-                                <i class='bx bx-chevron-down sidebar-menu-item-collapse'></i>
-                            </div>
-                        </li>
-                        <li class="sidebar-menu-box">
-                            <div class="sidebar-menu-item">
-                                <i class='bx bxs-discount sidebar-menu-item-icon'></i>
-                                <span>Quản lý voucher</span>
-                                <span class="sidebar-menu-item-space"></span>
-                                <i class='bx bx-chevron-down sidebar-menu-item-collapse'></i>
-                            </div>
-                            <ul class="sidebar-submenu">
-                                <li>
-                                    <div class="sidebar-submenu-item">
-                                        <a href="@Url.Action("QLVoucherShop", "VoucherShop")" class="sidebar-submenu-item-link">Tất cả</a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="sidebar-submenu-item">
-                                        <a href="@Url.Action("TaoVoucher", "VoucherShop")" class="sidebar-submenu-item-link">Tạo voucher</a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="sidebar-submenu-item">
-                                        <a href="#" class="sidebar-submenu-item-link">Đang hoạt động</a>
-                                    </div>
-                                </li>
-
-                            </ul>
-                        </li>
-                        <li class="sidebar-menu-box">
-                            <div class="sidebar-menu-item">
-                                <i class='bx bxs-user-account sidebar-menu-item-icon'></i>
-                                <span>Quản lý người dùng</span>
-                                <span class="sidebar-menu-item-space"></span>
-                                <i class='bx bx-chevron-down sidebar-menu-item-collapse'></i>
-                            </div>
-                            <ul class="sidebar-submenu">
-                                <li>
-                                    <div class="sidebar-submenu-item">
-                                        <a href="@Url.Action("QLNgMua", "QLND")" class="sidebar-submenu-item-link">Người mua</a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="sidebar-submenu-item">
-                                        <a href="@Url.Action("QLNgBan", "QLND")" class="sidebar-submenu-item-link">Kênh người bán</a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="sidebar-menu-box">
-                            <div class="sidebar-menu-item">
-                                <i class='bx bxs-user-plus sidebar-menu-item-icon'></i>
-                                <span>Quản lý phân quyền</span>
-                                <span class="sidebar-menu-item-space"></span>
-                                <i class='bx bx-chevron-down sidebar-menu-item-collapse'></i>
-                            </div>
-                        </li>
-                        <li class="sidebar-menu-box">
-                            <div class="sidebar-menu-item">
-                                <i class='bx bxs-face-mask sidebar-menu-item-icon'></i>
-                                <span>Quản lý shipper</span>
-                                <span class="sidebar-menu-item-space"></span>
-                                <i class='bx bx-chevron-down sidebar-menu-item-collapse'></i>
-                            </div>
-                        </li>
-                        <li class="sidebar-menu-box">
-                            <div class="sidebar-menu-item">
-                                <i class='bx bxs-news sidebar-menu-item-icon'></i>
-                                <span>Quản lý tin tức</span>
-                                <span class="sidebar-menu-item-space"></span>
-                                <i class='bx bx-chevron-down sidebar-menu-item-collapse'></i>
-                            </div>
-                        </li>
-                        <li class="sidebar-menu-box">
-                            <div class="sidebar-menu-item">
-                                <i class='bx bxs-wallet sidebar-menu-item-icon'></i>
-                                <span>Doanh thu</span>
-                                <span class="sidebar-menu-item-space"></span>
-                                <i class='bx bx-chevron-down sidebar-menu-item-collapse'></i>
-                            </div>
-                        </li>
-                    </ul>
+                       
                 </div>
             </div>
             <div class="grid wide">
