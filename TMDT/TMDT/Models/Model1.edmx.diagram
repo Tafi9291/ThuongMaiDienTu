@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e38b45e65d6e49f484c2d838b44844b7" Name="Diagram1">
+      <Diagram DiagramId="4e120f33748245d691f6abf01e9ad69c" Name="Diagram1">
         <EntityTypeShape EntityType="TMDTModel.ADMIN" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="TMDTModel.CHUCVU" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="TMDTModel.CTDIENTHOAI" Width="1.5" PointX="5.25" PointY="20.75" IsExpanded="true" />
@@ -13,7 +13,7 @@
         <EntityTypeShape EntityType="TMDTModel.CTTHOITRANG" Width="1.5" PointX="8.25" PointY="24.125" IsExpanded="true" />
         <EntityTypeShape EntityType="TMDTModel.CUAHANG" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="TMDTModel.DANHGIASP" Width="1.5" PointX="8.25" PointY="14" IsExpanded="true" />
-        <EntityTypeShape EntityType="TMDTModel.DONHANG" Width="1.5" PointX="3" PointY="61.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TMDTModel.DONHANG" Width="1.5" PointX="3" PointY="61.625" IsExpanded="true" />
         <EntityTypeShape EntityType="TMDTModel.LOAISP" Width="1.5" PointX="0.75" PointY="13.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TMDTModel.MAUSAC" Width="1.5" PointX="0.75" PointY="18.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TMDTModel.NGUOIDUNG" Width="1.5" PointX="1.5" PointY="41.625" IsExpanded="true" />

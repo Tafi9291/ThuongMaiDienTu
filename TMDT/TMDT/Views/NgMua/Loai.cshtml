@@ -1,0 +1,19 @@
+﻿@model IEnumerable<TMDT.Models.LOAISP>
+
+@{
+    ViewBag.Title = "Loai";
+}
+
+<div class="image-carousel">
+    @foreach (var item in Model)
+    {
+        <a href="@Url.Action("LoaiSanPham", new { id = item.IDLOAISP})" class="image-carousel__item">
+            <div class="image-carousel__item-img">
+                <img src="@Url.Content(item.HINHANH)" />
+            </div>
+            <div class="image-carousel__item-title">@Html.DisplayFor(modelItem => item.TENLOAISP)</div>
+        </a>
+
+    }
+</div>
+

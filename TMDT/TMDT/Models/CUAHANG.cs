@@ -29,7 +29,6 @@ namespace TMDT.Models
         public HttpPostedFileBase UploadImage1 { get; set; }
         [NotMapped]
         public HttpPostedFileBase UploadImage2 { get; set; }
-       
         public int IDCUAHANG { get; set; }
         public string DIACHI { get; set; }
         public string HINHANH { get; set; }

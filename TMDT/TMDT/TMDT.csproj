@@ -335,10 +335,13 @@
     <Content Include="Content\css\slider.css" />
     <Content Include="Content\css\toast.css" />
     <Content Include="Content\css\validator.css" />
+    <Content Include="Content\Hinh\ao.png" />
     <Content Include="Content\Hinh\appstore.png" />
     <Content Include="Content\Hinh\complete-checkout.png" />
     <Content Include="Content\Hinh\dashboard.png" />
+    <Content Include="Content\Hinh\dienthoai.png" />
     <Content Include="Content\Hinh\empty-cart.jpg" />
+    <Content Include="Content\Hinh\giay.png" />
     <Content Include="Content\Hinh\googleplay.png" />
     <Content Include="Content\Hinh\logo-favicon.png" />
     <Content Include="Content\Hinh\QR_shopee.png" />
@@ -391,13 +394,6 @@
     <Content Include="Areas\Admin\Views\QLND\QLNgMua.cshtml" />
     <Content Include="Areas\Admin\Views\QLND\QLNgBan.cshtml" />
     <Content Include="Areas\Admin\Views\TaiKhoan\TaiKhoan.cshtml" />
-    <EntityDeploy Include="Models\Model1.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Content>
     <Content Include="Areas\Admin\Views\Shared\Layout_Shipper.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\Layout_DangNhapShipper.cshtml" />
     <Content Include="Areas\Admin\Views\Shipper\DangNhap.cshtml" />
@@ -406,6 +402,13 @@
     <Content Include="Areas\Admin\Views\QLShipper\Shipper.cshtml" />
     <Content Include="Areas\Admin\Views\QLShipper\TaoShipper.cshtml" />
     <Content Include="Areas\Admin\Views\QLShipper\CapNhatShipper.cshtml" />
+    <EntityDeploy Include="Models\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -450,7 +453,6 @@
     <Content Include="Views\VoucherShop\TaoVoucher.cshtml" />
     <Content Include="Views\VoucherShop\CapNhatVoucher.cshtml" />
     <Content Include="Views\NgBan\TaiKhoan.cshtml" />
-    <Content Include="Views\NgMua\Detail.cshtml" />
     <Content Include="Views\Register\DangKy.cshtml" />
     <Content Include="Views\Shop\Shop.cshtml" />
     <Content Include="Views\Shared\Layout-DKBan.cshtml" />
@@ -475,6 +477,9 @@
     <Content Include="Views\ShoppingCart\ChuaCoHang.cshtml" />
     <Content Include="Views\ShoppingCart\Complete.cshtml" />
     <Content Include="Views\ShoppingCart\ShowToCart.cshtml" />
+    <Content Include="Views\NgMua\Loai.cshtml" />
+    <Content Include="Views\NgMua\LoaiSanPham.cshtml" />
+    <Content Include="Views\NgMua\ChiTietSanPham.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

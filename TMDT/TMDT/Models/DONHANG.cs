@@ -32,6 +32,7 @@ namespace TMDT.Models
         public Nullable<int> IDVOUCHER { get; set; }
         public Nullable<int> IDTRANGTHAIDH { get; set; }
         public Nullable<int> IDTRANGTHAIXDH { get; set; }
+        public Nullable<int> THANHTIEN { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CTDONHANG> CTDONHANGs { get; set; }

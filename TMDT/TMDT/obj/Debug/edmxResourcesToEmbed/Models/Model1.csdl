@@ -128,6 +128,7 @@
     <Property Name="IDVOUCHER" Type="Int32" />
     <Property Name="IDTRANGTHAIDH" Type="Int32" />
     <Property Name="IDTRANGTHAIXDH" Type="Int32" />
+    <Property Name="THANHTIEN" Type="Int32" />
     <NavigationProperty Name="CTDONHANGs" Relationship="Self.FK__CTDONHANG__IDDON__09A971A2" FromRole="DONHANG" ToRole="CTDONHANG" />
     <NavigationProperty Name="NGUOIDUNG" Relationship="Self.FK__DONHANG__IDND__01142BA1" FromRole="DONHANG" ToRole="NGUOIDUNG" />
     <NavigationProperty Name="PTTHANHTOAN" Relationship="Self.FK__DONHANG__IDPTTHA__02FC7413" FromRole="DONHANG" ToRole="PTTHANHTOAN" />

@@ -107,6 +107,7 @@
     <Property Name="IDVOUCHER" Type="int" />
     <Property Name="IDTRANGTHAIDH" Type="int" />
     <Property Name="IDTRANGTHAIXDH" Type="int" />
+    <Property Name="THANHTIEN" Type="int" />
   </EntityType>
   <EntityType Name="LOAISP">
     <Key>

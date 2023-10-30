@@ -16,7 +16,7 @@ namespace TMDT.Models
 
     public partial class ADMIN
     {
-        public ADMIN() 
+        public ADMIN()
         {
             HINHANH = "~/Areas/Admin/Content/img/iconanh.png";
         }
