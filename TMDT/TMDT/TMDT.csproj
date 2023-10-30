@@ -140,6 +140,7 @@
     <Compile Include="Areas\Admin\Controllers\MauSacController.cs" />
     <Compile Include="Areas\Admin\Controllers\QLNDController.cs" />
     <Compile Include="Areas\Admin\Controllers\QLSanPhamController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QLShipperController.cs" />
     <Compile Include="Areas\Admin\Controllers\ShipperController.cs" />
     <Compile Include="Areas\Admin\Controllers\SizeController.cs" />
     <Compile Include="Areas\Admin\Controllers\TaiKhoanController.cs" />
@@ -402,6 +403,9 @@
     <Content Include="Areas\Admin\Views\Shipper\DangNhap.cshtml" />
     <Content Include="Areas\Admin\Views\Shipper\TaiKhoan.cshtml" />
     <Content Include="Areas\Admin\Views\QLND\Khongcoquyen.cshtml" />
+    <Content Include="Areas\Admin\Views\QLShipper\Shipper.cshtml" />
+    <Content Include="Areas\Admin\Views\QLShipper\TaoShipper.cshtml" />
+    <Content Include="Areas\Admin\Views\QLShipper\CapNhatShipper.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
