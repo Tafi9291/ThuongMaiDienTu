@@ -1,4 +1,6 @@
-﻿
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<TMDT.Models.NGUOIDUNG>
 @{
     ViewBag.Title = "QLNgMua";
     Layout = "~/Areas/Admin/Views/Shared/Layout_Admin.cshtml";
@@ -11,11 +13,12 @@
                 <div class="title-page__link">
                     <a href="@Url.Action("DashBoard", "DashBoard")" class="title-page__link-label">Trang chủ</a>
                     <i class='bx bx-chevron-right'></i>
-                    <a href="@Url.Action("QLSanPham", "QLSanPham")" class="title-page__link-label" style="color: black;"> Quản lý người mua</a>
+                    <a href="@Url.Action("QLNgMua", "QLND")" class="title-page__link-label" style="color: black;"> Quản lý người mua</a>
                 </div>
             </div>
             <div class="product-filter-card">
-                <form action="/" method="" class="tafi-form filter-form tafi-form-label-right">
+                @using (Html.BeginForm("QLNgMua", "QLND", FormMethod.Get, new { @class = "tafi-form filter-form tafi-form-label-right" }))
+                {
                     <div class="filter-form-box">
                         <div class="filter-col-left">
                             <div class="product tafi-form-item">
@@ -28,9 +31,25 @@
                                                     <div class="input-wrapper">
                                                         <div class="tafi-input">
                                                             <div class="tafi-input__inner">
-                                                                <input type="text" placeholder="Hãy nhập vào ít nhất 2 ký tự đầu của từ..."
+                                                                @*<input type="text" placeholder="Hãy nhập vào ít nhất 2 ký tự đầu của từ..."
                                                                        resize="vertical" rows="2" minrows="2" restrictiontype="input"
-                                                                       max="Infinity" min="-Infinity" class="tafi-input__input">
+                                                                       max="Infinity" min="-Infinity" class="tafi-input__input">*@
+                                                                @Html.TextBox("SearchString", ViewBag.CrurentFilter as string, new
+                                                                {
+                                                                    @class = "tafi-input__input",
+                                                                    @type = "text",
+                                                                    @placeholder = "Hãy nhập vào ít nhất 2 ký tự đầu của từ...",
+                                                                    @tabindex = "0",
+                                                                    @resize = "none",
+                                                                    @size = "large",
+                                                                    @rows = "2",
+                                                                    @minrows = "2",
+                                                                    @clearable = "true",
+                                                                    @maxlength = "Infinity",
+                                                                    @restrictiontype = "input",
+                                                                    @max = "Infinity",
+                                                                    @min = "-Infinity",
+                                                                })
                                                             </div>
                                                         </div>
                                                     </div>
@@ -75,8 +94,8 @@
                             <span>Nhập lại</span>
                         </button>
                     </div>
-                </form>
-            </div>
+                }
+                </div>
 
             <div class="product-list-main">
                 @*<div class="">
@@ -180,98 +199,104 @@
                                         <div class="tafi-table__main-body">
                                             <div class="tafi-scrollbar">
                                                 <div class="tafi-scrollbar__wrapper">
-                                                    @* No product *@
-                                                    @*<div class="tafi-table__empty">
-                                                            <div class="product-no-result">
-                                                                <span class="sprites-product-list-no-product"></span>
-                                                                <div class="text"> Không tìm thấy sản phẩm </div>
-                                                            </div>
-                                                        </div>*@
-                                                    @* ------- *@
-
-                                                    @* Have product *@
-                                                    <table cellpadding="0" border="0" class="tafi-table__body" @*style="width: 1054px;"*@>
-                                                        <colgroup>
-                                                            <col width="232">
-                                                            <col width="232">
-                                                            <col width="170">
-                                                            <col width="150">
-                                                            <col width="140">
-                                                            <col width="130">
-                                                        </colgroup>
-                                                        <thead>
-                                                            <tr>
-                                                                <td colspan="1" rowspan="1">
-                                                                    <div class="tafi-table__cell">
-                                                                        <div class="product-list-item__td product-main">
-                                                                            <div class="product-image product-image-box">
-                                                                                <img src="https://i.pinimg.com/736x/72/2b/a1/722ba1a48ce84cf96ca6bc97870b6340.jpg" alt="Alternate Text" style="border-radius: 50%; height: unset;" />
-                                                                            </div>
-                                                                            <div class="product-name" style="justify-content: center;">
-                                                                                <span class="product-name-text">Vĩnh Tài</span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td colspan="1" rowspan="1">
-                                                                    <div class="tafi-table__cell">
-                                                                        <div class="product-list-item__td product-main">
-                                                                            <div class="product-cate">
-                                                                                <span class="product-cate-text">abc@gmail.com</span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td colspan="1" rowspan="1">
-                                                                    <div class="tafi-table__cell">
-                                                                        <div class="product-list-item__td product-main">
-                                                                            <div class="product-price">
-                                                                                <span class="product-cate-text">0933456678</span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td colspan="1" rowspan="1">
-                                                                    <div class="tafi-table__cell">
-                                                                        <div class="product-list-item__td product-main">
-                                                                            <div class="product-price">
-                                                                                <span class="product-quantity-text">123 Nguyễn Trãi, Phường 10, Quận 5</span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td colspan="1" rowspan="1">
-                                                                    <div class="tafi-table__cell">
-                                                                        <div class="product-list-item__td product-main">
-                                                                            <div class="product-price">
-                                                                                <span class="product-quantity-text">Người mua</span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td colspan="1" rowspan="1">
-                                                                    <div class="tafi-table__cell">
-                                                                        <div class="product-list-item__td product-main">
-                                                                            <div class="product-actions">
-                                                                                <div class="product-actions-text">
-                                                                                    <a href="@Url.Action("PheDuyet", "QLSanPham")">Phê duyệt</a>
-                                                                                    <a href="#">Xem thêm</a>
+                                                    @if (Model.Any())
+                                                    {
+                                                        foreach (var item in Model)
+                                                        {
+                                                            <table cellpadding="0" border="0" class="tafi-table__body" @*style="width: 1054px;"*@>
+                                                                <colgroup>
+                                                                    <col width="232">
+                                                                    <col width="232">
+                                                                    <col width="170">
+                                                                    <col width="150">
+                                                                    <col width="140">
+                                                                    <col width="130">
+                                                                </colgroup>
+                                                                <thead>
+                                                                    <tr>
+                                                                        <td colspan="1" rowspan="1">
+                                                                            <div class="tafi-table__cell">
+                                                                                <div class="product-list-item__td product-main">
+                                                                                    <div class="product-image product-image-box">
+                                                                                        <img src="@Url.Content(item.HINH.ToString())" alt="Alternate Text" style="border-radius: 50%; height: unset;" />
+                                                                                    </div>
+                                                                                    <div class="product-name" style="justify-content: center;">
+                                                                                        <span class="product-name-text">@Html.DisplayFor(modelItem => item.TENND)</span>
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                        </thead>
-                                                    </table>
-                                                    <div class="tafi-table__horizontal"></div>
-                                                    @* ------- *@
+                                                                        </td>
+                                                                        <td colspan="1" rowspan="1">
+                                                                            <div class="tafi-table__cell">
+                                                                                <div class="product-list-item__td product-main">
+                                                                                    <div class="product-cate">
+                                                                                        <span class="product-cate-text">@Html.DisplayFor(modelItem => item.EMAIL)</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td colspan="1" rowspan="1">
+                                                                            <div class="tafi-table__cell">
+                                                                                <div class="product-list-item__td product-main">
+                                                                                    <div class="product-price">
+                                                                                        <span class="product-cate-text">@Html.DisplayFor(modelItem => item.SDT)</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td colspan="1" rowspan="1">
+                                                                            <div class="tafi-table__cell">
+                                                                                <div class="product-list-item__td product-main">
+                                                                                    <div class="product-price">
+                                                                                        <span class="product-quantity-text">@Html.DisplayFor(modelItem => item.DIACHI)</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td colspan="1" rowspan="1">
+                                                                            <div class="tafi-table__cell">
+                                                                                <div class="product-list-item__td product-main">
+                                                                                    <div class="product-price">
+                                                                                        <span class="product-quantity-text">@(item.PQNGUOIDUNG==null?"":item.PQNGUOIDUNG.QUYENND)</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td colspan="1" rowspan="1">
+                                                                            <div class="tafi-table__cell">
+                                                                                <div class="product-list-item__td product-main">
+                                                                                    <div class="product-actions">
+                                                                                        <div class="product-actions-text">
+                                                                                            <a href="#">Xem thêm</a>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                </thead>
+                                                            </table>
+                                                            <div class="tafi-table__horizontal"></div>
+                                                        }
+
+                                                    }
+                                                    else
+                                                    {
+                                                        <div class="tafi-table__empty">
+                                                            <div class="product-no-result">
+                                                                <span class="sprites-product-list-no-product"></span>
+                                                                <div class="text"> Không có người dùng </div>
+                                                            </div>
+                                                        </div>
+                                                    }
                                                 </div>
                                             </div>
                                         </div>
                                         @* Product list pagination *@
                                         <div class="product-list-pagination tafi-pagination">
-                                            Phân trang
+                                            <div class="" style="width: 200px; display: flex; justify-content: center;">
+                                                @Html.PagedListPager(Model, page => Url.Action("QLNgMua", new { page, size = ViewBag.currentSize }))
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

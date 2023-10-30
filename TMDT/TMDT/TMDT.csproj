@@ -401,6 +401,7 @@
     <Content Include="Areas\Admin\Views\Shared\Layout_DangNhapShipper.cshtml" />
     <Content Include="Areas\Admin\Views\Shipper\DangNhap.cshtml" />
     <Content Include="Areas\Admin\Views\Shipper\TaiKhoan.cshtml" />
+    <Content Include="Areas\Admin\Views\QLND\Khongcoquyen.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
