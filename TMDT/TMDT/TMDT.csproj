@@ -151,6 +151,7 @@
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\SanPhamController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
+    <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Controllers\VoucherShopController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -466,6 +467,9 @@
     <Content Include="Views\SanPham\SizeGiay.cshtml" />
     <Content Include="Views\NgBan\CuaHang.cshtml" />
     <Content Include="Views\VoucherShop\Delete.cshtml" />
+    <Content Include="Views\ShoppingCart\ChuaCoHang.cshtml" />
+    <Content Include="Views\ShoppingCart\Complete.cshtml" />
+    <Content Include="Views\ShoppingCart\ShowToCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

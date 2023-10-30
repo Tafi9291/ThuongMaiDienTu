@@ -44,17 +44,17 @@
 
 .checkout {
     width: 500px;
-    min-height: 100vh;
+    max-height: 550px;
     /*background: linear-gradient(90deg, rgb(233, 175, 132) 5%, rgb(250, 199, 219) 100%);*/
     background-color: #ffffff;
     position: fixed;
     padding: 25px 20px;
     z-index: 11;
     /*right: -10px;*/
-    top: 100px;
+    top: 14%;
     right: 0;
     bottom: 100px;
-    left: 520px;
+    left: 35%;
     max-width: 100%;
     display: none;
     /*transform: translateX(100%);
@@ -102,4 +102,13 @@
     /*    transform: translateX(0);
     opacity: 1;*/
     display: block;
+}
+
+
+/*------------------------------------*/
+/*------------------------------------*/
+/*------------------------------------*/
+
+.checkout-location {
+
 }
