@@ -118,7 +118,7 @@
                                                     <div class="shop-info-main__name">@ViewBag.CuaHang.TENCH</div>
                                                     <div class="shop-info-main__state" style="display: none;"></div>
                                                     <div class="shop-info-main__shop">
-                                                        <a href="#" class="shop-info-main__shop-link">
+                                                        <a href="@Url.Action("Shop", "Shop", new { id = ViewBag.CuaHang.IDCUAHANG})" class="shop-info-main__shop-link">
                                                             <i class='bx bx-store bx-md' style="margin-right: 5px; flex-shrink: 0;"></i>
                                                             <span>Xem Shop</span>
                                                         </a>

@@ -226,6 +226,7 @@
     <Compile Include="Models\SHIPPER.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ShopViewModel.cs" />
     <Compile Include="Models\SIZEGIAY.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
