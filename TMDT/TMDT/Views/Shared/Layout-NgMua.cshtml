@@ -139,20 +139,20 @@
                     </div>
 
                     <input type="checkbox" hidden id="mobile-search-checkbox" class="header__search-checkbox">
-                    @*@using (Html.BeginForm("Search", "TrangChu", FormMethod.Get, new {@class= "header__search" }))
-                        {
-                            <div class="header__search-input-wrap">
-                                <input type="text"
-                                       class="header__search-input"
-                                       placeholder="Nhập để tìm kiếm..."
-                                       name="searching" />
-                            </div>
+                    @using (Html.BeginForm("Search", "NgMua", FormMethod.Get, new {@class= "header__search" }))
+                     {
+                         <div class="header__search-input-wrap">
+                             <input type="text"
+                                    class="header__search-input"
+                                    placeholder="Nhập để tìm kiếm..."
+                                    name="searching" />
+                         </div>
 
-                            <button class="header__search-btn" type="submit">
-                                <i class="header__search-btn-icon fas fa-search"></i>
-                            </button>
-                        }*@
-                    <div class="header__search">
+                         <button class="header__search-btn" type="submit">
+                             <i class="header__search-btn-icon fas fa-search"></i>
+                         </button>
+                     }
+                    @*<div class="header__search">
                         <div class="header__search-input-wrap">
                             <input type="text"
                                    class="header__search-input"
@@ -163,7 +163,7 @@
                         <button class="header__search-btn" type="submit">
                             <i class="header__search-btn-icon fas fa-search"></i>
                         </button>
-                    </div>
+                    </div>*@
 
                     <!--Cart layout-->
                     <div class="header__cart">

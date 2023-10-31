@@ -32,6 +32,14 @@ namespace TMDT.Controllers
             return View(dienthoais);
         }
 
+        public ActionResult Search(int? page, string searching)
+        {
+            const int pageSize = 20;
+            var pageNumber = (page ?? 1);
+            return View(db.SANPHAMs.Where(x => x.TENSP.StartsWith(searching) || x.TENSP == null).ToList().ToPagedList(pageNumber, pageSize));
+
+        }
+
         // GET: NgMua/SanPham/Detail
         public ActionResult ChiTietSanPham(int id)
         {

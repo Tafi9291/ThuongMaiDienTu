@@ -480,6 +480,7 @@
     <Content Include="Views\NgMua\Loai.cshtml" />
     <Content Include="Views\NgMua\LoaiSanPham.cshtml" />
     <Content Include="Views\NgMua\ChiTietSanPham.cshtml" />
+    <Content Include="Views\NgMua\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
