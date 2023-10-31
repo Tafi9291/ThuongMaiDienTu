@@ -1,0 +1,177 @@
+﻿@model List<TMDT.Models.DONHANG>
+@{
+    ViewBag.Title = "DonMua";
+    Layout = "~/Views/Shared/Layout-NgMua.cshtml";
+    var selectedStatus = Request.QueryString["IDTRANGTHAIDH"];
+    var filteredOrders = Model;
+
+    if (!string.IsNullOrEmpty(selectedStatus))
+    {
+        filteredOrders = Model.Where(dh => dh.IDTRANGTHAIDH.ToString() == selectedStatus).ToList();
+    }
+}
+
+<style>
+    .order-list {
+        list-style: none;
+        display: flex;
+        margin: 10px 0;
+        overflow: hidden;
+        white-space: nowrap;
+        justify-content: center;
+        width: 100%;
+        background-color: #fff;
+        border-radius: 3px;
+        border: 1px solid #e3e3e3;
+    }
+
+    .order-list__items {
+        font-size: 1.3rem;
+        padding: 15px 15px;
+    }
+
+    a .order-list__items {
+        color: black;
+    }
+
+        a .order-list__items:hover {
+            color: var(--primary-color);
+        }
+
+    .active-items {
+        color: var(--primary-color);
+        border-bottom: 3px solid var(--primary-color);
+    }
+
+    .tr-order th {
+        font-size: 1.4rem;
+    }
+
+    .tr-order__detail td {
+        font-size: 1.4rem;
+    }
+
+        .tr-order__detail td a {
+            font-size: 1.4rem;
+        }
+</style>
+<div class="app__container">
+    <div class="grid wide">
+
+
+        <div class="row sm-gutter app__content">
+
+            <div class="col l-12 m-12 c-12">
+
+                <div class="home-product">
+                    <div class="row sm-gutter">
+                        <div class="col l-2">
+                            <div class="user-img">
+                                <img src="@Url.Content(Session["Hinh"].ToString())" style="width: 82px; height: 82px; border-radius: 50%; border: 1px solid rgba(0, 0, 0, 0.1); object-fit: cover;" />
+                                <p class="user-img_name">@Session["Ten"]</p>
+                                <div style=" border-bottom: 1px solid var(--primary-color); width: 100%;"></div>
+                                <div style="display: flex; flex-direction:column; align-items: flex-start;">
+                                    <a href="@Url.Action("DetailUser", "DNhap")" class="user-img_link">
+                                        Tài khoản của bạn
+                                    </a>
+                                    <a href="@Url.Action("DonMua", "NgMua")" class="user-img_link">
+                                        Đơn mua
+                                    </a>
+                                    <a href="@Url.Action("DangXuat", "DNhap")" class="user-img_link">
+                                        Đăng xuất
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col l-10">
+                            <div class="home-product-title">
+                                <h1>Đơn hàng của bạn</h1>
+                                <ul class="order-list" id="categories">
+                                    <a href="@Url.Action("DonMua", "NgMua")" class="@(!Request.QueryString.HasKeys() || Request.QueryString["IDTRANGTHAIDH"] == "" ? "active-items" : "")">
+                                    <li class="order-list__items">Tất cả</li>
+                                    </a>
+                                    <a href="@Url.Action("DonMua", "NgMua", new { IDTRANGTHAIDH = 1 })" class="@((Request.QueryString["IDTRANGTHAIDH"] ?? "") == "1" ? "active-items" : "")">
+                                    <li class="order-list__items">Chờ xác nhận</li>
+                                    </a>
+                                    <a href="@Url.Action("DonMua", "NgMua", new { IDTRANGTHAIDH = 2 })" class="@((Request.QueryString["IDTRANGTHAIDH"] ?? "") == "2" ? "active-items" : "")">
+                                    <li class="order-list__items">Chờ lấy hàng</li>
+                                    </a>
+                                    <a href="@Url.Action("DonMua", "NgMua", new { IDTRANGTHAIDH = 3 })" class="@((Request.QueryString["IDTRANGTHAIDH"] ?? "") == "3" ? "active-items" : "")">
+                                    <li class="order-list__items">Đã lấy hàng</li>
+                                    </a>
+                                    <a href="@Url.Action("DonMua", "NgMua", new { IDTRANGTHAIDH = 4 })" class="@((Request.QueryString["IDTRANGTHAIDH"] ?? "") == "4" ? "active-items" : "")">
+                                    <li class="order-list__items">Shipper đã nhận</li>
+                                    </a>
+                                    <a href="@Url.Action("DonMua", "NgMua", new { IDTRANGTHAIDH = 5 })" class="@((Request.QueryString["IDTRANGTHAIDH"] ?? "") == "5" ? "active-items" : "")">
+                                    <li class="order-list__items">Đang giao</li>
+                                    </a>
+                                    <a href="@Url.Action("DonMua", "NgMua", new { IDTRANGTHAIDH = 6 })" class="@((Request.QueryString["IDTRANGTHAIDH"] ?? "") == "6" ? "active-items" : "")">
+                                    <li class="order-list__items">Đã giao</li>
+                                    </a>
+                                    <a href="@Url.Action("DonMua", "NgMua", new { IDTRANGTHAIDH = 7 })" class="@((Request.QueryString["IDTRANGTHAIDH"] ?? "") == "7" ? "active-items" : "")">
+                                    <li class="order-list__items">Giao lại</li>
+                                    </a>
+                                    <a href="@Url.Action("DonMua", "NgMua", new { IDTRANGTHAIDH = 8 })" class="@((Request.QueryString["IDTRANGTHAIDH"] ?? "") == "8" ? "active-items" : "")">
+                                    <li class="order-list__items">Đơn hủy</li>
+                                    </a>
+                                </ul>
+                                @if (!filteredOrders.Any())
+                                {
+                                    <p style="margin-top:25px; text-align:center;margin-bottom:25px">
+                                        <strong style="font-size: 20px;">Không có đơn hàng nào.</strong>
+                                    </p>
+                                }
+                                else
+                                {
+                                    <table>
+                                        <tr class="tr-order">
+                                            <th>Mã đơn hàng</th>
+                                            <th>Ngày đặt hàng</th>
+                                            <th>Tổng tiền</th>
+                                            <th>Phương thức thanh toán</th>
+                                            <th>Trạng thái</th>
+                                            <th>Thao tác</th>
+                                        </tr>
+                                        @foreach (var donHang in filteredOrders)
+                                        {
+                                            <tr class="tr-order__detail">
+                                                <td>@donHang.IDDONHANG</td>
+                                                <td>@string.Format("{0:dd/MM/yyyy HH:mm:ss}", donHang.NGAYTAO)</td>
+                                                <td>@string.Format("{0:0,0 đ}", donHang.THANHTIEN)</td>
+                                                <td style="color:@(donHang.PTTHANHTOAN != null && donHang.PTTHANHTOAN.TENPT == "COD" ? "#32CD32" : (donHang.PTTHANHTOAN != null && donHang.PTTHANHTOAN.TENPT == "Thẻ ngân hàng" ? "#DC143C" : ""))">
+                                                    @(donHang.PTTHANHTOAN == null ? "" : donHang.PTTHANHTOAN.TENPT)
+                                                </td>
+                                                <td style="color:@(donHang.TRANGTHAIDH != null && donHang.TRANGTHAIDH.TENTT == "Đã giao" ? "#32CD32" : (donHang.TRANGTHAIDH != null && donHang.TRANGTHAIDH.TENTT == "Đơn hủy" ? "#DC143C" : ""))">
+                                                    @(donHang.TRANGTHAIDH == null ? "" : donHang.TRANGTHAIDH.TENTT)
+                                                </td>
+                                                <td>
+                                                    <a href="@Url.Action("ChiTietDonHang", "NgMua", new { id = donHang.IDDONHANG })" class="back-to-index">Xem chi tiết |</a>
+                                                    <label for="button-show-@donHang.IDDONHANG" class="back-to-index" style="font-size:1.4rem;">Hủy đơn</label>
+                                                    <input type="checkbox" class="button-show-cancel-order" id="button-show-@donHang.IDDONHANG" style="display:none;">
+                                                    <label for="button-show-@donHang.IDDONHANG" class="overlay3"></label>
+                                                    <div class="cancel">
+                                                        <label for="button-show-@donHang.IDDONHANG" class="cancel-close">
+                                                            <i class="fas fa-times"></i>
+                                                        </label>
+                                                        <div class="cancel-main">
+                                                            <div class="cancel-main-content">
+                                                                <h3 class="cancel-main-label" style="margin-bottom: 20px;">Bạn có chắc là muốn hủy đơn hàng này!!!</h3>
+                                                                <a href="@Url.Action("Huydonhang", "NgMua", new { id = donHang.IDDONHANG })" class="cancel-button">Hủy đơn</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </table>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -116,6 +116,7 @@
           <ScalarProperty Name="IDTRANGTHAIDH" ColumnName="IDTRANGTHAIDH" />
           <ScalarProperty Name="IDTRANGTHAIXDH" ColumnName="IDTRANGTHAIXDH" />
           <ScalarProperty Name="THANHTIEN" ColumnName="THANHTIEN" />
+          <ScalarProperty Name="IDCUAHANG" ColumnName="IDCUAHANG" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

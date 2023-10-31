@@ -96,6 +96,7 @@
     <Property Name="IDND" Type="Int32" />
     <Property Name="TENCH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="NGUOIDUNG" Relationship="Self.FK__CUAHANG__IDND__3C69FB99" FromRole="CUAHANG" ToRole="NGUOIDUNG" />
+    <NavigationProperty Name="DONHANGs" Relationship="Self.FK__DONHANG__IDCUAHA__3A4CA8FD" FromRole="CUAHANG" ToRole="DONHANG" />
     <NavigationProperty Name="QUANGCAOs" Relationship="Self.FK__QUANGCAO__IDCUAH__412EB0B6" FromRole="CUAHANG" ToRole="QUANGCAO" />
     <NavigationProperty Name="SANPHAMs" Relationship="Self.FK__SANPHAM__IDCUAHA__6754599E" FromRole="CUAHANG" ToRole="SANPHAM" />
     <NavigationProperty Name="VOUCHERSHOPs" Relationship="Self.FK__VOUCHERSH__IDCUA__7D439ABD" FromRole="CUAHANG" ToRole="VOUCHERSHOP" />
@@ -129,7 +130,9 @@
     <Property Name="IDTRANGTHAIDH" Type="Int32" />
     <Property Name="IDTRANGTHAIXDH" Type="Int32" />
     <Property Name="THANHTIEN" Type="Int32" />
+    <Property Name="IDCUAHANG" Type="Int32" />
     <NavigationProperty Name="CTDONHANGs" Relationship="Self.FK__CTDONHANG__IDDON__09A971A2" FromRole="DONHANG" ToRole="CTDONHANG" />
+    <NavigationProperty Name="CUAHANG" Relationship="Self.FK__DONHANG__IDCUAHA__3A4CA8FD" FromRole="DONHANG" ToRole="CUAHANG" />
     <NavigationProperty Name="NGUOIDUNG" Relationship="Self.FK__DONHANG__IDND__01142BA1" FromRole="DONHANG" ToRole="NGUOIDUNG" />
     <NavigationProperty Name="PTTHANHTOAN" Relationship="Self.FK__DONHANG__IDPTTHA__02FC7413" FromRole="DONHANG" ToRole="PTTHANHTOAN" />
     <NavigationProperty Name="SHIPPER" Relationship="Self.FK__DONHANG__IDSHIPP__02084FDA" FromRole="DONHANG" ToRole="SHIPPER" />
@@ -563,6 +566,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__DONHANG__IDCUAHA__3A4CA8FD">
+    <End Role="CUAHANG" Type="Self.CUAHANG" Multiplicity="0..1" />
+    <End Role="DONHANG" Type="Self.DONHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CUAHANG">
+        <PropertyRef Name="IDCUAHANG" />
+      </Principal>
+      <Dependent Role="DONHANG">
+        <PropertyRef Name="IDCUAHANG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__QUANGCAO__IDCUAH__412EB0B6">
     <End Role="CUAHANG" Type="Self.CUAHANG" Multiplicity="0..1" />
     <End Role="QUANGCAO" Type="Self.QUANGCAO" Multiplicity="*" />
@@ -940,6 +955,10 @@
     <AssociationSet Name="FK__CUAHANG__IDND__3C69FB99" Association="Self.FK__CUAHANG__IDND__3C69FB99">
       <End Role="NGUOIDUNG" EntitySet="NGUOIDUNGs" />
       <End Role="CUAHANG" EntitySet="CUAHANGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DONHANG__IDCUAHA__3A4CA8FD" Association="Self.FK__DONHANG__IDCUAHA__3A4CA8FD">
+      <End Role="CUAHANG" EntitySet="CUAHANGs" />
+      <End Role="DONHANG" EntitySet="DONHANGs" />
     </AssociationSet>
     <AssociationSet Name="FK__QUANGCAO__IDCUAH__412EB0B6" Association="Self.FK__QUANGCAO__IDCUAH__412EB0B6">
       <End Role="CUAHANG" EntitySet="CUAHANGs" />

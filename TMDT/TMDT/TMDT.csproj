@@ -160,6 +160,7 @@
     <Compile Include="Models\ADMIN.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\CHUCVU.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -448,7 +449,6 @@
     <Content Include="Views\NgBan\KenhNgBan.cshtml" />
     <Content Include="Views\SanPham\SanPham.cshtml" />
     <Content Include="Views\DonHang\QLDonHang.cshtml" />
-    <Content Include="Views\DonHang\CapNhat.cshtml" />
     <Content Include="Views\DonHang\CTDonHang.cshtml" />
     <Content Include="Views\VoucherShop\QLVoucherShop.cshtml" />
     <Content Include="Views\VoucherShop\TaoVoucher.cshtml" />
@@ -482,6 +482,14 @@
     <Content Include="Views\NgMua\LoaiSanPham.cshtml" />
     <Content Include="Views\NgMua\ChiTietSanPham.cshtml" />
     <Content Include="Views\NgMua\Search.cshtml" />
+    <Content Include="Views\ShoppingCart\GioHang.cshtml" />
+    <Content Include="Views\NgMua\DonMua.cshtml" />
+    <Content Include="Views\NgMua\Huydonhang.cshtml" />
+    <Content Include="Views\NgMua\Khongduochuy.cshtml" />
+    <Content Include="Views\NgMua\ChiTietDonHang.cshtml" />
+    <Content Include="Views\DonHang\SelectCateTT.cshtml" />
+    <Content Include="Views\DonHang\SelectCatePTTT.cshtml" />
+    <Content Include="Views\DonHang\CapNhat.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

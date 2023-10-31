@@ -105,7 +105,7 @@
                                         <a href="@Url.Action("DetailUser","Register")">Tài khoản của tôi</a>
                                     </li>
                                     <li class="header__navbar-user-item">
-                                        <a href="@Url.Action("LichSuDonHang","Register")">Đơn mua</a>
+                                        <a href="@Url.Action("DonMua","NgMua")">Đơn mua</a>
                                     </li>
                                     <li class="header__navbar-user-item header__navbar-user-item--separate">
                                         <a href="@Url.Action("DangXuat", "Register")">Đăng xuất</a>
@@ -168,29 +168,28 @@
                     <!--Cart layout-->
                     <div class="header__cart">
                         <div class="header__cart-wrap">
-                            @*@if (Session["Cart"] != null && ((CNPMNC.Models.Cart)Session["Cart"]).Items.Count() > 0)
-                                {
-                                    <a href="@Url.Action("ShowToCart", "ShoppingCart")">
-                                        <i class="header__cart-icon fas fa-shopping-cart"></i>
-                                        @Html.Action("Giohang", "ShoppingCart")
-                                    </a>
-                                }
-                                else
-                                {
-                                    <a href="@Url.Action("Chucohang", "ShoppingCart")">
-                                        <i class="header__cart-icon fas fa-shopping-cart"></i>
-                                        @Html.Action("Giohang", "ShoppingCart")
-                                    </a>
-                                }
-                                <a href="">
+                            @if (Session["Cart"] != null && ((TMDT.Models.Cart)Session["Cart"]).Items.Count() > 0)
+                            {
+                                <a href="@Url.Action("ShowToCart", "ShoppingCart")">
                                     <i class="header__cart-icon fas fa-shopping-cart"></i>
-                                     @Html.Action("Giohang", "ShoppingCart")
-                                </a>*@
+                                    @Html.Action("GioHang", "ShoppingCart")
+                                </a>
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("Chucohang", "ShoppingCart")">
+                                    <i class="header__cart-icon fas fa-shopping-cart"></i>
+                                    @Html.Action("GioHang", "ShoppingCart")
+                                </a>
+                            }
+                            <!--<a href="">
+                                <i class="header__cart-icon fas fa-shopping-cart"></i>
+                            </a>
 
                             <a href="">
-                                <i class="header__cart-icon fas fa-shopping-cart"></i>
+                                <i class="header__cart-icon fas fa-shopping-cart"></i>-->
                                 @*@Html.Action("Giohang", "ShoppingCart")*@
-                            </a>
+                            <!--</a>-->
 
                         </div>
 

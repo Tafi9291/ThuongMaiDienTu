@@ -19,7 +19,7 @@ namespace TMDT.Models
         {
             this.DONHANGs = new HashSet<DONHANG>();
         }
-    
+        public List<TRANGTHAIDH> ListCateTT {  get; set; }
         public int IDTRANGTHAIDH { get; set; }
         public string TENTT { get; set; }
     

@@ -21,6 +21,7 @@ namespace TMDT.Models
         {
             HINHANH = "~/Areas/Admin/Content/img/iconanh.png";
             ANHDAIDIEN = "~/Areas/Admin/Content/img/iconanh.png";
+            this.DONHANGs = new HashSet<DONHANG>();
             this.QUANGCAOs = new HashSet<QUANGCAO>();
             this.SANPHAMs = new HashSet<SANPHAM>();
             this.VOUCHERSHOPs = new HashSet<VOUCHERSHOP>();
@@ -37,6 +38,8 @@ namespace TMDT.Models
         public string TENCH { get; set; }
     
         public virtual NGUOIDUNG NGUOIDUNG { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DONHANG> DONHANGs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<QUANGCAO> QUANGCAOs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

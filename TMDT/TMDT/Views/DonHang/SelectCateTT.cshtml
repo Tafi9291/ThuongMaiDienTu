@@ -1,0 +1,4 @@
+﻿@model TMDT.Models.TRANGTHAIDH
+
+@Html.DropDownListFor(model => model.IDTRANGTHAIDH, new SelectList(Model.ListCateTT.OrderByDescending(model => model.IDTRANGTHAIDH), "IDTRANGTHAIDH", "TENTT"),
+    "--Chọn trạng thái--", new { @class = "tafi-select", @id = "tafi-select-categories", @type = "text", @tabindex = "0" })

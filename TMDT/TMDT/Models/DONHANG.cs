@@ -33,9 +33,11 @@ namespace TMDT.Models
         public Nullable<int> IDTRANGTHAIDH { get; set; }
         public Nullable<int> IDTRANGTHAIXDH { get; set; }
         public Nullable<int> THANHTIEN { get; set; }
+        public Nullable<int> IDCUAHANG { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CTDONHANG> CTDONHANGs { get; set; }
+        public virtual CUAHANG CUAHANG { get; set; }
         public virtual NGUOIDUNG NGUOIDUNG { get; set; }
         public virtual PTTHANHTOAN PTTHANHTOAN { get; set; }
         public virtual SHIPPER SHIPPER { get; set; }

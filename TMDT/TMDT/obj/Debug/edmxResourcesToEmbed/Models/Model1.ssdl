@@ -108,6 +108,7 @@
     <Property Name="IDTRANGTHAIDH" Type="int" />
     <Property Name="IDTRANGTHAIXDH" Type="int" />
     <Property Name="THANHTIEN" Type="int" />
+    <Property Name="IDCUAHANG" Type="int" />
   </EntityType>
   <EntityType Name="LOAISP">
     <Key>
@@ -509,6 +510,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__DONHANG__IDCUAHA__3A4CA8FD">
+    <End Role="CUAHANG" Type="Self.CUAHANG" Multiplicity="0..1" />
+    <End Role="DONHANG" Type="Self.DONHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CUAHANG">
+        <PropertyRef Name="IDCUAHANG" />
+      </Principal>
+      <Dependent Role="DONHANG">
+        <PropertyRef Name="IDCUAHANG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__DONHANG__IDND__01142BA1">
     <End Role="NGUOIDUNG" Type="Self.NGUOIDUNG" Multiplicity="0..1" />
     <End Role="DONHANG" Type="Self.DONHANG" Multiplicity="*" />
@@ -870,6 +883,10 @@
     <AssociationSet Name="FK__DANHGIASP__IDSAN__6B24EA82" Association="Self.FK__DANHGIASP__IDSAN__6B24EA82">
       <End Role="SANPHAM" EntitySet="SANPHAM" />
       <End Role="DANHGIASP" EntitySet="DANHGIASP" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DONHANG__IDCUAHA__3A4CA8FD" Association="Self.FK__DONHANG__IDCUAHA__3A4CA8FD">
+      <End Role="CUAHANG" EntitySet="CUAHANG" />
+      <End Role="DONHANG" EntitySet="DONHANG" />
     </AssociationSet>
     <AssociationSet Name="FK__DONHANG__IDND__01142BA1" Association="Self.FK__DONHANG__IDND__01142BA1">
       <End Role="NGUOIDUNG" EntitySet="NGUOIDUNG" />

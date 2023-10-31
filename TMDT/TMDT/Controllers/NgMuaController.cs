@@ -88,5 +88,70 @@ namespace TMDT.Controllers
 
             return View(sanpham);
         }
+
+        public ActionResult DonMua(int? trangThaiId)
+        {
+            // Lấy thông tin khách hàng từ session
+            var email = Session["Email"] as string;
+            var hinh = Session["Hinh"] as string;
+            if (Session["Email"] == null)
+            {
+                // Nếu chưa đăng nhập, chuyển hướng đến trang đăng nhập
+                return RedirectToAction("DangNhap", "Register");
+            }
+            else
+            {
+                // Lấy danh sách đơn hàng của khách hàng từ CSDL
+                var khachHang = db.NGUOIDUNGs.SingleOrDefault(kh => kh.EMAIL == email);
+                var donHangs = db.DONHANGs.Where(dh => dh.IDND == khachHang.IDND);
+
+                // Lọc danh sách đơn hàng theo trạng thái được chọn (nếu có)
+                if (trangThaiId.HasValue)
+                {
+                    donHangs = donHangs.Where(dh => dh.IDTRANGTHAIDH == trangThaiId.Value);
+                }
+
+                return View(donHangs.ToList());
+            }
+        }
+
+        public ActionResult ChiTietDonHang(int id)
+        {
+            var donHang = db.DONHANGs.SingleOrDefault(dh => dh.IDDONHANG == id);
+            var chiTietDonHangs = db.CTDONHANGs.Where(ct => ct.IDDONHANG == id).ToList();
+            ViewBag.DonHang = donHang;
+            return View(chiTietDonHangs);
+        }
+
+        public ActionResult Khongduochuy()
+        {
+            // Thực hiện các logic xử lý hoặc trả về view tương ứng
+            return View();
+        }
+
+        public ActionResult Huydonhang(int id)
+        {
+            var donHang = db.DONHANGs.SingleOrDefault(dh => dh.IDDONHANG == id);
+
+            // Kiểm tra nếu IDTRANGTHAIDH là 5 hoặc 6, không cho phép hủy đơn hàng
+            if (donHang.IDTRANGTHAIDH == 4 || donHang.IDTRANGTHAIDH == 7)
+            {
+                // Redirect hoặc hiển thị thông báo lỗi cho khách hàng
+                return RedirectToAction("Khongduochuy", "NgMua");
+            }
+
+            // Kiểm tra nếu TRANGTHAIID là từ 1 đến 4, chuyển TRANGTHAIID thành 7
+            if (donHang.IDTRANGTHAIDH >= 1 && donHang.IDTRANGTHAIDH < 3)
+            {
+                donHang.IDTRANGTHAIDH = 8;
+                db.SaveChanges();
+            }
+
+            var chiTietDonHangs = db.CTDONHANGs.Where(ct => ct.IDDONHANG == id).ToList();
+            ViewBag.DonHang = donHang;
+
+            return View(chiTietDonHangs);
+
+        }
     }
 }

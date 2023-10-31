@@ -333,13 +333,14 @@ td {
     flex-direction: column;
 }
 
-    .cart-product-action button {
+    .cart-product-action a {
         cursor: pointer;
         background: none;
         border: 0;
         font-size: 1.6rem;
+        color: #333;
     }
-        .cart-product-action button:hover {
+        .cart-product-action a:hover {
             color: rgb(250 68 121);
         }
 
