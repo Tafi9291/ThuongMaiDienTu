@@ -88,7 +88,6 @@ namespace TMDT.Controllers
             try
             {
                 var sua = db.DONHANGs.Find(model.IDDONHANG);
-                sua.NGUOIDUNG.TENND = model.NGUOIDUNG.TENND;
                 sua.IDTRANGTHAIDH = model.IDTRANGTHAIDH;
                 sua.IDPTTHANHTOAN = model.IDPTTHANHTOAN;
                 sua.NGUOINHAN = model.NGUOINHAN;
