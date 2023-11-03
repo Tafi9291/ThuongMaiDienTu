@@ -82,13 +82,22 @@ namespace TMDT.Models
                 );
             return tongTienTheoCuaHang;
         }
+        public double TongtienCheckout()
+        {
+            var tongtien = items.Sum(s => s.sanpham.GIAGIAM * s.soluong);
+            return (double)tongtien;
+        }
         public void Xoasp(int id)
         {
             items.RemoveAll(s => s.sanpham.IDSANPHAM == id);
         }
-        public void Xoagh()
+        public void CLear()
         {
             items.Clear();
+        }
+        public void Xoagh(int? id)
+        {
+            items.RemoveAll(s => s.sanpham.CUAHANG.IDCUAHANG == id);
         }
     }
 }

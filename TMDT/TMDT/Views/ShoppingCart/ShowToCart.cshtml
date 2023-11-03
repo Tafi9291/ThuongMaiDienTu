@@ -89,16 +89,17 @@
                             <div class="cart-product-purchase">
                                 <div class="cart-product-purchase-wrapper">
                                     <div style="display: flex; flex-direction: column;">
-                                        <div>
+                                        @*<div>
                                             <div class="checkout-voucher-shop">
                                                 <div class="checkout-voucher-shop__title">Voucher shop</div>
                                                 <label href="#">Chọn voucher</label>
                                             </div>
-                                        </div>
+                                        </div>*@
                                         <div class="cart-product-purchase__total">
                                             <div class="cart-product-purchase__total-title">Tổng thanh toán</div>
                                             <div class="cart-product-purchase__total-price">@Model.Tongtien()[cuahang.IDCUAHANG].ToString("0,0 đ")</div>
-                                            @using (Html.BeginForm("Checkout", "ShoppingCart"))
+                                            <a href="@Url.Action("Checkout", "ShoppingCart", new { id = cuahang.IDCUAHANG })" class="cart-product-purchase__total-checkout">Mua hàng</a>
+                                            @*@using (Html.BeginForm("Checkout", "ShoppingCart"))
                                             {
                                                 <label for="button-show" class="cart-product-purchase__total-checkout">Mua hàng</label>
                                                 <input type="checkbox" class="button-show-check-out" id="button-show">
@@ -163,7 +164,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            }
+                                            }*@
                                         </div>
                                     </div>
                                 </div>

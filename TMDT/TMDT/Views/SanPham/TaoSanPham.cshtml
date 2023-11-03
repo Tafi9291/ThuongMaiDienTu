@@ -903,8 +903,8 @@
                                                                             {@ViewBag.error1}
                                                                         </p>
                                                                         @*<input type="text" placeholder="Nhập vào" size="large"
-                                                                            resize="none" rows="2" minrows="2" maxlength="Infinity"
-                                                                            restrictiontype="input" max="Infinity" min="-Infinity" class="tafi-input__input" id="text-input">*@
+                                            resize="none" rows="2" minrows="2" maxlength="Infinity"
+                                            restrictiontype="input" max="Infinity" min="-Infinity" class="tafi-input__input" id="text-input">*@
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -951,8 +951,8 @@
                                                                             {@ViewBag.error}
                                                                         </p>
                                                                         @*<input type="text" placeholder="Nhập vào" size="large"
-                                                                            resize="none" rows="2" minrows="2" maxlength="Infinity"
-                                                                            restrictiontype="input" max="Infinity" min="-Infinity" class="tafi-input__input" id="text-input">*@
+                                            resize="none" rows="2" minrows="2" maxlength="Infinity"
+                                            restrictiontype="input" max="Infinity" min="-Infinity" class="tafi-input__input" id="text-input">*@
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -995,8 +995,8 @@
                                                                             {@ViewBag.error2}
                                                                         </p>
                                                                         @*<input type="text" placeholder="Nhập vào" size="large"
-                                                                            resize="none" rows="2" minrows="2" maxlength="Infinity"
-                                                                            restrictiontype="input" max="Infinity" min="-Infinity" class="tafi-input__input" id="text-input">*@
+                                            resize="none" rows="2" minrows="2" maxlength="Infinity"
+                                            restrictiontype="input" max="Infinity" min="-Infinity" class="tafi-input__input" id="text-input">*@
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -1037,12 +1037,9 @@ $(document).ready(function () {
         const panelContentWrapper = $('#panel-content-price');
         const buttonSave = $('#button-save');
 
-        var htmlContent = '<div class="panel-inactive-content"> Có thể điều chỉnh sau khi chọn ngành hàng </div>';
+        //var htmlContent = '<div class="panel-inactive-content"> Có thể điều chỉnh sau khi chọn ngành hàng </div>';
 
         function removeElements() {
-            if (panelInactiveContent.length) {
-                panelInactiveContent.remove();
-            }
             if (panelTitle.hasClass('inactive')) {
                 panelTitle.removeClass('inactive');
             }
@@ -1052,9 +1049,6 @@ $(document).ready(function () {
         }
 
         function addElements() {
-            if (!panelInactiveContent.length) {
-                panelInactiveContent.add();
-            }
             if (!panelTitle.hasClass('inactive')) {
                 panelTitle.addClass('inactive');
             }
@@ -1082,8 +1076,10 @@ $(document).ready(function () {
             // Hiển thị biểu mẫu tương ứng với lựa chọn
             if (selectedValue == 1 || selectedValue == 2 || selectedValue == 3) {
                 removeElements();
-                $(".form-giatien").show();
                 buttonSave.removeAttr("disabled", "disabled");
+                $(".form-giatien").show();
+                $('.panel-inactive-content').hide();
+                
             }
             if (selectedValue == 1) {
                 $(".form-dienthoai").show();
@@ -1093,7 +1089,8 @@ $(document).ready(function () {
                 $(".form-giay").show();
             } else if (selectedValue == '') {
                 addElements();
-                panelContentWrapper.html(htmlContent);
+                $(".form-giatien").hide();
+                $('.panel-inactive-content').show();
             }
         });
     });</script>

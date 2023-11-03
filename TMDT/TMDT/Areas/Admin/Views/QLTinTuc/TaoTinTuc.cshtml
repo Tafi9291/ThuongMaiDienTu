@@ -1,0 +1,174 @@
+﻿@model TMDT.Models.TINTUC
+
+@{
+    ViewBag.Title = "TaoTinTuc";
+    Layout = "~/Areas/Admin/Views/Shared/Layout_Admin.cshtml";
+}
+
+<div class="col l-9-1 m-12 c-12">
+    <div class="home-product">
+        <div class="row sm-gutter" style="padding-right: 16px;">
+            <div class="product-edit">
+                <div class="product-edit__container" style="min-height: 0;">
+                    <div class="title-page">
+                        <div class="title-page__link">
+                            <a href="@Url.Action("DashBoard", "DashBoard")" class="title-page__link-label">Trang chủ</a>
+                            <i class='bx bx-chevron-right'></i>
+                            <a href="@Url.Action("TinTuc", "QLTinTuc")" class="title-page__link-label" "> Xử lý tin tức</a>
+                            <i class='bx bx-chevron-right'></i>
+                            <a href="@Url.Action("TaoTinTuc", "QLTinTuc")" class="title-page__link-label" style="color: black;"> Thêm mới tin tức</a>
+                        </div>
+                    </div>
+                    @using (Html.BeginForm("TaoTinTuc", "QLTinTuc", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="product-edit__main">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <section class="product-edit__section" id="section-basic-info">
+                                <div class="product-detail-panel product-basic-info">
+                                    <div class="panel-header">
+                                        <div class="panel-title">
+                                            <div class="basic-info-title">Thông tin người giao hàng</div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-content-wrapper">
+                                        <div class="panel-content">
+
+                                            <div class="edit-row">
+                                                <div class="edit-label edit-title">
+                                                    <span><span style="color: red;">*</span> Tên tin tức</span>
+                                                </div>
+                                                <div class="edit-main">
+                                                    <div class="popover-wrap">
+                                                        <div class="custom-len-calc-input product-edit-form-item">
+                                                            <div class="product-edit-form-item-content">
+                                                                <div class="tafi-input">
+                                                                    <div class="tafi-input__inner tafi-input__inner--large">
+                                                                        @Html.EditorFor(model => model.TIEUDE, new
+                                                                             {
+                                                                                 htmlAttributes = new
+                                                                                 {
+                                                                                     @class = "tafi-input__input",
+                                                                                     @type = "text",
+                                                                                     @placeholder = "Nhập vào",
+                                                                                     @tabindex = "0",
+                                                                                     @resize = "none",
+                                                                                     @size = "large",
+                                                                             @rows = "2",
+                                                                                     @minrows = "2",
+                                                                                     @maxlength = "Infinity",
+                                                                             @restrictiontype = "input",
+                                                                                     @max = "Infinity",
+                                                                                     @min = "-Infinity",
+                                                                             @id = "text-input",
+                                                                                     @required = true
+                                                                                 }
+                                                                             })
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="edit-row">
+                                                <div class="edit-label edit-title">
+                                                    <span><span style="color: red;">*</span> Mô tả</span>
+                                                </div>
+                                                <div class="edit-main">
+                                                    <div class="popover-wrap">
+                                                        <div class="custom-len-calc-input product-edit-form-item">
+                                                            <div class="product-edit-form-item-content">
+                                                                <div class="tafi-input">
+                                                                    <div class="tafi-input__inner tafi-input__inner--large">
+                                                                        @Html.EditorFor(model => model.MOTA, new
+                                                                         {
+                                                                             htmlAttributes = new
+                                                                             {
+                                                                                 @class = "tafi-input__input",
+                                                                                 @type = "text",
+                                                                                 @placeholder = "Nhập vào",
+                                                                                 @tabindex = "0",
+                                                                                 @resize = "none",
+                                                                                 @size = "large",
+                                                                         @rows = "2",
+                                                                                 @minrows = "2",
+                                                                                 @maxlength = "Infinity",
+                                                                         @restrictiontype = "input",
+                                                                                 @max = "Infinity",
+                                                                                 @min = "-Infinity",
+                                                                         @id = "text-input",
+                                                                                 @required = true
+                                                                             }
+                                                                         })
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="panel-content-wrapper">
+                                                <div class="panel-content">
+                                                    @* Hình ảnh *@
+                                                    <div class="edit-row" style="height: 220px;">
+                                                        <div class="edit-label edit-title">
+                                                            <span><span style="color: red;">*</span> Hình ảnh tin tức</span>
+                                                        </div>
+                                                        <div class="edit-main image-offset" style="height: 135px; max-height: 135px;">
+                                                            <div style="line-height: 40px;">
+                                                                <div class="edit-label edit-title">
+                                                                    <span><span style="color: red;">*</span> Hình ảnh tỷ lệ 1:1</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="edit-main tafi-image-manager" style="padding: 0 25px;">
+                                                                <div class="container" style="flex-direction: row; justify-content: flex-start;">
+                                                                    <div class="wrapper-img" style="display: flex; flex-direction: column-reverse;">
+                                                                        <div class="tafi-image-manager__itembox">
+                                                                            <input type="file" id="image-input" accept="image/*" style="display: none;" name="UploadImage1" required onchange="ChangeImage(UploadImage1, document.getElementById('previewImg1'))">
+                                                                            <label for="image-input" class="add-image">
+                                                                                <p><i class='bx bx-image-add'></i></p>
+                                                                                <p>Thêm hình ảnh</p>
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="preview-container">
+                                                                            @* Import Images of Products *@
+                                                                            <img src="@Url.Content(Model.HINHANH)" alt="Alternate Text" id="previewImg1" class="preview-image-product" />
+                                                                            @*@Html.ValidationMessageFor(model => model.HINHANH1, "", new { @class = "text-danger" })*@
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+
+                            <div class="product-selected-fix shopee-fix-bottom-card">
+                                <div class="fix-container">
+                                    <div class="container1">
+                                        <div class="container-left"></div>
+                                        <div class="container-right btn-group">
+                                            <a href="@Url.Action("TinTuc", "QLTinTuc")" class="tafi-button--xl-large tafi-button tafi-button--normal"><span>Hủy</span></a>
+                                            <button class="tafi-button--xl-large tafi-button tafi-button-primary tafi-button--normal" style="margin-left: 13px;" id="button-save"><span>Lưu</span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
