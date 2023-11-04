@@ -1,14 +1,10 @@
 ﻿@model TMDT.Models.ViewModelSanPham
+
 @{
-    ViewBag.Title = "PheDuyet";
-    Layout = "~/Areas/Admin/Views/Shared/Layout_Admin.cshtml";
+    ViewBag.Title = "CapNhat";
+    Layout = "~/Views/Shared/Layout-NgBan.cshtml";
 }
-<style>
-    .detail-info__name {
-        color: orange;
-        font-weight: 600;
-    }
-</style>
+
 <div class="col l-9-1 m-12 c-12">
     <div class="home-product">
         <div class="row sm-gutter" style="padding-right: 16px;">
@@ -16,22 +12,19 @@
                 <div class="product-edit__container">
                     <div class="title-page">
                         <div class="title-page__link">
-                            <a href="@Url.Action("DashBoard", "DashBoard")" class="title-page__link-label">Trang chủ</a>
+                            <a href="@Url.Action("KenhNgBan", "NgBan")" class="title-page__link-label">Trang chủ</a>
                             <i class='bx bx-chevron-right'></i>
-                            <a href="@Url.Action("QLSanPham", "QLSanPham")" class="title-page__link-label">Xử lý Sản phẩm</a>
+                            <a href="@Url.Action("SanPham", "SanPham")" class="title-page__link-label">Sản phẩm</a>
                             <i class='bx bx-chevron-right'></i>
-                            <a href="@Url.Action("PheDuyet", "QLSanPham")" class="title-page__link-label">Phê duyệt sản phẩm</a>
+                            <a href="@Url.Action("CapNhat", "SanPham")" class="title-page__link-label">Cập nhật sản phẩm</a>
                         </div>
                     </div>
-                    @using (Html.BeginForm("PheDuyet", "QlSanPham", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    @using (Html.BeginForm("CapNhat", "SanPham", FormMethod.Post, new { enctype = "multipart/form-data" }))
                     {
                         @Html.AntiForgeryToken()
                         <div class="product-edit__main">
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                             @Html.Hidden("SANPHAM.IDSANPHAM", Model.SANPHAM.IDSANPHAM)
-                            @Html.Hidden("SANPHAM.HINHANH1", Model.SANPHAM.HINHANH1)
-                            @Html.Hidden("SANPHAM.HINHANH2", Model.SANPHAM.HINHANH2)
-                            @Html.Hidden("SANPHAM.HINHANH3", Model.SANPHAM.HINHANH3)
                             <section class="product-edit__section" id="section-basic-info">
                                 <div class="product-detail-panel product-basic-info">
                                     <div class="panel-header">
@@ -41,26 +34,8 @@
                                     </div>
                                     <div class="panel-content-wrapper">
                                         <div class="panel-content">
-                                            <div class="edit-row">
-                                                <div class="edit-label edit-title">
-                                                    <span><span style="color: red;">*</span> Trạng thái sản phẩm</span>
-                                                </div>
-                                                <div class="edit-main">
-                                                    <div class="popover-wrap">
-                                                        <div class="custom-len-calc-input product-edit-form-item">
-                                                            <div class="product-edit-form-item-content">
-                                                                <div class="tafi-input">
-                                                                    <div class="tafi-input__inner tafi-input__inner--large">
-                                                                        @{ Html.RenderAction("ChonPheDuyet", "QLSanPham");}
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
                                             @* Hình ảnh *@
-                                            <div class="edit-row">
+                                            <div class="edit-row" style="height: 220px;">
                                                 <div class="edit-label edit-title">
                                                     <span><span style="color: red;">*</span> Hình ảnh sản phẩm</span>
                                                 </div>
@@ -73,23 +48,48 @@
                                                     <div class="edit-main tafi-image-manager" style="padding: 0 25px;">
                                                         <div class="container" style="flex-direction: row; justify-content: flex-start;">
                                                             <div class="wrapper-img" style="display: flex; flex-direction: column-reverse;">
+                                                                <div class="tafi-image-manager__itembox">
+                                                                    <input type="file" id="image-input" accept="image/*" style="display: none;" name="UploadImage1" onchange="ChangeImage(UploadImage1, document.getElementById('previewImg1'))">
+                                                                    <label for="image-input" class="add-image">
+                                                                        <p><i class='bx bx-image-add'></i></p>
+                                                                        <p>Thêm hình ảnh</p>
+                                                                    </label>
+                                                                </div>
                                                                 <div class="preview-container">
                                                                     @* Import Images of Products *@
                                                                     <img src="@Url.Content(Model.SANPHAM.HINHANH1)" alt="Alternate Text" id="previewImg1" class="preview-image-product" />
+                                                                    @*@Html.ValidationMessageFor(model => model.HINHANH1, "", new { @class = "text-danger" })*@
                                                                 </div>
 
                                                             </div>
                                                             <div class="wrapper-img" style="display: flex; flex-direction: column-reverse;">
+                                                                <div class="tafi-image-manager__itembox">
+                                                                    <input type="file" id="image-input-2" accept="image/*" style="display: none;" name="UploadImage2" onchange="ChangeImage2(UploadImage2, document.getElementById('previewImg2'))">
+                                                                    <label for="image-input-2" class="add-image">
+                                                                        <p><i class='bx bx-image-add'></i></p>
+                                                                        <p>Thêm hình ảnh</p>
+                                                                    </label>
+                                                                </div>
                                                                 <div class="preview-container">
                                                                     @* Import Images of Products *@
                                                                     <img src="@Url.Content(Model.SANPHAM.HINHANH2)" alt="Alternate Text" id="previewImg2" class="preview-image-product" />
+                                                                    @*@Html.ValidationMessageFor(model => model.HINHANH2, "", new { @class = "text-danger" })*@
                                                                 </div>
 
                                                             </div>
                                                             <div class="wrapper-img" style="display: flex; flex-direction: column-reverse;">
+                                                                <div class="tafi-image-manager__itembox">
+                                                                    <input type="file" id="image-input-3" accept="image/*" style="display: none;" name="UploadImage3" onchange="ChangeImage3(UploadImage3, document.getElementById('previewImg3'))">
+                                                                    <label for="image-input-3" class="add-image">
+                                                                        <p><i class='bx bx-image-add'></i></p>
+                                                                        <p>Thêm hình ảnh</p>
+                                                                    </label>
+                                                                </div>
                                                                 <div class="preview-container">
                                                                     @* Import Images of Products *@
                                                                     <img src="@Url.Content(Model.SANPHAM.HINHANH3)" alt="Alternate Text" id="previewImg3" class="preview-image-product" />
+
+                                                                    @*@Html.ValidationMessageFor(model => model.HINHANH3, "", new { @class = "text-danger" })*@
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -105,8 +105,33 @@
                                                     <div class="popover-wrap">
                                                         <div class="custom-len-calc-input product-edit-form-item">
                                                             <div class="product-edit-form-item-content">
-                                                                <div class="tafi-input detail-info-input" style="height: 40px;">
-                                                                    <span class="detail-info__name">@Model.SANPHAM.TENSP</span>
+                                                                <div class="tafi-input">
+                                                                    <div class="tafi-input__inner tafi-input__inner--large">
+                                                                        @Html.EditorFor(model => model.SANPHAM.TENSP, new
+                                                                        {
+                                                                            htmlAttributes = new
+                                                                            {
+                                                                                @class = "tafi-input__input",
+                                                                                @type = "text",
+                                                                                @placeholder = "Nhập vào",
+                                                                                @tabindex = "0",
+                                                                                @resize = "none",
+                                                                                @size = "large",
+                                                                       @rows = "2",
+                                                                                @minrows = "2",
+                                                                                @maxlength = "Infinity",
+                                                                       @restrictiontype = "input",
+                                                                                @max = "Infinity",
+                                                                                @min = "-Infinity",
+                                                                       @id = "text-input",
+                                                                                @required = true
+                                                                            }
+                                                                        })
+                                                                        <div class="tafi-input__suffix">
+                                                                            <span class="tafi-input__suffix-split"></span>
+                                                                            <span class="tafi-input__char-count"><span id="char-count">0</span>/120</span>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -122,27 +147,30 @@
                                                     <div class="popover-wrap">
                                                         <div class="custom-len-calc-input product-edit-form-item">
                                                             <div class="product-edit-form-item-content">
-                                                                <div class="tafi-input detail-info-input" style="height: 40px;">
-                                                                    <span class="detail-info__name">@(Model.SANPHAM.LOAISP==null?"":Model.SANPHAM.LOAISP.TENLOAISP)</span>
+                                                                <div class="tafi-input">
+                                                                    <div class="tafi-input__inner tafi-input__inner--large" style="line-height: 40px;">
+                                                                        @{Html.RenderAction("ChonNganhHang", "SanPham");}
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="edit-row">
-                                                <div class="edit-label edit-title">
-                                                    <span><span style="color: red;">*</span> Màu sắc</span>
-                                                </div>
-                                                <div class="edit-main">
-                                                    <div class="popover-wrap">
+                                            <div class="attribute-select-item">
+                                                <div class="edit-row">
+                                                    <div class="edit-label edit-title">
+                                                        <span><span style="color: red;">*</span> Màu sắc </span>
+                                                    </div>
+                                                    <div class="degrade-wrap edit-row-right-medium">
                                                         <div class="custom-len-calc-input product-edit-form-item">
                                                             <div class="product-edit-form-item-content">
-                                                                <div class="tafi-input detail-info-input" style="height: 40px;">
-                                                                    @if (Model.SANPHAM != null && Model.SANPHAM.MAUSAC != null)
-                                                                    {
-                                                                        <span class="detail-info__name">@Model.SANPHAM.MAUSAC.MAUSAC1</span>
-                                                                    }
+                                                                <div class="popover-wrap">
+                                                                    <div class="tafi-input price-input product-edit-input">
+                                                                        <div class="tafi-input__inner tafi-input__inner--large">
+                                                                            @{ Html.RenderAction("MauSac", "SanPham");}
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -162,9 +190,31 @@
                                                                     <div class="custom-len-calc-input product-edit-form-item">
                                                                         <div class="product-edit-form-item-content">
                                                                             <div class="tafi-input tafi-input__area">
-                                                                                <div class="tafi-input detail-info-input" style="height: 40px;">
-                                                                                    <span class="detail-info__name">@Model.SANPHAM.MOTASANPHAM</span>
-                                                                                </div>
+                                                                                @Html.TextAreaFor(model => model.SANPHAM.MOTASANPHAM, new
+                                                                                {
+                                                                                    @class = "tafi-input__inner tafi-input__inner--normal",
+                                                                                    @type = "textarea",
+                                                                                    @placeholder = "Nhập vào",
+                                                                                    @tabindex = "0",
+                                                                                    @resize = "none",
+                                                                                    @size = "large",
+                                                                                   @rows = "2",
+                                                                                    @minrows = "9",
+                                                                                    @maxrows = "26",
+                                                                                    @autosize = "true",
+                                                                                    @maxlength = "Infinity",
+                                                                                   @restrictiontype = "input",
+                                                                                    @max = "Infinity",
+                                                                                    @min = "-Infinity",
+                                                                                   @id = "tafi-input-area",
+                                                                                    @style = "resize: none; min-height: 209.6px; height: 209.6px;",
+                                                                                   @spellcheck = "false",
+                                                                                    @required = true
+                                                                                })
+                                                                            </div>
+                                                                            <div class="text-area-label">
+                                                                                <span class="text-area-label-pre" id="text-area-pre">0</span>
+                                                                                <span>/1000</span>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -181,6 +231,7 @@
                             @* Chi tiết điện thoại *@
                             @if (Model.SANPHAM.IDLOAISP == 1)
                             {
+                                @Html.Hidden("CTDIENTHOAI.IDCTDIENTHOAI", Model.CTDIENTHOAI.IDCTDIENTHOAI)
                                 <section class="product-edit__section">
                                     <div class="product-detail-panel product-specification-new">
                                         <div class="panel-header">
@@ -201,11 +252,8 @@
                                                                             <div class="product-edit-form-item-content">
                                                                                 <div class="popover-wrap">
                                                                                     <div class="tafi-input price-input product-edit-input">
-                                                                                        <div class="tafi-input detail-info-input" style="height: 40px;">
-                                                                                            @if (Model.CTDIENTHOAI != null && Model.CTDIENTHOAI.THDIENTHOAI != null)
-                                                                                            {
-                                                                                                <span class="detail-info__name">@Model.CTDIENTHOAI.THDIENTHOAI.THUONGHIEUDT</span>
-                                                                                            }
+                                                                                        <div class="tafi-input__inner tafi-input__inner--large">
+                                                                                            @{ Html.RenderAction("THDienThoai", "SanPham");}
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -224,11 +272,26 @@
                                                                             <div class="product-edit-form-item-content">
                                                                                 <div class="popover-wrap">
                                                                                     <div class="tafi-input price-input product-edit-input">
-                                                                                        <div class="tafi-input detail-info-input" style="height: 40px;">
-                                                                                            @if (Model.CTDIENTHOAI != null && Model.CTDIENTHOAI.MANHINH != null)
+                                                                                        <div class="tafi-input__inner tafi-input__inner--large">
+                                                                                            @Html.EditorFor(model => model.CTDIENTHOAI.MANHINH, new
                                                                                             {
-                                                                                                <span class="detail-info__name">@Model.CTDIENTHOAI.MANHINH</span>
-                                                                                            }
+                                                                                                htmlAttributes = new
+                                                                                                {
+                                                                                                    @class = "tafi-input__input",
+                                                                                                    @type = "text",
+                                                                                                    @placeholder = "Nhập vào",
+                                                                                                    @tabindex = "0",
+                                                                                                    @resize = "none",
+                                                                                                    @size = "large",
+                                                                                               @rows = "2",
+                                                                                                    @minrows = "2",
+                                                                                                    @maxlength = "Infinity",
+                                                                                               @restrictiontype = "input",
+                                                                                                    @max = "Infinity",
+                                                                                                    @min = "-Infinity",
+                                                                                               @id = "text-input",
+                                                                                                }
+                                                                                            })
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -247,11 +310,26 @@
                                                                             <div class="product-edit-form-item-content">
                                                                                 <div class="popover-wrap">
                                                                                     <div class="tafi-input price-input product-edit-input">
-                                                                                        <div class="tafi-input detail-info-input" style="height: 40px;">
-                                                                                            @if (Model.CTDIENTHOAI != null && Model.CTDIENTHOAI.DOPHANGIAI != null)
+                                                                                        <div class="tafi-input__inner tafi-input__inner--large">
+                                                                                            @Html.EditorFor(model => model.CTDIENTHOAI.DOPHANGIAI, new
                                                                                             {
-                                                                                                <span class="detail-info__name">@Model.CTDIENTHOAI.DOPHANGIAI</span>
-                                                                                            }
+                                                                                                htmlAttributes = new
+                                                                                                {
+                                                                                                    @class = "tafi-input__input",
+                                                                                                    @type = "text",
+                                                                                                    @placeholder = "Nhập vào",
+                                                                                                    @tabindex = "0",
+                                                                                                    @resize = "none",
+                                                                                                    @size = "large",
+                                                                                               @rows = "2",
+                                                                                                    @minrows = "2",
+                                                                                                    @maxlength = "Infinity",
+                                                                                               @restrictiontype = "input",
+                                                                                                    @max = "Infinity",
+                                                                                                    @min = "-Infinity",
+                                                                                               @id = "text-input",
+                                                                                                }
+                                                                                            })
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -270,11 +348,26 @@
                                                                             <div class="product-edit-form-item-content">
                                                                                 <div class="popover-wrap">
                                                                                     <div class="tafi-input price-input product-edit-input">
-                                                                                        <div class="tafi-input detail-info-input" style="height: 40px;">
-                                                                                            @if (Model.CTDIENTHOAI != null && Model.CTDIENTHOAI.CAMERA != null)
+                                                                                        <div class="tafi-input__inner tafi-input__inner--large">
+                                                                                            @Html.EditorFor(model => model.CTDIENTHOAI.CAMERA, new
                                                                                             {
-                                                                                                <span class="detail-info__name">@Model.CTDIENTHOAI.CAMERA</span>
-                                                                                            }
+                                                                                                htmlAttributes = new
+                                                                                                {
+                                                                                                    @class = "tafi-input__input",
+                                                                                                    @type = "text",
+                                                                                                    @placeholder = "Nhập vào",
+                                                                                                    @tabindex = "0",
+                                                                                                    @resize = "none",
+                                                                                                    @size = "large",
+                                                                                               @rows = "2",
+                                                                                                    @minrows = "2",
+                                                                                                    @maxlength = "Infinity",
+                                                                                               @restrictiontype = "input",
+                                                                                                    @max = "Infinity",
+                                                                                                    @min = "-Infinity",
+                                                                                               @id = "text-input",
+                                                                                                }
+                                                                                            })
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -293,11 +386,26 @@
                                                                             <div class="product-edit-form-item-content">
                                                                                 <div class="popover-wrap">
                                                                                     <div class="tafi-input price-input product-edit-input">
-                                                                                        <div class="tafi-input detail-info-input" style="height: 40px;">
-                                                                                            @if (Model.CTDIENTHOAI != null && Model.CTDIENTHOAI.HEDH != null)
+                                                                                        <div class="tafi-input__inner tafi-input__inner--large">
+                                                                                            @Html.EditorFor(model => model.CTDIENTHOAI.HEDH, new
                                                                                             {
-                                                                                                <span class="detail-info__name">@Model.CTDIENTHOAI.HEDH</span>
-                                                                                            }
+                                                                                                htmlAttributes = new
+                                                                                                {
+                                                                                                    @class = "tafi-input__input",
+                                                                                                    @type = "text",
+                                                                                                    @placeholder = "Nhập vào",
+                                                                                                    @tabindex = "0",
+                                                                                                    @resize = "none",
+                                                                                                    @size = "large",
+                                                                                               @rows = "2",
+                                                                                                    @minrows = "2",
+                                                                                                    @maxlength = "Infinity",
+                                                                                               @restrictiontype = "input",
+                                                                                                    @max = "Infinity",
+                                                                                                    @min = "-Infinity",
+                                                                                               @id = "text-input",
+                                                                                                }
+                                                                                            })
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -316,11 +424,26 @@
                                                                             <div class="product-edit-form-item-content">
                                                                                 <div class="popover-wrap">
                                                                                     <div class="tafi-input price-input product-edit-input">
-                                                                                        <div class="tafi-input detail-info-input" style="height: 40px;">
-                                                                                            @if (Model.CTDIENTHOAI != null && Model.CTDIENTHOAI.CHIPXULY != null)
+                                                                                        <div class="tafi-input__inner tafi-input__inner--large">
+                                                                                            @Html.EditorFor(model => model.CTDIENTHOAI.CHIPXULY, new
                                                                                             {
-                                                                                                <span class="detail-info__name">@Model.CTDIENTHOAI.CHIPXULY</span>
-                                                                                            }
+                                                                                                htmlAttributes = new
+                                                                                                {
+                                                                                                    @class = "tafi-input__input",
+                                                                                                    @type = "text",
+                                                                                                    @placeholder = "Nhập vào",
+                                                                                                    @tabindex = "0",
+                                                                                                    @resize = "none",
+                                                                                                    @size = "large",
+                                                                                               @rows = "2",
+                                                                                                    @minrows = "2",
+                                                                                                    @maxlength = "Infinity",
+                                                                                               @restrictiontype = "input",
+                                                                                                    @max = "Infinity",
+                                                                                                    @min = "-Infinity",
+                                                                                               @id = "text-input",
+                                                                                                }
+                                                                                            })
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -341,11 +464,26 @@
                                                                             <div class="product-edit-form-item-content">
                                                                                 <div class="popover-wrap">
                                                                                     <div class="tafi-input price-input product-edit-input">
-                                                                                        <div class="tafi-input detail-info-input" style="height: 40px;">
-                                                                                            @if (Model.CTDIENTHOAI != null && Model.CTDIENTHOAI.ROM != null)
+                                                                                        <div class="tafi-input__inner tafi-input__inner--large">
+                                                                                            @Html.EditorFor(model => model.CTDIENTHOAI.ROM, new
                                                                                             {
-                                                                                                <span class="detail-info__name">@Model.CTDIENTHOAI.ROM</span>
-                                                                                            }
+                                                                                                htmlAttributes = new
+                                                                                                {
+                                                                                                    @class = "tafi-input__input",
+                                                                                                    @type = "text",
+                                                                                                    @placeholder = "Nhập vào",
+                                                                                                    @tabindex = "0",
+                                                                                                    @resize = "none",
+                                                                                                    @size = "large",
+                                                                                               @rows = "2",
+                                                                                                    @minrows = "2",
+                                                                                                    @maxlength = "Infinity",
+                                                                                               @restrictiontype = "input",
+                                                                                                    @max = "Infinity",
+                                                                                                    @min = "-Infinity",
+                                                                                               @id = "text-input",
+                                                                                                }
+                                                                                            })
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -364,11 +502,26 @@
                                                                             <div class="product-edit-form-item-content">
                                                                                 <div class="popover-wrap">
                                                                                     <div class="tafi-input price-input product-edit-input">
-                                                                                        <div class="tafi-input detail-info-input" style="height: 40px;">
-                                                                                            @if (Model.CTDIENTHOAI != null && Model.CTDIENTHOAI.RAM != null)
+                                                                                        <div class="tafi-input__inner tafi-input__inner--large">
+                                                                                            @Html.EditorFor(model => model.CTDIENTHOAI.RAM, new
                                                                                             {
-                                                                                                <span class="detail-info__name">@Model.CTDIENTHOAI.RAM</span>
-                                                                                            }
+                                                                                                htmlAttributes = new
+                                                                                                {
+                                                                                                    @class = "tafi-input__input",
+                                                                                                    @type = "text",
+                                                                                                    @placeholder = "Nhập vào",
+                                                                                                    @tabindex = "0",
+                                                                                                    @resize = "none",
+                                                                                                    @size = "large",
+                                                                                               @rows = "2",
+                                                                                                    @minrows = "2",
+                                                                                                    @maxlength = "Infinity",
+                                                                                               @restrictiontype = "input",
+                                                                                                    @max = "Infinity",
+                                                                                                    @min = "-Infinity",
+                                                                                               @id = "text-input",
+                                                                                                }
+                                                                                            })
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -387,11 +540,26 @@
                                                                             <div class="product-edit-form-item-content">
                                                                                 <div class="popover-wrap">
                                                                                     <div class="tafi-input price-input product-edit-input">
-                                                                                        <div class="tafi-input detail-info-input" style="height: 40px;">
-                                                                                            @if (Model.CTDIENTHOAI != null && Model.CTDIENTHOAI.MANGDIDONG != null)
+                                                                                        <div class="tafi-input__inner tafi-input__inner--large">
+                                                                                            @Html.EditorFor(model => model.CTDIENTHOAI.MANGDIDONG, new
                                                                                             {
-                                                                                                <span class="detail-info__name">@Model.CTDIENTHOAI.MANGDIDONG</span>
-                                                                                            }
+                                                                                                htmlAttributes = new
+                                                                                                {
+                                                                                                    @class = "tafi-input__input",
+                                                                                                    @type = "text",
+                                                                                                    @placeholder = "Nhập vào",
+                                                                                                    @tabindex = "0",
+                                                                                                    @resize = "none",
+                                                                                                    @size = "large",
+                                                                                               @rows = "2",
+                                                                                                    @minrows = "2",
+                                                                                                    @maxlength = "Infinity",
+                                                                                               @restrictiontype = "input",
+                                                                                                    @max = "Infinity",
+                                                                                                    @min = "-Infinity",
+                                                                                               @id = "text-input",
+                                                                                                }
+                                                                                            })
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -410,11 +578,26 @@
                                                                             <div class="product-edit-form-item-content">
                                                                                 <div class="popover-wrap">
                                                                                     <div class="tafi-input price-input product-edit-input">
-                                                                                        <div class="tafi-input detail-info-input" style="height: 40px;">
-                                                                                            @if (Model.CTDIENTHOAI != null && Model.CTDIENTHOAI.SOKHESIM != null)
+                                                                                        <div class="tafi-input__inner tafi-input__inner--large">
+                                                                                            @Html.EditorFor(model => model.CTDIENTHOAI.SOKHESIM, new
                                                                                             {
-                                                                                                <span class="detail-info__name">@Model.CTDIENTHOAI.SOKHESIM</span>
-                                                                                            }
+                                                                                                htmlAttributes = new
+                                                                                                {
+                                                                                                    @class = "tafi-input__input",
+                                                                                                    @type = "text",
+                                                                                                    @placeholder = "Nhập vào",
+                                                                                                    @tabindex = "0",
+                                                                                                    @resize = "none",
+                                                                                                    @size = "large",
+                                                                                               @rows = "2",
+                                                                                                    @minrows = "2",
+                                                                                                    @maxlength = "Infinity",
+                                                                                               @restrictiontype = "input",
+                                                                                                    @max = "Infinity",
+                                                                                                    @min = "-Infinity",
+                                                                                               @id = "text-input",
+                                                                                                }
+                                                                                            })
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -433,11 +616,26 @@
                                                                             <div class="product-edit-form-item-content">
                                                                                 <div class="popover-wrap">
                                                                                     <div class="tafi-input price-input product-edit-input">
-                                                                                        <div class="tafi-input detail-info-input" style="height: 40px;">
-                                                                                            @if (Model.CTDIENTHOAI != null && Model.CTDIENTHOAI.PIN != null)
+                                                                                        <div class="tafi-input__inner tafi-input__inner--large">
+                                                                                            @Html.EditorFor(model => model.CTDIENTHOAI.PIN, new
                                                                                             {
-                                                                                                <span class="detail-info__name">@Model.CTDIENTHOAI.PIN</span>
-                                                                                            }
+                                                                                                htmlAttributes = new
+                                                                                                {
+                                                                                                    @class = "tafi-input__input",
+                                                                                                    @type = "text",
+                                                                                                    @placeholder = "Nhập vào",
+                                                                                                    @tabindex = "0",
+                                                                                                    @resize = "none",
+                                                                                                    @size = "large",
+                                                                                               @rows = "2",
+                                                                                                    @minrows = "2",
+                                                                                                    @maxlength = "Infinity",
+                                                                                               @restrictiontype = "input",
+                                                                                                    @max = "Infinity",
+                                                                                                    @min = "-Infinity",
+                                                                                               @id = "text-input",
+                                                                                                }
+                                                                                            })
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -458,6 +656,7 @@
                             @* Chi tiết thời trang *@
                             @if (Model.SANPHAM.IDLOAISP == 2)
                             {
+                                @Html.Hidden("CTTHOITRANG.IDCTTHOITRANG", Model.CTTHOITRANG.IDCTTHOITRANG)
                                 <section class="product-edit__section">
                                     <div class="product-detail-panel product-specification-new">
                                         <div class="panel-header">
@@ -478,11 +677,8 @@
                                                                             <div class="product-edit-form-item-content">
                                                                                 <div class="popover-wrap">
                                                                                     <div class="tafi-input price-input product-edit-input">
-                                                                                        <div class="tafi-input detail-info-input" style="height: 40px;">
-                                                                                            @if (Model.CTTHOITRANG != null && Model.CTTHOITRANG.THTHOITRANG != null)
-                                                                                            {
-                                                                                                <span class="detail-info__name">@Model.CTTHOITRANG.THTHOITRANG.THUONGHIEUTT</span>
-                                                                                            }
+                                                                                        <div class="tafi-input__inner tafi-input__inner--large">
+                                                                                            @{ Html.RenderAction("THThoiTrang", "SanPham");}
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -501,11 +697,26 @@
                                                                             <div class="product-edit-form-item-content">
                                                                                 <div class="popover-wrap">
                                                                                     <div class="tafi-input price-input product-edit-input">
-                                                                                        <div class="tafi-input detail-info-input" style="height: 40px;">
-                                                                                            @if (Model.CTTHOITRANG != null && Model.CTTHOITRANG.CHATLIEU != null)
+                                                                                        <div class="tafi-input__inner tafi-input__inner--large">
+                                                                                            @Html.EditorFor(model => model.CTTHOITRANG.CHATLIEU, new
                                                                                             {
-                                                                                                <span class="detail-info__name">@Model.CTTHOITRANG.CHATLIEU</span>
-                                                                                            }
+                                                                                                htmlAttributes = new
+                                                                                                {
+                                                                                                    @class = "tafi-input__input",
+                                                                                                    @type = "text",
+                                                                                                    @placeholder = "Nhập vào",
+                                                                                                    @tabindex = "0",
+                                                                                                    @resize = "none",
+                                                                                                    @size = "large",
+                                                                                               @rows = "2",
+                                                                                                    @minrows = "2",
+                                                                                                    @maxlength = "Infinity",
+                                                                                               @restrictiontype = "input",
+                                                                                                    @max = "Infinity",
+                                                                                                    @min = "-Infinity",
+                                                                                               @id = "text-input",
+                                                                                                }
+                                                                                            })
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -524,11 +735,8 @@
                                                                             <div class="product-edit-form-item-content">
                                                                                 <div class="popover-wrap">
                                                                                     <div class="tafi-input price-input product-edit-input">
-                                                                                        <div class="tafi-input detail-info-input" style="height: 40px;">
-                                                                                            @if (Model.CTTHOITRANG != null && Model.CTTHOITRANG.SIZETHOITRANG != null)
-                                                                                            {
-                                                                                                <span class="detail-info__name">@Model.CTTHOITRANG.SIZETHOITRANG.SIZETT</span>
-                                                                                            }
+                                                                                        <div class="tafi-input__inner tafi-input__inner--large">
+                                                                                            @{ Html.RenderAction("SizeThoiTrang", "SanPham");}
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -549,6 +757,7 @@
                             @* Chi tiết giày *@
                             @if (Model.SANPHAM.IDLOAISP == 3)
                             {
+                                @Html.Hidden("CTGIAY.IDCTGIAY", Model.CTGIAY.IDCTGIAY)
                                 <section class="product-edit__section">
                                     <div class="product-detail-panel product-specification-new">
                                         <div class="panel-header">
@@ -569,11 +778,8 @@
                                                                             <div class="product-edit-form-item-content">
                                                                                 <div class="popover-wrap">
                                                                                     <div class="tafi-input price-input product-edit-input">
-                                                                                        <div class="tafi-input detail-info-input" style="height: 40px;">
-                                                                                            @if (Model.CTGIAY != null && Model.CTGIAY.THGIAY != null)
-                                                                                            {
-                                                                                                <span class="detail-info__name">@Model.CTGIAY.THGIAY.THUONGHIEUG</span>
-                                                                                            }
+                                                                                        <div class="tafi-input__inner tafi-input__inner--large">
+                                                                                            @{ Html.RenderAction("THGiay", "SanPham");}
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -592,11 +798,8 @@
                                                                             <div class="product-edit-form-item-content">
                                                                                 <div class="popover-wrap">
                                                                                     <div class="tafi-input price-input product-edit-input">
-                                                                                        <div class="tafi-input detail-info-input" style="height: 40px;">
-                                                                                            @if (Model.CTGIAY != null && Model.CTGIAY.SIZEGIAY != null)
-                                                                                            {
-                                                                                                <span class="detail-info__name">@Model.CTGIAY.SIZEGIAY.SIZEG</span>
-                                                                                            }
+                                                                                        <div class="tafi-input__inner tafi-input__inner--large">
+                                                                                            @{ Html.RenderAction("SizeGiay", "SanPham");}
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -632,8 +835,35 @@
                                                         <div class="product-edit-form-item-content">
                                                             <div class="popover-wrap">
                                                                 <div class="tafi-input price-input product-edit-input">
-                                                                    <div class="tafi-input detail-info-input" style="height: 40px;">
-                                                                        <span class="detail-info__name">@string.Format("{0:N0} đ", Model.SANPHAM.GIABAN)</span>
+                                                                    <div class="tafi-input__inner tafi-input__inner--large">
+                                                                        <div class="tafi-input__prefix">
+                                                                            đ
+                                                                            <span class="tafi-input__prefix-split"></span>
+                                                                        </div>
+                                                                        @Html.EditorFor(model => model.SANPHAM.GIABAN, new
+                                                                        {
+                                                                            htmlAttributes = new
+                                                                            {
+                                                                                @class = "tafi-input__input",
+                                                                                @type = "text",
+                                                                                @placeholder = "Nhập vào",
+                                                                                @tabindex = "0",
+                                                                                @resize = "none",
+                                                                                @size = "large",
+                                                                           @rows = "2",
+                                                                                @minrows = "2",
+                                                                                @maxlength = "Infinity",
+                                                                           @restrictiontype = "input",
+                                                                                @max = "Infinity",
+                                                                                @min = "-Infinity",
+                                                                           @id = "text-input",
+                                                                                @required = true
+                                                                            }
+                                                                        })
+                                                                        <p style="color:red;text-align:center">
+                                                                            @if (ViewBag.error1 != null)
+                                                                            {@ViewBag.error1}
+                                                                        </p>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -650,8 +880,35 @@
                                                         <div class="product-edit-form-item-content">
                                                             <div class="popover-wrap">
                                                                 <div class="tafi-input price-input product-edit-input">
-                                                                    <div class="tafi-input detail-info-input" style="height: 40px;">
-                                                                        <span class="detail-info__name">@Model.SANPHAM.PHANTRAMGIAM %</span>
+                                                                    <div class="tafi-input__inner tafi-input__inner--large">
+                                                                        <div class="tafi-input__prefix">
+                                                                            đ
+                                                                            <span class="tafi-input__prefix-split"></span>
+                                                                        </div>
+                                                                        @Html.EditorFor(model => model.SANPHAM.PHANTRAMGIAM, new
+                                                                        {
+                                                                            htmlAttributes = new
+                                                                            {
+                                                                                @class = "tafi-input__input",
+                                                                                @type = "text",
+                                                                                @placeholder = "Nhập vào",
+                                                                                @tabindex = "0",
+                                                                                @resize = "none",
+                                                                                @size = "large",
+                                                                           @rows = "2",
+                                                                                @minrows = "2",
+                                                                                @maxlength = "Infinity",
+                                                                           @restrictiontype = "input",
+                                                                                @max = "Infinity",
+                                                                                @min = "-Infinity",
+                                                                           @id = "text-input",
+                                                                                @required = true
+                                                                            }
+                                                                        })
+                                                                        <p style="color:red;text-align:center">
+                                                                            @if (ViewBag.error != null)
+                                                                            {@ViewBag.error}
+                                                                        </p>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -668,26 +925,31 @@
                                                         <div class="product-edit-form-item-content">
                                                             <div class="popover-wrap">
                                                                 <div class="tafi-input price-input product-edit-input">
-                                                                    <div class="tafi-input detail-info-input" style="height: 40px;">
-                                                                        <span class="detail-info__name">@Model.SANPHAM.SOLUONGTON</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="edit-row">
-                                                <div class="edit-row-left edit-label">
-                                                    <span><span style="color: red;">*</span> Giá giảm</span>
-                                                </div>
-                                                <div class="degrade-wrap edit-row-right-medium">
-                                                    <div class="custom-len-calc-input product-edit-form-item">
-                                                        <div class="product-edit-form-item-content">
-                                                            <div class="popover-wrap">
-                                                                <div class="tafi-input price-input product-edit-input">
-                                                                    <div class="tafi-input detail-info-input" style="height: 40px;">
-                                                                        <span class="detail-info__name">@string.Format("{0:N0} đ", Model.SANPHAM.GIAGIAM)</span>
+                                                                    <div class="tafi-input__inner tafi-input__inner--large">
+                                                                        @Html.EditorFor(model => model.SANPHAM.SOLUONGTON, new
+                                                                        {
+                                                                            htmlAttributes = new
+                                                                            {
+                                                                                @class = "tafi-input__input",
+                                                                                @type = "text",
+                                                                                @placeholder = "Nhập vào",
+                                                                                @tabindex = "0",
+                                                                                @resize = "none",
+                                                                                @size = "large",
+                                                                           @rows = "2",
+                                                                                @minrows = "2",
+                                                                                @maxlength = "Infinity",
+                                                                           @restrictiontype = "input",
+                                                                                @max = "Infinity",
+                                                                                @min = "-Infinity",
+                                                                           @id = "text-input",
+                                                                                @required = true
+                                                                            }
+                                                                        })
+                                                                        <p style="color:red;text-align:center">
+                                                                            @if (ViewBag.error1 != null)
+                                                                            {@ViewBag.error2}
+                                                                        </p>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -705,8 +967,8 @@
                                     <div class="container1">
                                         <div class="container-left"></div>
                                         <div class="container-right btn-group">
-                                            <a href="@Url.Action("QlSanPham","QlSanPham")" class="tafi-button--xl-large tafi-button tafi-button--normal"><span>Hủy</span></a>
-                                            <button class="tafi-button--xl-large tafi-button tafi-button-primary tafi-button--normal" style="margin-left: 13px;" id="button-save" ><span>Lưu</span></button>
+                                            <a href="@Url.Action("SanPham","SanPham")" class="tafi-button--xl-large tafi-button tafi-button--normal"><span>Hủy</span></a>
+                                            <button class="tafi-button--xl-large tafi-button tafi-button-primary tafi-button--normal" style="margin-left: 13px;" id="button-save"><span>Lưu</span></button>
                                         </div>
                                     </div>
                                 </div>

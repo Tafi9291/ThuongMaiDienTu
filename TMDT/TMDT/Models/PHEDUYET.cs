@@ -20,7 +20,7 @@ namespace TMDT.Models
             this.QUANGCAOs = new HashSet<QUANGCAO>();
             this.SANPHAMs = new HashSet<SANPHAM>();
         }
-    
+        public List<PHEDUYET> ListPD { get; set; }
         public int IDPHEDUYET { get; set; }
         public string TENPHEDUYET { get; set; }
     

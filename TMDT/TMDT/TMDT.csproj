@@ -415,6 +415,7 @@
     <Content Include="Areas\Admin\Views\QLTinTuc\TinTuc.cshtml" />
     <Content Include="Areas\Admin\Views\QLTinTuc\TaoTinTuc.cshtml" />
     <Content Include="Areas\Admin\Views\QLTinTuc\CapNhatTinTuc.cshtml" />
+    <Content Include="Areas\Admin\Views\QLSanPham\ChonPheDuyet.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -495,6 +496,7 @@
     <Content Include="Views\DonHang\SelectCatePTTT.cshtml" />
     <Content Include="Views\DonHang\CapNhat.cshtml" />
     <Content Include="Views\ShoppingCart\Checkout.cshtml" />
+    <Content Include="Views\SanPham\CapNhat.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

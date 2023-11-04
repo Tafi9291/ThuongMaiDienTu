@@ -28,5 +28,6 @@ namespace TMDT.Models
         public CTTHOITRANG CTTHOITRANG { get; set; }
         public CTGIAY CTGIAY { get; set; }
 
+        public PHEDUYET PHEDUYET { get; set; }
     }
 }

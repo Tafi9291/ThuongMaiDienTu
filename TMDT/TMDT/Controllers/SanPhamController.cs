@@ -247,5 +247,88 @@ namespace TMDT.Controllers
 
             return View(model);
         }
+
+        public ActionResult CapNhat(int id)
+        {
+            // Fetch the SANPHAM entity from the database 
+            var sanPhamEntity = db.SANPHAMs.Where(s => s.IDSANPHAM == id).FirstOrDefault();
+            var ctDienThoai = db.CTDIENTHOAIs.Where(s => s.IDSANPHAM == id).FirstOrDefault();
+            var ctThoiTrang = db.CTTHOITRANGs.Where(s => s.IDSANPHAM == id).FirstOrDefault();
+            var ctGiay = db.CTGIAYs.Where(s => s.IDSANPHAM == id).FirstOrDefault();
+
+            // Create a ViewModelSanPham object and initialize it with the entity data 
+            var viewModel = new ViewModelSanPham
+            {
+                SANPHAM = sanPhamEntity,
+                CTDIENTHOAI = ctDienThoai,
+                CTTHOITRANG = ctThoiTrang,
+                CTGIAY = ctGiay,
+            };
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult CapNhat(ViewModelSanPham model)
+        {
+
+            try
+            {
+                // Find the SANPHAM entity using the ID 
+                var sanPhamEntity = db.SANPHAMs.Find(model.SANPHAM.IDSANPHAM);
+                var ctDienThoai = db.CTDIENTHOAIs.Find(model.CTDIENTHOAI.IDSANPHAM);
+                var ctThoiTrang = db.CTTHOITRANGs.Find(model.CTTHOITRANG.IDSANPHAM);
+                var ctGiay = db.CTGIAYs.Find(model.CTGIAY.IDSANPHAM);
+
+                sanPhamEntity.HINHANH1 = model.SANPHAM.HINHANH1;
+                sanPhamEntity.HINHANH2 = model.SANPHAM.HINHANH2;
+                sanPhamEntity.HINHANH3 = model.SANPHAM.HINHANH3;
+                sanPhamEntity.TENSP = model.SANPHAM.TENSP;
+                sanPhamEntity.IDMAUSAC = model.SANPHAM.IDMAUSAC;
+                sanPhamEntity.MOTASANPHAM = model.SANPHAM.MOTASANPHAM;
+
+                string selectedCategoryId = Request.Form["IDLOAISP"];
+                sanPhamEntity.IDLOAISP = Convert.ToInt32(selectedCategoryId);
+
+                switch (selectedCategoryId)
+                {
+                    case "1":
+                        ctDienThoai.IDTHDIENTHOAI = model.CTDIENTHOAI.IDTHDIENTHOAI;
+                        ctDienThoai.MANHINH = model.CTDIENTHOAI.MANHINH;
+                        ctDienThoai.DOPHANGIAI = model.CTDIENTHOAI.DOPHANGIAI;
+                        ctDienThoai.CAMERA = model.CTDIENTHOAI.CAMERA;
+                        ctDienThoai.HEDH = model.CTDIENTHOAI.HEDH;
+                        ctDienThoai.CHIPXULY = model.CTDIENTHOAI.CHIPXULY;
+                        ctDienThoai.ROM = model.CTDIENTHOAI.ROM;
+                        ctDienThoai.RAM = model.CTDIENTHOAI.RAM;
+                        ctDienThoai.MANGDIDONG = model.CTDIENTHOAI.MANGDIDONG;
+                        ctDienThoai.SOKHESIM = model.CTDIENTHOAI.SOKHESIM;
+                        ctDienThoai.PIN = model.CTDIENTHOAI.PIN;
+                        break;
+                    case "2":
+                        ctThoiTrang.IDTHTHOITRANG = model.CTTHOITRANG.IDTHTHOITRANG;
+                        ctThoiTrang.CHATLIEU = model.CTTHOITRANG.CHATLIEU;
+                        ctThoiTrang.IDSIZETT = model.CTTHOITRANG.IDSIZETT;
+                        break;
+                    case "3":
+                        ctGiay.IDTHGIAY = model.CTGIAY.IDTHGIAY;
+                        ctGiay.IDSIZEGIAY = model.CTGIAY.IDSIZEGIAY;
+                        break;
+                    default:
+                        break;
+                }
+
+
+                // Save changes to the database
+                db.SaveChanges();
+
+                return RedirectToAction("SanPham");
+            }
+            catch
+            {
+                return View(model);
+
+            }
+        }
     }
 }
