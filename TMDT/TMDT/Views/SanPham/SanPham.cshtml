@@ -67,7 +67,7 @@
                             <button class="tafi-button tafi-button-primary">
                                 <span>Tìm kiếm</span>
                             </button>
-                            <button class="tafi-button" style="margin-left: 16px;">
+                            <button type="reset" class="tafi-button" style="margin-left: 16px;" id="myInput">
                                 <span>Nhập lại</span>
                             </button>
                         </div>
@@ -311,4 +311,34 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var tags = document.querySelectorAll(".product-state-tag");
+
+        for (var i = 0; i < tags.length; i++) {
+            var tag = tags[i];
+            var trangThai = tag.innerText.trim(); // Lấy nội dung của thẻ và loại bỏ khoảng trắng xung quanh
+
+            switch (trangThai) {
+                case "Chờ duyệt":
+                    tag.classList.add("waiting"); // hoặc class CSS tương ứng
+                    break;
+                case "Đang hoạt động":
+                    tag.classList.add("online"); // hoặc class CSS tương ứng
+                    break;
+                case "Vi phạm":
+                    tag.classList.add("error"); // hoặc class CSS tương ứứng
+                    break;
+            }
+        }
+    });
+
+    function resetInputValue() {
+        var inputElement = document.getElementById('myInput');
+        if (inputElement) {
+            inputElement.value = ''; // Reset the input value to an empty string
+        }
+    }
+</script>
 

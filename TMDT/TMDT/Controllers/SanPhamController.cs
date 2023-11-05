@@ -272,63 +272,237 @@ namespace TMDT.Controllers
         public ActionResult CapNhat(ViewModelSanPham model)
         {
 
-            try
+            var email = Session["Email"] as string;
+            if (email == null)
             {
-                // Find the SANPHAM entity using the ID 
-                var sanPhamEntity = db.SANPHAMs.Find(model.SANPHAM.IDSANPHAM);
-                var ctDienThoai = db.CTDIENTHOAIs.Find(model.CTDIENTHOAI.IDSANPHAM);
-                var ctThoiTrang = db.CTTHOITRANGs.Find(model.CTTHOITRANG.IDSANPHAM);
-                var ctGiay = db.CTGIAYs.Find(model.CTGIAY.IDSANPHAM);
+                // Nếu chưa đăng nhập, chuyển hướng đến trang đăng nhập
+                return RedirectToAction("Dangnhap", "DNhap");
+            }
 
-                sanPhamEntity.HINHANH1 = model.SANPHAM.HINHANH1;
-                sanPhamEntity.HINHANH2 = model.SANPHAM.HINHANH2;
-                sanPhamEntity.HINHANH3 = model.SANPHAM.HINHANH3;
-                sanPhamEntity.TENSP = model.SANPHAM.TENSP;
-                sanPhamEntity.IDMAUSAC = model.SANPHAM.IDMAUSAC;
-                sanPhamEntity.MOTASANPHAM = model.SANPHAM.MOTASANPHAM;
+            // Lấy thông tin của người dùng trong cơ sở dữ liệu
+            var nguoidung = db.NGUOIDUNGs.SingleOrDefault(kh => kh.EMAIL == email);
 
-                string selectedCategoryId = Request.Form["IDLOAISP"];
-                sanPhamEntity.IDLOAISP = Convert.ToInt32(selectedCategoryId);
+            if (nguoidung != null) // Kiểm tra xem người dùng có tồn tại hay không
+            {
+                // Lấy thông tin của cửa hàng nếu tồn tại, sau đó lưu ID của cửa hàng vào sản phẩm
+                var cuahang = db.CUAHANGs.SingleOrDefault(ch => ch.IDND == nguoidung.IDND);
 
-                switch (selectedCategoryId)
+                if (cuahang != null) // Kiểm tra xem cửa hàng có tồn tại hay không
                 {
-                    case "1":
-                        ctDienThoai.IDTHDIENTHOAI = model.CTDIENTHOAI.IDTHDIENTHOAI;
-                        ctDienThoai.MANHINH = model.CTDIENTHOAI.MANHINH;
-                        ctDienThoai.DOPHANGIAI = model.CTDIENTHOAI.DOPHANGIAI;
-                        ctDienThoai.CAMERA = model.CTDIENTHOAI.CAMERA;
-                        ctDienThoai.HEDH = model.CTDIENTHOAI.HEDH;
-                        ctDienThoai.CHIPXULY = model.CTDIENTHOAI.CHIPXULY;
-                        ctDienThoai.ROM = model.CTDIENTHOAI.ROM;
-                        ctDienThoai.RAM = model.CTDIENTHOAI.RAM;
-                        ctDienThoai.MANGDIDONG = model.CTDIENTHOAI.MANGDIDONG;
-                        ctDienThoai.SOKHESIM = model.CTDIENTHOAI.SOKHESIM;
-                        ctDienThoai.PIN = model.CTDIENTHOAI.PIN;
-                        break;
-                    case "2":
-                        ctThoiTrang.IDTHTHOITRANG = model.CTTHOITRANG.IDTHTHOITRANG;
-                        ctThoiTrang.CHATLIEU = model.CTTHOITRANG.CHATLIEU;
-                        ctThoiTrang.IDSIZETT = model.CTTHOITRANG.IDSIZETT;
-                        break;
-                    case "3":
-                        ctGiay.IDTHGIAY = model.CTGIAY.IDTHGIAY;
-                        ctGiay.IDSIZEGIAY = model.CTGIAY.IDSIZEGIAY;
-                        break;
-                    default:
-                        break;
+                    // Lấy thông tin sản phẩm cần chỉnh sửa
+                    var sanpham = db.SANPHAMs.FirstOrDefault(sp => sp.IDSANPHAM == model.SANPHAM.IDSANPHAM && sp.IDCUAHANG == cuahang.IDCUAHANG);
+
+                    if (sanpham != null)
+                    {
+                        string selectedColor = Request.Form["IDMAUSAC"];
+
+                        string selecteDBrand = Request.Form["IDTHDIENTHOAI"];
+
+                        string selectTTBrand = Request.Form["IDTHTHOITRANG"];
+
+                        string selectGBrand = Request.Form["IDTHGIAY"];
+
+                        string selectSizeTT = Request.Form["IDSIZETT"];
+
+                        string selectSizeG = Request.Form["IDSIZEGIAY"];
+
+                        // Lưu ảnh vào thư mục ~/Content/Images/
+                        if (model.UploadImage1 != null)
+                        {
+                            string filename1 = Path.GetFileNameWithoutExtension(model.UploadImage1.FileName);
+                            string extension1 = Path.GetExtension(model.UploadImage1.FileName);
+                            filename1 = filename1 + extension1;
+
+                            sanpham.HINHANH1 = "~/Content/Hinh/" + filename1;
+                            model.UploadImage1.SaveAs(Path.Combine(Server.MapPath("~/Content/Hinh/"), filename1));
+                        }
+                        if (model.UploadImage2 != null)
+                        {
+                            string filename2 = Path.GetFileNameWithoutExtension(model.UploadImage2.FileName);
+                            string extension2 = Path.GetExtension(model.UploadImage2.FileName);
+                            filename2 = filename2 + extension2;
+
+                            sanpham.HINHANH2 = "~/Content/Hinh/" + filename2;
+                            model.UploadImage2.SaveAs(Path.Combine(Server.MapPath("~/Content/Hinh/"), filename2));
+                        }
+                        if (model.UploadImage3 != null)
+                        {
+                            string filename3 = Path.GetFileNameWithoutExtension(model.UploadImage3.FileName);
+                            string extension3 = Path.GetExtension(model.UploadImage3.FileName);
+                            filename3 = filename3 + extension3;
+
+                            sanpham.HINHANH3 = "~/Content/Hinh/" + filename3;
+                            model.UploadImage3.SaveAs(Path.Combine(Server.MapPath("~/Content/Hinh/"), filename3));
+                        }
+
+
+                        sanpham.IDMAUSAC = Convert.ToInt32(selectedColor);
+                        sanpham.TENSP = model.SANPHAM.TENSP;
+                        sanpham.MOTASANPHAM = model.SANPHAM.MOTASANPHAM;
+                        sanpham.GIABAN = model.SANPHAM.GIABAN;
+                        sanpham.SOLUONGTON = model.SANPHAM.SOLUONGTON;
+                        sanpham.PHANTRAMGIAM = model.SANPHAM.PHANTRAMGIAM;
+                        sanpham.GIAGIAM = sanpham.GIABAN - (sanpham.GIABAN * sanpham.PHANTRAMGIAM / 100);
+
+                        // Cập nhật thông tin sản phẩm và chi tiết dựa trên LoaiSP
+                        switch (sanpham.IDLOAISP)
+                        {
+                            case 1: // Loại sản phẩm DIENTHOAI
+                                var ctdienthoai = db.CTDIENTHOAIs.FirstOrDefault(ct => ct.IDSANPHAM == sanpham.IDSANPHAM);
+                                if (ctdienthoai != null)
+                                {
+                                    // Cập nhật thông tin sản phẩm và chi tiết DIENTHOAI
+                                    
+                                    ctdienthoai.IDTHDIENTHOAI = model.CTDIENTHOAI.IDTHDIENTHOAI;
+                                    ctdienthoai.IDTHDIENTHOAI = Convert.ToInt32(selecteDBrand);
+                                    ctdienthoai.MANHINH = model.CTDIENTHOAI.MANHINH;
+                                    ctdienthoai.DOPHANGIAI = model.CTDIENTHOAI.DOPHANGIAI;
+                                    ctdienthoai.CAMERA = model.CTDIENTHOAI.CAMERA;
+                                    ctdienthoai.HEDH = model.CTDIENTHOAI.HEDH;
+                                    ctdienthoai.CHIPXULY = model.CTDIENTHOAI.CHIPXULY;
+                                    ctdienthoai.ROM = model.CTDIENTHOAI.ROM;
+                                    ctdienthoai.RAM = model.CTDIENTHOAI.RAM;
+                                    ctdienthoai.MANGDIDONG = model.CTDIENTHOAI.MANGDIDONG;
+                                    ctdienthoai.SOKHESIM = model.CTDIENTHOAI.SOKHESIM;
+                                    ctdienthoai.PIN = model.CTDIENTHOAI.PIN;
+
+                                    // Cập nhật các thông tin khác nếu cần
+                                    // ...
+                                }
+                                break;
+                            case 2: // Loại sản phẩm THOITRANG
+                                var ctthoitrang = db.CTTHOITRANGs.FirstOrDefault(ct => ct.IDSANPHAM == sanpham.IDSANPHAM);
+                                if (ctthoitrang != null)
+                                {
+                                    // Cập nhật thông tin sản phẩm và chi tiết THOITRANG
+                                    ctthoitrang.IDTHTHOITRANG = Convert.ToInt32(selectTTBrand);
+                                    ctthoitrang.IDSIZETT = Convert.ToInt32(selectSizeTT);
+                                    ctthoitrang.CHATLIEU = model.CTTHOITRANG.CHATLIEU;
+
+                                    // Cập nhật các thông tin khác nếu cần
+                                    // ...
+                                }
+                                break;
+                            case 3: // Loại sản phẩm GIAY
+                                var ctgiay = db.CTGIAYs.FirstOrDefault(ct => ct.IDSANPHAM == sanpham.IDSANPHAM);
+                                if (ctgiay != null)
+                                {
+                                    // Cập nhật thông tin sản phẩm và chi tiết GIAY
+                                    ctgiay.IDTHGIAY = Convert.ToInt32(selectGBrand);
+                                    ctgiay.IDSIZEGIAY = Convert.ToInt32(selectSizeG);
+
+                                    // Cập nhật các thông tin khác nếu cần
+                                    // ...
+                                }
+                                break;
+                        }
+
+                        // Lưu các thay đổi vào cơ sở dữ liệu
+                        db.SaveChanges();
+                        return RedirectToAction("SanPham");
+                    }
                 }
-
-
-                // Save changes to the database
-                db.SaveChanges();
-
-                return RedirectToAction("SanPham");
             }
-            catch
-            {
-                return View(model);
 
-            }
+            // Nếu không tìm thấy sản phẩm hoặc có lỗi, bạn có thể xử lý tại đây (chẳng hạn, hiển thị thông báo lỗi)
+            return View("Error"); // Hoặc chuyển hướng đến trang lỗi
+            //try
+            //{
+            //    // Find the SANPHAM entity using the ID 
+            //    var sanPhamEntity = db.SANPHAMs.Find(model.SANPHAM.IDSANPHAM);
+            //    var ctDienThoai = db.CTDIENTHOAIs.Find(model.CTDIENTHOAI.IDSANPHAM);
+            //    var ctThoiTrang = db.CTTHOITRANGs.Find(model.CTTHOITRANG.IDSANPHAM);
+            //    var ctGiay = db.CTGIAYs.Find(model.CTGIAY.IDSANPHAM);
+
+            //    // Lưu ảnh vào thư mục ~/Content/Images/
+            //    if (model.UploadImage2 != null)
+            //    {
+            //        string filename2 = Path.GetFileNameWithoutExtension(model.UploadImage2.FileName);
+            //        string extension2 = Path.GetExtension(model.UploadImage2.FileName);
+            //        filename2 = filename2 + extension2;
+
+            //        sanPhamEntity.HINHANH2 = "~/Content/Hinh/" + filename2;
+            //        model.UploadImage2.SaveAs(Path.Combine(Server.MapPath("~/Content/Hinh/"), filename2));
+            //    }
+            //    if (model.UploadImage1 != null)
+            //    {
+            //        string filename1 = Path.GetFileNameWithoutExtension(model.UploadImage1.FileName);
+            //        string extension1 = Path.GetExtension(model.UploadImage1.FileName);
+            //        filename1 = filename1 + extension1;
+
+            //        sanPhamEntity.HINHANH1 = "~/Content/Hinh/" + filename1;
+            //        model.UploadImage1.SaveAs(Path.Combine(Server.MapPath("~/Content/Hinh/"), filename1));
+            //    }
+            //    if (model.UploadImage3 != null)
+            //    {
+            //        string filename3 = Path.GetFileNameWithoutExtension(model.UploadImage3.FileName);
+            //        string extension3 = Path.GetExtension(model.UploadImage3.FileName);
+            //        filename3 = filename3 + extension3;
+
+            //        sanPhamEntity.HINHANH3 = "~/Content/Hinh/" + filename3;
+            //        model.UploadImage3.SaveAs(Path.Combine(Server.MapPath("~/Content/Hinh/"), filename3));
+            //    }
+
+            //    sanPhamEntity.TENSP = model.SANPHAM.TENSP;
+            //    sanPhamEntity.MOTASANPHAM = model.SANPHAM.MOTASANPHAM;
+            //    sanPhamEntity.GIABAN = model.SANPHAM.GIABAN;
+            //    sanPhamEntity.SOLUONGTON = model.SANPHAM.SOLUONGTON;
+            //    sanPhamEntity.GIAGIAM = sanPhamEntity.GIABAN - (sanPhamEntity.GIABAN * sanPhamEntity.PHANTRAMGIAM / 100);
+
+
+            //    string selectedColor = Request.Form["IDMAUSAC"];
+            //    sanPhamEntity.IDMAUSAC = Convert.ToInt32(selectedColor);
+
+            //    string selecteDBrand = Request.Form["IDTHDIENTHOAI"];
+
+            //    string selectTTBrand = Request.Form["IDTHTHOITRANG"];
+
+            //    string selectGBrand = Request.Form["IDTHGIAY"];
+
+            //    string selectSizeTT = Request.Form["IDSIZETT"];
+
+            //    string selectSizeG = Request.Form["IDSIZEGIAY"];
+
+
+            //    switch (sanPhamEntity.IDLOAISP)
+            //    {
+            //        case 1:
+            //            ctDienThoai.IDTHDIENTHOAI = Convert.ToInt32(selecteDBrand);
+            //            ctDienThoai.MANHINH = model.CTDIENTHOAI.MANHINH;
+            //            ctDienThoai.DOPHANGIAI = model.CTDIENTHOAI.DOPHANGIAI;
+            //            ctDienThoai.CAMERA = model.CTDIENTHOAI.CAMERA;
+            //            ctDienThoai.HEDH = model.CTDIENTHOAI.HEDH;
+            //            ctDienThoai.CHIPXULY = model.CTDIENTHOAI.CHIPXULY;
+            //            ctDienThoai.ROM = model.CTDIENTHOAI.ROM;
+            //            ctDienThoai.RAM = model.CTDIENTHOAI.RAM;
+            //            ctDienThoai.MANGDIDONG = model.CTDIENTHOAI.MANGDIDONG;
+            //            ctDienThoai.SOKHESIM = model.CTDIENTHOAI.SOKHESIM;
+            //            ctDienThoai.PIN = model.CTDIENTHOAI.PIN;
+            //            break;
+            //        case 2:
+            //            ctThoiTrang.IDTHTHOITRANG = Convert.ToInt32(selectTTBrand);
+            //            ctThoiTrang.IDSIZETT = Convert.ToInt32(selectSizeTT);
+            //            ctThoiTrang.CHATLIEU = model.CTTHOITRANG.CHATLIEU;
+            //            break;
+            //        case 3:
+            //            ctGiay.IDTHGIAY = Convert.ToInt32(selectGBrand);
+            //            ctGiay.IDSIZEGIAY = Convert.ToInt32(selectSizeG);
+            //            break;
+            //        default:
+            //            break;
+            //    }
+
+
+            //    // Save changes to the database
+            //    db.SaveChanges();
+
+            //    return RedirectToAction("SanPham");
+            //}
+            //catch
+            //{
+            //    return View(model);
+
+            //}
         }
     }
 }
