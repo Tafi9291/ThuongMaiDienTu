@@ -15,7 +15,7 @@ namespace TMDT.Areas.Admin.Controllers
         {
             // Kiểm tra quyền truy cập theo CHUCVUID
 
-            var email = Session["Email"] as string;
+            var email = Session["EmailAD"] as string;
             var admin = db.ADMINs.FirstOrDefault(c => c.EMAIL == email);
             if (admin != null && (admin.IDCHUCVU == 1 || admin.IDCHUCVU == 3))
             {

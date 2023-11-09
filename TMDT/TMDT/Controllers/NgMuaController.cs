@@ -16,7 +16,7 @@ namespace TMDT.Controllers
         {
             const int pageSize = 20;
             var pageNumber = (page ?? 1);
-            var products = db.SANPHAMs.OrderBy(p => p.TENSP).ToPagedList(pageNumber, pageSize);
+            var products = db.SANPHAMs.Where(p => p.IDPHEDUYET == 2).OrderBy(p => p.TENSP).ToPagedList(pageNumber, pageSize);
             return View(products);
         }
 
@@ -36,7 +36,7 @@ namespace TMDT.Controllers
         {
             const int pageSize = 20;
             var pageNumber = (page ?? 1);
-            return View(db.SANPHAMs.Where(x => x.TENSP.StartsWith(searching) || x.TENSP == null).ToList().ToPagedList(pageNumber, pageSize));
+            return View(db.SANPHAMs.Where(x => (x.TENSP.StartsWith(searching) || x.TENSP == null) && x.IDPHEDUYET == 2).ToList().ToPagedList(pageNumber, pageSize));
 
         }
 
@@ -77,7 +77,7 @@ namespace TMDT.Controllers
                 var voucherShop = db.VOUCHERSHOPs.Where(v => v.IDCUAHANG == cuaHang.IDCUAHANG).ToList();
                 ViewBag.VoucherShop = voucherShop;
 
-                var productShop = db.SANPHAMs.Where(v => v.IDCUAHANG == cuaHang.IDCUAHANG && v.IDSANPHAM != id).ToList();
+                var productShop = db.SANPHAMs.Where(v => v.IDCUAHANG == cuaHang.IDCUAHANG && v.IDSANPHAM != id && v.IDPHEDUYET == 2).ToList();
                 ViewBag.ProductShop = productShop;
             }
             else { 
@@ -87,6 +87,47 @@ namespace TMDT.Controllers
 
 
             return View(sanpham);
+        }
+
+        [HttpPost]
+        public ActionResult AddReview(int id, string review)
+        {
+            // Check if user is logged in
+            var email = Session["Email"] as string;
+            if (Session["Email"] == null)
+            {
+                // Nếu chưa đăng nhập, chuyển hướng đến trang đăng nhập
+                return RedirectToAction("DangNhap", "Register");
+            }
+            // Get logged in user id
+
+
+            // Check if user already reviewed this product
+            var existingReview = db.DANHGIASPs.FirstOrDefault(r => r.IDND.ToString() == email && r.IDSANPHAM == id);
+
+            if (existingReview != null)
+            {
+                ModelState.AddModelError("", "Bạn đã đánh giá sản phẩm này rồi!");
+            }
+            else
+            {
+                // Add new review
+                var khachHang = db.NGUOIDUNGs.SingleOrDefault(kh => kh.EMAIL == email);
+                var newReview = new DANHGIASP();
+
+
+                newReview.IDND = khachHang.IDND;
+                newReview.IDSANPHAM = id;
+                newReview.DANHGIA = review;
+                newReview.NGAYTAO = DateTime.Now;
+
+
+                db.DANHGIASPs.Add(newReview);
+                db.SaveChanges();
+            }
+
+            // Redirect to product details page
+            return RedirectToAction("ChiTietSanPham", new { id = id });
         }
 
         public ActionResult DonMua(int? trangThaiId)

@@ -25,16 +25,16 @@ namespace TMDT.Areas.Admin.Controllers
                 return View();
             }
             else
-            Session["Email"] = objUserGet.EMAIL;
-            Session["Ten"] = objUserGet.TENAD;
-            Session["Hinh"] = objUserGet.HINHANH;
+            Session["EmailAD"] = objUserGet.EMAIL;
+            Session["TenAD"] = objUserGet.TENAD;
+            Session["HinhAD"] = objUserGet.HINHANH;
             return RedirectToAction("DashBoard", "DashBoard");
 
 
         }
         public ActionResult DangXuat()
         {
-            Session["Email"] = null;
+            Session["EmailAD"] = null;
             return RedirectToAction("DangNhapAdmin", "DangNhapAdmin");
         }
     }

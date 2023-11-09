@@ -63,6 +63,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web.DataVisualization" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -183,6 +184,7 @@
     <Compile Include="Models\DANHGIASP.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DashBoard.cs" />
     <Compile Include="Models\DONHANG.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -349,6 +351,7 @@
     <Content Include="Content\Hinh\logo-favicon.png" />
     <Content Include="Content\Hinh\QR_shopee.png" />
     <Content Include="Content\Hinh\sprite-src-pages.png" />
+    <Content Include="Content\Hinh\TFT__1_-removebg-preview.png" />
     <Content Include="Content\Hinh\user-circle-regular-36.png" />
     <Content Include="Content\Hinh\wibu.png" />
     <Content Include="Content\img-slider\background-login.png" />
@@ -416,6 +419,9 @@
     <Content Include="Areas\Admin\Views\QLTinTuc\TaoTinTuc.cshtml" />
     <Content Include="Areas\Admin\Views\QLTinTuc\CapNhatTinTuc.cshtml" />
     <Content Include="Areas\Admin\Views\QLSanPham\ChonPheDuyet.cshtml" />
+    <Content Include="Areas\Admin\Views\Shipper\QLDonHangShip.cshtml" />
+    <Content Include="Areas\Admin\Views\Shipper\CapNhat.cshtml" />
+    <Content Include="Areas\Admin\Views\Shipper\SelectCateTT.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

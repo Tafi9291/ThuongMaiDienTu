@@ -1,0 +1,158 @@
+﻿@model TMDT.Models.DONHANG
+
+@{
+    ViewBag.Title = "CapNhat";
+    Layout = "~/Areas/Admin/Views/Shared/Layout_Shipper.cshtml";
+}
+
+<div class="col l-9-1 m-12 c-12">
+    <div class="home-product">
+        <div class="row sm-gutter" style="padding-right: 16px;">
+            <div class="product-edit">
+                <div class="product-edit__container" style="min-height: 0;">
+                    <div class="title-page">
+                        <div class="title-page__link">
+                            <a href="@Url.Action("TaiKhoan", "Shipper")" class="title-page__link-label">Trang chủ</a>
+                            <i class='bx bx-chevron-right'></i>
+                            <a href="@Url.Action("QLDonHangShip", "Shipper")" class="title-page__link-label">Đơn hàng</a>
+                            <i class='bx bx-chevron-right'></i>
+                            <a href="@Url.Action("CapNhat", "Shipper")" class="title-page__link-label">Cập nhật đơn hàng</a>
+                        </div>
+                    </div>
+                    @using (Html.BeginForm("CapNhat", "Shipper", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="product-edit__main">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.Hidden("IDDONHANG", Model.IDDONHANG)
+
+                            <section class="product-edit__section" id="section-basic-info">
+                                <div class="product-detail-panel product-basic-info">
+                                    <div class="panel-header">
+                                        <div class="panel-title">
+                                            <div class="basic-info-title">Thông tin đơn hàng</div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-content-wrapper">
+                                        <div class="panel-content">
+                                            @* Người nhận *@
+                                            <div class="edit-row">
+                                                <div class="edit-label edit-title">
+                                                    <span><span style="color: red;">*</span> Người nhận</span>
+                                                </div>
+                                                <div class="edit-main">
+                                                    <div class="popover-wrap">
+                                                        <div class="custom-len-calc-input product-edit-form-item">
+                                                            <div class="product-edit-form-item-content">
+                                                                <div class="tafi-input">
+                                                                    <div class="tafi-input__inner tafi-input__inner--large" style="line-height: 40px;">
+                                                                        @Model.NGUOINHAN
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            @* Số điện thoại *@
+                                            <div class="edit-row">
+                                                <div class="edit-label edit-title">
+                                                    <span><span style="color: red;">*</span> Số điện thoại</span>
+                                                </div>
+                                                <div class="edit-main">
+                                                    <div class="popover-wrap">
+                                                        <div class="custom-len-calc-input product-edit-form-item">
+                                                            <div class="product-edit-form-item-content">
+                                                                <div class="tafi-input">
+                                                                    <div class="tafi-input__inner tafi-input__inner--large" style="line-height: 40px;">
+                                                                        @Model.SDT
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            @* Địa chỉ *@
+                                            <div class="edit-row">
+                                                <div class="edit-label edit-title">
+                                                    <span><span style="color: red;">*</span> Địa chỉ</span>
+                                                </div>
+                                                <div class="edit-main">
+                                                    <div class="popover-wrap">
+                                                        <div class="custom-len-calc-input product-edit-form-item">
+                                                            <div class="product-edit-form-item-content">
+                                                                <div class="tafi-input">
+                                                                    <div class="tafi-input__inner tafi-input__inner--large" style="line-height: 40px;">
+                                                                        @Model.DIACHI
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            @* Trạng thái đơn hàng *@
+                                            <div class="edit-row">
+                                                <div class="edit-label edit-title">
+                                                    <span><span style="color: red;">*</span> Trạng thái đơn hàng</span>
+                                                </div>
+                                                <div class="edit-main">
+                                                    <div class="popover-wrap">
+                                                        <div class="custom-len-calc-input product-edit-form-item">
+                                                            <div class="product-edit-form-item-content">
+                                                                <div class="tafi-input">
+                                                                    <div class="tafi-input__inner tafi-input__inner--large">
+                                                                        @{ Html.RenderAction("SelectCateTT", "Shipper");}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            @* Phương thức thanh toán *@
+                                            <div class="edit-row">
+                                                <div class="edit-label edit-title">
+                                                    <span><span style="color: red;">*</span> Phương thức thanh toán</span>
+                                                </div>
+                                                <div class="edit-main">
+                                                    <div class="popover-wrap">
+                                                        <div class="custom-len-calc-input product-edit-form-item">
+                                                            <div class="product-edit-form-item-content">
+                                                                <div class="tafi-input">
+                                                                    <div class="tafi-input__inner tafi-input__inner--large" style="line-height: 40px;">
+                                                                        @Model.IDPTTHANHTOAN
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+
+                            <div class="product-selected-fix shopee-fix-bottom-card">
+                                <div class="fix-container">
+                                    <div class="container1">
+                                        <div class="container-left"></div>
+                                        <div class="container-right btn-group">
+                                            <a href="@Url.Action("QLDonHangShip","Shipper")" class="tafi-button--xl-large tafi-button tafi-button--normal"><span>Hủy</span></a>
+                                            <button class="tafi-button--xl-large tafi-button tafi-button-primary tafi-button--normal" style="margin-left: 13px;" id="button-save"><span>Lưu</span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

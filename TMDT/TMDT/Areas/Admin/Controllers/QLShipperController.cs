@@ -13,7 +13,7 @@ namespace TMDT.Areas.Admin.Controllers
         // GET: Admin/QLShipper
         public ActionResult Shipper(int? size, int? page, string currenFilter, string SearchString)
         {
-            var email = Session["Email"] as string;
+            var email = Session["EmailAD"] as string;
             var admin = db.ADMINs.FirstOrDefault(c => c.EMAIL == email);
             if (admin != null && (admin.IDCHUCVU == 1))
             {

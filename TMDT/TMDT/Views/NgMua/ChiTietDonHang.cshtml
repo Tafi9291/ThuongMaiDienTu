@@ -39,7 +39,9 @@
                                         if (hinh != null && !string.IsNullOrEmpty(hinh.HINHANH1))
                                         {
                                             var imageUrl = Url.Content(hinh.HINHANH1);
-                                            <img src="@imageUrl" style="width: 140px; object-fit: contain; margin-right: 10px;" />
+                                            <a href="@Url.Action("ChiTietSanPham", "NgMua", new { id = hinh.IDSANPHAM})">
+                                                <img src="@imageUrl" style="width: 140px; object-fit: contain; margin-right: 10px;" />
+                                            </a>
                                         }
                                     }
                                     <div class="history-order__product-items_name">

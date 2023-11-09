@@ -1,4 +1,4 @@
-﻿
+﻿@model TMDT.Models.DashBoard
 @{
     ViewBag.Title = "KenhNgBan";
     Layout = "~/Views/Shared/Layout-NgBan.cshtml";
@@ -15,27 +15,27 @@
                     <div class="status">
                         <div class="to-do-box">
                             <a href="#" class="to-do-box-item">
-                                <p class="item-title">0</p>
+                                <p class="item-title">@Model.TotalNewOrders</p>
                                 <p class="item-desc">Chờ xác nhận</p>
                             </a>
                             <a href="#" class="to-do-box-item">
-                                <p class="item-title">0</p>
+                                <p class="item-title">@Model.TotalWaitingOrders</p>
                                 <p class="item-desc">Chờ lấy hàng</p>
                             </a>
                             <a href="#" class="to-do-box-item">
-                                <p class="item-title">0</p>
+                                <p class="item-title">@Model.TotalOnWayOrders</p>
                                 <p class="item-desc">Đang giao</p>
                             </a>
                             <a href="#" class="to-do-box-item">
-                                <p class="item-title">0</p>
+                                <p class="item-title">@Model.TotalCompleteOrders</p>
                                 <p class="item-desc">Đã giao</p>
                             </a>
                             <a href="#" class="to-do-box-item">
-                                <p class="item-title">0</p>
+                                <p class="item-title">@Model.TotalCancelOrders</p>
                                 <p class="item-desc">Đơn hủy</p>
                             </a>
                             <a href="#" class="to-do-box-item">
-                                <p class="item-title">0</p>
+                                <p class="item-title">@Model.ProductOutOfSold</p>
                                 <p class="item-desc">Sản phẩm hết hàng</p>
                             </a>
                         </div>
@@ -50,31 +50,8 @@
                 </div>
                 <div class="async-data-wrapper">
                     <div class="status">
-                        <div class="to-do-box">
-                            <a href="#" class="to-do-box-item">
-                                <p class="item-title">0</p>
-                                <p class="item-desc">Chờ xác nhận</p>
-                            </a>
-                            <a href="#" class="to-do-box-item">
-                                <p class="item-title">0</p>
-                                <p class="item-desc">Chờ lấy hàng</p>
-                            </a>
-                            <a href="#" class="to-do-box-item">
-                                <p class="item-title">0</p>
-                                <p class="item-desc">Đang giao</p>
-                            </a>
-                            <a href="#" class="to-do-box-item">
-                                <p class="item-title">0</p>
-                                <p class="item-desc">Đã giao</p>
-                            </a>
-                            <a href="#" class="to-do-box-item">
-                                <p class="item-title">0</p>
-                                <p class="item-desc">Đơn hủy</p>
-                            </a>
-                            <a href="#" class="to-do-box-item">
-                                <p class="item-title">0</p>
-                                <p class="item-desc">Sản phẩm hết hàng</p>
-                            </a>
+                        <div class="dashboard-group" style="justify-content: flex-start; margin: 0 20px;">
+                            <img src="@Url.Action("Chart")" style="width: 100%; height: 500px; object-fit: fill; box-shadow: 0 7px 8px 0 rgb(0 0 0 / 10%); " />
                         </div>
                     </div>
                 </div>
@@ -87,8 +64,7 @@
         <div class="row sm-gutter" style="width: 318px;">
             <div class="card card-offset">
                 <div class="title">
-                    Danh sách cần làm
-                    <p class="card-tips">Những việc bạn sẽ phải làm</p>
+                    Thông báo
                 </div>
                 <div class="async-data-wrapper">
                     <div class="status">

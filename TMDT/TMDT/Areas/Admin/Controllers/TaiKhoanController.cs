@@ -9,12 +9,12 @@ namespace TMDT.Areas.Admin.Controllers
 {
     public class TaiKhoanController : Controller
     {
-        TMDTEntities db=new TMDTEntities();
+        TMDTEntities db =new TMDTEntities();
         // GET: Admin/TaiKhoan
         public ActionResult TaiKhoan()
         {
             // Lấy thông tin khách hàng từ database
-            var email = Session["Email"] as string;
+            var email = Session["EmailAD"] as string;
             if (email == null)
             {
                 // Nếu chưa đăng nhập, chuyển hướng đến trang đăng nhập
@@ -44,8 +44,8 @@ namespace TMDT.Areas.Admin.Controllers
                 }
                 objUser.TENAD = model.TENAD;
                 objUser.HINHANH = model.HINHANH;
-                Session["Ten"] = model.TENAD;
-                Session["Hinh"] = model.HINHANH;
+                Session["TenAD"] = model.TENAD;
+                Session["HinhAD"] = model.HINHANH;
                 db.SaveChanges();
                 return RedirectToAction("TaiKhoan", "TaiKhoan");
             }

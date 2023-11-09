@@ -1,10 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
+using System.Web.UI;
 using TMDT.Models;
+using System.Web.UI.DataVisualization.Charting;
+using Chart = System.Web.UI.DataVisualization.Charting.Chart;
+
 namespace TMDT.Controllers
 {
     public class NgBanController : Controller
@@ -13,7 +19,102 @@ namespace TMDT.Controllers
         // GET: NgBan
         public ActionResult KenhNgBan()
         {
-            return View();
+            var model = new DashBoard();
+
+            var email = Session["Email"] as string;
+            if (email == null)
+            {
+                // Nếu chưa đăng nhập, chuyển hướng đến trang đăng nhập
+                return RedirectToAction("DangNhapNgBan", "NgBan");
+            }
+            // Lấy thông tin của người dùng trong cơ sở dữ liệu
+            var nguoidung = db.NGUOIDUNGs.SingleOrDefault(kh => kh.EMAIL == email);
+            if (nguoidung != null) // Kiểm tra xem người dùng có tồn tại hay không
+            {
+                // Lấy thông tin của cửa hàng nếu tồn tại, sau đó lưu ID của cửa hàng vào sản phẩm
+                var cuahang = db.CUAHANGs.SingleOrDefault(ch => ch.IDND == nguoidung.IDND);
+
+                if (cuahang != null) // Kiểm tra xem cửa hàng có tồn tại hay không
+                {
+                    model.TotalNewOrders = db.DONHANGs.Where(x => x.IDTRANGTHAIDH == 1 && x.IDCUAHANG == cuahang.IDCUAHANG).Count();
+                    model.TotalWaitingOrders = db.DONHANGs.Where(x => x.IDTRANGTHAIDH == 2 && x.IDCUAHANG == cuahang.IDCUAHANG).Count();
+                    model.TotalGotOrders = db.DONHANGs.Where(x => x.IDTRANGTHAIDH == 3 && x.IDCUAHANG == cuahang.IDCUAHANG).Count();
+                    model.TotalOnWayOrders = db.DONHANGs.Where(x => x.IDTRANGTHAIDH == 4 && x.IDCUAHANG == cuahang.IDCUAHANG).Count();
+                    model.TotalCompleteOrders = db.DONHANGs.Where(x => x.IDTRANGTHAIDH == 6 && x.IDCUAHANG == cuahang.IDCUAHANG).Count();
+                    model.TotalCancelOrders = db.DONHANGs.Where(x => x.IDTRANGTHAIDH == 8 && x.IDCUAHANG == cuahang.IDCUAHANG).Count();
+
+                    model.ProductOutOfSold = db.SANPHAMs.Where(x => x.SOLUONGTON <= 0 && x.IDCUAHANG == cuahang.IDCUAHANG).Count();
+
+                    return View(model);
+                }
+            }
+            return RedirectToAction("Error");
+        }
+
+        public ActionResult Chart()
+        {
+            var email = Session["Email"] as string;
+            if (email == null)
+            {
+                // Nếu chưa đăng nhập, chuyển hướng đến trang đăng nhập
+                return RedirectToAction("DangNhapNgBan", "NgBan");
+            }
+            // Lấy thông tin của người dùng trong cơ sở dữ liệu
+            var nguoidung = db.NGUOIDUNGs.SingleOrDefault(kh => kh.EMAIL == email);
+            if (nguoidung != null) // Kiểm tra xem người dùng có tồn tại hay không
+            {
+                // Lấy thông tin của cửa hàng nếu tồn tại, sau đó lưu ID của cửa hàng vào sản phẩm
+                var cuahang = db.CUAHANGs.SingleOrDefault(ch => ch.IDND == nguoidung.IDND);
+
+                if (cuahang != null) // Kiểm tra xem cửa hàng có tồn tại hay không
+                {
+                    var data = db.DONHANGs.Where(x => x.IDTRANGTHAIDH == 6 && x.IDCUAHANG == cuahang.IDCUAHANG).ToList();
+                    var chart = new Chart();
+                    var area = new ChartArea();
+                    area.AxisX.Minimum = 1;
+                    area.AxisX.Maximum = 12;
+                    area.AxisY.Minimum = 0;
+                    area.AxisY.Maximum = (double)data.Sum(x => x.THANHTIEN);
+                    area.AxisX.Interval = 1;
+                    area.AxisY.Interval = (double)(data.Sum(x => x.THANHTIEN) / 10);
+                    area.AxisX.MajorGrid.Enabled = false;
+                    area.AxisY.MajorGrid.Enabled = true;
+                    chart.Width = 800;
+                    chart.Height = 500;
+                    chart.ChartAreas.Add(area);
+                    var series = new Series();
+                    var year = DateTime.Now.Year;
+                    var ordersByMonth = data.GroupBy(x => x.NGAYTAO.Value.Month);
+                    foreach (var item in ordersByMonth)
+                    {
+                        var month = item.Key;
+                        var totalRevenue = item.Sum(x => x.THANHTIEN);
+                        series.Points.AddXY(month, totalRevenue);
+                    }
+                    Color[] colors = new Color[] { Color.LightGreen, Color.MistyRose, Color.Blue };
+                    for (int i = 0; i < series.Points.Count; i++)
+                    {
+                        series.Points[i].Color = colors[i];
+                    }
+                    // Đặt tiêu đề của biểu đồ và cỡ chữ
+                    var chartTitle = new Title();
+                    chartTitle.Text = $"Doanh thu theo tháng năm {year}";
+                    chartTitle.Font = new Font("Arial", 20, FontStyle.Bold); // Đặt cỡ chữ ở đây
+                    chart.Titles.Add(chartTitle);
+                    series.Label = "#PERCENT{P0}";
+                    series.Font = new Font("Arial", 10, FontStyle.Bold);
+                    series.ChartType = SeriesChartType.Column;
+                    series["PieLabelStyle"] = "Outside";
+                    chart.Series.Add(series);
+                    area.AxisY.LabelStyle.Format = "{N0} đ"; // Add thousand separator
+                    var returnStream = new MemoryStream();
+                    chart.ImageType = ChartImageType.Png;
+                    chart.SaveImage(returnStream);
+                    returnStream.Position = 0;
+                    return new FileStreamResult(returnStream, "image/png");
+                }
+            }
+            return RedirectToAction("Error");
         }
 
         // GET: Register

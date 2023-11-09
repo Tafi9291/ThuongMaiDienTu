@@ -78,8 +78,8 @@
                         <div class="header__cart-wrap">
                             @*<i class="header__cart-icon useracc fas fa-user" style="cursor:pointer;" onclick="myFunction()"></i>*@
                             <div class="header__navbar-item header__navbar-user">
-                                <img src="@Url.Content(Session["Hinh"].ToString())" alt="" class="header__navbar-user-img" style="width: 30px; height: 30px;">
-                                <span class="header__navbar-user-name" style="color: var(--text-color);">@Session["Ten"]</span>
+                                <img src="@Url.Content(Session["HinhAD"].ToString())" alt="" class="header__navbar-user-img" style="width: 30px; height: 30px;">
+                                <span class="header__navbar-user-name" style="color: var(--text-color);">@Session["TenAD"]</span>
                                 <div class="dropdown-content  useracc">
                                     <div class="box-noneshow"></div>
                                     <a href="@Url.Action("TaiKhoan", "TaiKhoan")">Xem tài khoản</a>

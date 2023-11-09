@@ -103,9 +103,12 @@ namespace TMDT.Controllers
         }
 
         // GET: Detail DonHang
-        public ActionResult CTDonHang()
+        public ActionResult CTDonHang(int id)
         {
-            return View();
+            var donHang = db.DONHANGs.SingleOrDefault(dh => dh.IDDONHANG == id);
+            var chiTietDonHangs = db.CTDONHANGs.Where(ct => ct.IDDONHANG == id).ToList();
+            ViewBag.DonHang = donHang;
+            return View(chiTietDonHangs);
         }
     }
 }

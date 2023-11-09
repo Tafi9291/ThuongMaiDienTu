@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PagedList;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -98,6 +99,71 @@ namespace TMDT.Areas.Admin.Controllers
         {
             Session["Email"] = null;
             return RedirectToAction("DangNhap", "Shipper");
+        }
+
+        public ActionResult QLDonHangShip(int? size, int? page, string currentFilter, string searchString)
+        {
+            SANPHAM sp = new SANPHAM();
+            var email = Session["Email"] as string;
+            if (email == null)
+            {
+                // Nếu chưa đăng nhập, chuyển hướng đến trang đăng nhập
+                return RedirectToAction("DangNhap", "Shipper");
+            }
+            var orders = db.DONHANGs
+                        .Where(s => s.IDTRANGTHAIDH != 1)
+                        .OrderByDescending(p => p.IDDONHANG);
+
+            // Thực hiện tìm kiếm nếu có chuỗi tìm kiếm
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                orders = (IOrderedQueryable<DONHANG>)orders.Where(p => p.NGUOINHAN.Contains(searchString));
+            }
+
+            // Lưu trạng thái tìm kiếm hiện tại
+            currentFilter = searchString;
+
+            var pageNumber = page ?? 1;
+            int pageSize = size ?? 10;
+            var pagedVouchers = orders
+                .ToPagedList(pageNumber, pageSize);
+
+            return View(pagedVouchers);
+        }
+
+        public ActionResult SelectCateTT()
+        {
+            TRANGTHAIDH se_cate = new TRANGTHAIDH();
+
+            se_cate.ListCateTT = db.TRANGTHAIDHs.Where(t => t.IDTRANGTHAIDH == 2 || t.IDTRANGTHAIDH == 4 
+            || t.IDTRANGTHAIDH == 5 || t.IDTRANGTHAIDH == 6 || t.IDTRANGTHAIDH == 7 || t.IDTRANGTHAIDH == 8).ToList<TRANGTHAIDH>();
+            return PartialView(se_cate);
+        }
+
+        public ActionResult CapNhat(int id)
+        {
+            var editing = db.DONHANGs.Find(id);
+            return View(editing);
+        }
+
+        [HttpPost]
+        public ActionResult CapNhat(DONHANG model)
+        {
+            try
+            {
+                var sua = db.DONHANGs.Find(model.IDDONHANG);
+                sua.IDTRANGTHAIDH = model.IDTRANGTHAIDH;
+                sua.IDPTTHANHTOAN = model.IDPTTHANHTOAN;
+                sua.NGUOINHAN = model.NGUOINHAN;
+                sua.DIACHI = model.DIACHI;
+                sua.SDT = model.SDT;
+                db.SaveChanges();
+                return RedirectToAction("QLDonHang");
+            }
+            catch
+            {
+                return View();
+            }
         }
     }
 }

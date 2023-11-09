@@ -39,8 +39,8 @@ namespace TMDT.Controllers
             {
                 viewModel.CuaHang = new CUAHANG();
                 viewModel.SanPhamPagedList = new List<SANPHAM>().ToPagedList(1, 10); // Tạo danh sách trống nếu không có dữ liệu
+                ViewBag.voucherShop = Enumerable.Empty<VOUCHERSHOP>();
             }
-            ViewBag.voucherShop = Enumerable.Empty<VOUCHERSHOP>();
 
 
             return View(viewModel);

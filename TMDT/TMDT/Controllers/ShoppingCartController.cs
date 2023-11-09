@@ -288,7 +288,7 @@ namespace TMDT.Controllers
                         chiTietDonHang.IDDONHANG = donHang.IDDONHANG;
                         chiTietDonHang.IDSANPHAM = item.sanpham.IDSANPHAM;
                         chiTietDonHang.SOLUONGMUA = item.soluong;
-
+                        chiTietDonHang.DONGIA = item.sanpham.GIAGIAM;
 
                         chiTietDonHang.TONGTIEN = (item.soluong * item.sanpham.GIAGIAM);
 
