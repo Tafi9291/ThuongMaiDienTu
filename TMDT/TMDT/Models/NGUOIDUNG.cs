@@ -23,6 +23,8 @@ namespace TMDT.Models
             this.CUAHANGs = new HashSet<CUAHANG>();
             this.DANHGIASPs = new HashSet<DANHGIASP>();
             this.DONHANGs = new HashSet<DONHANG>();
+            this.VOUCHERs = new HashSet<VOUCHER>();
+            this.VOUCHERSHOPs = new HashSet<VOUCHERSHOP>();
         }
         [NotMapped]
         public HttpPostedFileBase UploadImage1 { get; set; }
@@ -35,8 +37,6 @@ namespace TMDT.Models
         public string DIACHI { get; set; }
         public Nullable<int> IDPQND { get; set; }
         public string HINH { get; set; }
-        public Nullable<int> IDVOUCHERSHOP { get; set; }
-        public Nullable<int> IDVOUCHER { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CUAHANG> CUAHANGs { get; set; }
@@ -45,7 +45,9 @@ namespace TMDT.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DONHANG> DONHANGs { get; set; }
         public virtual PQNGUOIDUNG PQNGUOIDUNG { get; set; }
-        public virtual VOUCHERSHOP VOUCHERSHOP { get; set; }
-        public virtual VOUCHER VOUCHER { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<VOUCHER> VOUCHERs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<VOUCHERSHOP> VOUCHERSHOPs { get; set; }
     }
 }

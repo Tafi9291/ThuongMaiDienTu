@@ -36,8 +36,8 @@ namespace TMDT.Models
         public virtual CUAHANG CUAHANG { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DONHANG> DONHANGs { get; set; }
+        public virtual TRANGTHAIVC TRANGTHAIVC { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NGUOIDUNG> NGUOIDUNGs { get; set; }
-        public virtual TRANGTHAIVC TRANGTHAIVC { get; set; }
     }
 }

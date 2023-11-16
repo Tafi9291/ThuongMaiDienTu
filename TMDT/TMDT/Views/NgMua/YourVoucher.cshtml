@@ -1,0 +1,137 @@
+﻿@model List<TMDT.Models.VOUCHERSHOP>
+
+@{
+    ViewBag.Title = "YourVoucher";
+    Layout = "~/Views/Shared/Layout-NgMua.cshtml";
+}
+
+<style>
+    .setting-cards {
+        padding: 0 24px;
+    }
+
+    .voucher-list {
+        list-style: none;
+        display: flex;
+        margin: 10px 0;
+        overflow: hidden;
+        white-space: nowrap;
+        width: 100%;
+        background-color: #fff;
+        border-radius: 3px;
+    }
+
+    .voucher-list__items {
+        font-size: 1.5rem;
+        padding: 15px 35px;
+    }
+
+    a .voucher-list__items {
+        color: black;
+    }
+
+        a .voucher-list__items:hover {
+            color: var(--primary-color);
+        }
+
+    .active-items {
+        color: var(--primary-color);
+        border-bottom: 3px solid var(--primary-color);
+    }
+
+    .tr-order th {
+        font-size: 1.4rem;
+    }
+
+    .tr-order__detail td {
+        font-size: 1.4rem;
+    }
+
+        .tr-order__detail td a {
+            font-size: 1.4rem;
+        }
+</style>
+<div class="app__container">
+    <div class="grid wide">
+
+
+        <div class="row sm-gutter app__content">
+
+            <div class="col l-12 m-12 c-12">
+
+                <div class="home-product">
+                    <div class="row sm-gutter">
+                        <div class="col l-2">
+                            <div class="user-img">
+                                <img src="@Url.Content(ViewBag.UserInfo.HINH)" style="width: 82px; height: 82px; border-radius: 50%; border: 1px solid rgba(0, 0, 0, 0.1); object-fit: cover;" />
+                                <p class="user-img_name">@ViewBag.UserInfo.TENND</p>
+                                <div style=" border-bottom: 1px solid var(--primary-color); width: 100%;"></div>
+                                <div style="display: flex; flex-direction:column; align-items: flex-start;">
+                                    <a href="@Url.Action("DetailUser","Register")" class="user-img_link">
+                                        <i class='bx bx-user bx-md'></i>
+                                        <p>Tài khoản của bạn</p>
+                                    </a>
+                                    <a href="@Url.Action("YourVoucher","NgMua")" class="user-img_link">
+                                        <i class='bx bxs-coupon bx-md'></i>
+                                        <p>Voucher của bạn</p>
+                                    </a>
+                                    <a href="@Url.Action("DonMua","NgMua")" class="user-img_link">
+                                        <i class='bx bx-receipt bx-md'></i>
+                                        <p>Đơn mua</p>
+                                    </a>
+                                    <a href="@Url.Action("DangXuat", "Register")" class="user-img_link">
+                                        <p style="margin-left: 0;">Đăng xuất</p>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col l-10">
+                            <div class="page-content-wrapper">
+                                <div class="page">
+                                    <div class="page-header">
+                                        <div class="title" style="margin-bottom: 6px; font-size: 2.2rem;">Kho Voucher</div>
+                                        <div class="desc">Sử dụng khi mua hàng</div>
+                                    </div>
+                                    <div class="setting-cards">
+                                        <ul class="voucher-list" id="categories">
+                                            <a href="@Url.Action("YourVoucher", "NgMua")" class="active-items">
+                                            <li class="voucher-list__items">Shop</li>
+                                            </a>
+                                            <a href="@Url.Action("DonMua", "NgMua")" class="">
+                                            <li class="voucher-list__items">TFT-Market</li>
+                                            </a>
+                                        </ul>
+                                        <div class="voucher-wrapper">
+                                            @foreach (var item in Model)
+                                            {
+                                                <div class="voucher-shop-card" style="box-shadow: 0 4px 6px 0 rgba(0,0,0,.12);">
+                                                    <div class="voucher-shop-card__left" style="display: flex; border-right: unset; background-color: transparent;">
+                                                        <div class="shop-voucher">
+                                                            <img src="@Url.Content(item.CUAHANG.ANHDAIDIEN)" />
+                                                            <p>@item.CUAHANG.TENCH</p>
+                                                        </div>
+                                                        <div style="width: 312px; height: 118px;">
+                                                            <div class="voucher-shop-card__left-title" style="margin: 10px 0; font-size: 1.5rem;">Giảm <span>@String.Format("{0:#,##0}đ", item.GIAMGIA)</span></div>
+                                                            <div class="voucher-shop-card__left-condition" style="margin: 10px 0; font-size: 1.4rem;">Đơn tối thiểu <span>@String.Format("{0:#,##0}đ", item.GIATRITOITHIEU)</span></div>
+                                                            <div class="voucher-shop-card__left-condition" style="margin: 1.px 0; font-size: 1.4rem;">Trạng thái: <span>@item.TRANGTHAIVC.TENTRANGTHAI</span></div>
+                                                            <div class="voucher-shop-card__left-expiry" style="margin-top: 15px; font-size: 1.4rem;">HSD: <span>@String.Format("{0:dd/MM/yyyy}", item.NGAYKT)</span></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="voucher-shop-card__right" style="background-color: transparent;">
+                                                        @*<button type="submit" class="voucher-shop-card__right-save" style="font-size: 1.3rem;">Dùng ngay</button>*@
+                                                    </div>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

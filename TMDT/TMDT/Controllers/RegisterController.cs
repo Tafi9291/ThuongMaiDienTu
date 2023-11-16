@@ -85,6 +85,7 @@ namespace TMDT.Controllers
             return View(db.NGUOIDUNGs.Where(s => s.IDND == id).FirstOrDefault());
         }
         [HttpPost]
+        [ActionName("EditUser")]
         public ActionResult EditUser(NGUOIDUNG model)
         {
             if (ModelState.IsValid)
@@ -103,15 +104,72 @@ namespace TMDT.Controllers
                 }
 
                 objUser.IDND = model.IDND;
-                objUser.EMAIL = model.EMAIL;
+
                 objUser.TENND = model.TENND;
-                objUser.SDT = model.SDT;
-                objUser.DIACHI = model.DIACHI;
-                objUser.NHAPLAIMK = model.NHAPLAIMK;
+
+
+
                 objUser.HINH = model.HINH;
-                Session["Email"] = model.EMAIL;
+
                 Session["Ten"] = model.TENND;
                 Session["Hinh"] = model.HINH;
+                db.SaveChanges();
+                return RedirectToAction("DetailUser", "Register");
+            }
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ActionName("SDT")]
+        public ActionResult SDT(NGUOIDUNG model)
+        {
+            if (ModelState.IsValid)
+            {
+                var objUser = db.NGUOIDUNGs.Find(model.IDND);
+
+                objUser.IDND = model.IDND;
+
+                objUser.SDT = model.SDT;
+
+                db.SaveChanges();
+                return RedirectToAction("DetailUser", "Register");
+            }
+
+            return View(model);
+        }
+
+
+
+        [HttpPost]
+        [ActionName("DiaChi")]
+        public ActionResult DiaChi(NGUOIDUNG model)
+        {
+            if (ModelState.IsValid)
+            {
+                var objUser = db.NGUOIDUNGs.Find(model.IDND);
+
+                objUser.IDND = model.IDND;
+                objUser.DIACHI = model.DIACHI;
+
+                db.SaveChanges();
+                return RedirectToAction("DetailUser", "Register");
+            }
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ActionName("Email")]
+        public ActionResult Email(NGUOIDUNG model)
+        {
+            if (ModelState.IsValid)
+            {
+                var objUser = db.NGUOIDUNGs.Find(model.IDND);
+
+                objUser.IDND = model.IDND;
+                objUser.EMAIL = model.EMAIL;
+
                 db.SaveChanges();
                 return RedirectToAction("DetailUser", "Register");
             }

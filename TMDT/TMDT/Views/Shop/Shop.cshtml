@@ -95,19 +95,22 @@
                             {
                                 foreach (var item in ViewBag.voucherShop)
                                 {
-                                    <div class="voucher-shop-card">
-                                        <div class="voucher-shop-card__left">
-                                            <div class="voucher-shop-card__left-title">Giảm <span>@item.GIAMGIA</span></div>
-                                            <div class="voucher-shop-card__left-condition">Đơn tối thiểu <span>@item.GIATRITOITHIEU</span></div>
-                                            <div class="voucher-shop-card__left-expiry">HSD: <span>@item.NGAYKT</span></div>
+                                    <form action="@Url.Action("SaveVoucher", "Shop")" method="post">
+                                        <div class="voucher-shop-card">
+                                            <div class="voucher-shop-card__left">
+                                                <div class="voucher-shop-card__left-title">Giảm <span>@item.GIAMGIA</span></div>
+                                                <div class="voucher-shop-card__left-condition">Đơn tối thiểu <span>@item.GIATRITOITHIEU</span></div>
+                                                <div class="voucher-shop-card__left-expiry">HSD: <span>@item.NGAYKT</span></div>
+                                            </div>
+                                            <div class="voucher-shop-card__right">
+                                                <input type="hidden" name="id" value="@item.IDVOUCHERSHOP" />
+                                                <button type="submit" class="voucher-shop-card__right-save">Lưu</button>
+                                            </div>
+                                            @*<div class="voucer-shop-card__quantity" style="right: -1%;">
+                                                <span>@item.SOLUONGSD</span>
+                                            </div>*@
                                         </div>
-                                        <div class="voucher-shop-card__right">
-                                            <button class="voucher-shop-card__right-save">Lưu</button>
-                                        </div>
-                                        @*<div class="voucer-shop-card__quantity" style="right: -1%;">
-                                            <span>@item.SOLUONGSD</span>
-                                        </div>*@
-                                    </div>
+                                    </form>
                                 }
                             }
                         </div>
@@ -134,7 +137,9 @@
                                             {
                                                 <span class="home-product-item__price-old">@item.GIABAN</span>
                                             }
-                                            else { }
+                                            else {
+                                                <span class="home-product-item__price-old" style="height: 1.6rem;"></span>
+                                            }
                                             <span class="home-product-item__price-current">@item.GIAGIAM</span>
                                         </div>
                                         <div class="home-product-item__action">

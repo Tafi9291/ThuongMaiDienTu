@@ -2504,27 +2504,38 @@ i.home-product-item__like-icon-fill {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: rgb(255, 247, 247);
-    border: 1px solid rgb(238, 235, 235);
-    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 10%);
+    background-color: transparent;
+/*    background-color: rgb(255, 247, 247);
+    border: 1px solid rgb(238, 235, 235);*/
+    /*box-shadow: 0 1px 2px 0 rgb(0 0 0 / 10%);*/
     padding: 5px;
 }
 
 .user-img_name {
     margin: 10px 0;
     font-size: 1.7rem;
+    font-weight: 600;
 }
 
 .user-img_link {
     text-decoration: none;
     color: var(--text-color);
     font-size: 1.4rem;
-    margin-top: 10px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
 }
 
-.user-img_link:hover {
-    color:var(--primary-color);
-}
+    .user-img_link p {
+        line-height: 23px;
+        margin-left: 5px;
+    }
+
+    .user-img_link:hover {
+        color: var(--primary-color);
+    }
 
 .user-edit {
     display: flex;
@@ -3044,3 +3055,387 @@ i.home-product-item__like-icon-fill {
         border-bottom: 2px solid rgb(249, 55, 130);
         color: rgb(249, 55, 130);
     }
+
+/*Tai khoan*/
+.page-content-wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    margin: 0 auto;
+    /*width: 1104px;*/
+    min-height: calc(100vh - 75px - 72px);
+}
+
+.page {
+    background-color: #fff;
+    -webkit-box-shadow: 0 1px 4px 0 rgba(0,0,0,.12);
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,.12);
+    border-radius: 2px;
+}
+
+    .page .username-subtitle {
+        color: #999;
+        height: 14px;
+        line-height: 14px;
+        font-size: 12px;
+    }
+
+.page-header {
+    padding: 24px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.desc {
+    font-size: 14px;
+    color: #999;
+    line-height: 16px;
+}
+
+.setting-card {
+    background-color: #fff;
+    margin-left: 72px;
+}
+
+.setting-card-inner {
+    margin-left: -72px;
+}
+
+.setting-card-row {
+    padding: 24px 24px 24px 0;
+    margin-left: 72px;
+    -webkit-transition: color .3s ease;
+    transition: color .3s ease;
+}
+
+    .setting-card-row .mains {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        margin-left: -48px;
+    }
+
+    .setting-card-row .icon {
+        width: 24px;
+        height: 24px;
+        color: #999;
+        margin-right: 24px;
+    }
+    /*    .setting-card-row .desc.width-info {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 232px;
+        flex: 0 0 232px;
+        margin-right: 20px;
+    }*/
+    .setting-card-row .title {
+        color: #333;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 20px;
+    }
+
+    .setting-card-row .info {
+        -webkit-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+    }
+
+    .setting-card-row .extra {
+        padding: 16px;
+        margin-top: 16px;
+        background-color: #f6f6f6;
+        border-radius: 4px;
+        display: none;
+    }
+
+    .setting-card-row .desc {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+    }
+
+.desc.width-info {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 232px;
+    flex: 0 0 232px;
+    margin-right: 20px;
+}
+
+.account-profile {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.account-profile-item {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.account-profile-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.account-profile-text {
+    font-weight: 400;
+    color: #333;
+    margin-left: 4px;
+    font-size: 1.4rem;
+}
+
+.tafi-popover, .tafi-popover__ref {
+    display: inline-block;
+}
+
+.tafi-form .tafi-form-item--x-small .tafi-form-item__label {
+    line-height: 16px;
+}
+
+.tafi-form .tafi-form-item__label {
+    width: 112px;
+}
+
+.tafi-form--label-right .tafi-form-item__label {
+    text-align: right;
+}
+
+.tafi-form-item__label {
+    width: 200px;
+}
+
+.tafi-form-item__label {
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    padding: 8px 0;
+    margin-right: 16px;
+    line-height: 16px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.tafi-form .tafi-form-item__label {
+    width: 112px;
+}
+
+.tafi-form--label-right .tafi-form-item__label {
+    text-align: right;
+}
+
+.tafi-form-item {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-bottom: 24px;
+    font-size: 14px;
+    -webkit-transition: margin-bottom 0s .2s;
+    transition: margin-bottom 0s .2s;
+}
+
+.tafi-input-group {
+    display: flex;
+}
+
+.tafi-form-item {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-bottom: 24px;
+    font-size: 14px;
+    -webkit-transition: margin-bottom 0s .2s;
+    transition: margin-bottom 0s .2s;
+}
+
+.tafi-form-item__control {
+    width: 100%;
+}
+
+.tafi-input-group__prepend {
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    outline: none;
+    -webkit-transition: border .2s ease-in-out;
+    transition: border .2s ease-in-out;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 7px 12px;
+    font-size: 14px;
+    line-height: 16px;
+    color: #333;
+    background-color: #fff;
+    border-collapse: separate;
+    border-spacing: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+.tafi-input-group__append {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+}
+
+.hints-input {
+    display: inline-flex;
+    width: 100%;
+}
+
+    .hints-input .input-wrapper {
+        width: 100%;
+    }
+
+.tafi-input__inner {
+    position: relative;
+    display: inline-table;
+    width: 100%;
+    height: 32px;
+    padding: 0 12px;
+    font-size: 14px;
+    background-color: #fff;
+    border-collapse: separate;
+    border-spacing: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    outline: none;
+    -webkit-transition: border .2s ease-in-out;
+    transition: border .2s ease-in-out;
+}
+
+    .tafi-input__inner .tafi-input__input {
+        height: 30px;
+        font-size: 14px;
+        border-radius: 4px;
+    }
+
+.tafi-input__input {
+    display: table-cell;
+    width: 100%;
+    padding: 0;
+    color: #333;
+    font-weight: 200;
+    vertical-align: middle;
+    background-color: inherit;
+    border: 0;
+    outline: none;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+    .tafi-input__input::placeholder {
+        color: #c5bfb9;
+    }
+
+.tafi-button {
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    position: relative;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    height: 32px;
+    min-width: 72px;
+    padding: 0 16px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    border-radius: 4px;
+    outline: none;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+    .tafi-button:hover {
+        background-color: #f8f8f8;
+    }
+
+.tafi-button-primary {
+    color: var(--black-color);
+    background-color: var(--star-gold-color);
+    border-color: var(--star-gold-color);
+}
+
+    .tafi-button-primary:hover {
+        background-color: rgb(255 206 62 / 80%);
+    }
+
+/*Your Voucher*/
+.voucher-wrapper {
+    display: flex;
+    column-gap: 1rem;
+    flex-wrap: wrap; 
+}
+
+.shop-voucher {
+    padding-right: 10px;
+    border-right: 1px dotted #aca8a8;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 85.48px;
+}
+
+.shop-voucher img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 5px;
+}
+
+.shop-voucher p {
+    font-size: 1.3rem;
+    font-weight: 600;
+}

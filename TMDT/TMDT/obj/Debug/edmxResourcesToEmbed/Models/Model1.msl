@@ -149,8 +149,6 @@
           <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
           <ScalarProperty Name="IDPQND" ColumnName="IDPQND" />
           <ScalarProperty Name="HINH" ColumnName="HINH" />
-          <ScalarProperty Name="IDVOUCHERSHOP" ColumnName="IDVOUCHERSHOP" />
-          <ScalarProperty Name="IDVOUCHER" ColumnName="IDVOUCHER" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -336,5 +334,21 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <AssociationSetMapping Name="ND_VOUCHER" TypeName="TMDTModel.ND_VOUCHER" StoreEntitySet="ND_VOUCHER">
+      <EndProperty Name="NGUOIDUNG">
+        <ScalarProperty Name="IDND" ColumnName="IDND" />
+      </EndProperty>
+      <EndProperty Name="VOUCHER">
+        <ScalarProperty Name="IDVOUCHER" ColumnName="IDVOUCHER" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ND_VOUCHERSHOP" TypeName="TMDTModel.ND_VOUCHERSHOP" StoreEntitySet="ND_VOUCHERSHOP">
+      <EndProperty Name="NGUOIDUNG">
+        <ScalarProperty Name="IDND" ColumnName="IDND" />
+      </EndProperty>
+      <EndProperty Name="VOUCHERSHOP">
+        <ScalarProperty Name="IDVOUCHERSHOP" ColumnName="IDVOUCHERSHOP" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>

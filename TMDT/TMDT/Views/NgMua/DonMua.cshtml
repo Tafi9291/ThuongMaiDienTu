@@ -71,21 +71,27 @@
                                 <p class="user-img_name">@Session["Ten"]</p>
                                 <div style=" border-bottom: 1px solid var(--primary-color); width: 100%;"></div>
                                 <div style="display: flex; flex-direction:column; align-items: flex-start;">
-                                    <a href="@Url.Action("DetailUser", "Register")" class="user-img_link">
-                                        Tài khoản của bạn
+                                    <a href="@Url.Action("DetailUser","Register")" class="user-img_link">
+                                        <i class='bx bx-user bx-md'></i>
+                                        <p>Tài khoản của bạn</p>
                                     </a>
-                                    <a href="@Url.Action("DonMua", "NgMua")" class="user-img_link">
-                                        Đơn mua
+                                    <a href="@Url.Action("YourVoucher","NgMua")" class="user-img_link">
+                                        <i class='bx bxs-coupon bx-md'></i>
+                                        <p>Voucher của bạn</p>
                                     </a>
-                                    <a href="@Url.Action("DangXuat", "DNhap")" class="user-img_link">
-                                        Đăng xuất
+                                    <a href="@Url.Action("DonMua","NgMua")" class="user-img_link">
+                                        <i class='bx bx-receipt bx-md'></i>
+                                        <p>Đơn mua</p>
+                                    </a>
+                                    <a href="@Url.Action("DangXuat", "Register")" class="user-img_link">
+                                        <p style="margin-left: 0;">Đăng xuất</p>
                                     </a>
                                 </div>
 
                             </div>
                         </div>
                         <div class="col l-10">
-                            <div class="home-product-title">
+                            <div class="home-product-title" style="background-color: #fff;">
                                 <h1>Đơn hàng của bạn</h1>
                                 <ul class="order-list" id="categories">
                                     <a href="@Url.Action("DonMua", "NgMua")" class="@(!Request.QueryString.HasKeys() || Request.QueryString["IDTRANGTHAIDH"] == "" ? "active-items" : "")">

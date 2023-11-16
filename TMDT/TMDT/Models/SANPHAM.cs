@@ -13,19 +13,28 @@ namespace TMDT.Models
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using System.Web;
 
     public partial class SANPHAM
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SANPHAM()
         {
+            HINHANH1 = "~/Areas/Admin/Content/img/iconanh.png";
+            HINHANH2 = "~/Areas/Admin/Content/img/iconanh.png";
+            HINHANH3 = "~/Areas/Admin/Content/img/iconanh.png";
             this.CTDIENTHOAIs = new HashSet<CTDIENTHOAI>();
             this.CTDONHANGs = new HashSet<CTDONHANG>();
             this.CTGIAYs = new HashSet<CTGIAY>();
             this.CTTHOITRANGs = new HashSet<CTTHOITRANG>();
             this.DANHGIASPs = new HashSet<DANHGIASP>();
         }
-    
+        [NotMapped]
+        public HttpPostedFileBase UploadImage1 { get; set; }
+        [NotMapped]
+        public HttpPostedFileBase UploadImage2 { get; set; }
+        [NotMapped]
+        public HttpPostedFileBase UploadImage3 { get; set; }
         public int IDSANPHAM { get; set; }
         public string TENSP { get; set; }
         public string HINHANH1 { get; set; }

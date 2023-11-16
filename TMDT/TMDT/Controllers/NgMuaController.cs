@@ -194,5 +194,24 @@ namespace TMDT.Controllers
             return View(chiTietDonHangs);
 
         }
+
+        // GET
+        public ActionResult YourVoucher()
+        {
+            var email = Session["Email"] as string;
+            if (email == null)
+            {
+                // Nếu chưa đăng nhập, chuyển hướng đến trang đăng nhập
+                return RedirectToAction("DangNhap", "Register");
+            }
+            var nguoidung = db.NGUOIDUNGs.SingleOrDefault(kh => kh.EMAIL == email);
+            if (nguoidung != null)
+            {
+                var cacVoucherDaLuu = nguoidung.VOUCHERSHOPs.ToList();
+                ViewBag.UserInfo = nguoidung; // Đưa thông tin người dùng vào ViewBag
+                return View(cacVoucherDaLuu);
+            }
+            return View();
+        }
     }
 }

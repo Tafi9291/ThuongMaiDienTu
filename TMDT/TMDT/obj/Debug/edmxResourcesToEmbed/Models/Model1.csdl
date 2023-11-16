@@ -177,14 +177,12 @@
     <Property Name="DIACHI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="IDPQND" Type="Int32" />
     <Property Name="HINH" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="IDVOUCHERSHOP" Type="Int32" />
-    <Property Name="IDVOUCHER" Type="Int32" />
     <NavigationProperty Name="CUAHANGs" Relationship="Self.FK__CUAHANG__IDND__3C69FB99" FromRole="NGUOIDUNG" ToRole="CUAHANG" />
     <NavigationProperty Name="DANHGIASPs" Relationship="Self.FK__DANHGIASP__IDND__6C190EBB" FromRole="NGUOIDUNG" ToRole="DANHGIASP" />
     <NavigationProperty Name="DONHANGs" Relationship="Self.FK__DONHANG__IDND__01142BA1" FromRole="NGUOIDUNG" ToRole="DONHANG" />
     <NavigationProperty Name="PQNGUOIDUNG" Relationship="Self.FK__NGUOIDUNG__IDPQN__398D8EEE" FromRole="NGUOIDUNG" ToRole="PQNGUOIDUNG" />
-    <NavigationProperty Name="VOUCHERSHOP" Relationship="Self.FK__NGUOIDUNG__IDVOU__29221CFB" FromRole="NGUOIDUNG" ToRole="VOUCHERSHOP" />
-    <NavigationProperty Name="VOUCHER" Relationship="Self.FK__NGUOIDUNG__IDVOU__2A164134" FromRole="NGUOIDUNG" ToRole="VOUCHER" />
+    <NavigationProperty Name="VOUCHERs" Relationship="Self.ND_VOUCHER" FromRole="NGUOIDUNG" ToRole="VOUCHER" />
+    <NavigationProperty Name="VOUCHERSHOPs" Relationship="Self.ND_VOUCHERSHOP" FromRole="NGUOIDUNG" ToRole="VOUCHERSHOP" />
   </EntityType>
   <EntityType Name="PHEDUYET">
     <Key>
@@ -363,8 +361,8 @@
     <Property Name="GIATRITOITHIEU" Type="Int32" />
     <Property Name="IDTRANGTHAIVC" Type="Int32" />
     <NavigationProperty Name="DONHANGs" Relationship="Self.FK__DONHANG__IDVOUCH__04E4BC85" FromRole="VOUCHER" ToRole="DONHANG" />
-    <NavigationProperty Name="NGUOIDUNGs" Relationship="Self.FK__NGUOIDUNG__IDVOU__2A164134" FromRole="VOUCHER" ToRole="NGUOIDUNG" />
     <NavigationProperty Name="TRANGTHAIVC" Relationship="Self.FK__VOUCHER__IDTRANG__797309D9" FromRole="VOUCHER" ToRole="TRANGTHAIVC" />
+    <NavigationProperty Name="NGUOIDUNGs" Relationship="Self.ND_VOUCHER" FromRole="VOUCHER" ToRole="NGUOIDUNG" />
   </EntityType>
   <EntityType Name="VOUCHERSHOP">
     <Key>
@@ -383,8 +381,8 @@
     <Property Name="IDTRANGTHAIVC" Type="Int32" />
     <NavigationProperty Name="CUAHANG" Relationship="Self.FK__VOUCHERSH__IDCUA__7D439ABD" FromRole="VOUCHERSHOP" ToRole="CUAHANG" />
     <NavigationProperty Name="DONHANGs" Relationship="Self.FK__DONHANG__IDVOUCH__03F0984C" FromRole="VOUCHERSHOP" ToRole="DONHANG" />
-    <NavigationProperty Name="NGUOIDUNGs" Relationship="Self.FK__NGUOIDUNG__IDVOU__29221CFB" FromRole="VOUCHERSHOP" ToRole="NGUOIDUNG" />
     <NavigationProperty Name="TRANGTHAIVC" Relationship="Self.FK__VOUCHERSH__IDTRA__7E37BEF6" FromRole="VOUCHERSHOP" ToRole="TRANGTHAIVC" />
+    <NavigationProperty Name="NGUOIDUNGs" Relationship="Self.ND_VOUCHERSHOP" FromRole="VOUCHERSHOP" ToRole="NGUOIDUNG" />
   </EntityType>
   <Association Name="FK__ADMIN__IDCHUCVU__10566F31">
     <End Role="CHUCVU" Type="Self.CHUCVU" Multiplicity="0..1" />
@@ -794,30 +792,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__NGUOIDUNG__IDVOU__29221CFB">
-    <End Role="VOUCHERSHOP" Type="Self.VOUCHERSHOP" Multiplicity="0..1" />
-    <End Role="NGUOIDUNG" Type="Self.NGUOIDUNG" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="VOUCHERSHOP">
-        <PropertyRef Name="IDVOUCHERSHOP" />
-      </Principal>
-      <Dependent Role="NGUOIDUNG">
-        <PropertyRef Name="IDVOUCHERSHOP" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__NGUOIDUNG__IDVOU__2A164134">
-    <End Role="VOUCHER" Type="Self.VOUCHER" Multiplicity="0..1" />
-    <End Role="NGUOIDUNG" Type="Self.NGUOIDUNG" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="VOUCHER">
-        <PropertyRef Name="IDVOUCHER" />
-      </Principal>
-      <Dependent Role="NGUOIDUNG">
-        <PropertyRef Name="IDVOUCHER" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK__QUANGCAO__IDPHED__4222D4EF">
     <End Role="PHEDUYET" Type="Self.PHEDUYET" Multiplicity="0..1" />
     <End Role="QUANGCAO" Type="Self.QUANGCAO" Multiplicity="*" />
@@ -865,6 +839,14 @@
         <PropertyRef Name="IDTRANGTHAIVC" />
       </Dependent>
     </ReferentialConstraint>
+  </Association>
+  <Association Name="ND_VOUCHER">
+    <End Role="NGUOIDUNG" Type="Self.NGUOIDUNG" Multiplicity="*" />
+    <End Role="VOUCHER" Type="Self.VOUCHER" Multiplicity="*" />
+  </Association>
+  <Association Name="ND_VOUCHERSHOP">
+    <End Role="NGUOIDUNG" Type="Self.NGUOIDUNG" Multiplicity="*" />
+    <End Role="VOUCHERSHOP" Type="Self.VOUCHERSHOP" Multiplicity="*" />
   </Association>
   <EntityContainer Name="TMDTEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="ADMINs" EntityType="Self.ADMIN" />
@@ -1032,14 +1014,6 @@
       <End Role="PQNGUOIDUNG" EntitySet="PQNGUOIDUNGs" />
       <End Role="NGUOIDUNG" EntitySet="NGUOIDUNGs" />
     </AssociationSet>
-    <AssociationSet Name="FK__NGUOIDUNG__IDVOU__29221CFB" Association="Self.FK__NGUOIDUNG__IDVOU__29221CFB">
-      <End Role="VOUCHERSHOP" EntitySet="VOUCHERSHOPs" />
-      <End Role="NGUOIDUNG" EntitySet="NGUOIDUNGs" />
-    </AssociationSet>
-    <AssociationSet Name="FK__NGUOIDUNG__IDVOU__2A164134" Association="Self.FK__NGUOIDUNG__IDVOU__2A164134">
-      <End Role="VOUCHER" EntitySet="VOUCHERs" />
-      <End Role="NGUOIDUNG" EntitySet="NGUOIDUNGs" />
-    </AssociationSet>
     <AssociationSet Name="FK__QUANGCAO__IDPHED__4222D4EF" Association="Self.FK__QUANGCAO__IDPHED__4222D4EF">
       <End Role="PHEDUYET" EntitySet="PHEDUYETs" />
       <End Role="QUANGCAO" EntitySet="QUANGCAOs" />
@@ -1054,6 +1028,14 @@
     </AssociationSet>
     <AssociationSet Name="FK__VOUCHERSH__IDTRA__7E37BEF6" Association="Self.FK__VOUCHERSH__IDTRA__7E37BEF6">
       <End Role="TRANGTHAIVC" EntitySet="TRANGTHAIVCs" />
+      <End Role="VOUCHERSHOP" EntitySet="VOUCHERSHOPs" />
+    </AssociationSet>
+    <AssociationSet Name="ND_VOUCHER" Association="Self.ND_VOUCHER">
+      <End Role="NGUOIDUNG" EntitySet="NGUOIDUNGs" />
+      <End Role="VOUCHER" EntitySet="VOUCHERs" />
+    </AssociationSet>
+    <AssociationSet Name="ND_VOUCHERSHOP" Association="Self.ND_VOUCHERSHOP">
+      <End Role="NGUOIDUNG" EntitySet="NGUOIDUNGs" />
       <End Role="VOUCHERSHOP" EntitySet="VOUCHERSHOPs" />
     </AssociationSet>
   </EntityContainer>

@@ -178,8 +178,9 @@
                                                         <div class="custom-len-calc-input product-edit-form-item">
                                                             <div class="product-edit-form-item-content">
                                                                 <div class="tafi-input">
-                                                                    <div class="tafi-input__inner tafi-input__inner--large">
-                                                                        @{ Html.RenderAction("SelectCatePTTT", "DonHang");}
+                                                                    <div class="tafi-input__inner tafi-input__inner--large" style="line-height: 40px;">
+                                                                        @*@{ Html.RenderAction("SelectCatePTTT", "DonHang");}*@
+                                                                        @Model.PTTHANHTOAN.TENPT
                                                                     </div>
                                                                 </div>
                                                             </div>

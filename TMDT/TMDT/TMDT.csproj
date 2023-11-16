@@ -409,13 +409,6 @@
     <Content Include="Areas\Admin\Views\QLShipper\Shipper.cshtml" />
     <Content Include="Areas\Admin\Views\QLShipper\TaoShipper.cshtml" />
     <Content Include="Areas\Admin\Views\QLShipper\CapNhatShipper.cshtml" />
-    <EntityDeploy Include="Models\Model1.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Content>
     <Content Include="Areas\Admin\Views\QLTinTuc\TinTuc.cshtml" />
     <Content Include="Areas\Admin\Views\QLTinTuc\TaoTinTuc.cshtml" />
     <Content Include="Areas\Admin\Views\QLTinTuc\CapNhatTinTuc.cshtml" />
@@ -423,6 +416,13 @@
     <Content Include="Areas\Admin\Views\Shipper\QLDonHangShip.cshtml" />
     <Content Include="Areas\Admin\Views\Shipper\CapNhat.cshtml" />
     <Content Include="Areas\Admin\Views\Shipper\SelectCateTT.cshtml" />
+    <EntityDeploy Include="Models\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -504,6 +504,7 @@
     <Content Include="Views\DonHang\CapNhat.cshtml" />
     <Content Include="Views\ShoppingCart\Checkout.cshtml" />
     <Content Include="Views\SanPham\CapNhat.cshtml" />
+    <Content Include="Views\NgMua\YourVoucher.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
