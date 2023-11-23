@@ -151,6 +151,7 @@
     <Compile Include="Controllers\DonHangController.cs" />
     <Compile Include="Controllers\NgBanController.cs" />
     <Compile Include="Controllers\NgMuaController.cs" />
+    <Compile Include="Controllers\PaymentController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\SanPhamController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
@@ -266,6 +267,9 @@
     <Compile Include="Models\VOUCHERSHOP.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Payment\PayCompare.cs" />
+    <Compile Include="Payment\PayLib.cs" />
+    <Compile Include="Payment\Util.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -505,6 +509,7 @@
     <Content Include="Views\ShoppingCart\Checkout.cshtml" />
     <Content Include="Views\SanPham\CapNhat.cshtml" />
     <Content Include="Views\NgMua\YourVoucher.cshtml" />
+    <Content Include="Views\Payment\PaymentConfirm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

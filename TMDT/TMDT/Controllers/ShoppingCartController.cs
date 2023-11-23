@@ -123,7 +123,7 @@ namespace TMDT.Controllers
 
             return View(cart);
         }
-        private CUAHANG GetCuaHangById(int id)
+        public CUAHANG GetCuaHangById(int id)
         {
             // Thực hiện truy vấn hoặc tìm kiếm cửa hàng dựa trên id và trả về cửa hàng cụ thể
             CUAHANG cuahang = db.CUAHANGs.FirstOrDefault(c => c.IDCUAHANG == id);
@@ -140,94 +140,7 @@ namespace TMDT.Controllers
         [HttpPost]
         public ActionResult Checkout(FormCollection form, int ShopId)
         {
-            //CUAHANG cuahang = GetCuaHangById(id);
-            //try
-            //{
-            //    // Lấy thông tin khách hàng từ session
-            //    var email = Session["Email"] as string;
-            //    if (Session["Email"] == null)
-            //    {
-            //        // Nếu chưa đăng nhập, chuyển hướng đến trang đăng nhập
-            //        return RedirectToAction("Dangnhap", "DNhap");
-            //    }
-            //    else
-            //    {
-            //        Cart cart = Session["Cart"] as Cart;
-            //        // Lấy thông tin khách hàng từ CSDL
-            //        var khachHang = db.NGUOIDUNGs.SingleOrDefault(kh => kh.EMAIL == email);
-            //        var donHang = new DONHANG();
-
-            //        int cuahangId = 0; // Giá trị mặc định
-            //        if (cart != null && cart.Items != null)
-            //        {
-            //            foreach (var item in cart.Items)
-            //            {
-            //                if (item != null && item.sanpham != null && item.sanpham.CUAHANG != null)
-            //                {
-            //                    cuahangId = item.sanpham.CUAHANG.IDCUAHANG;
-            //                    break; // Tìm thấy một mục thỏa mãn, thoát khỏi vòng lặp
-            //                }
-            //            }
-            //        }
-            //        // Thêm thông tin khách hàng vào đơn hàng
-            //        donHang.IDND = khachHang.IDND;
-            //        donHang.NGUOINHAN = (form["Hovaten"]);
-
-            //        donHang.DIACHI = (form["Diachi"]);
-            //        donHang.SDT = (form["SDT"]);
-            //        donHang.NGAYTAO = DateTime.Now;
-            //        donHang.THANHTIEN = (int?)cart.Tongtien().Values.Sum();
-            //        // Lấy trạng thái đơn hàng mặc định (ví dụ: 1 - Chờ xử lý)
-            //        var trangThai = db.TRANGTHAIDHs.SingleOrDefault(tt => tt.IDTRANGTHAIDH == 1);
-
-            //        // Thêm thông tin trạng thái vào đơn hàng
-            //        donHang.IDTRANGTHAIDH = trangThai.IDTRANGTHAIDH;
-            //        var ptthanhtoan = db.PTTHANHTOANs.SingleOrDefault(tt => tt.IDPTTHANHTOAN == 1);
-            //        donHang.IDPTTHANHTOAN = ptthanhtoan.IDPTTHANHTOAN;
-            //        // Lưu đơn hàng vào CSDL
-            //        db.DONHANGs.Add(donHang);
-
-            //        var productsInShop = cart.Items.Where(item => item.sanpham?.CUAHANG?.IDCUAHANG == cuahangId);
-
-            //        // Thêm sản phẩm vào chi tiết đơn hàng
-            //        foreach (var item in productsInShop)
-            //        {
-            //            CTDONHANG chiTietDonHang = new CTDONHANG();
-
-
-            //            chiTietDonHang.IDDONHANG = donHang.IDDONHANG;
-            //            chiTietDonHang.IDSANPHAM = item.sanpham.IDSANPHAM;
-            //            chiTietDonHang.SOLUONGMUA = item.soluong;
-
-
-            //            chiTietDonHang.TONGTIEN = (item.soluong * item.sanpham.GIAGIAM);
-
-            //            db.CTDONHANGs.Add(chiTietDonHang);
-
-
-            //            foreach (var p in db.SANPHAMs.Where(s => s.IDSANPHAM == chiTietDonHang.IDSANPHAM))
-            //            {
-            //                var soluongtonmoi = p.SOLUONGTON - item.soluong;
-            //                p.SOLUONGTON = soluongtonmoi;
-            //            }
-            //        }
-
-            //        db.SaveChanges();
-            //        // Xóa thông tin giỏ hàng theo cửa hàng đã bấm thanh toán
-            //        cart.Xoagh(cuahang.IDCUAHANG);
-
-
-            //        // Hiển thị thông báo đặt hàng thành công
-            //        ViewBag.ThongBao = "Đặt hàng thành công!";
-
-            //        return RedirectToAction("Complete", new { id = donHang.IDDONHANG });
-
-            //    }
-            //}
-            //catch
-            //{
-            //    return View();
-            //}
+            
             CUAHANG cuahang = GetCuaHangById(ShopId);
             try
             {
@@ -273,6 +186,8 @@ namespace TMDT.Controllers
                     donHang.IDTRANGTHAIDH = trangThai.IDTRANGTHAIDH;
                     var ptthanhtoan = db.PTTHANHTOANs.SingleOrDefault(tt => tt.IDPTTHANHTOAN == 1);
                     donHang.IDPTTHANHTOAN = ptthanhtoan.IDPTTHANHTOAN;
+                    var trangthaixemdon = db.TRANGTHAIXEMDONHANGs.SingleOrDefault(tt => tt.IDTRANGTHAIXDH == 1);
+                    donHang.IDTRANGTHAIXDH = trangthaixemdon.IDTRANGTHAIXDH;
                     // Lưu đơn hàng vào CSDL
                     db.DONHANGs.Add(donHang);
 

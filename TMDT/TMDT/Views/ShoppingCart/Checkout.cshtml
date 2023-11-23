@@ -142,7 +142,7 @@
 
                                                         <a for="button-show_checkout" href="">
                                                             <input type="hidden" name="ShopId" value="@ViewBag.CuaHang.IDCUAHANG" />
-                                                            <button style="width:452px">
+                                                            <button style="width:452px" >
                                                                 <strong>MUA NGAY</strong>
                                                                 <br />
                                                                 <span style="font-size:18px">(Giao nhanh từ 2 giờ hoặc nhận tại cửa hàng)</span>
@@ -155,7 +155,8 @@
                                                         <h3 style="text-align:center"> Hoặc </h3>
 
                                                         <a for="button-show_checkout" href="#">
-                                                            <button style="width:452px" formaction="">
+                                                            <input type="hidden" name="ShopId" value="@ViewBag.CuaHang.IDCUAHANG" />
+                                                            <button style="width:452px" formaction="@Url.Action("Payment","Payment")">
                                                                 <strong>THANH TOÁN QUA THẺ</strong>
                                                                 <br />
                                                                 <span style="font-size:18px">(Thẻ VNPAY)</span>
