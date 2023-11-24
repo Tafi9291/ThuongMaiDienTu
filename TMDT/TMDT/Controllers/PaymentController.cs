@@ -16,9 +16,9 @@ namespace TMDT.Controllers
     {
         TMDTEntities db = new TMDTEntities();
         // GET: Payment
-        public ActionResult Payment(FormCollection form)
+        public ActionResult Payment(FormCollection form, int ShopId)
         {
-
+            TempData["ShopIdForConfirmation"] = ShopId;
 
             string url = ConfigurationManager.AppSettings["Url"];
             string returnUrl = ConfigurationManager.AppSettings["ReturnUrl"];
@@ -74,12 +74,13 @@ namespace TMDT.Controllers
 
             return cuahang;
         }
-        public ActionResult PaymentConfirm(FormCollection form, int ShopId)
+        public ActionResult PaymentConfirm(FormCollection form)
         {
             TMDTEntities db = new TMDTEntities();
 
-          
+
             // Continue with the rest of your existing code...
+            int ShopId = (int)TempData["ShopIdForConfirmation"];
 
             if (Request.QueryString.Count > 0)
             {
@@ -109,7 +110,6 @@ namespace TMDT.Controllers
                 {
                     if (vnp_ResponseCode == "00")
                     {
-                        CUAHANG cuahang = GetCuaHangById(ShopId);
 
                         // Check if the user is logged in
                         var email1 = Session["Email"] as string;
@@ -204,8 +204,8 @@ namespace TMDT.Controllers
                     ViewBag.Message = "Error processing the order. Invalid signature.";
                 }
             }
-                return View();
-            }
+            return View();
         }
     }
+}
     

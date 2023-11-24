@@ -345,15 +345,14 @@ td {
         }
 
 .cart-product-purchase {
-
+    padding: 20px 0;
+    border-top: 1px solid rgba(0,0,0,.09);
 }
 
 .cart-product-purchase-wrapper {
     display: flex;
     align-items: center;
-    height: 70px;
     box-sizing: border-box;
-    border-top: 1px solid rgba(0,0,0,.09);
     padding: 0 20px;
     justify-content: flex-end;
 }

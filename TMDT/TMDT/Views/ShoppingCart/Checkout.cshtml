@@ -4,7 +4,7 @@
 @{
     ViewBag.Title = "Checkout";
     Layout = "~/Views/Shared/Layout-NgMua.cshtml";
-    
+
 
 }
 
@@ -13,11 +13,13 @@
         <div class="row sm-gutter app__content">
             <div class="col l-12 m-12 c-12">
                 <div class="title-page">
-                    Thanh toán 
+                    Thanh toán
                 </div>
                 @if (ViewBag.ItemsForCuaHang != null)
                 {
                     double totalCart = 0; // Khởi tạo biến tổng tiền
+                    double shipPrice = 0; // Khởi tạo biến tiền ship
+                    double toalCartAfAll = 0; // Khởi tạo biến tổng thanh toán
                     <div class="header-show-to-cart">
                         <div class="header-show-to-cart__product">Sản phẩm</div>
                         <div class="header-show-to-cart__price">Đơn giá</div>
@@ -28,7 +30,7 @@
                     <section class="section-cart" style="margin-bottom: 50px;">
                         <div class="cart-shop-info-wrapper">
                             <div class="cart-shop-info">
-                                <a href="#" class="cart-shop-link">
+                                <a href="#" class="cart-shop-link" id="shopInfo" data-shop-id="@ViewBag.CuaHang.IDCUAHANG">
                                     <i class='bx bx-store bx-md'></i>
                                     <img src="@Url.Content(@ViewBag.CuaHang.ANHDAIDIEN)" alt="Alternate Text" />
                                     <span style="margin-left: 10px; font-size: 1.4rem;">@ViewBag.CuaHang.TENCH</span>
@@ -41,6 +43,8 @@
                             @*<input type="hidden" name="CuaHangId" value="@item.cuahang?.IDCUAHANG" />*@
                             double total = Convert.ToDouble(item.sanpham.GIAGIAM * item.soluong);
                             totalCart += total; // Thêm giá trị sản phẩm vào tổng tiền
+                            shipPrice = 26000;
+                            toalCartAfAll = totalCart + shipPrice;
                             <section class="cart-product-wrapper">
                                 <div class="cart-product">
                                     <div class="cart-product-info">
@@ -64,12 +68,9 @@
                                             @using (Html.BeginForm("Update_Sl", "ShoppingCart", FormMethod.Post, new { @style = "display: flex; align-items: center;  justify-content: center;  flex-direction: column;" }))
                                             {
                                                 <div class="tafi-input-quantity">
-                                                    <button type="button" class="button-quantity decrease" aria-label="Decrease"><i class='bx bx-minus'></i></button>
                                                     <input type="hidden" value="@item.sanpham.IDSANPHAM" name="ID_sanpham" />
-                                                    <input type="text" name="Soluong" value="@item.soluong" class="button-quantity input-quantity" />
-                                                    <button type="button" class="button-quantity increase" aria-label="Increase"><i class='bx bx-plus'></i></button>
+                                                    <p class="button-quantity input-quantity" style="color: black;">@item.soluong</p>
                                                 </div>
-                                                <button type="submit" class="button-update-quantity">Cập nhật</button>
                                             }
                                             @if (item.ErrorMessage != null)
                                             {
@@ -89,17 +90,78 @@
                         }
                         <div class="cart-product-purchase">
                             <div class="cart-product-purchase-wrapper">
-                                <div style="display: flex; flex-direction: column;">
+                                <div style="display: flex; flex-direction: column; width: 340px;">
                                     <div>
                                         <div class="checkout-voucher-shop">
                                             <div class="checkout-voucher-shop__title">Voucher shop</div>
-                                            <label href="#">Chọn voucher</label>
+                                            <a class="dialog-btn" href="#my-dialog">Chọn voucher</a>
+
+                                            <div class="dialog overlay" id="my-dialog">
+                                                <a href="#" class="overlay-close"></a>
+
+                                                <div class="dialog-body">
+                                                    <a class="dialog-close-btn" href="#">&times;</a>
+                                                    <h3>Chọn Voucher shop</h3>
+                                                    <div class="voucher-wrapper scroll-bar-voucher-shop">
+                                                        @if (ViewBag.VoucherShop != null)
+                                                        {
+                                                            foreach (var voucher in ViewBag.VoucherShop)
+                                                            {
+                                                                <div class="voucher-shop-card" style="box-shadow: 0 4px 6px 0 rgba(0,0,0,.12);">
+                                                                    <div class="voucher-shop-card__left" style="display: flex; border-right: unset; background-color: transparent;">
+                                                                        <div class="shop-voucher">
+                                                                            <img src="@Url.Content(voucher.CUAHANG.ANHDAIDIEN)" />
+                                                                            <p>@voucher.CUAHANG.TENCH</p>
+                                                                        </div>
+                                                                        <div style="width: 290px; height: 118px;">
+                                                                            <div class="voucher-shop-card__left-title" style="margin: 10px 0; font-size: 1.5rem;">Giảm <span>@String.Format("{0:#,##0}đ", voucher.GIAMGIA)</span></div>
+                                                                            <div class="voucher-shop-card__left-condition" style="margin: 10px 0; font-size: 1.4rem;">Đơn tối thiểu <span>@String.Format("{0:#,##0}đ", voucher.GIATRITOITHIEU)</span></div>
+                                                                            <div class="voucher-shop-card__left-condition" style="margin: 1.px 0; font-size: 1.4rem;">Trạng thái: <span>@voucher.TRANGTHAIVC.TENTRANGTHAI</span></div>
+                                                                            <div class="voucher-shop-card__left-expiry" style="margin-top: 15px; font-size: 1.4rem;">HSD: <span>@String.Format("{0:dd/MM/yyyy}", voucher.NGAYKT)</span></div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="voucher-shop-card__right" style="background-color: transparent;">
+                                                                        @*<button type="submit" class="voucher-shop-card__right-save" style="font-size: 1.3rem;">Dùng ngay</button>*@
+                                                                        <input type="radio" name="voucherShopSelection" value="@voucher.IDVOUCHERSHOP" style="width: 18px; height: 18px;" />
+                                                                    </div>
+                                                                </div>
+                                                            }
+                                                        }
+                                                    </div>
+
+                                                    <div class="dialog-form-footer">
+                                                        <a href="#" class="tafi-button tafi-button-primary button-ok" style=" background-color: rgb(250 68 121); color: #fff;">OK</a>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="cart-product-purchase__total">
-                                        <div class="cart-product-purchase__total-title">Tổng thanh toán</div>
-                                        <div class="cart-product-purchase__total-price">@totalCart.ToString("0,0 đ")</div>
-                                        @using (Html.BeginForm("Checkout", "ShoppingCart"))
+                                    <div>
+                                        <div class="detail-bill">
+                                            <div class="detail-bill-wrapper">
+                                                <h2 class="total-bill-title">Tên voucher</h2>
+                                                <div class="total-bill-price" id="voucherNameDisplay"></div>
+                                            </div>
+                                            <div class="detail-bill-wrapper">
+                                                <h2 class="total-bill-title">Tổng tiền hàng</h2>
+                                                <div class="total-bill-price">@totalCart.ToString("0,0đ")</div>
+                                            </div>
+                                            <div class="detail-bill-wrapper">
+                                                <h2 class="total-bill-title">Phí vận chuyển</h2>
+                                                <div class="total-bill-price">@shipPrice.ToString("0,0đ")</div>
+                                            </div>
+                                            <div class="detail-bill-wrapper">
+                                                <h2 class="total-bill-title">Giảm giá</h2>
+                                                <div class="total-bill-price" id="discountPrice"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="cart-product-purchase__total" style="flex-direction: column;">
+                                        <div style="display: flex; justify-content: space-between;">
+                                            <div class="cart-product-purchase__total-title">Tổng thanh toán</div>
+                                            <div class="cart-product-purchase__total-price" id="totalCartAfAll" data-initial-value="@toalCartAfAll.ToString("0,0 đ")">@toalCartAfAll.ToString("0,0 đ")</div>
+                                        </div>
+                                        @using (Html.BeginForm("Checkout", "ShoppingCart", FormMethod.Post, new { @style = "display: flex; justify-content: flex-end; margin-top: 10px;" }))
                                         {
                                             <label for="button-show" class="cart-product-purchase__total-checkout">Mua hàng</label>
                                             <input type="checkbox" class="button-show-check-out" id="button-show">
@@ -142,7 +204,7 @@
 
                                                         <a for="button-show_checkout" href="">
                                                             <input type="hidden" name="ShopId" value="@ViewBag.CuaHang.IDCUAHANG" />
-                                                            <button style="width:452px" >
+                                                            <button style="width:452px" id="CheckoutButton">
                                                                 <strong>MUA NGAY</strong>
                                                                 <br />
                                                                 <span style="font-size:18px">(Giao nhanh từ 2 giờ hoặc nhận tại cửa hàng)</span>
@@ -154,9 +216,9 @@
                                                         <br />
                                                         <h3 style="text-align:center"> Hoặc </h3>
 
-                                                        <a for="button-show_checkout" href="#">
-                                                            <input type="hidden" name="ShopId" value="@ViewBag.CuaHang.IDCUAHANG" />
+                                                        <a for="button-show_checkout" href="">
                                                             <button style="width:452px" formaction="@Url.Action("Payment","Payment")">
+                                                                <input type="hidden" name="ShopId" value="@ViewBag.CuaHang.IDCUAHANG" />
                                                                 <strong>THANH TOÁN QUA THẺ</strong>
                                                                 <br />
                                                                 <span style="font-size:18px">(Thẻ VNPAY)</span>
@@ -209,6 +271,525 @@
             var currentValue = parseInt(input.value);
             if (!isNaN(currentValue)) {
                 input.value = currentValue + 1;
+            }
+        });
+    });
+</script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    // Xử lý sự kiện chọn voucher
+    //$(document).ready(function () {
+    //    var totalDiscounted = 0;
+    //    $('input[name="voucherShopSelection"]').change(function () {
+    //        var selectedVoucherId = $(this).val();
+    //        var totalCartAfAll = parseFloat($('#totalCartAfAll').data('initial-value').replace(/\D/g, '')); // Lấy giá trị và xử lý số tiền tổng
+    //        //var shopId = $('#shopInfo').data('shop-id');
+
+    //        // Gửi selectedVoucherId lên server
+    //        $.ajax({
+    //            type: 'POST',
+    //            url: '/ShoppingCart/Checkout', // Đường dẫn tới action xử lý voucher ở server
+    //            data: { voucherId: selectedVoucherId, totalCartAfAll: totalCartAfAll },
+    //            success: function (data) {
+    //                if (data.success) {
+    //                    // Cập nhật thông tin tên voucher trên giao diện
+    //                    $('#voucherNameDisplay').text(data.voucherName);
+    //                    $('#discountPrice').text(data.voucherDiscount);
+    //                    $('#totalCartAfAll').text(data.totalDiscountedPrice);
+    //                    totalDiscounted = data.totalDiscounted;
+    //                } else {
+    //                    console.log('Không tìm thấy voucher.');
+    //                }
+    //            },
+    //            error: function () {
+    //                console.log('Đã có lỗi xảy ra trong quá trình xử lý.');
+    //            }
+    //        });
+    //    });
+
+    //    $('#CheckoutButton').click(function () {
+    //        var shopId = $('#shopInfo').data('shop-id');
+
+    //        // Đảm bảo rằng totalDiscounted đã được cập nhật từ sự kiện chọn voucher trước khi gửi lên server
+    //        if (totalDiscounted > 0) {
+    //            $.ajax({
+    //                type: 'POST',
+    //                url: '/ShoppingCart/Checkout',
+    //                data: { totalDiscounted: totalDiscounted, ShopId: shopId },
+    //                success: function (response) {
+    //                    console.log('Giá trị totalDiscountedPrice đã được gửi lên server.');
+
+    //                    // Thực hiện các hành động khác sau khi gửi giá trị thành công (nếu cần)
+    //                },
+    //                error: function () {
+    //                    console.log('Đã có lỗi xảy ra khi gửi giá trị totalDiscountedPrice lên server.');
+    //                }
+    //            });
+    //        } else {
+    //            console.log('Chưa có giá trị totalDiscounted.');
+    //        }
+    //    });
+    //});
+
+    //$(document).ready(function () {
+    //    var totalDiscounted = 0;
+
+    //    // Xử lý sự kiện chọn voucher
+    //    $('input[name="voucherShopSelection"]').change(function () {
+    //        // Thực hiện xử lý khi người dùng chọn voucher
+    //        var selectedVoucherId = $(this).val();
+    //        var totalCartAfAll = parseFloat($('#totalCartAfAll').data('initial-value').replace(/\D/g, ''));
+    //        var shopId = $('#shopInfo').data('shop-id');
+
+    //        // Gửi selectedVoucherId và thông tin thanh toán lên server để cập nhật dữ liệu voucher
+    //        $.ajax({
+    //            type: 'POST',
+    //            url: '/ShoppingCart/Checkout',
+    //            data: { voucherId: selectedVoucherId, totalCartAfAll: totalCartAfAll, ShopId: shopId },
+    //            success: function (data) {
+    //                console.log('Thông tin voucher đã được cập nhật.');
+    //                // Cập nhật thông tin voucher trên giao diện (nếu cần)
+    //                $('#voucherNameDisplay').text(data.voucherName);
+    //                $('#discountPrice').text(data.voucherDiscount);
+    //                $('#totalCartAfAll').text(data.totalDiscountedPrice);
+    //            },
+    //            error: function () {
+    //                console.log('Đã có lỗi xảy ra khi cập nhật thông tin voucher.');
+    //            }
+    //        });
+    //    });
+
+    //    // Xử lý sự kiện khi người dùng nhấn nút thanh toán
+    //    $('#CheckoutButton').click(function () {
+    //        // Thực hiện xử lý khi người dùng nhấn thanh toán
+    //        var shopId = $('#shopInfo').data('shop-id');
+    //        var totalCartAfAll = parseFloat($('#totalCartAfAll').data('initial-value').replace(/\D/g, ''));
+
+    //        // Gửi thông tin thanh toán lên server
+    //        $.ajax({
+    //            type: 'POST',
+    //            url: '/ShoppingCart/Checkout',
+    //            data: { totalCartAfAll: totalCartAfAll, ShopId: shopId },
+    //            success: function (response) {
+    //                console.log('Thông tin thanh toán đã được gửi lên server.');
+    //                // Thực hiện các hành động khác sau khi gửi thông tin thành công (nếu cần)
+    //            },
+    //            error: function () {
+    //                console.log('Đã có lỗi xảy ra khi gửi thông tin thanh toán lên server.');
+    //            }
+    //        });
+    //    });
+    //});
+
+
+    //$(document).ready(function () {
+    //    var totalCartAfAll = 0;
+    //    var selectedVoucherId = null;
+    //    var voucherChanged = false; // Biến đánh dấu sự thay đổi của voucher
+
+    //    // Xử lý sự kiện chọn voucher
+    //    $('input[name="voucherShopSelection"]').change(function () {
+    //        // Thực hiện xử lý khi người dùng chọn voucher
+    //        voucherChanged = true; // Đánh dấu đã có sự thay đổi
+    //        selectedVoucherId = $(this).val();
+    //        totalCartAfAll = parseFloat($('#totalCartAfAll').data('initial-value').replace(/\D/g, ''));
+    //        var shopId = $('#shopInfo').data('shop-id');
+
+    //        // Cập nhật giao diện
+    //        updateUI(selectedVoucherId, totalCartAfAll);
+    //    });
+
+    //    // Xử lý sự kiện khi người dùng nhấn nút thanh toán
+    //    $('#CheckoutButton').click(function () {
+    //        var shopId = $('#shopInfo').data('shop-id');
+
+    //        // Kiểm tra nếu có sự thay đổi của voucher thì mới gửi lên server
+    //        if (voucherChanged) {
+    //            sendCheckoutData(selectedVoucherId, totalCartAfAll, shopId);
+    //        }
+    //    });
+
+    //    // Hàm cập nhật giao diện
+    //    function updateUI(selectedVoucherId, totalCartAfAll) {
+    //        // Gửi yêu cầu lấy thông tin về voucher từ server
+    //        $.ajax({
+    //            type: 'POST',
+    //            url: '/ShoppingCart/GetVoucherInfo',
+    //            data: { voucherId: selectedVoucherId, totalCartAfAll: totalCartAfAll },
+    //            success: function (data) {
+    //                // Cập nhật thông tin voucher trên giao diện với dữ liệu từ server
+    //                $('#voucherNameDisplay').text(data.voucherName);
+    //                $('#discountPrice').text(data.voucherDiscount);
+    //                $('#totalCartAfAll').text(data.totalDiscountedPrice); // Tính tổng giá sau khi áp dụng voucher
+    //            },
+    //            error: function () {
+    //                console.log('Đã có lỗi xảy ra khi lấy thông tin voucher.');
+    //            }
+    //        });
+    //    }
+
+    //    // Hàm gửi dữ liệu thanh toán lên server
+    //    function sendCheckoutData(selectedVoucherId, totalCartAfAll, shopId) {
+    //        $.ajax({
+    //            type: 'POST',
+    //            url: '/ShoppingCart/Checkout',
+    //            data: { selectedVoucherId: selectedVoucherId, totalCartAfAll: totalCartAfAll, ShopId: shopId },
+    //            success: function (response) {
+    //                console.log('Thông tin thanh toán đã được gửi lên server.');
+    //                // Thực hiện các hành động khác sau khi gửi thông tin thành công (nếu cần)
+    //            },
+    //            error: function () {
+    //                console.log('Đã có lỗi xảy ra khi gửi thông tin thanh toán lên server.');
+    //            }
+    //        });
+    //    }
+    //});
+    //$(document).ready(function () {
+    //    var totalDiscounted = 0;
+    //    var selectedVoucherId = null; // Khởi tạo biến để lưu ID của voucher được chọn
+    //    var totalCartAfAll = 0; // Khởi tạo biến để lưu giá trị totalCartAfAll
+
+    //    // Xử lý sự kiện chọn voucher
+    //    $('input[name="voucherShopSelection"]').change(function () {
+    //        // Thực hiện xử lý khi người dùng chọn voucher
+    //        selectedVoucherId = $(this).val();
+    //        totalCartAfAll = parseFloat($('#totalCartAfAll').data('initial-value').replace(/\D/g, ''));
+    //        var shopId = $('#shopInfo').data('shop-id');
+
+    //        // Gửi selectedVoucherId và thông tin thanh toán lên server để cập nhật dữ liệu voucher
+    //        $.ajax({
+    //            type: 'POST',
+    //            url: '/ShoppingCart/Checkout',
+    //            data: { voucherId: selectedVoucherId, totalCartAfAll: totalCartAfAll, ShopId: shopId },
+    //            success: function (data) {
+    //                console.log('Thông tin voucher đã được cập nhật.');
+    //                // Cập nhật thông tin voucher trên giao diện (nếu cần)
+    //                $('#voucherNameDisplay').text(data.voucherName);
+    //                $('#discountPrice').text(data.voucherDiscount);
+    //                $('#totalCartAfAll').text(data.totalDiscountedPrice);
+    //                totalDiscounted = data.totalDiscounted;
+
+    //                // Kiểm tra và gửi dữ liệu khi cả hai sự kiện đã hoàn thành
+    //                if (selectedVoucherId !== null && totalCartAfAll !== 0) {
+    //                    sendToServer(selectedVoucherId, totalCartAfAll, shopId, totalDiscounted);
+    //                }
+    //            },
+    //            error: function () {
+    //                console.log('Đã có lỗi xảy ra khi cập nhật thông tin voucher.');
+    //            }
+    //        });
+    //    });
+
+    //    // Xử lý sự kiện khi người dùng nhấn nút thanh toán
+    //    $('#CheckoutButton').click(function () {
+    //        // Kiểm tra và gửi dữ liệu khi cả hai sự kiện đã hoàn thành
+    //        if (selectedVoucherId !== null && totalCartAfAll !== 0) {
+    //            sendToServer(selectedVoucherId, totalCartAfAll, $('#shopInfo').data('shop-id'), totalDiscounted);
+    //        }
+    //    });
+
+    //    // Hàm gửi dữ liệu lên server
+    //    function sendToServer(voucherId, totalCart, shopId, totalDiscounted) {
+    //        // Gửi thông tin thanh toán lên server
+    //        if (totalDiscounted > 0) {
+    //            $.ajax({
+    //                type: 'POST',
+    //                url: '/ShoppingCart/Checkout',
+    //                data: { voucherId: voucherId, totalCartAfAll: totalCart, ShopId: shopId, totalDiscounted: totalDiscounted },
+    //                success: function (response) {
+    //                    console.log('Thông tin thanh toán đã được gửi lên server.');
+    //                    // Thực hiện các hành động khác sau khi gửi thông tin thành công (nếu cần)
+    //                },
+    //                error: function () {
+    //                    console.log('Đã có lỗi xảy ra khi gửi thông tin thanh toán lên server.');
+    //                }
+    //            });
+    //        }
+
+    //    }
+    //});
+    // Xử lý sự kiện chọn voucher
+    //$(document).ready(function () {
+    //    var totalDiscounted = 0;
+    //    $('input[name="voucherShopSelection"]').change(function () {
+    //        var selectedVoucherId = $(this).val();
+    //        var totalCartAfAll = parseFloat($('#totalCartAfAll').data('initial-value').replace(/\D/g, '')); // Lấy giá trị và xử lý số tiền tổng
+    //        //var shopId = $('#shopInfo').data('shop-id');
+
+    //        // Gửi selectedVoucherId lên server
+    //        $.ajax({
+    //            type: 'POST',
+    //            url: '/ShoppingCart/ProcessVoucher', // Đường dẫn tới action xử lý voucher ở server
+    //            data: { voucherId: selectedVoucherId, totalCartAfAll: totalCartAfAll },
+    //            success: function (data) {
+    //                if (data.success) {
+    //                    // Cập nhật thông tin tên voucher trên giao diện
+    //                    $('#voucherNameDisplay').text(data.voucherName);
+    //                    $('#discountPrice').text(data.voucherDiscount);
+    //                    $('#totalCartAfAll').text(data.totalDiscountedPrice);
+    //                    totalDiscounted = data.totalDiscounted;
+
+
+    //                } else {
+    //                    console.log('Không tìm thấy voucher.');
+    //                }
+    //            },
+    //            error: function () {
+    //                console.log('Đã có lỗi xảy ra trong quá trình xử lý.');
+    //            }
+    //        });
+    //    });
+
+    //    $('#CheckoutButton').click(function () {
+    //        var shopId = $('#shopInfo').data('shop-id');
+
+    //        // Đảm bảo rằng totalDiscounted đã được cập nhật từ sự kiện chọn voucher trước khi gửi lên server
+    //        if (totalDiscounted > 0) {
+    //            $.ajax({
+    //                type: 'POST',
+    //                url: '/ShoppingCart/Checkout',
+    //                data: { totalDiscounted: totalDiscounted, ShopId: shopId },
+    //                success: function (response) {
+    //                    console.log('Giá trị totalDiscountedPrice đã được gửi lên server.');
+    //                    // Thực hiện các hành động khác sau khi gửi giá trị thành công (nếu cần)
+    //                },
+    //                error: function () {
+    //                    console.log('Đã có lỗi xảy ra khi gửi giá trị totalDiscountedPrice lên server.');
+    //                }
+    //            });
+    //        } else {
+    //            console.log('Chưa có giá trị totalDiscounted.');
+    //        }
+    //    });
+    //});
+    //$(document).ready(function () {
+    //    var totalDiscounted = 0;
+
+    //    // Hàm để gửi dữ liệu khi đã xác định giá trị totalDiscounted từ sự kiện chọn voucher
+    //    function sendDataToCheckout() {
+    //        var shopId = $('#shopInfo').data('shop-id');
+
+    //        if (totalDiscounted > 0) {
+    //            $.ajax({
+    //                type: 'POST',
+    //                url: '/ShoppingCart/Checkout',
+    //                data: { totalDiscounted: totalDiscounted, ShopId: shopId },
+    //                success: function (response) {
+    //                    console.log('Giá trị totalDiscounted đã được gửi lên server.');
+    //                    // Thực hiện các hành động khác sau khi gửi giá trị thành công (nếu cần)
+    //                },
+    //                error: function () {
+    //                    console.log('Đã có lỗi xảy ra khi gửi giá trị totalDiscounted lên server.');
+    //                }
+    //            });
+    //        } else {
+    //            console.log('Chưa có giá trị totalDiscounted.');
+    //        }
+    //    }
+
+    //    $('input[name="voucherShopSelection"]').change(function () {
+    //        var selectedVoucherId = $(this).val();
+    //        var totalCartAfAll = parseFloat($('#totalCartAfAll').data('initial-value').replace(/\D/g, '')); // Lấy giá trị và xử lý số tiền tổng
+
+    //        // Gửi selectedVoucherId lên server để xử lý và cập nhật giá trị totalDiscounted
+    //        $.ajax({
+    //            type: 'POST',
+    //            url: '/ShoppingCart/ProcessVoucher',
+    //            data: { voucherId: selectedVoucherId, totalCartAfAll: totalCartAfAll },
+    //            success: function (data) {
+    //                if (data.success) {
+    //                    $('#voucherNameDisplay').text(data.voucherName);
+    //                    $('#discountPrice').text(data.voucherDiscount);
+    //                    $('#totalCartAfAll').text(data.totalDiscountedPrice);
+    //                    totalDiscounted = data.totalDiscounted;
+
+    //                } else {
+    //                    console.log('Không tìm thấy voucher.');
+    //                }
+    //            },
+    //            error: function () {
+    //                console.log('Đã có lỗi xảy ra trong quá trình xử lý.');
+    //            }
+    //        });
+    //    });
+
+    //    $('#CheckoutButton').click(function () {
+    //        // Gọi hàm để gửi dữ liệu đến server khi người dùng click CheckoutButton
+    //        sendDataToCheckout();
+    //    });
+    //});
+    //$(document).ready(function () {
+    //    var totalDiscounted = 0;
+    //    var isVoucherApplied = false; // Biến để kiểm tra xem đã áp dụng voucher chưa
+
+    //    // Hàm để gửi dữ liệu khi đã xác định giá trị totalDiscounted từ sự kiện chọn voucher
+    //    function sendDataToCheckout() {
+    //        var shopId = $('#shopInfo').data('shop-id');
+
+    //        if (isVoucherApplied) { // Chỉ gửi dữ liệu nếu đã áp dụng voucher
+    //            if (totalDiscounted > 0) {
+    //                $.ajax({
+    //                    type: 'POST',
+    //                    url: '/ShoppingCart/Checkout',
+    //                    data: { totalDiscounted: totalDiscounted, ShopId: shopId },
+    //                    success: function (response) {
+    //                        console.log('Giá trị totalDiscounted đã được gửi lên server.');
+    //                        // Thực hiện các hành động khác sau khi gửi giá trị thành công (nếu cần)
+    //                    },
+    //                    error: function () {
+    //                        console.log('Đã có lỗi xảy ra khi gửi giá trị totalDiscounted lên server.');
+    //                    }
+    //                });
+    //            } else {
+    //                console.log('Chưa có giá trị totalDiscounted.');
+    //            }
+    //        } else {
+    //            console.log('Chưa áp dụng voucher.');
+    //        }
+    //    }
+
+    //    $('input[name="voucherShopSelection"]').change(function () {
+    //        var selectedVoucherId = $(this).val();
+    //        var totalCartAfAll = parseFloat($('#totalCartAfAll').data('initial-value').replace(/\D/g, '')); // Lấy giá trị và xử lý số tiền tổng
+
+    //        // Gửi selectedVoucherId lên server để xử lý và cập nhật giá trị totalDiscounted
+    //        $.ajax({
+    //            type: 'POST',
+    //            url: '/ShoppingCart/ProcessVoucher',
+    //            data: { voucherId: selectedVoucherId, totalCartAfAll: totalCartAfAll },
+    //            success: function (data) {
+    //                if (data.success) {
+    //                    $('#voucherNameDisplay').text(data.voucherName);
+    //                    $('#discountPrice').text(data.voucherDiscount);
+    //                    $('#totalCartAfAll').text(data.totalDiscountedPrice);
+    //                    totalDiscounted = data.totalDiscounted;
+
+    //                    isVoucherApplied = true; // Đánh dấu rằng voucher đã được áp dụng
+    //                } else {
+    //                    console.log('Không tìm thấy voucher.');
+    //                }
+    //            },
+    //            error: function () {
+    //                console.log('Đã có lỗi xảy ra trong quá trình xử lý.');
+    //            }
+    //        });
+    //    });
+
+    //    $('#CheckoutButton').click(function () {
+    //        // Gọi hàm để gửi dữ liệu đến server khi người dùng click CheckoutButton
+    //        sendDataToCheckout();
+    //    });
+    //});
+    //$(document).ready(function () {
+    //    var totalDiscounted = 0;
+    //    var isVoucherApplied = false;
+    //    var selectedVoucherId = null;
+
+    //    $('input[name="voucherShopSelection"]').change(function () {
+    //        selectedVoucherId = $(this).val();
+    //        var totalCartAfAll = parseFloat($('#totalCartAfAll').data('initial-value').replace(/\D/g, ''));
+
+    //        $.ajax({
+    //            type: 'POST',
+    //            url: '/ShoppingCart/Checkout',
+    //            data: {
+    //                voucherId: selectedVoucherId,
+    //                totalCartAfAll: totalCartAfAll,
+    //                ShopId: $('#shopInfo').data('shop-id'),
+    //                totalDiscounted: totalDiscounted
+    //            },
+    //            success: function (data) {
+    //                // Xử lý dữ liệu trả về sau khi thanh toán
+    //                $('#voucherNameDisplay').text(data.voucherName);
+    //                $('#discountPrice').text(data.voucherDiscount);
+    //                $('#totalCartAfAll').text(data.totalDiscountedPrice);
+    //                totalDiscounted = data.totalDiscounted;
+    //            },
+    //            error: function () {
+    //                console.log('Đã có lỗi xảy ra trong quá trình xử lý.');
+    //            }
+    //        });
+    //    });
+
+    //    $('#CheckoutButton').click(function () {
+    //        var totalCartAfAll = parseFloat($('#totalCartAfAll').data('initial-value').replace(/\D/g, ''));
+    //        if (isVoucherApplied && totalDiscounted > 0 && selectedVoucherId !== null && selectedVoucherId !== undefined) {
+    //            $.ajax({
+    //                type: 'POST',
+    //                url: '/ShoppingCart/Checkout',
+    //                data: {
+    //                    voucherId: selectedVoucherId,
+    //                    totalCartAfAll: totalCartAfAll,
+    //                    ShopId: $('#shopInfo').data('shop-id'),
+    //                    totalDiscounted: totalDiscounted
+    //                },
+    //                success: function (data) {
+    //                    // Xử lý dữ liệu trả về sau khi thanh toán
+    //                },
+    //                error: function () {
+    //                    console.log('Đã có lỗi xảy ra trong quá trình xử lý.');
+    //                }
+    //            });
+    //        } else {
+    //            console.log('Chưa áp dụng voucher hoặc giá trị totalDiscounted không hợp lệ.');
+    //        }
+    //    });
+    //});
+    $(document).ready(function () {
+        var totalDiscounted = 0;
+        var isVoucherApplied = false;
+        var selectedVoucherId = null;
+
+        $('input[name="voucherShopSelection"]').change(function () {
+            selectedVoucherId = $(this).val();
+            var totalCartAfAll = parseFloat($('#totalCartAfAll').data('initial-value').replace(/\D/g, ''));
+
+            $.ajax({
+                type: 'POST',
+                url: '/ShoppingCart/ProcessVoucher', // Sử dụng hàm xử lý voucher thay vì Checkout
+                data: {
+                    voucherId: selectedVoucherId,
+                    totalCartAfAll: totalCartAfAll
+                },
+                success: function (data) {
+                    if (data.success) {
+                        $('#voucherNameDisplay').text(data.voucherName);
+                        $('#discountPrice').text(data.voucherDiscount);
+                        $('#totalCartAfAll').text(data.totalDiscountedPrice);
+                        totalDiscounted = data.totalDiscounted;
+                        isVoucherApplied = true;
+                    } else {
+                        console.log('Không tìm thấy voucher.');
+                    }
+                },
+                error: function () {
+                    console.log('Đã có lỗi xảy ra trong quá trình xử lý voucher.');
+                }
+            });
+        });
+
+        $('#CheckoutButton').click(function () {
+            var totalCartAfAll = parseFloat($('#totalCartAfAll').data('initial-value').replace(/\D/g, ''));
+            if (isVoucherApplied && totalDiscounted > 0 && selectedVoucherId !== null && selectedVoucherId !== undefined) {
+                $.ajax({
+                    type: 'POST',
+                    url: '/ShoppingCart/Checkout',
+                    data: {
+                        voucherId: selectedVoucherId,
+                        totalCartAfAll: totalCartAfAll,
+                        ShopId: $('#shopInfo').data('shop-id'),
+                        totalDiscounted: totalDiscounted
+                    },
+                    success: function (data) {
+                        // Xử lý dữ liệu trả về sau khi thanh toán
+                    },
+                    error: function () {
+                        console.log('Đã có lỗi xảy ra trong quá trình thanh toán.');
+                    }
+                });
+            } else {
+                console.log('Vui lòng chọn voucher trước khi thanh toán hoặc dữ liệu không hợp lệ.');
             }
         });
     });

@@ -1,4 +1,4 @@
-.app {
+﻿.app {
     overflow: hidden;
 }
 
@@ -3438,4 +3438,116 @@ i.home-product-item__like-icon-fill {
 .shop-voucher p {
     font-size: 1.3rem;
     font-weight: 600;
+}
+
+
+/*Dialog chọn voucher*/
+
+.dialog {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity linear 0.2s;
+}
+
+.overlay-close {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    cursor: default;
+}
+
+.dialog:target {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+.overlay {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.dialog-body {
+    max-width: 850px;
+    width: 510px;
+    position: relative;
+    padding: 16px;
+    background-color: #fff;
+    max-height: 700px;
+    overflow: hidden;
+}
+
+    .dialog-body h3 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+
+.dialog-close-btn {
+    position: absolute;
+    top: 6px;
+    right: 14px;
+    text-decoration: none;
+    color: #333;
+    font-size: 3rem;
+}
+
+.dialog-btn {
+    color: blue;
+    font-size: 1.5rem;
+}
+
+.dialog-form-footer {
+    display: flex;
+    justify-content: flex-end;
+    text-transform: uppercase;
+    align-items: center;
+    padding: 20px 0 10px 0;
+}
+
+.button-ok:hover {
+    opacity: 0.8;
+}
+
+.checkout-voucher-shop {
+    padding: 20px 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.checkout-voucher-shop__title {
+    font-size: 2rem;
+}
+
+.scroll-bar-voucher-shop {
+    overflow-y: auto;
+    max-height: 450px;
+}
+
+.detail-bill {
+    margin: 0 8px;
+}
+
+    .detail-bill .detail-bill-wrapper {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        justify-content: space-between;
+        margin-bottom: 15px;
+    }
+
+.total-bill-title {
+    font-weight: 300;
+}
+
+.total-bill-price {
+    font-size: 15px;
 }
