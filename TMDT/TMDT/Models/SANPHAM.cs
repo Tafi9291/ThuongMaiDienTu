@@ -15,6 +15,7 @@ namespace TMDT.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Web;
 
+
     public partial class SANPHAM
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -28,6 +29,7 @@ namespace TMDT.Models
             this.CTGIAYs = new HashSet<CTGIAY>();
             this.CTTHOITRANGs = new HashSet<CTTHOITRANG>();
             this.DANHGIASPs = new HashSet<DANHGIASP>();
+            this.NGUOIDUNGs = new HashSet<NGUOIDUNG>();
         }
         [NotMapped]
         public HttpPostedFileBase UploadImage1 { get; set; }
@@ -67,5 +69,7 @@ namespace TMDT.Models
         public virtual LOAISP LOAISP { get; set; }
         public virtual MAUSAC MAUSAC { get; set; }
         public virtual PHEDUYET PHEDUYET { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<NGUOIDUNG> NGUOIDUNGs { get; set; }
     }
 }

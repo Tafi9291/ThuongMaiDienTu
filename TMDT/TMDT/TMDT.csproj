@@ -239,6 +239,9 @@
     <Compile Include="Models\SIZETHOITRANG.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\THANHPHO.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\THDIENTHOAI.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -510,6 +513,7 @@
     <Content Include="Views\SanPham\CapNhat.cshtml" />
     <Content Include="Views\NgMua\YourVoucher.cshtml" />
     <Content Include="Views\Payment\PaymentConfirm.cshtml" />
+    <Content Include="Views\NgMua\Favorites.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

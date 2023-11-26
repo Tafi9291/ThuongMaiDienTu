@@ -3551,3 +3551,42 @@ i.home-product-item__like-icon-fill {
 .total-bill-price {
     font-size: 15px;
 }
+
+/* favorites list*/
+.favorites-list {
+    width: 60px;
+    text-align: center;
+}
+
+.favorites-list-wrap {
+    position: relative;
+    display: inline-block;
+    padding: 0 12px;
+}
+
+.favorites-list-icon {
+    color: var(--white-color);
+    font-size: 2.4rem;
+    margin-bottom: 8px;
+}
+
+.home-product-item__detail-fav {
+    margin-top: 10px;
+}
+    .home-product-item__detail-fav form {
+        display: flex;
+        align-items: center;
+    }
+
+.home-product-item__detail-fav-button {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.home-product-item__detail-fav-title {
+    font-size: 1.5rem;
+    margin-left: 10px;
+    font-weight: 600;
+}

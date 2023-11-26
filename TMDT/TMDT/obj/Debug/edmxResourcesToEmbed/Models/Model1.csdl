@@ -95,7 +95,9 @@
     <Property Name="ANHDAIDIEN" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="IDND" Type="Int32" />
     <Property Name="TENCH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IDTP" Type="Int32" />
     <NavigationProperty Name="NGUOIDUNG" Relationship="Self.FK__CUAHANG__IDND__3C69FB99" FromRole="CUAHANG" ToRole="NGUOIDUNG" />
+    <NavigationProperty Name="THANHPHO" Relationship="Self.FK__CUAHANG__IDTP__625A9A57" FromRole="CUAHANG" ToRole="THANHPHO" />
     <NavigationProperty Name="DONHANGs" Relationship="Self.FK__DONHANG__IDCUAHA__3A4CA8FD" FromRole="CUAHANG" ToRole="DONHANG" />
     <NavigationProperty Name="QUANGCAOs" Relationship="Self.FK__QUANGCAO__IDCUAH__412EB0B6" FromRole="CUAHANG" ToRole="QUANGCAO" />
     <NavigationProperty Name="SANPHAMs" Relationship="Self.FK__SANPHAM__IDCUAHA__6754599E" FromRole="CUAHANG" ToRole="SANPHAM" />
@@ -177,12 +179,15 @@
     <Property Name="DIACHI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="IDPQND" Type="Int32" />
     <Property Name="HINH" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IDTP" Type="Int32" />
     <NavigationProperty Name="CUAHANGs" Relationship="Self.FK__CUAHANG__IDND__3C69FB99" FromRole="NGUOIDUNG" ToRole="CUAHANG" />
     <NavigationProperty Name="DANHGIASPs" Relationship="Self.FK__DANHGIASP__IDND__6C190EBB" FromRole="NGUOIDUNG" ToRole="DANHGIASP" />
     <NavigationProperty Name="DONHANGs" Relationship="Self.FK__DONHANG__IDND__01142BA1" FromRole="NGUOIDUNG" ToRole="DONHANG" />
     <NavigationProperty Name="PQNGUOIDUNG" Relationship="Self.FK__NGUOIDUNG__IDPQN__398D8EEE" FromRole="NGUOIDUNG" ToRole="PQNGUOIDUNG" />
+    <NavigationProperty Name="THANHPHO" Relationship="Self.FK__NGUOIDUNG__IDTP__634EBE90" FromRole="NGUOIDUNG" ToRole="THANHPHO" />
     <NavigationProperty Name="VOUCHERs" Relationship="Self.ND_VOUCHER" FromRole="NGUOIDUNG" ToRole="VOUCHER" />
     <NavigationProperty Name="VOUCHERSHOPs" Relationship="Self.ND_VOUCHERSHOP" FromRole="NGUOIDUNG" ToRole="VOUCHERSHOP" />
+    <NavigationProperty Name="SANPHAMs" Relationship="Self.YEUTHICH" FromRole="NGUOIDUNG" ToRole="SANPHAM" />
   </EntityType>
   <EntityType Name="PHEDUYET">
     <Key>
@@ -253,6 +258,7 @@
     <NavigationProperty Name="LOAISP" Relationship="Self.FK__SANPHAM__IDLOAIS__68487DD7" FromRole="SANPHAM" ToRole="LOAISP" />
     <NavigationProperty Name="MAUSAC" Relationship="Self.FK__SANPHAM__IDMAUSA__2739D489" FromRole="SANPHAM" ToRole="MAUSAC" />
     <NavigationProperty Name="PHEDUYET" Relationship="Self.FK__SANPHAM__IDPHEDU__66603565" FromRole="SANPHAM" ToRole="PHEDUYET" />
+    <NavigationProperty Name="NGUOIDUNGs" Relationship="Self.YEUTHICH" FromRole="SANPHAM" ToRole="NGUOIDUNG" />
   </EntityType>
   <EntityType Name="SHIPPER">
     <Key>
@@ -281,6 +287,15 @@
     <Property Name="IDSIZETT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="SIZETT" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
     <NavigationProperty Name="CTTHOITRANGs" Relationship="Self.FK__CTTHOITRA__IDSIZ__5CD6CB2B" FromRole="SIZETHOITRANG" ToRole="CTTHOITRANG" />
+  </EntityType>
+  <EntityType Name="THANHPHO">
+    <Key>
+      <PropertyRef Name="IDTP" />
+    </Key>
+    <Property Name="IDTP" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TENTHANHPHO" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CUAHANGs" Relationship="Self.FK__CUAHANG__IDTP__625A9A57" FromRole="THANHPHO" ToRole="CUAHANG" />
+    <NavigationProperty Name="NGUOIDUNGs" Relationship="Self.FK__NGUOIDUNG__IDTP__634EBE90" FromRole="THANHPHO" ToRole="NGUOIDUNG" />
   </EntityType>
   <EntityType Name="THDIENTHOAI">
     <Key>
@@ -564,6 +579,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__CUAHANG__IDTP__625A9A57">
+    <End Role="THANHPHO" Type="Self.THANHPHO" Multiplicity="0..1" />
+    <End Role="CUAHANG" Type="Self.CUAHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="THANHPHO">
+        <PropertyRef Name="IDTP" />
+      </Principal>
+      <Dependent Role="CUAHANG">
+        <PropertyRef Name="IDTP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__DONHANG__IDCUAHA__3A4CA8FD">
     <End Role="CUAHANG" Type="Self.CUAHANG" Multiplicity="0..1" />
     <End Role="DONHANG" Type="Self.DONHANG" Multiplicity="*" />
@@ -792,6 +819,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__NGUOIDUNG__IDTP__634EBE90">
+    <End Role="THANHPHO" Type="Self.THANHPHO" Multiplicity="0..1" />
+    <End Role="NGUOIDUNG" Type="Self.NGUOIDUNG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="THANHPHO">
+        <PropertyRef Name="IDTP" />
+      </Principal>
+      <Dependent Role="NGUOIDUNG">
+        <PropertyRef Name="IDTP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__QUANGCAO__IDPHED__4222D4EF">
     <End Role="PHEDUYET" Type="Self.PHEDUYET" Multiplicity="0..1" />
     <End Role="QUANGCAO" Type="Self.QUANGCAO" Multiplicity="*" />
@@ -848,6 +887,10 @@
     <End Role="NGUOIDUNG" Type="Self.NGUOIDUNG" Multiplicity="*" />
     <End Role="VOUCHERSHOP" Type="Self.VOUCHERSHOP" Multiplicity="*" />
   </Association>
+  <Association Name="YEUTHICH">
+    <End Role="NGUOIDUNG" Type="Self.NGUOIDUNG" Multiplicity="*" />
+    <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="*" />
+  </Association>
   <EntityContainer Name="TMDTEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="ADMINs" EntityType="Self.ADMIN" />
     <EntitySet Name="CHUCVUs" EntityType="Self.CHUCVU" />
@@ -869,6 +912,7 @@
     <EntitySet Name="SHIPPERs" EntityType="Self.SHIPPER" />
     <EntitySet Name="SIZEGIAYs" EntityType="Self.SIZEGIAY" />
     <EntitySet Name="SIZETHOITRANGs" EntityType="Self.SIZETHOITRANG" />
+    <EntitySet Name="THANHPHOes" EntityType="Self.THANHPHO" />
     <EntitySet Name="THDIENTHOAIs" EntityType="Self.THDIENTHOAI" />
     <EntitySet Name="THGIAYs" EntityType="Self.THGIAY" />
     <EntitySet Name="THTHOITRANGs" EntityType="Self.THTHOITRANG" />
@@ -936,6 +980,10 @@
     </AssociationSet>
     <AssociationSet Name="FK__CUAHANG__IDND__3C69FB99" Association="Self.FK__CUAHANG__IDND__3C69FB99">
       <End Role="NGUOIDUNG" EntitySet="NGUOIDUNGs" />
+      <End Role="CUAHANG" EntitySet="CUAHANGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CUAHANG__IDTP__625A9A57" Association="Self.FK__CUAHANG__IDTP__625A9A57">
+      <End Role="THANHPHO" EntitySet="THANHPHOes" />
       <End Role="CUAHANG" EntitySet="CUAHANGs" />
     </AssociationSet>
     <AssociationSet Name="FK__DONHANG__IDCUAHA__3A4CA8FD" Association="Self.FK__DONHANG__IDCUAHA__3A4CA8FD">
@@ -1014,6 +1062,10 @@
       <End Role="PQNGUOIDUNG" EntitySet="PQNGUOIDUNGs" />
       <End Role="NGUOIDUNG" EntitySet="NGUOIDUNGs" />
     </AssociationSet>
+    <AssociationSet Name="FK__NGUOIDUNG__IDTP__634EBE90" Association="Self.FK__NGUOIDUNG__IDTP__634EBE90">
+      <End Role="THANHPHO" EntitySet="THANHPHOes" />
+      <End Role="NGUOIDUNG" EntitySet="NGUOIDUNGs" />
+    </AssociationSet>
     <AssociationSet Name="FK__QUANGCAO__IDPHED__4222D4EF" Association="Self.FK__QUANGCAO__IDPHED__4222D4EF">
       <End Role="PHEDUYET" EntitySet="PHEDUYETs" />
       <End Role="QUANGCAO" EntitySet="QUANGCAOs" />
@@ -1037,6 +1089,10 @@
     <AssociationSet Name="ND_VOUCHERSHOP" Association="Self.ND_VOUCHERSHOP">
       <End Role="NGUOIDUNG" EntitySet="NGUOIDUNGs" />
       <End Role="VOUCHERSHOP" EntitySet="VOUCHERSHOPs" />
+    </AssociationSet>
+    <AssociationSet Name="YEUTHICH" Association="Self.YEUTHICH">
+      <End Role="NGUOIDUNG" EntitySet="NGUOIDUNGs" />
+      <End Role="SANPHAM" EntitySet="SANPHAMs" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

@@ -72,6 +72,41 @@
 
 
                 <div class="home-product">
+                    <div class="home-filter hide-on-mobile-tablet">
+                        <span class="home-filter__label">Sắp xếp theo</span>
+                        <div class="select-input">
+                            <span class="select-input__label">Giá</span>
+                            <i class="select-input__icon fas fa-angle-down"></i>
+                            <!-- List option -->
+                            <ul class="select-input__list">
+                                <li class="select-input__item">
+                                    <a href="@Url.Action("LoaiSanPham")" class="select-input__link">Bình thường</a>
+                                </li>
+                                <li class="select-input__item">
+                                    <a href="@Url.Action("LoaiSanPham", new { sortOrder = "giathapdencao" })" class="select-input__link">Giá thấp đến cao</a>
+                                </li>
+                                <li class="select-input__item">
+                                    <a href="@Url.Action("LoaiSanPham", new { sortOrder = "giacaodenthap" })" class="select-input__link">Giá cao đến thấp</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <span class="home-filter__label" style="margin-left: 10px;">Khu vực</span>
+                        <div class="select-input">
+                            <span class="select-input__label">Tỉnh thành</span>
+                            <i class="select-input__icon fas fa-angle-down"></i>
+                            <!-- List option -->
+                            <ul class="select-input__list" style=" overflow: hidden; max-height: 350px;">
+                                <div style="overflow-y: auto; max-height: 350px;">
+                                    @foreach (var area in ViewBag.Areas)
+                                    {
+                                    <li class="select-input__item">
+                                        <a href="@Url.Action("LoaiSanPham", new { selectedArea = area.TENTHANHPHO })" class="select-input__link">@area.TENTHANHPHO</a>
+                                    </li>
+                                }
+                            </div>
+                            </ul>
+                        </div>
+                    </div>
                     <div class="row sm-gutter">
                         @foreach (var item in Model)
                         {

@@ -80,6 +80,7 @@
     <Property Name="ANHDAIDIEN" Type="nvarchar(max)" />
     <Property Name="IDND" Type="int" />
     <Property Name="TENCH" Type="nvarchar" MaxLength="100" />
+    <Property Name="IDTP" Type="int" />
   </EntityType>
   <EntityType Name="DANHGIASP">
     <Key>
@@ -154,6 +155,7 @@
     <Property Name="DIACHI" Type="nvarchar" MaxLength="100" />
     <Property Name="IDPQND" Type="int" />
     <Property Name="HINH" Type="nvarchar(max)" />
+    <Property Name="IDTP" Type="int" />
   </EntityType>
   <EntityType Name="PHEDUYET">
     <Key>
@@ -234,6 +236,13 @@
     </Key>
     <Property Name="IDSIZETT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="SIZETT" Type="char" MaxLength="5" />
+  </EntityType>
+  <EntityType Name="THANHPHO">
+    <Key>
+      <PropertyRef Name="IDTP" />
+    </Key>
+    <Property Name="IDTP" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TENTHANHPHO" Type="nvarchar" MaxLength="30" />
   </EntityType>
   <EntityType Name="THDIENTHOAI">
     <Key>
@@ -319,6 +328,14 @@
     <Property Name="GIATRITOITHIEU" Type="int" />
     <Property Name="IDCUAHANG" Type="int" />
     <Property Name="IDTRANGTHAIVC" Type="int" />
+  </EntityType>
+  <EntityType Name="YEUTHICH">
+    <Key>
+      <PropertyRef Name="IDND" />
+      <PropertyRef Name="IDSANPHAM" />
+    </Key>
+    <Property Name="IDND" Type="int" Nullable="false" />
+    <Property Name="IDSANPHAM" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="FK__ADMIN__IDCHUCVU__10566F31">
     <End Role="CHUCVU" Type="Self.CHUCVU" Multiplicity="0..1" />
@@ -500,6 +517,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__CUAHANG__IDTP__625A9A57">
+    <End Role="THANHPHO" Type="Self.THANHPHO" Multiplicity="0..1" />
+    <End Role="CUAHANG" Type="Self.CUAHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="THANHPHO">
+        <PropertyRef Name="IDTP" />
+      </Principal>
+      <Dependent Role="CUAHANG">
+        <PropertyRef Name="IDTP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__DANHGIASP__IDND__6C190EBB">
     <End Role="NGUOIDUNG" Type="Self.NGUOIDUNG" Multiplicity="0..1" />
     <End Role="DANHGIASP" Type="Self.DANHGIASP" Multiplicity="*" />
@@ -629,6 +658,18 @@
       </Principal>
       <Dependent Role="NGUOIDUNG">
         <PropertyRef Name="IDPQND" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__NGUOIDUNG__IDTP__634EBE90">
+    <End Role="THANHPHO" Type="Self.THANHPHO" Multiplicity="0..1" />
+    <End Role="NGUOIDUNG" Type="Self.NGUOIDUNG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="THANHPHO">
+        <PropertyRef Name="IDTP" />
+      </Principal>
+      <Dependent Role="NGUOIDUNG">
+        <PropertyRef Name="IDTP" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -824,6 +865,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_YEUTHICH_NGUOIDUNG">
+    <End Role="NGUOIDUNG" Type="Self.NGUOIDUNG" Multiplicity="1" />
+    <End Role="YEUTHICH" Type="Self.YEUTHICH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NGUOIDUNG">
+        <PropertyRef Name="IDND" />
+      </Principal>
+      <Dependent Role="YEUTHICH">
+        <PropertyRef Name="IDND" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_YEUTHICH_SANPHAM">
+    <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
+    <End Role="YEUTHICH" Type="Self.YEUTHICH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SANPHAM">
+        <PropertyRef Name="IDSANPHAM" />
+      </Principal>
+      <Dependent Role="YEUTHICH">
+        <PropertyRef Name="IDSANPHAM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="TMDTModelStoreContainer">
     <EntitySet Name="ADMIN" EntityType="Self.ADMIN" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CHUCVU" EntityType="Self.CHUCVU" Schema="dbo" store:Type="Tables" />
@@ -847,6 +912,7 @@
     <EntitySet Name="SHIPPER" EntityType="Self.SHIPPER" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SIZEGIAY" EntityType="Self.SIZEGIAY" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SIZETHOITRANG" EntityType="Self.SIZETHOITRANG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="THANHPHO" EntityType="Self.THANHPHO" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="THDIENTHOAI" EntityType="Self.THDIENTHOAI" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="THGIAY" EntityType="Self.THGIAY" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="THTHOITRANG" EntityType="Self.THTHOITRANG" Schema="dbo" store:Type="Tables" />
@@ -856,6 +922,7 @@
     <EntitySet Name="TRANGTHAIXEMDONHANG" EntityType="Self.TRANGTHAIXEMDONHANG" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="VOUCHER" EntityType="Self.VOUCHER" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="VOUCHERSHOP" EntityType="Self.VOUCHERSHOP" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="YEUTHICH" EntityType="Self.YEUTHICH" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK__ADMIN__IDCHUCVU__10566F31" Association="Self.FK__ADMIN__IDCHUCVU__10566F31">
       <End Role="CHUCVU" EntitySet="CHUCVU" />
       <End Role="ADMIN" EntitySet="ADMIN" />
@@ -916,6 +983,10 @@
       <End Role="NGUOIDUNG" EntitySet="NGUOIDUNG" />
       <End Role="CUAHANG" EntitySet="CUAHANG" />
     </AssociationSet>
+    <AssociationSet Name="FK__CUAHANG__IDTP__625A9A57" Association="Self.FK__CUAHANG__IDTP__625A9A57">
+      <End Role="THANHPHO" EntitySet="THANHPHO" />
+      <End Role="CUAHANG" EntitySet="CUAHANG" />
+    </AssociationSet>
     <AssociationSet Name="FK__DANHGIASP__IDND__6C190EBB" Association="Self.FK__DANHGIASP__IDND__6C190EBB">
       <End Role="NGUOIDUNG" EntitySet="NGUOIDUNG" />
       <End Role="DANHGIASP" EntitySet="DANHGIASP" />
@@ -958,6 +1029,10 @@
     </AssociationSet>
     <AssociationSet Name="FK__NGUOIDUNG__IDPQN__398D8EEE" Association="Self.FK__NGUOIDUNG__IDPQN__398D8EEE">
       <End Role="PQNGUOIDUNG" EntitySet="PQNGUOIDUNG" />
+      <End Role="NGUOIDUNG" EntitySet="NGUOIDUNG" />
+    </AssociationSet>
+    <AssociationSet Name="FK__NGUOIDUNG__IDTP__634EBE90" Association="Self.FK__NGUOIDUNG__IDTP__634EBE90">
+      <End Role="THANHPHO" EntitySet="THANHPHO" />
       <End Role="NGUOIDUNG" EntitySet="NGUOIDUNG" />
     </AssociationSet>
     <AssociationSet Name="FK__QUANGCAO__IDCUAH__412EB0B6" Association="Self.FK__QUANGCAO__IDCUAH__412EB0B6">
@@ -1023,6 +1098,14 @@
     <AssociationSet Name="FK_ND_VOUCHERSHOP_VOUCHERSHOP" Association="Self.FK_ND_VOUCHERSHOP_VOUCHERSHOP">
       <End Role="VOUCHERSHOP" EntitySet="VOUCHERSHOP" />
       <End Role="ND_VOUCHERSHOP" EntitySet="ND_VOUCHERSHOP" />
+    </AssociationSet>
+    <AssociationSet Name="FK_YEUTHICH_NGUOIDUNG" Association="Self.FK_YEUTHICH_NGUOIDUNG">
+      <End Role="NGUOIDUNG" EntitySet="NGUOIDUNG" />
+      <End Role="YEUTHICH" EntitySet="YEUTHICH" />
+    </AssociationSet>
+    <AssociationSet Name="FK_YEUTHICH_SANPHAM" Association="Self.FK_YEUTHICH_SANPHAM">
+      <End Role="SANPHAM" EntitySet="SANPHAM" />
+      <End Role="YEUTHICH" EntitySet="YEUTHICH" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

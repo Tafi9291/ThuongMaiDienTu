@@ -207,69 +207,14 @@ namespace TMDT.Controllers
                     donHang.DIACHI = (form["Diachi"]);
                     donHang.SDT = (form["SDT"]);
                     donHang.NGAYTAO = DateTime.Now;
-                    ////donHang.THANHTIEN = (int?)cart.Tongtien().Values.Sum();
+                    
                     //// Lấy danh sách sản phẩm trong giỏ hàng thuộc cùng một cửa hàng
                     var productsInShop = cart.Items.Where(item => item.sanpham?.CUAHANG?.IDCUAHANG == ShopId);
 
-                    //// Tính tổng giá trị của các sản phẩm thuộc cùng một cửa hàng
-                    //int? thanhTienTheoShop = productsInShop.Sum(item => item.sanpham?.GIAGIAM * item.soluong);
+                   
 
-                    //// Gán giá trị THANHTIEN cho đơn hàng
-                    //donHang.THANHTIEN = thanhTienTheoShop;
-
-                    //if (totalDiscounted != null)
-                    //{
-                    //    donHang.THANHTIEN = totalDiscounted;
-                    //}
-                    //else
-                    //{
-                    //    int shipPrice = 26000;
-                    //    int? thanhTienTheoShop = productsInShop.Sum(item => item.sanpham?.GIAGIAM * item.soluong + shipPrice);
-                    //    donHang.THANHTIEN = thanhTienTheoShop;
-                    //}
-
-
-
-                    //// Lấy trạng thái đơn hàng mặc định (ví dụ: 1 - Chờ xử lý)
-                    //var trangThai = db.TRANGTHAIDHs.SingleOrDefault(tt => tt.IDTRANGTHAIDH == 1);
-
-                    //// Thêm thông tin trạng thái vào đơn hàng
-                    //donHang.IDTRANGTHAIDH = trangThai.IDTRANGTHAIDH;
-                    //var ptthanhtoan = db.PTTHANHTOANs.SingleOrDefault(tt => tt.IDPTTHANHTOAN == 1);
-                    //donHang.IDPTTHANHTOAN = ptthanhtoan.IDPTTHANHTOAN;
-                    //var trangthaixemdon = db.TRANGTHAIXEMDONHANGs.SingleOrDefault(tt => tt.IDTRANGTHAIXDH == 1);
-                    //donHang.IDTRANGTHAIXDH = trangthaixemdon.IDTRANGTHAIXDH;
-                    //// Lưu đơn hàng vào CSDL
-                    //db.DONHANGs.Add(donHang);
-
-
-                    //// Thêm sản phẩm vào chi tiết đơn hàng
-
-
-                    //foreach (var item in productsInShop)
-                    //{
-                    //    CTDONHANG chiTietDonHang = new CTDONHANG();
-
-
-                    //    chiTietDonHang.IDDONHANG = donHang.IDDONHANG;
-                    //    chiTietDonHang.IDSANPHAM = item.sanpham.IDSANPHAM;
-                    //    chiTietDonHang.SOLUONGMUA = item.soluong;
-                    //    chiTietDonHang.DONGIA = item.sanpham.GIAGIAM;
-
-                    //    chiTietDonHang.TONGTIEN = (item.soluong * item.sanpham.GIAGIAM);
-
-                    //    db.CTDONHANGs.Add(chiTietDonHang);
-                    //    foreach (var p in db.SANPHAMs.Where(s => s.IDSANPHAM == chiTietDonHang.IDSANPHAM))
-                    //    {
-                    //        var soluongtonmoi = p.SOLUONGTON - item.soluong;
-                    //        p.SOLUONGTON = soluongtonmoi;
-                    //    }
-                    //}
-
-                    //db.SaveChanges();
-
-                    //// Xóa thông tin giỏ hàng theo cửa hàng đã bấm thanh toán
-                    //cart.Xoagh(ShopId);
+                    int shipPrice = 26000;
+                    int? thanhTienTheoShop = productsInShop.Sum(item => item.sanpham?.GIAGIAM * item.soluong + shipPrice);
 
                     // Lấy thông tin voucher từ CSDL sử dụng voucherId
 
@@ -279,8 +224,6 @@ namespace TMDT.Controllers
                     }
                     else
                     {
-                        int shipPrice = 26000;
-                        int? thanhTienTheoShop = productsInShop.Sum(item => item.sanpham?.GIAGIAM * item.soluong + shipPrice);
                         donHang.THANHTIEN = thanhTienTheoShop;
                     }
 
@@ -313,9 +256,9 @@ namespace TMDT.Controllers
                         }
                     }
 
-                    db.SaveChanges();
+                    
                     cart.Xoagh(ShopId);
-
+                    db.SaveChanges();
                     // Hiển thị thông báo đặt hàng thành công
                     ViewBag.ThongBao = "Đặt hàng thành công!";
 

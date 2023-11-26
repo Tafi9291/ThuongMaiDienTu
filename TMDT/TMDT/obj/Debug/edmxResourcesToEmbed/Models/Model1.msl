@@ -86,6 +86,7 @@
           <ScalarProperty Name="ANHDAIDIEN" ColumnName="ANHDAIDIEN" />
           <ScalarProperty Name="IDND" ColumnName="IDND" />
           <ScalarProperty Name="TENCH" ColumnName="TENCH" />
+          <ScalarProperty Name="IDTP" ColumnName="IDTP" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -149,6 +150,7 @@
           <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
           <ScalarProperty Name="IDPQND" ColumnName="IDPQND" />
           <ScalarProperty Name="HINH" ColumnName="HINH" />
+          <ScalarProperty Name="IDTP" ColumnName="IDTP" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -237,6 +239,14 @@
         <MappingFragment StoreEntitySet="SIZETHOITRANG">
           <ScalarProperty Name="IDSIZETT" ColumnName="IDSIZETT" />
           <ScalarProperty Name="SIZETT" ColumnName="SIZETT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="THANHPHOes">
+      <EntityTypeMapping TypeName="TMDTModel.THANHPHO">
+        <MappingFragment StoreEntitySet="THANHPHO">
+          <ScalarProperty Name="IDTP" ColumnName="IDTP" />
+          <ScalarProperty Name="TENTHANHPHO" ColumnName="TENTHANHPHO" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -348,6 +358,14 @@
       </EndProperty>
       <EndProperty Name="VOUCHERSHOP">
         <ScalarProperty Name="IDVOUCHERSHOP" ColumnName="IDVOUCHERSHOP" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="YEUTHICH" TypeName="TMDTModel.YEUTHICH" StoreEntitySet="YEUTHICH">
+      <EndProperty Name="NGUOIDUNG">
+        <ScalarProperty Name="IDND" ColumnName="IDND" />
+      </EndProperty>
+      <EndProperty Name="SANPHAM">
+        <ScalarProperty Name="IDSANPHAM" ColumnName="IDSANPHAM" />
       </EndProperty>
     </AssociationSetMapping>
   </EntityContainerMapping>

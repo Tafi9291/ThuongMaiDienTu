@@ -1,9 +1,11 @@
-﻿@model TMDT.Models.SANPHAM
+﻿@using TMDT.Models;
+@model TMDT.Models.SANPHAM
 
 @{
     ViewBag.Title = "ChiTietSanPham";
     Layout = "~/Views/Shared/Layout-NgMua.cshtml";
     IEnumerable<TMDT.Models.VOUCHERSHOP> voucherShopList = ViewBag.VoucherShop as IEnumerable<TMDT.Models.VOUCHERSHOP>;
+    var existingProduct = ViewBag.ExistingProduct as SANPHAM; // Ép kiểu ViewBag.ExistingProduct về SANPHAM
 }
 
 <div class="app__container">
@@ -79,11 +81,38 @@
                                                 @if (Model.GIABAN != Model.GIAGIAM)
                                                 {
                                                     <del class="home-product-item__detail-old-price">@Html.DisplayFor(modelItem => Model.GIABAN)</del>
-                                                } else { }
+                                                }
+                                                else { }
                                                 <span class="home-product-item__detail-sale-price">@Html.DisplayFor(modelItem => Model.GIAGIAM)</span>
                                                 <div class="home-product-item__detail-save">
                                                     @*<p>Tiết kiệm: <strong>180.000đ (30%)</strong></p>*@
                                                 </div>
+                                            </div>
+                                            <div class="home-product-item__detail-fav">
+                                                @if (Session["Email"] != null)
+                                                {
+                                                    if (existingProduct != null)
+                                                    {
+                                                        <form action="@Url.Action("AddFavorites", "NgMua")" method="post">
+                                                            <input type="hidden" name="id" value="@Model.IDSANPHAM" />
+                                                            <button class="home-product-item__detail-fav-button">
+                                                                <i class='bx bxs-heart bx-lg favorites-list-icon' style=" font-size: 2.7rem !important; color:red; display: inline;"></i>
+                                                            </button>
+                                                            <p class="home-product-item__detail-fav-title">Đã thêm vào mục yêu thích</p>
+                                                        </form>
+                                                    }
+                                                    else
+                                                    {
+                                                        <form action="@Url.Action("AddFavorites", "NgMua")" method="post">
+                                                            <input type="hidden" name="id" value="@Model.IDSANPHAM" />
+                                                            <button class="home-product-item__detail-fav-button">
+                                                                <i class='bx bx-heart bx-lg favorites-list-icon' style=" font-size: 2.7rem !important; color:red; display: inline;"></i>
+                                                            </button>
+                                                            <p class="home-product-item__detail-fav-title">Thêm vào mục yêu thích</p>
+                                                        </form>
+                                                    }
+
+                                                }
                                             </div>
                                             <div class="home-product-item__detail-cart" data-product-id="@Model.IDSANPHAM">
                                                 <a href="/ShoppingCart/AddToCart/@Model.IDSANPHAM" class="home-product-item__detail-cart-button" style="border-radius: 20px;">
@@ -305,62 +334,139 @@
                                 <div class="home-product-item-case shadow-box" style="padding: 20px; display: block;">
                                     <div class="description-title" style="font-weight:bold;">Đánh giá của bạn về</div>
                                     @*<form action="/" method="post">
-                                        <div class="form-group" style="margin-top:10px;">
-                                            <label for="review" style="font-size: 1.5rem; margin: 10px 0;">Đánh giá của bạn:</label>
-                                            <textarea class="form-control" rows="5" , placeholder="Nhập đánh giá..."></textarea>
-                                        </div>
-
-                                        <button type="submit" class="btn-comment">Gửi đánh giá</button>
-                                    </form>*@
-                                    @using (Html.BeginForm("AddReview", "NgMua", new { id = Model.IDSANPHAM }, FormMethod.Post))
-                                        {
-                                            @Html.AntiForgeryToken()
-
                                             <div class="form-group" style="margin-top:10px;">
                                                 <label for="review" style="font-size: 1.5rem; margin: 10px 0;">Đánh giá của bạn:</label>
-                                                @Html.TextArea("review", null, new { @class = "form-control", rows = 5, required = "required", placeholder = "Nhập đánh giá của bạn..." })
+                                                <textarea class="form-control" rows="5" , placeholder="Nhập đánh giá..."></textarea>
                                             </div>
 
                                             <button type="submit" class="btn-comment">Gửi đánh giá</button>
-                                        }
-                                    @foreach (var review in Model.DANHGIASPs)
-                                        {
-                                            <div class="review">
-                                                <div class="review-img">
-                                                    @if (Session["Hinh"] != null)
-                                                    {
-                                                        <img src="@Url.Content(review.NGUOIDUNG==null?"":review.NGUOIDUNG.HINH)" style="width:50px; height:50px; border-radius: 50%; object-fit: cover;" />
-                                                    }
-                                                    else
-                                                    {
-                                                        <img src="@Url.Content(review.NGUOIDUNG.HINH)" style="width:50px; height:50px; border-radius: 50%; object-fit:cover;" />
-                                                    }
-                                                </div>
-                                                <div class="review-aboutuser">
-                                                    <h3 class="review-aboutuser__name">@(review.NGUOIDUNG == null?"":review.NGUOIDUNG.TENND)</h3>
-                                                    <p class="review-aboutuser__date">@string.Format("{0:dd/MM/yyyy HH:mm:ss}", review.NGAYTAO)</p>
-                                                    <p class="review-aboutuser__comment">@review.DANHGIA</p>
-                                                </div>
-                                            </div>
+                                        </form>*@
+                                    @using (Html.BeginForm("AddReview", "NgMua", new { id = Model.IDSANPHAM }, FormMethod.Post))
+                                    {
+                                        @Html.AntiForgeryToken()
 
-                                        }
-                                    <!--<div class="review">
-                                        <div class="review-img">-->
-                                            @*@if (Session["Hinh"] != null)
+                                        <div class="form-group" style="margin-top:10px;">
+                                            <label for="review" style="font-size: 1.5rem; margin: 10px 0;">Đánh giá của bạn:</label>
+                                            @Html.TextArea("review", null, new { @class = "form-control", rows = 5, required = "required", placeholder = "Nhập đánh giá của bạn..." })
+                                        </div>
+
+                                        <button type="submit" class="btn-comment">Gửi đánh giá</button>
+                                    }
+                                    @foreach (var review in Model.DANHGIASPs)
+                                    {
+                                        <div class="review">
+                                            <div class="review-img">
+                                                @if (Session["Hinh"] != null)
                                                 {
-                                                    <img src="" style="width:50px; height:50px; border-radius: 50%; object-fit: cover;" />
+                                                    <img src="@Url.Content(review.NGUOIDUNG==null?"":review.NGUOIDUNG.HINH)" style="width:50px; height:50px; border-radius: 50%; object-fit: cover;" />
                                                 }
                                                 else
                                                 {
-                                                    <img src="~/Content/img-slider/iconuser.png" style="width:50px; height:50px;" />
-                                                }*@
-                                        <!--</div>
+                                                    <img src="@Url.Content(review.NGUOIDUNG.HINH)" style="width:50px; height:50px; border-radius: 50%; object-fit:cover;" />
+                                                }
+                                            </div>
+                                            <div class="review-aboutuser">
+                                                <h3 class="review-aboutuser__name">@(review.NGUOIDUNG == null?"":review.NGUOIDUNG.TENND)</h3>
+                                                <p class="review-aboutuser__date">@string.Format("{0:dd/MM/yyyy HH:mm:ss}", review.NGAYTAO)</p>
+                                                <p class="review-aboutuser__comment">@review.DANHGIA</p>
+                                            </div>
+                                        </div>
+
+                                    }
+                                    <!--<div class="review">
+                                        <div class="review-img">-->
+                                    @*@if (Session["Hinh"] != null)
+                                        {
+                                            <img src="" style="width:50px; height:50px; border-radius: 50%; object-fit: cover;" />
+                                        }
+                                        else
+                                        {
+                                            <img src="~/Content/img-slider/iconuser.png" style="width:50px; height:50px;" />
+                                        }*@
+                                    <!--</div>
                                         <div class="review-aboutuser">
                                             <h3 class="review-aboutuser__name"></h3>
                                             <p class="review-aboutuser__date"></p>
                                             <p class="review-aboutuser__comment"></p>
                                         </div>
                                     </div>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="l-12">
+                        <div class="row l-12 m-12 c-12">
+                            <div class="col l-12 m-12 c-8">
+                                <div class="home-product-item-case shadow-box" style="padding: 20px; display: block; overflow: hidden;">
+                                    <div class="suggest-list-title description-title" style="font-weight:bold;">Có thể bạn cũng thích</div>
+                                    <div class="home-product" style="margin-top: 10px; padding: 10px; overflow-x: auto; height: 393px; max-height: 393px;">
+                                        <div class="row sm-gutter">
+                                            @if (ViewBag.ProductsSuggest != null)
+                                            {
+                                                foreach (var item in ViewBag.ProductsSuggest)
+                                                {
+                                                    <div class="col l-3 m-4 c-6">
+                                                        <div class="home-product-item">
+                                                            <div href="" class="home-product-item__link" style="overflow: hidden;">
+                                                                <a href="@Url.Action("ChiTietSanPham", new { id = item.IDSANPHAM })">
+                                                                    <img class="home-product-item__image" src="@Url.Content(item.HINHANH1)" alt="" style="width: 221px; height: 221px;">
+                                                                </a>
+                                                            </div>
+                                                            <h4 class="home-product-item__name">@item.TENSP</h4>
+                                                            <div class="home-product-item__price">
+                                                                @if (item.GIABAN != item.GIAGIAM)
+                                                                {
+                                                                    <span class="home-product-item__price-old">@item.GIABAN</span>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <span class="home-product-item__price-old" style="height: 1.6rem;"></span>
+                                                                }
+                                                                <span class="home-product-item__price-current">@item.GIAGIAM</span>
+                                                            </div>
+                                                            <div class="home-product-item__action">
+                                                                <span class="home-product-item__like home-product-item--liked">
+                                                                    <i class="home-product-item__like-icon-empty far fa-heart"></i>
+                                                                    <i class="home-product-item__like-icon-fill fas fa-heart"></i>
+                                                                </span>
+
+                                                                <div class="home-product-item__rating">
+                                                                    <i class="home-product-item__star--gold fas fa-star"></i>
+                                                                    <i class="home-product-item__star--gold fas fa-star"></i>
+                                                                    <i class="home-product-item__star--gold fas fa-star"></i>
+                                                                    <i class="home-product-item__star--gold fas fa-star"></i>
+                                                                    <i class="fas fa-star"></i>
+                                                                </div>
+                                                                <span class="home-product-item__sold">Đã bán 280</span>
+                                                            </div>
+
+                                                            <div class="home-product-item__origin">
+                                                            </div>
+
+                                                            <div class="home-product-item__favourite">
+                                                                <i class="fas fa-check"></i>
+                                                                <span>Yêu thích</span>
+                                                            </div>
+                                                            @if (item.PHANTRAMGIAM != 0)
+                                                            {
+                                                                <div class="home-product-item__sale-off">
+                                                                    <span class="home-product-item__sale-off-label">GIẢM</span>
+                                                                    <span class="home-product-item__sale-off-percent">@item.PHANTRAMGIAM %</span>
+                                                                </div>
+                                                            }
+                                                            else { }
+                                                            <div class="home-product-item__cart" data-product-id="@item.IDSANPHAM">
+                                                                <a href="/ShoppingCart/AddToCart/@item.IDSANPHAM" class="home-product-item__cart-add" style="height: 45px;">
+                                                                    <i class="home-product-item__cart-icon fas fa-shopping-cart"></i>
+                                                                    <button class="home-product-item__cart-order">Thêm vào giỏ hàng</button>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                }
+                                            }
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -386,25 +492,25 @@
                                             <button class="voucher-shop-card__right-save">Lưu</button>
                                         </div>
                                         @*<div class="voucer-shop-card__quantity">
-                                            <span>@item.SOLUONGSD</span>
-                                        </div>*@
+                                                <span>@item.SOLUONGSD</span>
+                                            </div>*@
                                     </div>
                                 }
 
                             }
                             @*<div class="voucher-shop-card">
-                                <div class="voucher-shop-card__left">
-                                    <div class="voucher-shop-card__left-title">Giảm <span>15.000đ</span></div>
-                                    <div class="voucher-shop-card__left-condition">Đơn tối thiểu <span>150.000đ</span></div>
-                                    <div class="voucher-shop-card__left-expiry">HSD: <span>25/10/2023</span></div>
-                                </div>
-                                <div class="voucher-shop-card__right">
-                                    <button class="voucher-shop-card__right-save">Lưu</button>
-                                </div>
-                                <div class="voucer-shop-card__quantity">
-                                    <span>x 5</span>
-                                </div>
-                            </div>*@
+                                    <div class="voucher-shop-card__left">
+                                        <div class="voucher-shop-card__left-title">Giảm <span>15.000đ</span></div>
+                                        <div class="voucher-shop-card__left-condition">Đơn tối thiểu <span>150.000đ</span></div>
+                                        <div class="voucher-shop-card__left-expiry">HSD: <span>25/10/2023</span></div>
+                                    </div>
+                                    <div class="voucher-shop-card__right">
+                                        <button class="voucher-shop-card__right-save">Lưu</button>
+                                    </div>
+                                    <div class="voucer-shop-card__quantity">
+                                        <span>x 5</span>
+                                    </div>
+                                </div>*@
                         </div>
                     </section>
                 </div>
@@ -423,7 +529,7 @@
                                                     <img class="home-product-item__image" src="@Url.Content(item.HINHANH1)" alt="" style="width: 221px; height: 221px;">
                                                 </a>
                                             </div>
-                                            <h4 class="home-product-item__name">Áo khoác thời trang mùa đông ấm áp mới nhất năm 2023</h4>
+                                            <h4 class="home-product-item__name">@item.TENSP</h4>
                                             <div class="home-product-item__price">
                                                 @if (item.GIABAN != item.GIAGIAM)
                                                 {
@@ -450,7 +556,7 @@
 
                                             <div class="home-product-item__origin">
                                                 @*<span class="home-product-item__brand">MCBooks</span>
-                                                <span class="home-product-item__origin-name">NXB Hồng Đức</span>*@
+                                                    <span class="home-product-item__origin-name">NXB Hồng Đức</span>*@
                                             </div>
 
                                             <div class="home-product-item__favourite">

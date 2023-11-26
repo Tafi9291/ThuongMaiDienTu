@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -12,11 +13,37 @@ namespace TMDT.Controllers
     {
         TMDTEntities db=new TMDTEntities();
         // GET: NgMua
-        public ActionResult TrangChu(int? page)
+        public ActionResult TrangChu(int? page, string sortOrder, string selectedArea)
         {
             const int pageSize = 20;
             var pageNumber = (page ?? 1);
-            var products = db.SANPHAMs.Where(p => p.IDPHEDUYET == 2).OrderBy(p => p.TENSP).ToPagedList(pageNumber, pageSize);
+            // Lấy danh sách sản phẩm theo IDPHEDUYET
+            var productsQuery = db.SANPHAMs.Where(p => p.IDPHEDUYET == 2);
+
+            var areas = db.THANHPHOes.ToList();
+            ViewBag.Areas = areas;
+
+            // Lọc sản phẩm theo khu vực (tỉnh thành)
+            if (!string.IsNullOrEmpty(selectedArea))
+            {
+                productsQuery = productsQuery.Where(p => p.CUAHANG.THANHPHO.TENTHANHPHO == selectedArea);
+            }
+
+            // Sắp xếp theo giá
+            switch (sortOrder)
+            {
+                case "giathapdencao":
+                    productsQuery = productsQuery.OrderBy(p => p.GIAGIAM); // Sắp xếp từ thấp đến cao
+                    break;
+                case "giacaodenthap":
+                    productsQuery = productsQuery.OrderByDescending(p => p.GIAGIAM); // Sắp xếp từ cao đến thấp
+                    break;
+                default:
+                    productsQuery = productsQuery.OrderBy(p => p.TENSP); // Mặc định sắp xếp theo tên sản phẩm
+                    break;
+            }
+
+            var products = productsQuery.ToPagedList(pageNumber, pageSize);
             return View(products);
         }
 
@@ -26,17 +53,45 @@ namespace TMDT.Controllers
             return PartialView(loaisp);
         }
 
-        public ActionResult LoaiSanPham(int id, int page = 1)
+        public ActionResult LoaiSanPham(int id, int page = 1, string sortOrder = "", string selectedArea = "")
         {
-            var dienthoais = db.SANPHAMs.Where(d => d.IDLOAISP == id).ToList().ToPagedList(page, 10); // 10 là số phần tử trên mỗi trang
-            return View(dienthoais);
+            const int pageSize = 10;
+            var pageNumber = page;
+
+            var productsQuery = db.SANPHAMs.Where(d => d.IDLOAISP == id && d.IDPHEDUYET == 2);
+
+            var areas = db.THANHPHOes.ToList();
+            ViewBag.Areas = areas;
+
+            // Lọc sản phẩm theo khu vực (tỉnh thành)
+            if (!string.IsNullOrEmpty(selectedArea))
+            {
+                productsQuery = productsQuery.Where(p => p.CUAHANG.THANHPHO.TENTHANHPHO == selectedArea);
+            }
+
+            // Sắp xếp sản phẩm
+            switch (sortOrder)
+            {
+                case "giathapdencao":
+                    productsQuery = productsQuery.OrderBy(p => p.GIAGIAM);
+                    break;
+                case "giacaodenthap":
+                    productsQuery = productsQuery.OrderByDescending(p => p.GIAGIAM);
+                    break;
+                default:
+                    productsQuery = productsQuery.OrderBy(p => p.TENSP);
+                    break;
+            }
+
+            var products = productsQuery.ToPagedList(pageNumber, pageSize);
+            return View(products);
         }
 
         public ActionResult Search(int? page, string searching)
         {
             const int pageSize = 20;
             var pageNumber = (page ?? 1);
-            return View(db.SANPHAMs.Where(x => (x.TENSP.StartsWith(searching) || x.TENSP == null) && x.IDPHEDUYET == 2).ToList().ToPagedList(pageNumber, pageSize));
+            return View(db.SANPHAMs.Where(x => (x.TENSP.Contains(searching) || x.TENSP == null) && x.IDPHEDUYET == 2).ToList().ToPagedList(pageNumber, pageSize));
 
         }
 
@@ -84,7 +139,22 @@ namespace TMDT.Controllers
                 ViewBag.VoucherShop = Enumerable.Empty<VOUCHERSHOP>();
                 ViewBag.ProductShop = Enumerable.Empty<SANPHAM>();
             }
+            
+            // Kiểm tra xem người dùng đã thêm sản phẩm vào mục yêu thích chưa
+            var nguoidung = db.NGUOIDUNGs.SingleOrDefault(kh => kh.EMAIL == email);
+            if (nguoidung != null)
+            {
+                var productToFav = db.SANPHAMs.FirstOrDefault(v => v.IDSANPHAM == id);
+                if (productToFav != null)
+                {
+                    var existingProductFav = nguoidung.SANPHAMs.FirstOrDefault(v => v.IDSANPHAM == sanpham.IDSANPHAM);
+                    ViewBag.ExistingProduct = existingProductFav;
+                }
+            }
 
+            // Các sản phẩm liên quan đến sản phẩm người dùng đang xem
+            var productsSuggest = db.SANPHAMs.Where(s => s.IDLOAISP == sanpham.IDLOAISP && s.IDSANPHAM != sanpham.IDSANPHAM);
+            ViewBag.ProductsSuggest = productsSuggest;
 
             return View(sanpham);
         }
@@ -212,6 +282,61 @@ namespace TMDT.Controllers
                 return View(cacVoucherDaLuu);
             }
             return View();
+        }
+
+        public ActionResult Favorites()
+        {
+            var email = Session["Email"] as string;
+            if (email == null)
+            {
+                // Nếu chưa đăng nhập, chuyển hướng đến trang đăng nhập
+                return RedirectToAction("DangNhap", "Register");
+            }
+            var nguoidung = db.NGUOIDUNGs.SingleOrDefault(kh => kh.EMAIL == email);
+            if (nguoidung != null)
+            {
+                var productFavSaved = nguoidung.SANPHAMs.ToList();
+                int tongsl = productFavSaved.Count;
+                ViewBag.UserInfo = nguoidung;
+                ViewBag.Quantity = tongsl;
+                return View(productFavSaved);
+            }
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult AddFavorites(int id)
+        {
+            var email = Session["Email"] as string;
+            if (email == null)
+            {
+                // Nếu chưa đăng nhập, chuyển hướng đến trang đăng nhập
+                return RedirectToAction("DangNhap", "Register");
+            }
+            var nguoidung = db.NGUOIDUNGs.SingleOrDefault(kh => kh.EMAIL == email);
+            if (nguoidung != null)
+            {
+                var productToFav = db.SANPHAMs.FirstOrDefault(v => v.IDSANPHAM == id);
+                if (productToFav != null)
+                {
+                    // Kiểm tra xem người dùng đã lưu voucher này chưa
+                    var existingProductFav = nguoidung.SANPHAMs.FirstOrDefault(v => v.IDSANPHAM == productToFav.IDSANPHAM);
+                    if (existingProductFav == null)
+                    {
+                        nguoidung.SANPHAMs.Add(productToFav);
+                        db.SaveChanges();
+                    }
+                    else
+                    {
+                        nguoidung.SANPHAMs.Remove(existingProductFav);
+                        db.SaveChanges();
+                    }
+                    return RedirectToAction("ChiTietSanPham", "NgMua", new { id = productToFav.IDSANPHAM });
+                }
+            }
+            ModelState.AddModelError("productCode", "Sản phẩm không đúng");
+            return View(); // Trả về view với thông báo lỗi
         }
     }
 }

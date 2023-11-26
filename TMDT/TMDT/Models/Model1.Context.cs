@@ -45,6 +45,7 @@ namespace TMDT.Models
         public virtual DbSet<SHIPPER> SHIPPERs { get; set; }
         public virtual DbSet<SIZEGIAY> SIZEGIAYs { get; set; }
         public virtual DbSet<SIZETHOITRANG> SIZETHOITRANGs { get; set; }
+        public virtual DbSet<THANHPHO> THANHPHOes { get; set; }
         public virtual DbSet<THDIENTHOAI> THDIENTHOAIs { get; set; }
         public virtual DbSet<THGIAY> THGIAYs { get; set; }
         public virtual DbSet<THTHOITRANG> THTHOITRANGs { get; set; }

@@ -36,8 +36,10 @@ namespace TMDT.Models
         public string ANHDAIDIEN { get; set; }
         public Nullable<int> IDND { get; set; }
         public string TENCH { get; set; }
+        public Nullable<int> IDTP { get; set; }
     
         public virtual NGUOIDUNG NGUOIDUNG { get; set; }
+        public virtual THANHPHO THANHPHO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DONHANG> DONHANGs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

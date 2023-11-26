@@ -741,34 +741,6 @@
         var isVoucherApplied = false;
         var selectedVoucherId = null;
 
-        $('input[name="voucherShopSelection"]').change(function () {
-            selectedVoucherId = $(this).val();
-            var totalCartAfAll = parseFloat($('#totalCartAfAll').data('initial-value').replace(/\D/g, ''));
-
-            $.ajax({
-                type: 'POST',
-                url: '/ShoppingCart/ProcessVoucher', // Sử dụng hàm xử lý voucher thay vì Checkout
-                data: {
-                    voucherId: selectedVoucherId,
-                    totalCartAfAll: totalCartAfAll
-                },
-                success: function (data) {
-                    if (data.success) {
-                        $('#voucherNameDisplay').text(data.voucherName);
-                        $('#discountPrice').text(data.voucherDiscount);
-                        $('#totalCartAfAll').text(data.totalDiscountedPrice);
-                        totalDiscounted = data.totalDiscounted;
-                        isVoucherApplied = true;
-                    } else {
-                        console.log('Không tìm thấy voucher.');
-                    }
-                },
-                error: function () {
-                    console.log('Đã có lỗi xảy ra trong quá trình xử lý voucher.');
-                }
-            });
-        });
-
         $('#CheckoutButton').click(function () {
             var totalCartAfAll = parseFloat($('#totalCartAfAll').data('initial-value').replace(/\D/g, ''));
             if (isVoucherApplied && totalDiscounted > 0 && selectedVoucherId !== null && selectedVoucherId !== undefined) {
@@ -792,6 +764,38 @@
                 console.log('Vui lòng chọn voucher trước khi thanh toán hoặc dữ liệu không hợp lệ.');
             }
         });
+
+        $('input[name="voucherShopSelection"]').change(function () {
+            selectedVoucherId = $(this).val();
+            var totalCartAfAll = parseFloat($('#totalCartAfAll').data('initial-value').replace(/\D/g, ''));
+
+            $.ajax({
+                type: 'POST',
+                url: '/ShoppingCart/ProcessVoucher',
+                data: {
+                    voucherId: selectedVoucherId,
+                    totalCartAfAll: totalCartAfAll
+                },
+                success: function (data) {
+                    if (data.success) {
+                        $('#voucherNameDisplay').text(data.voucherName);
+                        $('#discountPrice').text(data.voucherDiscount);
+                        $('#totalCartAfAll').text(data.totalDiscountedPrice);
+                        totalDiscounted = data.totalDiscounted;
+                        isVoucherApplied = true;
+                    } else {
+                        console.log('Không tìm thấy voucher.');
+                    }
+                },
+                error: function () {
+                    console.log('Đã có lỗi xảy ra trong quá trình xử lý voucher.');
+                }
+            });
+        });
+
     });
+
+
+   
 </script>
 

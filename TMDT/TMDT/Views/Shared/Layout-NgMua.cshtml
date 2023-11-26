@@ -139,7 +139,7 @@
                     </div>
 
                     <input type="checkbox" hidden id="mobile-search-checkbox" class="header__search-checkbox">
-                    @using (Html.BeginForm("Search", "NgMua", FormMethod.Get, new { @class = "header__search" }))
+                    @using (Html.BeginForm("Search", "NgMua", FormMethod.Get, new { @class = "header__search", @style= "margin-right: 18px;" }))
                     {
                         <div class="header__search-input-wrap">
                             <input type="text"
@@ -182,55 +182,10 @@
                                     @Html.Action("GioHang", "ShoppingCart")
                                 </a>
                             }
-                            <!--<a href="">
-                                <i class="header__cart-icon fas fa-shopping-cart"></i>
-                            </a>
-
-                            <a href="">
-                                <i class="header__cart-icon fas fa-shopping-cart"></i>-->
-                            @*@Html.Action("Giohang", "ShoppingCart")*@
-                            <!--</a>-->
-
                         </div>
-
                     </div>
 
                 </div>
-
-                <!--<div class="channel-entrance hide-on-mobile-tablet">
-                    <ul class="channel-entrance-menu">
-                        <li class="channel-entrance-menu-list">
-                            <div class="channel-entrance-menu-show" href="#">
-                                <a href="#" class="channel-entrance-link">Danh mục sản phẩm</a>
-                                <div class="channel-entrance-link-menu-list">
-                                    <ul class="category-list">
-                                        <li class="category-item category-item--active">
-                                            <a href="~/Trangchu/Trangchu" class="category-item__link">
-                                                <img src="~/Content/Hinh/home.png" alt="" class="channel-entrance-link-img">
-                                                Trang chủ
-                                            </a>
-                                        </li>-->
-                @*@Html.Action("Hang", "Trangchu")*@
-                <!--</ul>
-                                </div>
-
-                            </div>
-
-                        </li>
-
-                        <li class="channel-entrance-menu-list">
-                            <a class="channel-entrance-link" href="">Điện thoại bán chạy</a>
-                        </li>
-                        <li class="channel-entrance-menu-list">
-                            <a class="channel-entrance-link" href="">Liên hệ</a>
-                        </li>
-                        <li class="channel-entrance-menu-list">
-                            <a class="channel-entrance-link" href="#">Cửa hàng gần bạn</a>
-                        </li>
-
-                    </ul>
-
-                </div>-->
             </div>
 
     </div>

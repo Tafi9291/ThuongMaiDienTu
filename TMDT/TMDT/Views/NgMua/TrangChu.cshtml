@@ -75,21 +75,36 @@
                     <div style="text-align: center; font-size: 2rem; background-color: #fff; color: var(--primary-color); padding: 20px 0; margin-bottom: 10px; border-bottom: 4px solid var(--primary-color);">Gợi ý sản phẩm</div>
                     <div class="home-filter hide-on-mobile-tablet">
                         <span class="home-filter__label">Sắp xếp theo</span>
-                        <button class="home-filter__btn btn">Phổ biến</button>
-                        <button class="home-filter__btn btn btn--primary">Mới nhất</button>
-                        <button class="home-filter__btn btn">Bán chạy</button>
-
                         <div class="select-input">
                             <span class="select-input__label">Giá</span>
                             <i class="select-input__icon fas fa-angle-down"></i>
                             <!-- List option -->
                             <ul class="select-input__list">
                                 <li class="select-input__item">
-                                    <a href="" class="select-input__link">Giá thấp đến cao</a>
+                                    <a href="@Url.Action("TrangChu")" class="select-input__link">Bình thường</a>
                                 </li>
                                 <li class="select-input__item">
-                                    <a href="" class="select-input__link">Giá cao đến thấp</a>
+                                    <a href="@Url.Action("TrangChu", new { sortOrder = "giathapdencao" })" class="select-input__link">Giá thấp đến cao</a>
                                 </li>
+                                <li class="select-input__item">
+                                    <a href="@Url.Action("TrangChu", new { sortOrder = "giacaodenthap" })" class="select-input__link">Giá cao đến thấp</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <span class="home-filter__label" style="margin-left: 10px;">Khu vực</span>
+                        <div class="select-input">
+                            <span class="select-input__label">Tỉnh thành</span>
+                            <i class="select-input__icon fas fa-angle-down"></i>
+                            <!-- List option -->
+                            <ul class="select-input__list" style=" overflow: hidden; max-height: 350px;">
+                                <div style="overflow-y: auto; max-height: 350px;">
+                                    @foreach (var area in ViewBag.Areas)
+                                    {
+                                        <li class="select-input__item">
+                                            <a href="@Url.Action("TrangChu", new { selectedArea = area.TENTHANHPHO })" class="select-input__link">@area.TENTHANHPHO</a>
+                                        </li>
+                                    }
+                                </div>
                             </ul>
                         </div>
                     </div>
@@ -132,8 +147,6 @@
                                     </div>
 
                                     <div class="home-product-item__origin">
-                                        @*<span class="home-product-item__brand">MCBooks</span>
-                            <span class="home-product-item__origin-name">NXB Hồng Đức</span>*@
                                     </div>
 
                                     <div class="home-product-item__favourite">
