@@ -11,6 +11,13 @@ namespace TMDT.Controllers
     public class ShoppingCartController : Controller
     {
         TMDTEntities db = new TMDTEntities();
+
+        //private readonly Cart _cart;
+
+        ////public ShoppingCartController()
+        ////{
+        ////    _cart = new Cart(HttpContext);
+        ////}
         public Cart GetCart()
         {
             Cart cart = Session["Cart"] as Cart;
@@ -128,6 +135,13 @@ namespace TMDT.Controllers
                 var cacVoucherDaLuu = nguoidung.VOUCHERSHOPs.Where(v => v.IDCUAHANG == cuahang.IDCUAHANG).ToList();
                 ViewBag.UserInfo = nguoidung; // Đưa thông tin người dùng vào ViewBag
                 ViewBag.VoucherShop = cacVoucherDaLuu;
+
+                // Lấy thông tin từ TempData và gán vào ViewBag để sử dụng trong view
+                ViewBag.TenVoucher = TempData["TenVoucher"];
+                ViewBag.GiamGia = TempData["GiamGia"];
+
+                TempData.Remove("TenVoucher");
+                TempData.Remove("GiamGia");
             }
 
             return View(cart);
@@ -146,36 +160,73 @@ namespace TMDT.Controllers
             return cuahang;
         }
 
-        public ActionResult ProcessVoucher(int voucherId, double totalCartAfAll)
-        {
-            // Lấy thông tin voucher từ CSDL sử dụng voucherId
-            var selectedVoucher = db.VOUCHERSHOPs.FirstOrDefault(v => v.IDVOUCHERSHOP == voucherId);
-            if (selectedVoucher != null)
-            {
-                var voucherDiscount = selectedVoucher?.GIAMGIA ?? 0;
-                var totalDiscountedPrice = totalCartAfAll - voucherDiscount;
-                // Format chuỗi voucherDiscount
-                var formattedDiscount = string.Format("{0:#,##0 đ}", voucherDiscount);
-                var formattedTotalDiscountedPrice = string.Format("{0:#,##0 đ}", totalDiscountedPrice);
+        //public ActionResult ProcessVoucher(int voucherId, double totalCartAfAll)
+        //{
+        //    // Lấy thông tin voucher từ CSDL sử dụng voucherId
+        //    var selectedVoucher = db.VOUCHERSHOPs.FirstOrDefault(v => v.IDVOUCHERSHOP == voucherId);
+        //    if (selectedVoucher != null)
+        //    {
+        //        var voucherDiscount = selectedVoucher?.GIAMGIA ?? 0;
+        //        var totalDiscountedPrice = totalCartAfAll - voucherDiscount;
+        //        // Format chuỗi voucherDiscount
+        //        var formattedDiscount = string.Format("{0:#,##0 đ}", voucherDiscount);
+        //        var formattedTotalDiscountedPrice = string.Format("{0:#,##0 đ}", totalDiscountedPrice);
 
-                // Trả về thông tin voucher cho client
-                return Json(new
-                {
-                    success = true,
-                    voucherName = selectedVoucher.TENVC,
-                    voucherDiscount = formattedDiscount,
-                    totalDiscountedPrice = formattedTotalDiscountedPrice,
-                    totalDiscounted = totalDiscountedPrice
-                });
-            }
-            else
+        //        // Trả về thông tin voucher cho client
+        //        return Json(new
+        //        {
+        //            success = true,
+        //            voucherName = selectedVoucher.TENVC,
+        //            voucherDiscount = formattedDiscount,
+        //            totalDiscountedPrice = formattedTotalDiscountedPrice,
+        //            totalDiscounted = totalDiscountedPrice
+        //        });
+        //    }
+        //    else
+        //    {
+        //        return Json(new { success = false });
+        //    }
+        //}
+        [HttpPost]
+        public ActionResult AddVoucher(int id)
+        {
+            var email = Session["Email"] as string;
+            if (email == null)
             {
-                return Json(new { success = false });
+                // Nếu chưa đăng nhập, chuyển hướng đến trang đăng nhập
+                return RedirectToAction("DangNhap", "Register");
             }
+            var nguoidung = db.NGUOIDUNGs.SingleOrDefault(kh => kh.EMAIL == email);
+            if (nguoidung != null)
+            {
+                var voucher = db.VOUCHERSHOPs.SingleOrDefault(v => v.IDVOUCHERSHOP == id);
+                if (voucher != null)
+                {
+                    // Lấy thông tin cần thiết từ voucher như tên và giảm giá
+                    var tenVoucher = voucher.TENVC;
+                    var giamGia = voucher.GIAMGIA;
+                    var idvoucher = voucher.IDVOUCHERSHOP;
+
+                    var formattedGiamGia = string.Format("{0:#,##0}đ", giamGia);
+
+                    // Ví dụ: Trả về tên và giảm giá để sử dụng trong view
+                    TempData["TenVoucher"] = tenVoucher;
+                    TempData["GiamGia"] = formattedGiamGia;
+
+                    Session["GiamGia"] = formattedGiamGia;
+                    // Trả về view hoặc thực hiện các hành động tiếp theo tùy vào logic của bạn
+                    return RedirectToAction("Checkout", "ShoppingCart", new {id = voucher.IDCUAHANG }); // Thay bằng tên view cần trả về nếu cần
+                }
+                else
+                {
+                }
+
+            }
+            return View("Error", "Home");
         }
 
         [HttpPost]
-        public ActionResult Checkout(FormCollection form, int? voucherId, double? totalCartAfAll, int ShopId, int? totalDiscounted)
+        public ActionResult Checkout(FormCollection form, int ShopId)
         {
             
             CUAHANG cuahang = GetCuaHangById(ShopId);
@@ -211,20 +262,22 @@ namespace TMDT.Controllers
                     //// Lấy danh sách sản phẩm trong giỏ hàng thuộc cùng một cửa hàng
                     var productsInShop = cart.Items.Where(item => item.sanpham?.CUAHANG?.IDCUAHANG == ShopId);
 
-                   
-
                     int shipPrice = 26000;
                     int? thanhTienTheoShop = productsInShop.Sum(item => item.sanpham?.GIAGIAM * item.soluong + shipPrice);
 
-                    // Lấy thông tin voucher từ CSDL sử dụng voucherId
-
-                    if (totalDiscounted != null)
+                    var giamGiaString = Session["GiamGia"] as string;
+                    double giamGiaValue;
+                    if (giamGiaString != null)
                     {
-                        donHang.THANHTIEN = totalDiscounted;
+                        if (double.TryParse(giamGiaString.Replace("đ", "").Replace(",", "").Trim(), out giamGiaValue))
+                        {
+                            double thanhtienApDungVC = (int)thanhTienTheoShop - giamGiaValue;
+                            donHang.THANHTIEN = (int)thanhtienApDungVC;
+                        }
                     }
                     else
                     {
-                        donHang.THANHTIEN = thanhTienTheoShop;
+                        donHang.THANHTIEN = thanhTienTheoShop; // Sử dụng thanhTienTheoShop nếu giảm giá không tồn tại
                     }
 
                     var trangThai = db.TRANGTHAIDHs.SingleOrDefault(tt => tt.IDTRANGTHAIDH == 1);
@@ -257,11 +310,11 @@ namespace TMDT.Controllers
                     }
 
                     
-                    cart.Xoagh(ShopId);
                     db.SaveChanges();
+                    cart.Xoagh(ShopId);
                     // Hiển thị thông báo đặt hàng thành công
                     ViewBag.ThongBao = "Đặt hàng thành công!";
-
+                    Session.Remove("GiamGia");
                     return RedirectToAction("Complete", new { id = donHang.IDDONHANG });
 
                 }

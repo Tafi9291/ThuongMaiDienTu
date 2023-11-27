@@ -17,6 +17,24 @@ namespace TMDT.Models
     public class Cart
     {
         List<CartItem> items = new List<CartItem>();
+        //private HttpContextBase _httpContext;
+
+        //public Cart(HttpContextBase httpContext)
+        //{
+        //    _httpContext = httpContext;
+        //}
+
+        public Cart()
+        {
+
+        }
+
+        // Các phương thức khác của class Cart
+
+        //public string GiamGia
+        //{
+        //    get { return _httpContext.Session["GiamGia"] as string; }
+        //}
         public IEnumerable<CartItem> Items
         {
             get { return items; }
@@ -82,11 +100,31 @@ namespace TMDT.Models
                 );
             return tongTienTheoCuaHang;
         }
+
         public double TongtienCheckout()
         {
-            var tongtien = items.Sum(s => s.sanpham.GIAGIAM * s.soluong);
+            int shipOrder = 26000;
+            var tongtien = items.Sum(s => s.sanpham.GIAGIAM * s.soluong + shipOrder);
             return (double)tongtien;
         }
+
+        //public double TongtienCheckoutApDungVC()
+        //{
+        //    int shipOrder = 26000;
+        //    double? tongTien = items.Sum(s => s.sanpham.GIAGIAM * s.soluong + (double)shipOrder);
+
+        //    var giamGiaString = GiamGia;
+        //    double giamGiaValue;
+        //    if (double.TryParse(giamGiaString.Replace("đ", "").Replace(",", "").Trim(), out giamGiaValue))
+        //    {
+        //        tongTien -= giamGiaValue;
+        //    }
+
+        //    return (double)tongTien;
+
+
+        //}
+
         public void Xoasp(int id)
         {
             items.RemoveAll(s => s.sanpham.IDSANPHAM == id);

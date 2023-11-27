@@ -42,7 +42,20 @@ namespace TMDT.Controllers
                 pay.AddRequestData("vnp_Version", "2.1.0"); //Phiên bản api mà merchant kết nối. Phiên bản hiện tại là 2.1.0
                 pay.AddRequestData("vnp_Command", "pay"); //Mã API sử dụng, mã cho giao dịch thanh toán là 'pay'
                 pay.AddRequestData("vnp_TmnCode", tmnCode); //Mã website của merchant trên hệ thống của VNPAY (khi đăng ký tài khoản sẽ có trong mail VNPAY gửi về)
-                pay.AddRequestData("vnp_Amount", (cart.TongtienCheckout() * 100).ToString()); //số tiền cần thanh toán, công thức: số tiền * 100 - ví dụ 10.000 (mười nghìn đồng) --> 1000000
+                var giamGiaString = Session["GiamGia"] as string;
+                double giamGiaValue;
+                if (giamGiaString != null)
+                {
+                    if (double.TryParse(giamGiaString.Replace("đ", "").Replace(",", "").Trim(), out giamGiaValue))
+                    {
+                        double thanhtienApDungVC = (int)cart.TongtienCheckout() - giamGiaValue;
+                        pay.AddRequestData("vnp_Amount", (thanhtienApDungVC * 100).ToString());
+                    }
+                }
+                else
+                {
+                    pay.AddRequestData("vnp_Amount", (cart.TongtienCheckout() * 100).ToString()); //số tiền cần thanh toán, công thức: số tiền * 100 - ví dụ 10.000 (mười nghìn đồng) --> 1000000
+                }
                 pay.AddRequestData("vnp_BankCode", ""); //Mã Ngân hàng thanh toán (tham khảo: https://sandbox.vnpayment.vn/apis/danh-sach-ngan-hang/), có thể để trống, người dùng có thể chọn trên cổng thanh toán VNPAY
                 pay.AddRequestData("vnp_CreateDate", DateTime.Now.ToString("yyyyMMddHHmmss")); //ngày thanh toán theo định dạng yyyyMMddHHmmss
                 pay.AddRequestData("vnp_CurrCode", "VND"); //Đơn vị tiền tệ sử dụng thanh toán. Hiện tại chỉ hỗ trợ VND
@@ -142,10 +155,22 @@ namespace TMDT.Controllers
                             var productsInShop = cart1.Items.Where(item => item.sanpham?.CUAHANG?.IDCUAHANG == ShopId);
 
                             // Tính tổng giá trị của các sản phẩm thuộc cùng một cửa hàng
-                            int? thanhTienTheoShop = productsInShop.Sum(item => item.sanpham?.GIAGIAM * item.soluong);
-
-                            // Gán giá trị THANHTIEN cho đơn hàng
-                            donHang.THANHTIEN = thanhTienTheoShop;
+                            int shipPrice = 26000;
+                            int? thanhTienTheoShop = productsInShop.Sum(item => item.sanpham?.GIAGIAM * item.soluong + shipPrice);
+                            var giamGiaString = Session["GiamGia"] as string;
+                            double giamGiaValue;
+                            if (giamGiaString != null)
+                            {
+                                if (double.TryParse(giamGiaString.Replace("đ", "").Replace(",", "").Trim(), out giamGiaValue))
+                                {
+                                    double thanhtienApDungVC = (int)thanhTienTheoShop - giamGiaValue;
+                                    donHang.THANHTIEN = (int)thanhtienApDungVC;
+                                }
+                            }
+                            else
+                            {
+                                donHang.THANHTIEN = thanhTienTheoShop; // Sử dụng thanhTienTheoShop nếu giảm giá không tồn tại
+                            }
                             // Lấy trạng thái đơn hàng mặc định (ví dụ: 1 - Chờ xử lý)
                             var trangThai = db.TRANGTHAIDHs.SingleOrDefault(tt => tt.IDTRANGTHAIDH == 1);
 
