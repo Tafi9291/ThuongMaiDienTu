@@ -19,6 +19,8 @@ namespace TMDT.Models
         public int ProductOutOfSold { get; set; }
         public int TotalOrders { get; set; }
         public int TotalProducts { get; set; }
+        public int TotalUnpaid { get; set; }
+        public int TotalPaid{ get; set; }
         [DisplayFormat(DataFormatString = "{0:0,0 đ}", ApplyFormatInEditMode = false)]
         public Nullable<decimal> TotalRevenue { get; set; }
     }

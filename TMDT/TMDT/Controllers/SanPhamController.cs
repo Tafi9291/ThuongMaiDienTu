@@ -26,64 +26,64 @@ namespace TMDT.Controllers
                 return RedirectToAction("DangNhap", "Register");
             }
 
-            MySingleton.Instance.Init(email);
-            var products = MySingleton.Instance.GetSanPhamList();
+            //MySingleton.Instance.Init(email);
+            //var products = MySingleton.Instance.GetSanPhamList();
 
-            // Thực hiện tìm kiếm nếu có chuỗi tìm kiếm
-            if (!string.IsNullOrEmpty(searchString))
-            {
-                products = products
-                    .Where(p => p.TENSP.Contains(searchString))
-                    .ToList();
-            }
-
-            // Lưu trạng thái tìm kiếm hiện tại
-            currentFilter = searchString;
-
-            var pageNumber = page ?? 1;
-            int pageSize = size ?? 10;
-            var pagedVouchers = products
-                .ToPagedList(pageNumber, pageSize);
-
-            return View(pagedVouchers);
-            //// Lấy thông tin của người dùng trong cơ sở dữ liệu
-            //var nguoidung = db.NGUOIDUNGs.SingleOrDefault(kh => kh.EMAIL == email);
-            //if (nguoidung != null) // Kiểm tra xem người dùng có tồn tại hay không
+            //// Thực hiện tìm kiếm nếu có chuỗi tìm kiếm
+            //if (!string.IsNullOrEmpty(searchString))
             //{
-            //    // Lấy thông tin của cửa hàng nếu tồn tại, sau đó lưu ID của cửa hàng vào sản phẩm
-            //    var cuahang = db.CUAHANGs.SingleOrDefault(ch => ch.IDND == nguoidung.IDND);
-
-            //    if (cuahang != null) // Kiểm tra xem cửa hàng có tồn tại hay không
-            //    {
-            //        sp.IDCUAHANG = cuahang.IDCUAHANG;
-            //        // Lấy danh sách sản phẩm theo IDCUAHANG
-            //        var products = db.SANPHAMs
-            //            .Where(p => p.IDCUAHANG == sp.IDCUAHANG)
-            //            .OrderByDescending(p => p.TENSP);
-
-            //        // Thực hiện tìm kiếm nếu có chuỗi tìm kiếm
-            //        if (!string.IsNullOrEmpty(searchString))
-            //        {
-            //            products = (IOrderedQueryable<SANPHAM>)products.Where(p => p.TENSP.Contains(searchString));
-            //        }
-
-            //        // Lưu trạng thái tìm kiếm hiện tại
-            //        currentFilter = searchString;
-
-            //        var pageNumber = page ?? 1;
-            //        int pageSize = size ?? 10;
-            //        var pagedVouchers = products
-            //            .ToPagedList(pageNumber, pageSize);
-
-            //        return View(pagedVouchers);
-
-            //    }
+            //    products = products
+            //        .Where(p => p.TENSP.Contains(searchString))
+            //        .ToList();
             //}
-            //////const int pageSize = 10;
-            //////var pageNumber = (page ?? 1);
-            //////var products = db.SANPHAMs.OrderBy(p => p.TENSP).ToList().ToPagedList(pageNumber, pageSize);
-            ////return RedirectToAction("");
-            //return RedirectToAction("ErrorPage"); // Xử lý khi không tìm thấy cửa hàng hoặc người dùng
+
+            //// Lưu trạng thái tìm kiếm hiện tại
+            //currentFilter = searchString;
+
+            //var pageNumber = page ?? 1;
+            //int pageSize = size ?? 10;
+            //var pagedVouchers = products
+            //    .ToPagedList(pageNumber, pageSize);
+
+            //return View(pagedVouchers);
+            // Lấy thông tin của người dùng trong cơ sở dữ liệu
+            var nguoidung = db.NGUOIDUNGs.SingleOrDefault(kh => kh.EMAIL == email);
+            if (nguoidung != null) // Kiểm tra xem người dùng có tồn tại hay không
+            {
+                // Lấy thông tin của cửa hàng nếu tồn tại, sau đó lưu ID của cửa hàng vào sản phẩm
+                var cuahang = db.CUAHANGs.SingleOrDefault(ch => ch.IDND == nguoidung.IDND);
+
+                if (cuahang != null) // Kiểm tra xem cửa hàng có tồn tại hay không
+                {
+                    sp.IDCUAHANG = cuahang.IDCUAHANG;
+                    // Lấy danh sách sản phẩm theo IDCUAHANG
+                    var products = db.SANPHAMs
+                        .Where(p => p.IDCUAHANG == sp.IDCUAHANG)
+                        .OrderByDescending(p => p.TENSP);
+
+                    // Thực hiện tìm kiếm nếu có chuỗi tìm kiếm
+                    if (!string.IsNullOrEmpty(searchString))
+                    {
+                        products = (IOrderedQueryable<SANPHAM>)products.Where(p => p.TENSP.Contains(searchString));
+                    }
+
+                    // Lưu trạng thái tìm kiếm hiện tại
+                    currentFilter = searchString;
+
+                    var pageNumber = page ?? 1;
+                    int pageSize = size ?? 10;
+                    var pagedVouchers = products
+                        .ToPagedList(pageNumber, pageSize);
+
+                    return View(pagedVouchers);
+
+                }
+            }
+            ////const int pageSize = 10;
+            ////var pageNumber = (page ?? 1);
+            ////var products = db.SANPHAMs.OrderBy(p => p.TENSP).ToList().ToPagedList(pageNumber, pageSize);
+            //return RedirectToAction("");
+            return RedirectToAction("ErrorPage"); // Xử lý khi không tìm thấy cửa hàng hoặc người dùng
         }
 
         public ActionResult ChonNganhHang()

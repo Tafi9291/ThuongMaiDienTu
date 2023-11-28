@@ -139,7 +139,7 @@
                     </div>
 
                     <input type="checkbox" hidden id="mobile-search-checkbox" class="header__search-checkbox">
-                    @using (Html.BeginForm("Search", "NgMua", FormMethod.Get, new { @class = "header__search", @style= "margin-right: 18px;" }))
+                    @using (Html.BeginForm("Search", "NgMua", FormMethod.Get, new { @class = "header__search", @style = "margin-right: 18px;" }))
                     {
                         <div class="header__search-input-wrap">
                             <input type="text"
@@ -147,23 +147,27 @@
                                    placeholder="Nhập để tìm kiếm..."
                                    name="searching" />
                         </div>
+                        <div class="header__search-select">
+                            <span class="header__search-select-label">Khu vực</span>
+                            <i class="header__search-select-icon fas fa-caret-down"></i>
 
+                            <ul class="header__search-option">
+                                <div style=" overflow: auto; height: 450px;">
+                                    @foreach (var area in ViewBag.Areas)
+                                    {
+                                        <li class="header__search-option-item">
+                                            <span>@area.TENTHANHPHO</span>
+                                            <i class="fas fa-check"></i>
+                                        </li>
+                                    }
+                                </div>
+                            </ul>
+                        </div>
                         <button class="header__search-btn" type="submit">
+                            <input type="hidden" name="selectedArea" value="" />
                             <i class="header__search-btn-icon fas fa-search"></i>
                         </button>
                     }
-                    @*<div class="header__search">
-                            <div class="header__search-input-wrap">
-                                <input type="text"
-                                       class="header__search-input"
-                                       placeholder="Nhập để tìm kiếm..."
-                                       name="searching" />
-                            </div>
-
-                            <button class="header__search-btn" type="submit">
-                                <i class="header__search-btn-icon fas fa-search"></i>
-                            </button>
-                        </div>*@
 
                     <!--Cart layout-->
                     <div class="header__cart">
@@ -380,6 +384,25 @@
         setTimeout(function () {
             $('#thongbao').fadeOut('slow');
         }, 2000); // disappear after 3 seconds
+    </script>
+    <script>
+        // Lắng nghe sự kiện click trên các mục trong danh sách khu vực
+        document.addEventListener('DOMContentLoaded', function () {
+            var optionItems = document.querySelectorAll('.header__search-option-item');
+
+            optionItems.forEach(item => {
+                item.addEventListener('click', function () {
+                    var selectedAreaInput = document.querySelector('input[name="selectedArea"]');
+                    var areaValue = item.textContent.trim(); // Lấy giá trị từ phần tử span
+                    selectedAreaInput.value = areaValue;
+
+                    // Loại bỏ lớp active từ tất cả các mục khác
+                    optionItems.forEach(otherItem => otherItem.classList.remove('header__search-option-item-active'));
+                    // Thêm lớp active vào mục được chọn
+                    item.classList.add('header__search-option-item-active');
+                });
+            });
+        });
     </script>
     <script src="~/Scripts/js/upload.js"></script>
     <script src="~/Scripts/js/acc-show-hide.js"></script>

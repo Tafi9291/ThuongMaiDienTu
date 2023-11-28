@@ -514,6 +514,7 @@
     <Content Include="Views\NgMua\YourVoucher.cshtml" />
     <Content Include="Views\Payment\PaymentConfirm.cshtml" />
     <Content Include="Views\NgMua\Favorites.cshtml" />
+    <Content Include="Views\NgBan\DoanhThu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

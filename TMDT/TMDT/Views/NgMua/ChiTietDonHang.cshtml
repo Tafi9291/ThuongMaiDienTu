@@ -57,14 +57,20 @@
                                 <div class="history-order__product-price">
                                     <p>
                                         @*@{
-                                                var dongia = db.DIENTHOAIs.FirstOrDefault(dt => dt.DIENTHOAIID == item.DIENTHOAIID);
-                                                var tendongia = dongia != null ? string.Format("{0:0,0 đ}", dongia.GIAGIAM) : "";
-                                            }
-                                            Đơn giá: @tendongia*@
+                                            var dongia = db.DIENTHOAIs.FirstOrDefault(dt => dt.DIENTHOAIID == item.DIENTHOAIID);
+                                            var tendongia = dongia != null ? string.Format("{0:0,0 đ}", dongia.GIAGIAM) : "";
+                                        }
+                                        Đơn giá: @tendongia*@
                                     </p>
                                     <p>Tổng tiền: @string.Format("{0:0,0 đ}", item.TONGTIEN)</p>
-
+                                    <div class="home-product-item__detail-cart" data-product-id="@item.IDSANPHAM" style=" display: flex; justify-content: flex-end;">
+                                        <a href="/ShoppingCart/AddToCart/@item.IDSANPHAM" class="home-product-item__detail-cart-button" style="border-radius: 20px; margin: unset; margin-top: 20px; width: 126px;">
+                                            <i class="home-product-item__detail-cart-icon fas fa-shopping-cart" style=" padding: 12px 12px 12px 0;"></i>
+                                            <p class="home-product-item__detail-cart-order">Mua lại</p>
+                                        </a>
+                                    </div>
                                 </div>
+                                
                             </div>
 
 

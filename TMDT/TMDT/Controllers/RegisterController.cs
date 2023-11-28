@@ -13,6 +13,8 @@ namespace TMDT.Controllers
         // GET: Register
         public ActionResult DangKy()
         {
+            var areas = db.THANHPHOes.ToList();
+            ViewBag.Areas = areas;
             return View();
         }
         [HttpPost]
@@ -43,7 +45,8 @@ namespace TMDT.Controllers
         // GET: DangNhap
         public ActionResult DangNhap()
         {
-
+            var areas = db.THANHPHOes.ToList();
+            ViewBag.Areas = areas;
             return View();
         }
         [HttpPost]
@@ -75,12 +78,16 @@ namespace TMDT.Controllers
             // Lấy thông tin khách hàng từ database
             var email = Session["Email"] as string;
             var customer = db.NGUOIDUNGs.FirstOrDefault(c => c.EMAIL == email);
+            var areas = db.THANHPHOes.ToList();
+            ViewBag.Areas = areas;
             // Truyền thông tin khách hàng sang
             return View(customer);
         }
         public ActionResult EditUser(int id)
         {
             //Lấy thông tin khách hàng từ database
+            var areas = db.THANHPHOes.ToList();
+            ViewBag.Areas = areas;
             var email = Session["Email"] as string;
             return View(db.NGUOIDUNGs.Where(s => s.IDND == id).FirstOrDefault());
         }

@@ -4136,3 +4136,70 @@ tafi-table__horizontal {
 .tafi-form--label-right .tafi-form-item__label {
     text-align: right;
 }
+
+
+/*Doanh thu*/
+.meta-overview {
+    display: flex;
+    padding: 16px 0;
+}
+    .meta-overview .label {
+        margin-bottom: 8px;
+        color: #999;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        font-size: 1.6rem;
+    }
+
+.meta-overview-div {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+}
+
+.meta-item-title {
+    margin-bottom: 16px;
+    color: #333;
+    font-weight: 500;
+    font-size: 16px;
+    font-weight: var(--font-weight);
+}
+
+.sprites-guarantee {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    background-size: 328px 237px;
+    background-repeat: no-repeat;
+    background-position: -244px -88px;
+    background-image: url(https://deo.shopeemobile.com/shopee/shopee-seller-live-sg/mmf_portal_seller_root_dir/static/modules/finance/image/sprite.src.pages.Index.70cb224.png);
+}
+
+.meta-item-body {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.meta-numeric-content {
+    color: #333;
+    font-weight: 500;
+    letter-spacing: 0;
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: var(--font-weight);
+}
+
+.meta-overview-div-right {
+    margin-left: 16px;
+    padding-left: 16px;
+    border-left: 1px solid #e5e5e5;
+}

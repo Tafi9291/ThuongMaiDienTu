@@ -18,6 +18,8 @@ namespace TMDT.Controllers
         {
             var cuahang = db.CUAHANGs.Find(id);
             ShopViewModel viewModel = new ShopViewModel();
+            var areas = db.THANHPHOes.ToList();
+            ViewBag.Areas = areas;
 
             var email = Session["Email"] as string;
             var nguoidung = db.NGUOIDUNGs.SingleOrDefault(kh => kh.EMAIL == email);

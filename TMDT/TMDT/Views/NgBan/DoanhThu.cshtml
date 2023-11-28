@@ -1,0 +1,153 @@
+﻿@model TMDT.Models.DashBoard
+@{
+    ViewBag.Title = "DoanhThu";
+    Layout = "~/Views/Shared/Layout-NgBan.cshtml";
+}
+
+<div class="col l-6 m-12 c-12">
+    <div class="title-page">
+        <div class="title-page__link">
+            <a href="@Url.Action("KenhNgBan", "NgBan")" class="title-page__link-label">Trang chủ</a>
+            <i class='bx bx-chevron-right'></i>
+            <a href="@Url.Action("DoanhThu", "NgBan")" class="title-page__link-label" style="color: black;">Doanh thu</a>
+        </div>
+    </div>
+    <div class="home-product" style="display: flex;">
+        <div class="row sm-gutter" style="padding-right: 16px;">
+            <div class="card card-offset">
+                <div class="title">
+                    Tổng Quan
+                    <p class="card-tips">Thông tin chưa thanh toán/ đã thanh toán</p>
+                </div>
+                <div class="async-data-wrapper">
+                    <div class="meta-section">
+                        <div class="meta-overview">
+                            <div class="meta-overview-div">
+                                <div class="meta-item-title">
+                                    Chưa thanh toán
+                                    <span class="sprites-guarantee"></span>
+                                </div>
+                                <div class="meta-item-body">
+                                    <div class="meta-numeric">
+                                        <div class="label">Tổng cộng</div>
+                                        <div>
+                                            <div class="meta-numeric-content" style="width: 212px;">
+                                                <span class="currency-symbol">₫</span>
+                                                @String.Format("{0:#,##0}", Model.TotalUnpaid)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="meta-overview-div-right">
+                                <div class="meta-item-title">
+                                    Đã thanh toán
+                                    <span class="sprites-guarantee"></span>
+                                </div>
+                                <div class="meta-item-body">
+                                    <div class="meta-numeric">
+                                        <div class="label">Tuần này</div>
+                                        <div>
+                                            <div class="meta-numeric-content" style="width: 212px;">
+                                                <span class="currency-symbol">₫</span>
+                                                @String.Format("{0:#,##0}", Model.TotalPaid)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="meta-numeric">
+                                        <div class="label">Tháng này</div>
+                                        <div>
+                                            <div class="meta-numeric-content" style="width: 111px; font-size: 14px;">
+                                                <span class="currency-symbol" style="font-size: 14px;">₫</span>
+                                                0
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="meta-numeric">
+                                        <div class="label">Tổng cộng</div>
+                                        <div>
+                                            <div class="meta-numeric-content" style="width: 111px; font-size: 14px;">
+                                                <span class="currency-symbol" style="font-size: 14px;">₫</span>
+                                                0
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card card-offset">
+                <div class="title">
+                    Phân tích doanh thu
+                    <p class="card-tips">Tổng quan dữ liệu của shop đối với đơn hàng đã xác nhận</p>
+                </div>
+                <div class="async-data-wrapper">
+                    <div class="status">
+                        <div class="dashboard-group" style="justify-content: flex-start; margin: 0 20px;">
+                            <img src="@Url.Action("Chart")" style="width: 100%; height: 500px; object-fit: fill; box-shadow: 0 7px 8px 0 rgb(0 0 0 / 10%); " />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col l-2">
+            <div class="home-product">
+                <div class="row sm-gutter" style="width: 318px;">
+                    <div class="card card-offset">
+                        <div class="title">
+                            Báo cáo thu nhập
+                        </div>
+                        <div class="async-data-wrapper">
+                            <div class="status">
+                                <div class="to-do-box">
+                                    <a href="#" class="to-do-box-item">
+                                        <p class="item-title">0</p>
+                                        <p class="item-desc">Chờ xác nhận</p>
+                                    </a>
+                                    <a href="#" class="to-do-box-item">
+                                        <p class="item-title">0</p>
+                                        <p class="item-desc">Chờ lấy hàng</p>
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@*<div class="col l-2">
+    <div class="home-product">
+        <div class="row sm-gutter" style="width: 318px;">
+            <div class="card card-offset">
+                <div class="title">
+                    Báo cáo thu nhập
+                </div>
+                <div class="async-data-wrapper">
+                    <div class="status">
+                        <div class="to-do-box">
+                            <a href="#" class="to-do-box-item">
+                                <p class="item-title">0</p>
+                                <p class="item-desc">Chờ xác nhận</p>
+                            </a>
+                            <a href="#" class="to-do-box-item">
+                                <p class="item-title">0</p>
+                                <p class="item-desc">Chờ lấy hàng</p>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>*@

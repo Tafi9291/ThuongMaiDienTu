@@ -49,7 +49,8 @@ namespace TMDT.Controllers
             {
                 return RedirectToAction("ShowToCart", "ShoppingCart");
             }
-
+            var areas = db.THANHPHOes.ToList();
+            ViewBag.Areas = areas;
             Cart cart = Session["Cart"] as Cart;
             ViewBag.Message = TempData["Message"];
 
@@ -80,6 +81,8 @@ namespace TMDT.Controllers
         }
         public ActionResult RemoveCart(int id)
         {
+            var areas = db.THANHPHOes.ToList();
+            ViewBag.Areas = areas;
             Cart cart = Session["Cart"] as Cart;
             cart.Xoasp(id);
             if (cart.Tongsoluong() == 0)
@@ -96,15 +99,21 @@ namespace TMDT.Controllers
         // GET: ChuaCoHang
         public ActionResult ChuaCoHang()
         {
+            var areas = db.THANHPHOes.ToList();
+            ViewBag.Areas = areas;
             return View();
         }
 
         public ActionResult Complete()
         {
+            var areas = db.THANHPHOes.ToList();
+            ViewBag.Areas = areas;
             return View();
         }
         public ActionResult Checkout(int id, FormCollection form)
         {
+            var areas = db.THANHPHOes.ToList();
+            ViewBag.Areas = areas;
             var email = Session["Email"] as string;
             // Kiểm tra xem giỏ hàng có sẵn hay không
             if (Session["Cart"] == null)

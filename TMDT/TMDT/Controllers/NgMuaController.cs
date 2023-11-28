@@ -20,8 +20,7 @@ namespace TMDT.Controllers
             // Lấy danh sách sản phẩm theo IDPHEDUYET
             var productsQuery = db.SANPHAMs.Where(p => p.IDPHEDUYET == 2);
 
-            var areas = db.THANHPHOes.ToList();
-            ViewBag.Areas = areas;
+            LoadAreasToViewBag();
 
             // Lọc sản phẩm theo khu vực (tỉnh thành)
             if (!string.IsNullOrEmpty(selectedArea))
@@ -60,8 +59,7 @@ namespace TMDT.Controllers
 
             var productsQuery = db.SANPHAMs.Where(d => d.IDLOAISP == id && d.IDPHEDUYET == 2);
 
-            var areas = db.THANHPHOes.ToList();
-            ViewBag.Areas = areas;
+            LoadAreasToViewBag();
 
             // Lọc sản phẩm theo khu vực (tỉnh thành)
             if (!string.IsNullOrEmpty(selectedArea))
@@ -87,17 +85,43 @@ namespace TMDT.Controllers
             return View(products);
         }
 
-        public ActionResult Search(int? page, string searching)
+        private void LoadAreasToViewBag()
+        {
+            var areas = db.THANHPHOes.ToList();
+            ViewBag.Areas = areas;
+        }
+
+        public ActionResult Search( int? page, string searching, string selectedArea = "")
         {
             const int pageSize = 20;
             var pageNumber = (page ?? 1);
-            return View(db.SANPHAMs.Where(x => (x.TENSP.Contains(searching) || x.TENSP == null) && x.IDPHEDUYET == 2).ToList().ToPagedList(pageNumber, pageSize));
+            var productsQuery = db.SANPHAMs.Where(d => d.IDPHEDUYET == 2);
+            LoadAreasToViewBag();
+
+            // Lọc sản phẩm theo khu vực (tỉnh thành)
+            if (!string.IsNullOrEmpty(selectedArea))
+            {
+                productsQuery = productsQuery.Where(p => p.CUAHANG.THANHPHO.TENTHANHPHO == selectedArea);
+            }
+
+            // Tìm kiếm sản phẩm theo tên và IDPHEDUYET = 2 (đã được phê duyệt)
+            var filteredProducts = db.SANPHAMs
+                .Where(x => (x.TENSP.Contains(searching) || x.TENSP == null) && x.IDPHEDUYET == 2);
+
+            // Nếu đã có điều kiện lọc theo khu vực, áp dụng điều kiện này vào sản phẩm đã lọc
+            if (productsQuery.Any())
+            {
+                filteredProducts = filteredProducts.Where(p => productsQuery.Any(pr => pr.IDSANPHAM == p.IDSANPHAM));
+            }
+
+            return View(filteredProducts.ToList().ToPagedList(pageNumber, pageSize));
 
         }
 
         // GET: NgMua/SanPham/Detail
         public ActionResult ChiTietSanPham(int id)
         {
+            LoadAreasToViewBag();
             var sanpham = db.SANPHAMs.Find(id);
             if (sanpham == null)
             {
@@ -150,11 +174,20 @@ namespace TMDT.Controllers
                     var existingProductFav = nguoidung.SANPHAMs.FirstOrDefault(v => v.IDSANPHAM == sanpham.IDSANPHAM);
                     ViewBag.ExistingProduct = existingProductFav;
                 }
+                var productsShopSuggest = db.SANPHAMs.FirstOrDefault(s => s.IDLOAISP == sanpham.IDLOAISP && s.IDSANPHAM != sanpham.IDSANPHAM && s.IDPHEDUYET == 2);
+                var shopSuggest = db.CUAHANGs
+                    .Where(c => c.IDTP == nguoidung.IDTP && c.IDCUAHANG != cuaHang.IDCUAHANG) // Điều kiện vị trí người dùng và cửa hàng bằng nhau
+                    .Where(c => c.SANPHAMs.Any(p => p.IDLOAISP == sanpham.IDLOAISP)) // Cửa hàng có sản phẩm cùng loại
+                    .ToList(); // Chuyển kết quả thành danh sách
+                ViewBag.ShopSuggest = shopSuggest;
             }
 
             // Các sản phẩm liên quan đến sản phẩm người dùng đang xem
-            var productsSuggest = db.SANPHAMs.Where(s => s.IDLOAISP == sanpham.IDLOAISP && s.IDSANPHAM != sanpham.IDSANPHAM);
+            var productsSuggest = db.SANPHAMs.Where(s => s.IDLOAISP == sanpham.IDLOAISP && s.IDSANPHAM != sanpham.IDSANPHAM && s.IDPHEDUYET == 2);
             ViewBag.ProductsSuggest = productsSuggest;
+
+            
+
 
             return View(sanpham);
         }
@@ -202,6 +235,7 @@ namespace TMDT.Controllers
 
         public ActionResult DonMua(int? trangThaiId)
         {
+            LoadAreasToViewBag();
             // Lấy thông tin khách hàng từ session
             var email = Session["Email"] as string;
             var hinh = Session["Hinh"] as string;
@@ -228,6 +262,7 @@ namespace TMDT.Controllers
 
         public ActionResult ChiTietDonHang(int id)
         {
+            LoadAreasToViewBag();
             var donHang = db.DONHANGs.SingleOrDefault(dh => dh.IDDONHANG == id);
             var chiTietDonHangs = db.CTDONHANGs.Where(ct => ct.IDDONHANG == id).ToList();
             ViewBag.DonHang = donHang;
@@ -236,6 +271,7 @@ namespace TMDT.Controllers
 
         public ActionResult Khongduochuy()
         {
+            LoadAreasToViewBag();
             // Thực hiện các logic xử lý hoặc trả về view tương ứng
             return View();
         }
@@ -268,6 +304,7 @@ namespace TMDT.Controllers
         // GET
         public ActionResult YourVoucher()
         {
+            LoadAreasToViewBag();
             var email = Session["Email"] as string;
             if (email == null)
             {
@@ -286,6 +323,7 @@ namespace TMDT.Controllers
 
         public ActionResult Favorites()
         {
+            LoadAreasToViewBag();
             var email = Session["Email"] as string;
             if (email == null)
             {

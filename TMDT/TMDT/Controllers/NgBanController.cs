@@ -430,6 +430,33 @@ namespace TMDT.Controllers
             return View(model);
         }
 
+        public ActionResult DoanhThu()
+        {
+            var model = new DashBoard();
+
+            var email = Session["Email"] as string;
+            if (email == null)
+            {
+                // Nếu chưa đăng nhập, chuyển hướng đến trang đăng nhập
+                return RedirectToAction("DangNhapNgBan", "NgBan");
+            }
+            // Lấy thông tin của người dùng trong cơ sở dữ liệu
+            var nguoidung = db.NGUOIDUNGs.SingleOrDefault(kh => kh.EMAIL == email);
+            if (nguoidung != null) // Kiểm tra xem người dùng có tồn tại hay không
+            {
+                // Lấy thông tin của cửa hàng nếu tồn tại, sau đó lưu ID của cửa hàng vào sản phẩm
+                var cuahang = db.CUAHANGs.SingleOrDefault(ch => ch.IDND == nguoidung.IDND);
+
+                if (cuahang != null) // Kiểm tra xem cửa hàng có tồn tại hay không
+                {
+                    model.TotalUnpaid = (int)db.DONHANGs.Where(x => x.IDTRANGTHAIDH == 1 && x.IDCUAHANG == cuahang.IDCUAHANG).Sum(x => x.THANHTIEN);
+                    model.TotalPaid = (int)db.DONHANGs.Where(x => x.IDTRANGTHAIDH == 6 && x.IDCUAHANG == cuahang.IDCUAHANG).Sum(x => x.THANHTIEN);
+
+                    return View(model);
+                }
+            }
+            return RedirectToAction("Error");
+        }
 
     }
 }
