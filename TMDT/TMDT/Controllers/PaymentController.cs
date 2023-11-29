@@ -91,7 +91,8 @@ namespace TMDT.Controllers
         {
             TMDTEntities db = new TMDTEntities();
 
-
+            var areas = db.THANHPHOes.ToList();
+            ViewBag.Areas = areas;
             // Continue with the rest of your existing code...
             int ShopId = (int)TempData["ShopIdForConfirmation"];
 

@@ -20,6 +20,8 @@ namespace TMDT.Controllers
         [HttpPost]
         public ActionResult DangKy(NGUOIDUNG user)
         {
+            var areas = db.THANHPHOes.ToList();
+            ViewBag.Areas = areas;
             if (ModelState.IsValid)
             {
                 if (db.NGUOIDUNGs.Any(u => u.EMAIL == user.EMAIL))
@@ -54,7 +56,8 @@ namespace TMDT.Controllers
         {
 
             var objUserGet = db.NGUOIDUNGs.Where(n => n.EMAIL.Equals(user.EMAIL) && n.MATKHAU.Equals(user.MATKHAU)).FirstOrDefault();
-
+            var areas = db.THANHPHOes.ToList();
+            ViewBag.Areas = areas;
 
             if (objUserGet == null)
             {

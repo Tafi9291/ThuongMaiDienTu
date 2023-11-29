@@ -279,7 +279,7 @@ namespace TMDT.Controllers
         public ActionResult Huydonhang(int id)
         {
             var donHang = db.DONHANGs.SingleOrDefault(dh => dh.IDDONHANG == id);
-
+            LoadAreasToViewBag();
             // Kiểm tra nếu IDTRANGTHAIDH là 5 hoặc 6, không cho phép hủy đơn hàng
             if (donHang.IDTRANGTHAIDH == 4 || donHang.IDTRANGTHAIDH == 7)
             {
